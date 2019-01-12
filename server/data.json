@@ -1,76 +1,52 @@
 {
-  "jobs": [{
-      "title": "Nice view on ocean",
-      "city": "San Francisco",
-      "street": "Main street",
-      "category": "condo",
-      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-      "description": "Very nice apartment in center of the city.",
-      "price": 43
-      },
-      {
-      "title": "Modern apartment in center",
-      "city": "New York",
-      "street": "Time Square",
-      "category": "apartment",
-      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-      "description": "Very nice apartment in center of the city.",
-      "price": 11
-      },
-      {
-      "title": "Old house in nature",
-      "city": "Spisska Nova Ves",
-      "street": "Banicka 1",
-      "category": "house",
-      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-      "description": "Very nice apartment in center of the city.",
-      "price": 23
-    },
+  "jobs": [
     {
-      "title": "Amazing modern place",
-      "city": "San Francisco",
-      "street": "Green street",
-      "category": "house",
-      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-      "description": "Hiking routes 10 min walking away",
-      "price": 140
-      },
-      {
-      "title": "Apartment In China Town",
-      "city": "San Francisco",
-      "street": "Union Street",
-      "category": "apartment",
-      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-      "description": "Very nice apartment in China Town",
-      "price": 89
-      },
-      {
-      "title": "House with Garden",
-      "city": "New York",
-      "street": "Long Island, Queens",
-      "category": "house",
-      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-      "description": "Very nice house in Long Island with garden",
-      "price": 189
-    },
-    {
-      "title": "Cozy modern Condo",
-      "city": "New York",
-      "street": "Penn Station",
-      "category": "condo",
-      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-      "description": "Building close to Penn Station",
-      "price": 68
-    }
-  ],
-  "users": [{
-    "username": "Test User",
+    "name": "Central Apartment",
+    "image": "second image",
+    "oldPrice": null,
+    "newPrice": 175,
+    "city": "New York",
+    "street": "Times Square",
+    "category": "apartment",
+    "phone": 1234567890,
     "email": "test@gmail.com",
-    "password": "testtest"
-    },{
-    "username": "Test User1",
-    "email": "test1@gmail.com",
-    "password": "testtest1"
-    }
+    "complete_address": "this is the complete address",
+    "landmark": "demo landmark",
+    "timing": "8 AM to 6 PM",
+    "veg_package": 120,
+    "non_veg_package": 150,
+    "dailyRate": 4000,
+    "shared": false,
+    "ac" : true,
+    "guests": 40,
+    "rooms": 2,
+    "discount": null,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+    "categoryId": 100
+  },
+  {
+    "name": "Middle Apartment",
+    "image": "first image url",
+    "oldPrice": null,
+    "newPrice": 175,
+    "city": "Pune Maharastra",
+    "street": "Times Square",
+    "category": "apartment",
+    "phone": 1234567890,
+    "email": "test@gmail.com",
+    "complete_address": "this is the complete address",
+    "landmark": "demo landmark",
+    "timing": "8 AM to 6 PM",
+    "veg_package": 120,
+    "non_veg_package": 150,
+    "dailyRate": 4000,
+    "shared": false,
+    "ac" : true,
+    "guests": 40,
+    "rooms": 2,
+    "discount": null,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+    "categoryId": 100
+  }
   ]
 }
