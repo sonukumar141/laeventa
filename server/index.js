@@ -30,6 +30,7 @@ app.use('/api/v1/bookings', bookingRoutes);
 app.use('/api/v1/reviews', reviewRoutes);
 app.use('/api/v1', imageUploadRoutes);
 
+
 if(process.env.NODE_ENV === 'production') {
 	const appPath = path.join(__dirname, '..', 'dist');
 	app.use(express.static(appPath));
