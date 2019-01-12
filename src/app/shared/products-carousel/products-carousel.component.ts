@@ -47,7 +47,7 @@ export class ProductsCarouselComponent implements OnInit {
           slidesPerView: 4,
         },
         1500: {
-          slidesPerView: 5,
+          slidesPerView: 4,
         }
       }
     }
