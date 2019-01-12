@@ -2,7 +2,7 @@
   "jobs": [
     {
     "name": "Central Apartment",
-    "image": "second image",
+    "images": ["image 1", "image 2"],
     "oldPrice": null,
     "newPrice": 175,
     "city": "New York",
@@ -26,7 +26,7 @@
   },
   {
     "name": "Middle Apartment",
-    "image": "first image url",
+    "images": ["image 3", "image 4"],
     "oldPrice": null,
     "newPrice": 175,
     "city": "Pune Maharastra",

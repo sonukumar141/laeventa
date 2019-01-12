@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
         name: { type: String, required: true, max: [128, 'Too long, max is 128 characters']},
-        image: String,
+        images: [{type: String}],
         oldPrice: Number,
         newPrice: Number,
         city: { type: String, required: true, lowercase: true },
