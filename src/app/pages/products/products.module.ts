@@ -10,6 +10,8 @@ import { ProductsComponent } from './products.component';
 import { ProductComponent } from './product/product.component';
 import { ProductZoomComponent } from './product/product-zoom/product-zoom.component';
 
+import { NgPipesModule } from 'ngx-pipes';
+
 export const routes = [
   { path: '', component: ProductsComponent, pathMatch: 'full' },
   { path: ':name', component: ProductsComponent },
@@ -25,7 +27,8 @@ export const routes = [
     SwiperModule,
     NgxPaginationModule,
     SharedModule,
-    PipesModule
+    PipesModule,
+    NgPipesModule
   ],
   declarations: [
     ProductsComponent, 
