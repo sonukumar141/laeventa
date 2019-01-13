@@ -2,7 +2,18 @@
 [
   {
     "name": "Central Apartment",
-    "images": ["https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg", "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"],
+    "images": [
+      {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+      },
+      {
+        "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+      }
+    ],
     "oldPrice": null,
     "newPrice": 175,
     "city": "New York",
@@ -26,7 +37,18 @@
   },
   {
     "name": "Middle Apartment",
-    "images": ["https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg", "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"],
+    "images": [      
+      {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+      },
+      {
+        "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+        "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+      }
+],
     "oldPrice": null,
     "newPrice": 175,
     "city": "Pune Maharastra",
