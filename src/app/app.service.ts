@@ -30,12 +30,12 @@ export class AppService {
         return this.http.get<Category[]>(this.url + 'categories.json');
     }
    
-    public getProducts(type): Observable<Product[]>{        
-        return this.http.get<Product[]>(this.url + type + '-products.json');
+    public getProducts(): Observable<Product[]>{        
+        return this.http.get<Product[]>('/api/v1/products');
     }
 
-    public getProductById(id): Observable<Product>{
-        return this.http.get<Product>(this.url + 'product-' + id + '.json');
+    public getProductById(productId: string): Observable<Product>{
+        return this.http.get<Product>('/api/v1/products/' + productId);
     }
 
     public getBanners(): Observable<any[]>{
@@ -44,7 +44,7 @@ export class AppService {
 
     public addToCompare(product:Product){
         let message, status;
-        if(this.Data.compareList.filter(item=>item.id == product.id)[0]){
+        if(this.Data.compareList.filter(item=>item._id == product._id)[0]){
             message = 'The product ' + product.name + ' already added to comparison list.'; 
             status = 'error';     
         }
@@ -58,7 +58,7 @@ export class AppService {
 
     public addToWishList(product:Product){
         let message, status;
-        if(this.Data.wishList.filter(item=>item.id == product.id)[0]){
+        if(this.Data.wishList.filter(item=>item._id == product._id)[0]){
             message = 'The product ' + product.name + ' already added to wish list.'; 
             status = 'error';     
         }
@@ -97,8 +97,8 @@ export class AppService {
         this.Data.totalPrice = null;
         this.Data.totalCartCount = null;
 
-        if(this.Data.cartList.filter(item=>item.id == product.id)[0]){ 
-            let item = this.Data.cartList.filter(item=>item.id == product.id)[0];
+        if(this.Data.cartList.filter(item=>item._id == product._id)[0]){ 
+            let item = this.Data.cartList.filter(item=>item._id == product._id)[0];
             item.cartCount = product.cartCount;  
         }
         else{           
@@ -116,11 +116,11 @@ export class AppService {
 
     public resetProductCartCount(product:Product){
         product.cartCount = 0;
-        let compareProduct = this.Data.compareList.filter(item=>item.id == product.id)[0];
+        let compareProduct = this.Data.compareList.filter(item=>item._id == product._id)[0];
         if(compareProduct){
             compareProduct.cartCount = 0;
         };
-        let wishProduct = this.Data.wishList.filter(item=>item.id == product.id)[0];
+        let wishProduct = this.Data.wishList.filter(item=>item._id == product._id)[0];
         if(wishProduct){
             wishProduct.cartCount = 0;
         }; 

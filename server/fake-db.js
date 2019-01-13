@@ -6,7 +6,7 @@ const fakeDbData = require('./data.json');
 
 class FakeDb {
 	constructor(){
-		 this.jobs = fakeDbData.jobs;
+		 this.jobs = fakeDbData;
             // this.users = fakeDbData.users;
 	}
 

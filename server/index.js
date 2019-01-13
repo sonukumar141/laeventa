@@ -24,7 +24,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/api/v1/jobs', jobRoutes);
+app.use('/api/v1/products', jobRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/bookings', bookingRoutes);
 app.use('/api/v1/reviews', reviewRoutes);

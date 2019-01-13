@@ -1,8 +1,8 @@
-{
-  "jobs": [
-    {
+
+[
+  {
     "name": "Central Apartment",
-    "images": ["image 1", "image 2"],
+    "images": ["https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg", "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"],
     "oldPrice": null,
     "newPrice": 175,
     "city": "New York",
@@ -26,7 +26,7 @@
   },
   {
     "name": "Middle Apartment",
-    "images": ["image 3", "image 4"],
+    "images": ["https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg", "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"],
     "oldPrice": null,
     "newPrice": 175,
     "city": "Pune Maharastra",
@@ -48,5 +48,5 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
     "categoryId": 100
   }
-  ]
-}
+]
+

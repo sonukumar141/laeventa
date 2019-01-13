@@ -49,7 +49,7 @@ export class BrandComponent implements OnInit {
   }
 
   public getAllProducts(){
-    this.appService.getProducts("brand").subscribe(data=>{
+    this.appService.getProducts().subscribe(data=>{
       this.products = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {

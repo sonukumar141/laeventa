@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit {
   }
 
   public getAllProducts(){
-    this.appService.getProducts("featured").subscribe(data=>{
+    this.appService.getProducts().subscribe(data=>{
       this.products = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {
@@ -106,7 +106,7 @@ export class ProductsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(product => {
       if(product){
-        this.router.navigate(['/products', product.id, product.name]); 
+        this.router.navigate(['/products', product._id, product.name]); 
       }
     });
   }

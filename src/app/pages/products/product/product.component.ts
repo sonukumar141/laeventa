@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {      
     this.sub = this.activatedRoute.params.subscribe(params => { 
-      this.getProductById(params['id']); 
+      this.getProductById(params['_id']); 
     }); 
     this.form = this.formBuilder.group({ 
       'review': [null, Validators.required],            
@@ -60,8 +60,8 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  public getProductById(id){
-    this.appService.getProductById(id).subscribe(data=>{
+  public getProductById(_id){
+    this.appService.getProductById(_id).subscribe(data=>{
       this.product = data;
       this.image = data.images[0].medium;
       this.zoomImage = data.images[0].big;
@@ -73,7 +73,7 @@ export class ProductComponent implements OnInit {
   }
 
   public getRelatedProducts(){
-    this.appService.getProducts('related').subscribe(data => {
+    this.appService.getProducts().subscribe(data => {
       this.relatedProducts = data;
     })
   }
