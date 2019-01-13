@@ -6,6 +6,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../theme/pipes/pipes.module';
+import { MapModule } from '../../theme/components/map/map.module';
 import { ProductsComponent } from './products.component';
 import { ProductComponent } from './product/product.component';
 import { ProductZoomComponent } from './product/product-zoom/product-zoom.component';
@@ -28,7 +29,8 @@ export const routes = [
     NgxPaginationModule,
     SharedModule,
     PipesModule,
-    NgPipesModule
+    NgPipesModule,
+    MapModule
   ],
   declarations: [
     ProductsComponent, 
