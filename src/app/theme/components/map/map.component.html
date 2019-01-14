@@ -1,1 +1,17 @@
-<h1>This is map</h1>
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map (mapReady)="mapReadyHandler()" 
+         [latitude]="lat" 
+         [longitude]="lng"
+         [zoom]="13">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+
+    <agm-info-window *ngIf="isPositionError"
+        [latitude]="0" 
+        [longitude]="0"
+        [maxWidth]="300" 
+        [isOpen]=true >
+        Ooops!!! there is some problem
+    </agm-info-window>
+</agm-map>
+{{location}}
