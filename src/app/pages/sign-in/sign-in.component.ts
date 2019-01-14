@@ -41,18 +41,7 @@ export class SignInComponent implements OnInit {
   }
 
   public onRegisterFormSubmit(values:Object):void {
-    // if (this.registerForm.valid) {
-    //   this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
-    //   console.log('yeah correct');
-    //   this.auth.signup(this.registerForm).subscribe(
-    //     () => {
-    //       console.log('success');
-    //     },
-    //     (errorResponse) => {
-    //       console.log(errorResponse);
-    //     }
-    //   )
-    // }
+
     this.auth.signup(this.registerForm.value).subscribe(
       () => {
         console.log('success');

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { emailValidator, matchingPasswords } from '../../theme/utils/app-validators';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-hotel-sign-in',
@@ -13,7 +14,10 @@ export class HotelSignInComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public router:Router, public snackBar: MatSnackBar) { }
+  constructor(public formBuilder: FormBuilder, 
+              public router:Router, 
+              public snackBar: MatSnackBar,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -23,12 +27,12 @@ export class HotelSignInComponent implements OnInit {
 
     this.registerForm = this.formBuilder.group({
       'businessName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-      'name': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': ['', Validators.compose([Validators.required, emailValidator])],
-      'mobile': ['', Validators.compose([Validators.required, emailValidator])],
+      'mobile': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       'password': ['', Validators.required],
-      'confirmPassword': ['', Validators.required]
-    },{validator: matchingPasswords('password', 'confirmPassword')});
+      'passwordConfirmation': ['', Validators.required]
+    },{validator: matchingPasswords('password', 'passwordConfirmation')});
 
   }
 
@@ -39,9 +43,16 @@ export class HotelSignInComponent implements OnInit {
   }
 
   public onRegisterFormSubmit(values:Object):void {
-    if (this.registerForm.valid) {
-      this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
-    }
+    this.auth.hotel_signup(this.registerForm.value).subscribe(
+      () => {
+        console.log('success');
+        if(this.registerForm.valid){
+          this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+        }
+      },
+      (errorResponse) => {
+        console.log(errorResponse);
+      }
+    )
   }
-
 }

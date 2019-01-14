@@ -12,5 +12,9 @@ export class AuthService{
 
     public signup(userData: any): Observable<any>{
 		return this.http.post('api/v1/users/sign-in', userData);
+  }
+  
+  public hotel_signup(userData: any): Observable<any>{
+		return this.http.post('api/v1/usersh/hotel-sign-in', userData);
 	}
 }

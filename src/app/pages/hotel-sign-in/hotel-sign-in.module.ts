@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { HotelSignInComponent } from './hotel-sign-in.component';
+import { AuthService } from '../shared/auth.service';
 
 export const routes = [
   { path: '', component: HotelSignInComponent, pathMatch: 'full' }
@@ -18,6 +19,9 @@ export const routes = [
   ],
   declarations: [
     HotelSignInComponent
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class HotelSignInModule { }
