@@ -16,6 +16,7 @@ export const routes: Routes = [
             { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutModule', data: { breadcrumb: 'Checkout' } },
             { path: 'contact', loadChildren: './pages/contact/contact.module#ContactModule', data: { breadcrumb: 'Contact' } },
             { path: 'sign-in', loadChildren: './pages/sign-in/sign-in.module#SignInModule', data: { breadcrumb: 'Sign In ' } },
+            { path: 'hotel-sign-in', loadChildren: './pages/hotel-sign-in/hotel-sign-in.module#HotelSignInModule', data: { breadcrumb: 'Hotel Sign In ' } },
             { path: 'brands', loadChildren: './pages/brands/brands.module#BrandsModule', data: { breadcrumb: 'Brands' } },
             { path: 'products', loadChildren: './pages/products/products.module#ProductsModule', data: { breadcrumb: 'All Products' } }
         ]

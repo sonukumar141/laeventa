@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const jobSchema = new Schema({
+const jobvSchema = new Schema({
         name: { type: String, required: true, max: [128, 'Too long, max is 128 characters']},
         images: {type: [
                 'Mixed'
@@ -20,15 +20,13 @@ const jobSchema = new Schema({
         veg_package: Number,
         non_veg_package: Number,
         dailyRate: Number,
-        shared: Boolean,
-        ac: Boolean,
         guests: Number,
         rooms: Number,    
         createdAt: { type: Date, default: Date.now },
         discount: Number,
         description: { type: String, required: true },
         categoryId: Number,
-        user: {type: Schema.Types.ObjectId, ref: 'User'}
+        userv: {type: Schema.Types.ObjectId, ref: 'Userv'}
 });
 
-module.exports = mongoose.model('Job', jobSchema);
+module.exports = mongoose.model('Jobv', jobvSchema);

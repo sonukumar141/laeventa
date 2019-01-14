@@ -3,11 +3,17 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const Job = require('./models/job');
+const Jobh = require('./models/jobh');
+const Jobv = require('./models/jobv');
 const FakeDb = require('./fake-db');
 const path = require('path');
 
 const jobRoutes = require('./routes/jobs'),
-      userRoutes = require('./routes/users'),
+	  jobhRoutes = require('./routes/jobsh'),
+	  jobvRoutes = require('./routes/jobsv'),
+	  userRoutes = require('./routes/users'),
+	  userhRoutes = require('./routes/usersh'),
+	  uservRoutes = require('./routes/usersv'),
       bookingRoutes = require('./routes/bookings'),
 	  imageUploadRoutes = require('./routes/image-upload'),
 	  reviewRoutes = require('./routes/reviews');
@@ -25,7 +31,11 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/api/v1/products', jobRoutes);
+app.use('/api/v1/productsh', jobhRoutes);
+app.use('/api/v1/productsv', jobvRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/usersh', userhRoutes);
+app.use('/api/v1/usersv', uservRoutes);
 app.use('/api/v1/bookings', bookingRoutes);
 app.use('/api/v1/reviews', reviewRoutes);
 app.use('/api/v1', imageUploadRoutes);

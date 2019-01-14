@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const jobSchema = new Schema({
+const jobhSchema = new Schema({
         name: { type: String, required: true, max: [128, 'Too long, max is 128 characters']},
         images: {type: [
                 'Mixed'
@@ -28,7 +28,7 @@ const jobSchema = new Schema({
         discount: Number,
         description: { type: String, required: true },
         categoryId: Number,
-        user: {type: Schema.Types.ObjectId, ref: 'User'}
+        userh: {type: Schema.Types.ObjectId, ref: 'Userh'}
 });
 
-module.exports = mongoose.model('Job', jobSchema);
+module.exports = mongoose.model('Jobh', jobhSchema);

@@ -1,74 +1,256 @@
 
-[
-  {
-    "name": "Central Apartment",
-    "images": [
-      {
-          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
-      },
-      {
-        "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-        "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-        "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
-      }
-    ],
-    "oldPrice": null,
-    "newPrice": 175,
-    "city": "New York",
-    "street": "Times Square",
-    "category": "apartment",
-    "phone": 1234567890,
-    "email": "test@gmail.com",
-    "complete_address": "this is the complete address",
-    "landmark": "demo landmark",
-    "timing": "8 AM to 6 PM",
-    "veg_package": 120,
-    "non_veg_package": 150,
-    "dailyRate": 4000,
-    "shared": false,
-    "ac" : true,
-    "guests": 40,
-    "rooms": 2,
-    "discount": null,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
-    "categoryId": 100
-  },
-  {
-    "name": "Middle Apartment",
-    "images": [      
-      {
-          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
-      },
-      {
-        "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-        "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
-        "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
-      }
-],
-    "oldPrice": null,
-    "newPrice": 175,
-    "city": "Pune Maharastra",
-    "street": "Times Square",
-    "category": "apartment",
-    "phone": 1234567890,
-    "email": "test@gmail.com",
-    "complete_address": "this is the complete address",
-    "landmark": "demo landmark",
-    "timing": "8 AM to 6 PM",
-    "veg_package": 120,
-    "non_veg_package": 150,
-    "dailyRate": 4000,
-    "shared": false,
-    "ac" : true,
-    "guests": 40,
-    "rooms": 2,
-    "discount": null,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
-    "categoryId": 100
-  }
-]
 
+{
+    "jobs": [
+      {
+      "name": "Central Apartment",
+      "images": [
+        {
+            "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        },
+        {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        }
+      ],
+      "oldPrice": null,
+      "newPrice": 175,
+      "city": "New York",
+      "street": "Times Square",
+      "category": "apartment",
+      "phone": 1234567890,
+      "email": "test@gmail.com",
+      "complete_address": "this is the complete address",
+      "landmark": "demo landmark",
+      "timing": "8 AM to 6 PM",
+      "veg_package": 120,
+      "non_veg_package": 150,
+      "dailyRate": 4000,
+      "shared": false,
+      "ac" : true,
+      "guests": 40,
+      "rooms": 2,
+      "discount": null,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+      "categoryId": 100
+    },
+    {
+      "name": "Middle Apartment",
+      "images": [      
+        {
+            "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        },
+        {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        }
+  ],
+      "oldPrice": null,
+      "newPrice": 175,
+      "city": "Pune Maharastra",
+      "street": "Times Square",
+      "category": "apartment",
+      "phone": 1234567890,
+      "email": "test@gmail.com",
+      "complete_address": "this is the complete address",
+      "landmark": "demo landmark",
+      "timing": "8 AM to 6 PM",
+      "veg_package": 120,
+      "non_veg_package": 150,
+      "dailyRate": 4000,
+      "shared": false,
+      "ac" : true,
+      "guests": 40,
+      "rooms": 2,
+      "discount": null,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+      "categoryId": 100
+    }
+  ],
+  "users": [{
+    "username": "testuser1",
+    "email": "test1@gmail.com",
+    "password": "test1234"
+    },{
+      "username": "testuser2",
+      "email": "test2@gmail.com",
+      "password": "test1234"
+    }
+  ],
+
+  "jobsh": [
+    {
+      "name": "Central Apartment",
+      "images": [
+        {
+            "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        },
+        {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        }
+      ],
+      "oldPrice": null,
+      "newPrice": 175,
+      "city": "New York",
+      "street": "Times Square",
+      "category": "apartment",
+      "phone": 1234567890,
+      "email": "test@gmail.com",
+      "complete_address": "this is the complete address",
+      "landmark": "demo landmark",
+      "timing": "8 AM to 6 PM",
+      "veg_package": 120,
+      "non_veg_package": 150,
+      "dailyRate": 4000,
+      "shared": false,
+      "ac" : true,
+      "guests": 40,
+      "rooms": 2,
+      "discount": null,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+      "categoryId": 100
+    },
+    {
+      "name": "Middle Apartment",
+      "images": [      
+        {
+            "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        },
+        {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        }
+  ],
+      "oldPrice": null,
+      "newPrice": 175,
+      "city": "Pune Maharastra",
+      "street": "Times Square",
+      "category": "apartment",
+      "phone": 1234567890,
+      "email": "test@gmail.com",
+      "complete_address": "this is the complete address",
+      "landmark": "demo landmark",
+      "timing": "8 AM to 6 PM",
+      "veg_package": 120,
+      "non_veg_package": 150,
+      "dailyRate": 4000,
+      "shared": false,
+      "ac" : true,
+      "guests": 40,
+      "rooms": 2,
+      "discount": null,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+      "categoryId": 100
+    }
+  ],
+  "usersh": [{
+    "businessname": "Test user 1",
+    "username": "testuser1",
+    "email": "test1@gmail.com",
+    "mobile": 8551016850,
+    "password": "test1234"
+    },{
+      "businessname": "Test user 2",
+      "username": "testuser2",
+      "email": "test2@gmail.com",
+      "mobile": 8551016850,
+      "password": "test1234"
+    }
+  ],
+
+  "jobsv": [
+    {
+      "name": "Central Apartment",
+      "images": [
+        {
+            "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        },
+        {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        }
+      ],
+      "oldPrice": null,
+      "newPrice": 175,
+      "city": "New York",
+      "street": "Times Square",
+      "category": "apartment",
+      "phone": 1234567890,
+      "email": "test@gmail.com",
+      "complete_address": "this is the complete address",
+      "landmark": "demo landmark",
+      "timing": "8 AM to 6 PM",
+      "veg_package": 120,
+      "non_veg_package": 150,
+      "dailyRate": 4000,
+      "guests": 40,
+      "rooms": 2,
+      "discount": null,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+      "categoryId": 100
+    },
+    {
+      "name": "Middle Apartment",
+      "images": [      
+        {
+            "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+            "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        },
+        {
+          "small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "medium": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+          "big": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"
+        }
+  ],
+      "oldPrice": null,
+      "newPrice": 175,
+      "city": "Pune Maharastra",
+      "street": "Times Square",
+      "category": "apartment",
+      "phone": 1234567890,
+      "email": "test@gmail.com",
+      "complete_address": "this is the complete address",
+      "landmark": "demo landmark",
+      "timing": "8 AM to 6 PM",
+      "veg_package": 120,
+      "non_veg_package": 150,
+      "dailyRate": 4000,
+      "guests": 40,
+      "rooms": 2,
+      "discount": null,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue eleifend nulla vel rutrum. Donec tempus metus non erat vehicula, vel hendrerit sem interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+      "categoryId": 100
+    }
+  ],
+  "usersv": [{
+    "businessname": "Test user 1",
+    "username": "testuser1",
+    "email": "test1@gmail.com",
+    "mobile": 8551016850,
+    "password": "test1234"
+    },{
+      "businessname": "Test user 2",
+      "username": "testuser2",
+      "email": "test2@gmail.com",
+      "mobile": 8551016850,
+      "password": "test1234"
+    }
+  ]
+}

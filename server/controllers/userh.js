@@ -1,29 +1,28 @@
-const User = require('../models/user');
+const Userh = require('../models/userh');
 const { normalizeErrors } = require('../helpers/mongoose');
 const jwt = require('jsonwebtoken');	
 const config = require('../config');
 
 exports.auth =  function(req, res){
-
 	const {email, password} = req.body;
 
 	if(!password || !email) {
 		return res.status(422).send({errors: [{title: 'Data Missing!', detail: 'Provide email and password'}]});
 	}
 
-	User.findOne({email}, function(err, user) {
+	Userh.findOne({email}, function(err, userh) {
 		if(err){
 			return res.status(422).send({errors: normalizeErrors(err.errors)});
 		}
 
-		if(!user){
+		if(!userh){
 			return res.status(422).send({errors: [{title: 'Invalid User!', detail: 'User does not exist'}]});
 		}
-		if(user.hasSamePassword(password)){
+		if(userh.hasSamePassword(password)){
 			// Jwt token
 			const token = jwt.sign({
-  			userId: user.id,
-  			username: user.username
+  			userId: userh.id,
+  			username: userh.username
 			}, config.SECRET, { expiresIn: '1h' });
 
 			return res.json(token);
@@ -36,39 +35,41 @@ exports.auth =  function(req, res){
 
 exports.signup =  function(req, res){
 
-	const {username, email, password, passwordConfirmation} = req.body;
+    const {businessname, username, email, mobile, password, passwordConfirmation} = req.body;
 
-	if(!password || !email) {
-		return res.status(422).send({errors: [{title: 'Data Missing!', detail: 'Provide email and password'}]});
-	}
+    if(!email || !mobile || !password){
+        return res.status(422).send({errors: [{title: 'Data Missing!', detail: 'Provide email, mobile and password'}]});
+    }
 
 	if(password != passwordConfirmation) {
 		return res.status(422).send({errors: [{title: 'Invalid password!', detail: 'Password is not as confirmation'}]});
-
 	}
-	User.findOne({email}, function(err, existingUser){
-		if(err){
-			return res.status(422).send({errors: normalizeErrors(err.errors)});
-		}
 
-		if(existingUser){
+    Userh.findOne({email}, function(err, existingUserh){
+        if(err){
+			return res.status(422).send({errors: normalizeErrors(err.errors)});
+        }
+        
+		if(existingUserh){
 			return res.status(422).send({errors: [{title: 'Invalid email!', detail: 'Email already registered'}]});
 		}
 
-		const user = new User({
+		const userh = new Userh({
+            businessname,
 			username,
-			email,
+            email,
+            mobile,
 			password
-		});
-
-		user.save(function(err){
+        });
+        
+        userh.save(function(err){
 			if(err){
 				return res.status(422).send({errors: normalizeErrors(err.errors)});
 			}
 
 			return res.json({'registered': true});
 		});
-	});
+    });
 
 }
 
@@ -76,15 +77,15 @@ exports.authMiddleware = function(req, res, next){
 	const token = req.headers.authorization;
 
 	if(token){
-		const user = parseToken(token);
+		const userh = parseToken(token);
 
-		User.findById(user.userId, function(err, user){
+		Userh.findById(userh.userId, function(err, userh){
 			if(err){
 				return res.status(422).send({errors: normalizeErrors(err.errors)});
 			}
 
-			if(user) {
-				res.locals.user = user;
+			if(userh) {
+				res.locals.userh = userh;
 				next();
 			}else{
 				notAuthorized(res);
