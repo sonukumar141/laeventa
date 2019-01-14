@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
     });
 
     this.registerForm = this.formBuilder.group({
-      'name': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': ['', Validators.compose([Validators.required, emailValidator])],
       'password': ['', Validators.required],
       'confirmPassword': ['', Validators.required]
@@ -39,6 +39,7 @@ export class SignInComponent implements OnInit {
   public onRegisterFormSubmit(values:Object):void {
     if (this.registerForm.valid) {
       this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+      console.log('yeah correct');
     }
   }
 
