@@ -58,13 +58,13 @@
                     <mat-error *ngIf="registerForm.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
                 </mat-form-field> 
                 <mat-form-field class="w-100 mt-1">
-                  <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
-                  <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">Confirm Password is required</mat-error>
-                  <mat-error *ngIf="registerForm.controls.confirmPassword.hasError('mismatchedPasswords')">Passwords do not match</mat-error>
+                  <input matInput placeholder="Confirm Password" formControlName="passwordConfirmation" type="password" required>
+                  <mat-error *ngIf="registerForm.controls.passwordConfirmation.errors?.required">Confirm Password is required</mat-error>
+                  <mat-error *ngIf="registerForm.controls.passwordConfirmation.hasError('mismatchedPasswords')">Passwords do not match</mat-error>
                 </mat-form-field>
                 <h3 class="text-muted text-center">Sign up & list your business.</h3>
                 <div class="text-center mt-2">
-                    <button mat-fab color="primary" class="mat-elevation-z6" (click)="onRegisterFormSubmit(registerForm.value)">
+                    <button mat-fab color="primary" class="mat-elevation-z6" [disabled]="!registerForm.valid" (click)="onRegisterFormSubmit(registerForm.value)">
                         <mat-icon>person_add</mat-icon>
                     </button>
                 </div>

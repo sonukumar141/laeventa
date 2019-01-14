@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { SignInComponent } from './sign-in.component';
 
+import { AuthService } from '../shared/auth.service';
+
 export const routes = [
   { path: '', component: SignInComponent, pathMatch: 'full' }
 ];
@@ -18,6 +20,9 @@ export const routes = [
   ],
   declarations: [
     SignInComponent
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class SignInModule { }
