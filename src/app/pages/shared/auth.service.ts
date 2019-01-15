@@ -11,10 +11,18 @@ export class AuthService{
     constructor(private http: HttpClient) {}
 
     public signup(userData: any): Observable<any>{
-		return this.http.post('api/v1/users/sign-in', userData);
+		return this.http.post('api/v1/users/sign-up', userData);
   }
   
   public hotel_signup(userData: any): Observable<any>{
-		return this.http.post('api/v1/usersh/hotel-sign-in', userData);
-	}
+		return this.http.post('api/v1/usersh/hotel-sign-up', userData);
+  }
+  
+  public signin(userData: any): Observable<any>{
+		return this.http.post('api/v1/users/sign-in', userData);
+  }
+
+  public hotel_signin(userData: any): Observable<any>{
+		return this.http.post('api/v1/usersh/sign-in', userData);
+  }
 }

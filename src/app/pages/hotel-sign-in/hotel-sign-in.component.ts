@@ -17,7 +17,7 @@ export class HotelSignInComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, 
               public router:Router, 
               public snackBar: MatSnackBar,
-              private auth: AuthService) { }
+              public auth: AuthService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -47,7 +47,8 @@ export class HotelSignInComponent implements OnInit {
       () => {
         console.log('success');
         if(this.registerForm.valid){
-          this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+          this.snackBar.open('You registered successfully! Sign-in', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+          this.router.navigate(['/sign-in']);
         }
       },
       (errorResponse) => {

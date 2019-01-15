@@ -3,8 +3,8 @@ const Userh = require('../controllers/userh');
 const router = express.Router();
 
 
-router.post('/auth', Userh.auth);
+router.post('/sign-in', Userh.auth);
 
-router.post('/hotel-sign-in', Userh.signup);
+router.post('/hotel-sign-up', Userh.signup);
 
 module.exports = router;
