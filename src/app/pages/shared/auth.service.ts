@@ -25,4 +25,12 @@ export class AuthService{
   public hotel_signin(userData: any): Observable<any>{
 		return this.http.post('api/v1/usersh/sign-in', userData);
   }
+
+  public vendor_signup(userData: any): Observable<any>{
+		return this.http.post('api/v1/usersv/vendor-sign-up', userData);
+  }
+
+  public vendor_signin(userData: any): Observable<any>{
+		return this.http.post('api/v1/usersv/sign-in', userData);
+  }
 }

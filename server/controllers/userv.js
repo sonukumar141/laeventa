@@ -35,7 +35,7 @@ exports.auth =  function(req, res){
 
 exports.signup =  function(req, res){
 
-    const {businessname, username, email, mobile, password, passwordConfirmation} = req.body;
+    const {businessname, businesstype, username, email, mobile, password, passwordConfirmation} = req.body;
 
     if(!email || !mobile || !password){
         return res.status(422).send({errors: [{title: 'Data Missing!', detail: 'Provide email, mobile and password'}]});
@@ -56,7 +56,8 @@ exports.signup =  function(req, res){
         
 
 		const userv = new Userv({
-            businessname,
+			businessname,
+			businesstype,
 			username,
             email,
             mobile,

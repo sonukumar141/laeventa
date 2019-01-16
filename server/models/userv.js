@@ -6,21 +6,21 @@ const uservSchema = new Schema({
     businessname: {
 		type: String,
 		min: [4, 'Too short, Min is 4 characers'],
-		max: [32, 'Too Long, Max character is 32']
+		max: [32, 'Too Long, Max character is 50']
     },
-    businesstype: {type: [
-        'Mixed'
-    ]
+	businesstype: {type: String,
+		min: [4, 'Too short, Min is 4 characers'],
+		max: [32, 'Too Long, Max character is 64']
     },
     username: {
 		type: String,
 		min: [4, 'Too short, Min is 4 characers'],
-		max: [32, 'Too Long, Max character is 32']
+		max: [32, 'Too Long, Max character is 50']
 	},
 	email: {
 		type: String,
 		min: [4, 'Too short, Min is 4 characers'],
-		max: [32, 'Too Long, Max character is 32'],
+		max: [32, 'Too Long, Max character is 50'],
 		unique: true,
 		lowercase: true,
 		required: 'Email is required',

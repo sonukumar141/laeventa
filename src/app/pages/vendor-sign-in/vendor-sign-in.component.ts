@@ -6,11 +6,11 @@ import { emailValidator, matchingPasswords } from '../../theme/utils/app-validat
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-  selector: 'app-hotel-sign-in',
-  templateUrl: './hotel-sign-in.component.html',
-  styleUrls: ['./hotel-sign-in.component.scss']
+  selector: 'app-vendor-sign-in',
+  templateUrl: './vendor-sign-in.component.html',
+  styleUrls: ['./vendor-sign-in.component.scss']
 })
-export class HotelSignInComponent implements OnInit {
+export class VendorSignInComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
@@ -24,9 +24,10 @@ export class HotelSignInComponent implements OnInit {
       'email': ['', Validators.compose([Validators.required, emailValidator])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])] 
     });
-    // Hotel registration form controls
+    // Vendor registration form controls
     this.registerForm = this.formBuilder.group({
       'businessName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      'businessType': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': ['', Validators.compose([Validators.required, emailValidator])],
       'mobile': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
@@ -43,7 +44,7 @@ export class HotelSignInComponent implements OnInit {
   }
 
   public onRegisterFormSubmit(values:Object):void {
-    this.auth.hotel_signup(this.registerForm.value).subscribe(
+    this.auth.vendor_signup(this.registerForm.value).subscribe(
       () => {
         console.log('success');
         if(this.registerForm.valid){
