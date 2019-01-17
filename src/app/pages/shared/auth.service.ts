@@ -19,11 +19,19 @@ export class AuthService{
   }
   
   public signin(userData: any): Observable<any>{
-		return this.http.post('api/v1/users/sign-in', userData);
+		return this.http.post('api/v1/users/sign-in', userData).map(
+      (token) => {
+        return this.saveToken(token);
+      } 
+    );
   }
 
   public hotel_signin(userData: any): Observable<any>{
-		return this.http.post('api/v1/usersh/sign-in', userData);
+		return this.http.post('api/v1/usersh/sign-in', userData).map(
+      (token) => {
+        return this.saveToken(token);
+      }
+    );
   }
 
   public vendor_signup(userData: any): Observable<any>{
@@ -31,6 +39,15 @@ export class AuthService{
   }
 
   public vendor_signin(userData: any): Observable<any>{
-		return this.http.post('api/v1/usersv/sign-in', userData);
+		return this.http.post('api/v1/usersv/sign-in', userData).map(
+      (token) => {
+        return this.saveToken(token);
+      }
+    );
   }
+   public saveToken(token: any): string {
+     localStorage.setItem('laeventa_auth', token);
+     
+     return token;
+   }
 }

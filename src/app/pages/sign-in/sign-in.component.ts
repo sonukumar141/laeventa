@@ -13,6 +13,7 @@ import { AuthService } from '../shared/auth.service';
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
+  errors: any[] = [];
 
   constructor(public formBuilder: FormBuilder, 
               public router:Router, 
@@ -41,8 +42,8 @@ export class SignInComponent implements OnInit {
 
           this.router.navigate(['/products']);
         },
-        () => {
-
+        (errorResponse) => {
+          this.errors = errorResponse.error.errors;
         })
 
       this.auth.vendor_signin(this.loginForm.value).subscribe(
@@ -50,16 +51,18 @@ export class SignInComponent implements OnInit {
 
           this.router.navigate(['/products']);
         },
-        () => {
-
+        (errorResponse) => {
+          this.errors = errorResponse.error.errors;
         })
 
       this.auth.signin(this.loginForm.value).subscribe(
         (token) => {
           debugger;
-        },
-        () => {
           this.router.navigate(['/sign-in']);
+        },
+        (errorResponse) => {
+          this.errors = errorResponse.error.errors;
+          
         })
 
       
