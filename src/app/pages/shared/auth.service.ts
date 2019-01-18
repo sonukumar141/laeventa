@@ -1,12 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import * as jwt from 'jsonwebtoken';
+import { JwtHelperService } from '@auth0/angular-jwt'
+const jwt = new JwtHelperService();
 import * as moment from 'moment';
 import 'rxjs/Rx';
 
+class DecodedToken{
+  exp: number = 0;
+  username: string = '';
+}
+
 @Injectable()
 export class AuthService{
+
+    private decodedToken;
 
     constructor(private http: HttpClient) {}
 
@@ -46,7 +54,11 @@ export class AuthService{
     );
   }
    public saveToken(token: any): string {
+     debugger;
+     this.decodedToken = jwt.decodeToken(token);
+
      localStorage.setItem('laeventa_auth', token);
+     localStorage.setItem('laeventa_meta', JSON.stringify(this.decodedToken));
      
      return token;
    }
