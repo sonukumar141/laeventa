@@ -16,7 +16,22 @@ export class AuthService{
 
     private decodedToken;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+      this.decodedToken = JSON.parse(localStorage.getItem('laeventa_meta')) || new DecodedToken();
+    }
+
+    public saveToken(token: any): string {
+      this.decodedToken = jwt.decodeToken(token);
+ 
+      localStorage.setItem('laeventa_auth', token);
+      localStorage.setItem('laeventa_meta', JSON.stringify(this.decodedToken));
+      
+      return token;
+    }
+
+    private getExpiration(){
+      return moment.unix(this.decodedToken.exp);
+    }
 
     public signup(userData: any): Observable<any>{
 		return this.http.post('api/v1/users/sign-up', userData);
@@ -53,13 +68,9 @@ export class AuthService{
       }
     );
   }
-   public saveToken(token: any): string {
-     debugger;
-     this.decodedToken = jwt.decodeToken(token);
 
-     localStorage.setItem('laeventa_auth', token);
-     localStorage.setItem('laeventa_meta', JSON.stringify(this.decodedToken));
-     
-     return token;
-   }
+  public isAuthenticated(): boolean {
+    return moment().isBefore(this.getExpiration());
+  }
+
 }

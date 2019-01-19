@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, AppService } from '../../../app.service';
+import { AuthService } from '../../../pages/shared/auth.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -17,7 +18,8 @@ export class TopMenuComponent implements OnInit {
   ]
   public flag:any;
 
-  constructor(public appService:AppService) { }
+  constructor(public appService:AppService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.currency = this.currencies[0];

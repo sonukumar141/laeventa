@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
 import { Category, Product } from './app.models';
+import { AuthService } from './pages/shared/auth.service';
 
 export class Data {
     constructor(public categories: Category[],
