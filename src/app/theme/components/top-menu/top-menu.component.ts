@@ -34,6 +34,9 @@ export class TopMenuComponent implements OnInit {
     this.flag = flag;
   }
 
+  logout(){
+    this.auth.logout();
+  }
   
 
 }

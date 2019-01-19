@@ -39,31 +39,32 @@ export class SignInComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.hotel_signin(this.loginForm.value).subscribe(
         (token) => {
-
+          this.refresh();
           this.router.navigate(['/products']);
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;
-        })
+        });
 
       this.auth.vendor_signin(this.loginForm.value).subscribe(
         (token) => {
-
+          this.refresh();
           this.router.navigate(['/products']);
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;
-        })
-
+        });
+ 
       this.auth.signin(this.loginForm.value).subscribe(
         (token) => {
-          debugger;
+          
           this.router.navigate(['/products']);
+          this.refresh();
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;
           
-        })
+        });
 
       
     }
@@ -84,5 +85,9 @@ export class SignInComponent implements OnInit {
       }
     )
   }
+
+  refresh(): void {
+    window.location.reload();
+}
 
 }

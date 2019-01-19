@@ -69,6 +69,13 @@ export class AuthService{
     );
   }
 
+  public logout(){
+    localStorage.removeItem('laeventa_auth');
+    localStorage.removeItem('laeventa_meta');
+
+    this.decodedToken = new DecodedToken();
+  }
+
   public isAuthenticated(): boolean {
     return moment().isBefore(this.getExpiration());
   }
