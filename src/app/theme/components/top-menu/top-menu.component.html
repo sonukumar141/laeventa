@@ -11,4 +11,8 @@
         <span *ngIf="auth.isAuthenticated()" fxShow="false" fxShow.gt-sm>
             <a mat-button (click)="logout()">Logout</a>
         </span> 
+
+        <span *ngIf="auth.isAuthenticated()" fxShow="false" fxShow.gt-sm>
+            <a mat-button >{{auth.getUserName()}}</a>
+        </span> 
 </div>  

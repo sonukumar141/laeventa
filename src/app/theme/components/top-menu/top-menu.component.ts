@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, AppService } from '../../../app.service';
 import { AuthService } from '../../../pages/shared/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-menu',
@@ -19,7 +20,8 @@ export class TopMenuComponent implements OnInit {
   public flag:any;
 
   constructor(public appService:AppService,
-              private auth: AuthService) { }
+              private auth: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.currency = this.currencies[0];
@@ -36,7 +38,7 @@ export class TopMenuComponent implements OnInit {
 
   logout(){
     this.auth.logout();
-  }
-  
+    this.router.navigate(['/sign-in']);
+  }  
 
 }

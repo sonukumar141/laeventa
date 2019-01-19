@@ -80,4 +80,8 @@ export class AuthService{
     return moment().isBefore(this.getExpiration());
   }
 
+  public getUserName(): string{
+    return this.decodedToken.username;
+  }
+
 }
