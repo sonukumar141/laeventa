@@ -159,7 +159,7 @@ router.get('', function(req, res){
     }
 
     else{
-        Jobh.find({})
+        Job.find({})
             .exec(function(err, foundJobs){
                 return res.json(foundJobs);
             });
