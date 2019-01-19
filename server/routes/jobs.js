@@ -142,22 +142,28 @@ router.post('', UserCtrl.authMiddleware, function(req, res) {
 router.get('', function(req, res){
 	const city = req.query.city;
 
-	const query = city ? {city: city.toLowerCase()} : {};
+    if(city){
+        Job.find({city: city.toLowerCase()})
+            .exec(function(err, filteredJobs){
+        if(err){
+            return res.status(422).send({errors: normalizeErrors(err.errors)});
+        }
 
-		Job.find(query)
-			.select('-bookings')
-			.exec(function(err, foundJobs) {
+        if(filteredJobs.length === 0){
+            return res.status(422).send({errors: [{title: 'Nothing Found!', detail: `Currently nothing listed in city ${city}`}]});
+        }
 
-		if(err) {
-			return res.status(422).send({errors: normalizeErrors(err.errors)});
-		}
+        return res.json(filteredJobs);
+    })
+        
+    }
 
-		if(city && foundJobs.length === 0) {
-			return res.status(422).send({errors: [{title: 'No Jobs Found!', detail: `There are no jobs for city ${city}`}]});
-		}
-
-			return res.json(foundJobs);
-		});
+    else{
+        Jobh.find({})
+            .exec(function(err, foundJobs){
+                return res.json(foundJobs);
+            });
+    }
 });
 
 
