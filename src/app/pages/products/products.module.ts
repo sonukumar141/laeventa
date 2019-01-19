@@ -35,7 +35,7 @@ export const routes = [
   ],
   declarations: [
     ProductsComponent, 
-    ProductComponent, 
+    ProductComponent,
     ProductZoomComponent
   ],
   entryComponents:[
