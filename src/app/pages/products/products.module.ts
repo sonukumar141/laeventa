@@ -10,6 +10,7 @@ import { MapModule } from '../../theme/components/map/map.module';
 import { ProductsComponent } from './products.component';
 import { ProductComponent } from './product/product.component';
 import { ProductZoomComponent } from './product/product-zoom/product-zoom.component';
+import { AuthGuard } from '../shared/auth.guard';
 
 import { NgPipesModule } from 'ngx-pipes';
 

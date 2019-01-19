@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { SignInComponent } from './sign-in.component';
 
 import { AuthService } from '../shared/auth.service';
+import { AuthGuard } from '../shared/auth.guard';
 
 export const routes = [
   { path: '', component: SignInComponent, pathMatch: 'full' }
@@ -22,7 +23,8 @@ export const routes = [
     SignInComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ]
 })
 export class SignInModule { }
