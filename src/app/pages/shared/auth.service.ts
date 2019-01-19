@@ -84,4 +84,8 @@ export class AuthService{
     return this.decodedToken.username;
   }
 
+  public getAuthToken(): string {
+		return localStorage.getItem('laeventa_auth');
+	}
+
 }
