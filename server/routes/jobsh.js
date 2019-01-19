@@ -57,6 +57,29 @@ router.get('', function(req, res){
     
 });
 
+router.post('', UserCtrlh.authMiddleware, function(req, res) {
+    const {name, images, oldPrice, newPrice, city, street, category, phone, email,
+    completeAddress, landmark, timings, veg_package, non_veg_package,
+    dailyRate, shared, ac, guests, rooms, discount, description, categoryId} = req.body;
+
+	const userh = res.locals.userh;
+
+	const jobh = new Jobh({name, images, oldPrice, newPrice, city, street, category, phone, email,
+        completeAddress, landmark, timings, veg_package, non_veg_package,
+        dailyRate, shared, ac, guests, rooms, discount, description, categoryId});
+	jobh.userh = userh;
+
+	Jobh.create(jobh, function(err, newJobh) {
+		if(err) {
+			return res.status(422).send({errors: normalizeErrors(err.errors)});
+		}
+
+		Userh.update({_id: userh.id}, {$push: {jobsh: newJobh}}, function(){});
+
+		return res.json(newJobh);
+	});
+});
+
 
 
 module.exports = router;
