@@ -39,12 +39,12 @@ export class AppService {
         return this.http.get<Product>('/api/v1/products/' + productId);
     }
 
-    public getProductshByCity(city: string): Observable<Producth>{
-        return this.http.get<Producth>(`/api/v1/productsv?city=${city}`);
+    public getProductsvByCity(city: string): Observable<Productv>{
+        return this.http.get<Productv>(`/api/v1/productsv?city=${city}`);
     }
 
-    public getProductsvByCity(city: string): Observable<Productv>{
-        return this.http.get<Productv>(`/api/v1/productsh?city=${city}`);
+    public getProductshByCity(city: string): Observable<Producth>{
+        return this.http.get<Producth>(`/api/v1/productsh?city=${city}`);
     }
 
     public getBanners(): Observable<any[]>{

@@ -142,14 +142,14 @@
                     </a>
                     <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>                                                                     
                     <a [routerLink]="['/products', product._id, product.name]" class="title text-truncate">
-                        {{producth.name}} {{producth.city}}
+                        {{product.name}} {{product.city}}
                     </a>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                         <div fxLayout="column" fxLayoutAlign="center start">
                             <p class="old-price text-muted"><span *ngIf="product.oldPrice">Rs {{ product.oldPrice | number : '1.2-2'}}</span></p>
-                            <p class="new-price">Rs {{ producth.dailyRate | number : '1.2-2'}}</p>
+                            <p class="new-price">Rs {{ product.dailyRate | number : '1.2-2'}}</p>
                         </div>
-                        <app-rating [ratingsCount]="producth.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
+                        <!-- <app-rating [ratingsCount]="producth.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating> -->
                     </div>                            
                     <div class="divider mt-2"></div>
                     <div class="icons">

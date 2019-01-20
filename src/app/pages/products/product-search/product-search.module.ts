@@ -8,9 +8,6 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PipesModule } from '../../../theme/pipes/pipes.module';
 import { MapModule } from '../../../theme/components/map/map.module';
-import { ProductsComponent } from '../products.component';
-import { ProductComponent } from '../product/product.component';
-import { ProductZoomComponent } from '../product/product-zoom/product-zoom.component';
 
 import { NgPipesModule } from 'ngx-pipes';
 
@@ -33,12 +30,10 @@ export const routes = [
   ],
   declarations: [
     ProductSearchComponent,
-    ProductsComponent, 
-    ProductComponent,
-    ProductZoomComponent
+
   ],
   providers: [
-    ProductZoomComponent
+
   ]
 })
 export class ProductSearchModule { }
