@@ -6,7 +6,7 @@
 
         <span fxShow="false" fxShow.gt-sm>
             <a mat-button routerLink="/sign-in">Login/Signup</a>
-        </span> 
+        </span>  
     </ng-container> 
         <span *ngIf="auth.isAuthenticated()" fxShow="false" fxShow.gt-sm>
             <a mat-button (click)="logout()">Logout</a>
