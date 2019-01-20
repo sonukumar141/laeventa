@@ -25,7 +25,8 @@ export class ProductSearchComponent implements OnInit {
   public count:any;
   public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
   public sort:any;
-  public products: Array<Product> = [];
+  //public products: Array<Product> = [];
+  public productsh: Array<Producth> = [];
   public categories:Category[];
   public brands = [];
   public priceFrom: number = 750;
@@ -35,8 +36,8 @@ export class ProductSearchComponent implements OnInit {
   public page:any;
 
   city: string;
-  productsh: Producth[] = [];
-  productsv: Productv[] = [];
+  //productsh: Producth[] = [];
+  //productsv: Productv[] = [];
 
   errors: any[] = [];
 
@@ -49,7 +50,8 @@ export class ProductSearchComponent implements OnInit {
   	 this.activatedRoute.params.subscribe((params) => {
   	 	this.city = params['city'];
         this.getProductsh();
-        this.getProductsv();
+        //this.getProductsv();
+        //this.getAllProducts();
     });
     
   }
@@ -67,17 +69,17 @@ export class ProductSearchComponent implements OnInit {
       this.viewCol = 33.3;
     };
 
-    this.getCategories();
+    //this.getCategories();
     this.getBrands();
     this.getAllProducts();  
   }
 
   public getAllProducts(){
     this.appService.getProducts().subscribe(data=>{
-      this.products = data; 
+      this.productsh = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {
-        this.products = this.products.concat(this.products);        
+        this.productsh = this.productsh.concat(this.productsh);        
       }
     });
   }
@@ -98,9 +100,9 @@ export class ProductSearchComponent implements OnInit {
     this.brands = this.appService.getBrands();
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.sub.unsubscribe();
+  // }
 
   @HostListener('window:resize')
   public onWindowResize():void {
@@ -142,7 +144,7 @@ export class ProductSearchComponent implements OnInit {
 
   public onChangeCategory(event){
     if(event.target){
-      this.router.navigate(['/products', event.target.innerText.toLowerCase()]); 
+      this.router.navigate(['/productsh', event.target.innerText.toLowerCase()]); 
     }   
   }
 
@@ -158,8 +160,8 @@ export class ProductSearchComponent implements OnInit {
 
     getProductsv(){
         this.appService.getProductsvByCity(this.city).subscribe(
-            (productsv: any) => {
-                this.productsv = productsv;
+            (productsh: any) => {
+                this.productsh = productsh;
             },
             () => {
     

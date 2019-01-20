@@ -39,6 +39,10 @@ export class AppService {
         return this.http.get<Product>('/api/v1/products/' + productId);
     }
 
+    public getProducthById(productId: string): Observable<Producth>{
+        return this.http.get<Producth>('/api/v1/productsh/' + productId);
+    }
+
     public getProductsvByCity(city: string): Observable<Productv>{
         return this.http.get<Productv>(`/api/v1/productsv?city=${city}`);
     }
