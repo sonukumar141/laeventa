@@ -1,7 +1,7 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
         
-        <mat-accordion displayMode="flat" multi="true">
+        <!-- <mat-accordion displayMode="flat" multi="true">
             <mat-expansion-panel expanded>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -88,7 +88,7 @@
                 </div>
             </mat-expansion-panel>
 
-        </mat-accordion>
+        </mat-accordion> -->
 
     </mat-sidenav>
     <mat-sidenav-content class="all-products" ngClass.gt-sm="p-left">
@@ -130,7 +130,7 @@
                 </button>
             </div>
         </div>
-
+        
         <div *ngIf="viewType == 'grid'" fxLayout="row wrap" class="products-wrapper">
             <div *ngFor="let product of productsh | paginate: { itemsPerPage: count, currentPage: page }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
                 <mat-card class="product-item text-center">
@@ -158,7 +158,8 @@
                 </mat-card>
             </div>
         </div>
-
+        
+        <h1 *ngIf="errors.length > 0"><p *ngFor="let error of errors">{{error.detail}}</p></h1>
         <div *ngIf="viewType == 'list'" fxLayout="row wrap" class="products-wrapper">
             <div  *ngFor="let product of productsh | paginate: { itemsPerPage: count, currentPage: page }" fxFlex="100" class="col">
                 <mat-card class="product-item">

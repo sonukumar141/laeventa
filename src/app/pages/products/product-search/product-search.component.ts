@@ -153,19 +153,9 @@ export class ProductSearchComponent implements OnInit {
         (productsh: any) => {
             this.productsh = productsh;
         },
-        () => {
-
+        (errorResponse: HttpErrorResponse) => {
+          this.errors = errorResponse.error.errors;
         });
     }
-
-    getProductsv(){
-        this.appService.getProductsvByCity(this.city).subscribe(
-            (productsh: any) => {
-                this.productsh = productsh;
-            },
-            () => {
-    
-            });
-        }
 
 }

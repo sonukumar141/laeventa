@@ -158,7 +158,7 @@
                 </mat-card>
             </div>
         </div>
-
+        <h1 *ngIf="errors.length > 0"><p *ngFor="let error of errors">{{error.detail}}</p></h1>
         <div *ngIf="viewType == 'list'" fxLayout="row wrap" class="products-wrapper">
             <div  *ngFor="let product of productsv | paginate: { itemsPerPage: count, currentPage: page }" fxFlex="100" class="col">
                 <mat-card class="product-item">
