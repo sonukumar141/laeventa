@@ -78,7 +78,9 @@ export class PagesComponent implements OnInit {
     event.preventDefault();
   }
 
-  public search(){}
+  public search(city: string){
+    this.router.navigate([`/${city}/hotels`]);
+  }
 
  
   public scrollToTop(){
