@@ -1,17 +1,183 @@
 <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
-    <div class="example-container">
-        <mat-form-field>
-        <input matInput placeholder="Input">
-        </mat-form-field>
-    
-        <mat-form-field>
-        <textarea matInput placeholder="Textarea"></textarea>
-        </mat-form-field>
-    
-        <mat-form-field>
-        <mat-select placeholder="Select">
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
-        </mat-form-field>
+
+    <div class="container">
+            <form #producthForm="ngForm" class="w3-container">
+                    <p>
+                    <label></label>
+                    <input class="w3-input" 
+                           type="text"
+                           placeholder="Hotel/Venue Name"
+                           id="name"
+                           name="name"
+                           [(ngModel)]="newProducth.name"></p>
+                    <p>
+                    <br>
+                    <select class="w3-input"
+                            id="category"
+                            name="category"
+                            [(ngModel)]="newProducth.category">
+                        <option> Hotel</option>
+                        <option> Banquet Hall</option>
+                        <option> Conference Hall</option>
+                        <option> Wedding venue</option>
+                    </select></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <input class="w3-input" 
+                           type="text"
+                           placeholder="City"
+                           id="city"
+                           name="city"
+                           [(ngModel)]="newProducth.city"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                            type="text"
+                            placeholder="Street"
+                            id="street"
+                            name="street"
+                            [(ngModel)]="newProducth.street"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                            type="text"
+                            placeholder="Address"
+                            id="address"
+                            name="address"
+                            [(ngModel)]="newProducth.address"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                            type="text"
+                            placeholder="Landmark"
+                            id="landmark"
+                            name="landmark"
+                            [(ngModel)]="newProducth.landmark"></p>
+                    <p>    
+                    <br>    
+                    <input class="w3-input" 
+                            type="email"
+                            placeholder="Email"
+                            id="email"
+                            name="email"
+                            [(ngModel)]="newProducth.email"></p>                    
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Mobile"
+                           id="mobile"
+                           name="mobile"
+                           [(ngModel)]="newProducth.mobile"></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 1</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id=""></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 2</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id=""></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 3</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id=""></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 4</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id=""></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Price per day"
+                           id="dailyRate"
+                           name="dailyRate"
+                           [(ngModel)]="newProducth.dailyRate"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Per plate cost (veg)"
+                           id="vegPackage"
+                           name="vegPackage"
+                           [(ngModel)]="newProducth.veg_package"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Per plate cost (Non-veg)"
+                           id="nonVegPackage"
+                           name="nonVegPackage"
+                           [(ngModel)]="newProducth.non_veg_package"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Max guests allowed"
+                           id="guests"
+                           name="guests"
+                           [(ngModel)]="newProducth.guests"></p>
+                    <p>
+                    <br>
+                    <label >AC &nbsp;</label>
+                    <input class="w3-check" 
+                           type="checkbox"
+                           placeholder="AC"
+                           id="ac"
+                           name="ac"
+                           [(ngModel)]="newProducth.ac"></p>
+                    <p>
+                    <br>
+                    <label >Wifi &nbsp;</label>
+                    <input class="w3-check" 
+                           type="checkbox"
+                           placeholder="Wifi"
+                           id="wifi"
+                           name="wifi"
+                           [(ngModel)]="newProducth.shared"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="text"
+                           placeholder="Timings"
+                           id="timings"
+                           name="timings"
+                           [(ngModel)]="newProducth.timings"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Discount %"
+                           id="discount"
+                           name="discount"
+                           [(ngModel)]="newProducth.discount"></p>
+                    <p>
+                    <br>
+                    <textarea rows="5"
+                              cols="80"
+                        type="text"
+                        class="w3-input"
+                        id="description"
+                        placeholder="Describe your venue"
+                        name="description"
+                        [(ngModel)]="newProducth.description"
+                        required> </textarea>
+            <br>
+            <button (click)="createProducth()" 
+                        [disabled]=""
+                        type="button" 
+                        class="">Submit
+            </button>                                                                
+                    
+            </form>
     </div>
 </div>
