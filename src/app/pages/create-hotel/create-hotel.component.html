@@ -16,10 +16,8 @@
                             id="category"
                             name="category"
                             [(ngModel)]="newProducth.category">
-                        <option> Hotel</option>
-                        <option> Banquet Hall</option>
-                        <option> Conference Hall</option>
-                        <option> Wedding venue</option>
+                        <option *ngFor="let category of producthCategories">{{category}} </option>
+ 
                     </select></p>
                     <p>
                     <br>
@@ -75,7 +73,8 @@
                     <label>Upload Image 1</label>
                     <input class="w3-input" 
                            type="file"
-                           id=""></p>
+                           id="image1"
+                           (change)="handleImageChange()"></p>
                     <p>
                     <br>
                     <label>Upload Image 2</label>
@@ -173,7 +172,6 @@
                         required> </textarea>
             <br>
             <button (click)="createProducth()" 
-                        [disabled]=""
                         type="button" 
                         class="">Submit
             </button>                                                                

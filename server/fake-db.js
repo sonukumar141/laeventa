@@ -25,7 +25,7 @@ class FakeDb {
 
 	async cleanDb(){
 		
-            await User.deleteMany({});
+        await User.deleteMany({});
 		await Job.deleteMany({});
 
 		await Userh.deleteMany({});
@@ -38,7 +38,7 @@ class FakeDb {
 	}
 
 	pushDataToDb(){
-            const user = new User(this.users[0]);
+        const user = new User(this.users[0]);
 		//const user2 = new User(this.users[1]);
 
 		this.jobs.forEach((job) => {

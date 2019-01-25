@@ -26,6 +26,9 @@ import { AuthService } from './pages/shared/auth.service';
 import { AppInterceptor } from './theme/utils/app-interceptor';
 import { OptionsComponent } from './theme/components/options/options.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
+import { AuthGuard } from './pages/shared/auth.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from './pages/auth/auth.module';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { FooterComponent } from './theme/components/footer/footer.component';
       apiKey: 'AIzaSyBNcjxo_35qnEG17dQvvftWa68eZWepYE0'
     }),
     SharedModule,
-    routing
+    routing,
+    FormsModule,
+    ReactiveFormsModule,
+    AuthModule
   ],
   declarations: [
     AppComponent,
@@ -55,6 +61,7 @@ import { FooterComponent } from './theme/components/footer/footer.component';
     AppSettings,
     AppService,
     AuthService,
+    AuthGuard,
     { provide: OverlayContainer, useClass: CustomOverlayContainer },
     { provide: MAT_MENU_SCROLL_STRATEGY, useFactory: menuScrollStrategy, deps: [Overlay] },
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }

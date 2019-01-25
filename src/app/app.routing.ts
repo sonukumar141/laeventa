@@ -4,6 +4,9 @@ import { ModuleWithProviders } from '@angular/core';
 import { PagesComponent } from './pages/pages.component';
 import { ProductSearchComponent } from './pages/products/product-search/product-search.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthGuard } from './pages/shared/auth.guard';
+import { AuthService } from './pages/shared/auth.service';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 export const routes: Routes = [
     { 
@@ -16,9 +19,9 @@ export const routes: Routes = [
             { path: 'cart', loadChildren: './pages/cart/cart.module#CartModule', data: { breadcrumb: 'Cart' } },
             { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutModule', data: { breadcrumb: 'Checkout' } },
             { path: 'contact', loadChildren: './pages/contact/contact.module#ContactModule', data: { breadcrumb: 'Contact' } },
-            { path: 'sign-in', loadChildren: './pages/sign-in/sign-in.module#SignInModule', data: { breadcrumb: 'Sign In ' } },
-            { path: 'hotel-sign-up', loadChildren: './pages/hotel-sign-in/hotel-sign-in.module#HotelSignInModule', data: { breadcrumb: 'Hotel Registration ' } },
-            { path: 'vendor-sign-up', loadChildren: './pages/vendor-sign-in/vendor-sign-in.module#VendorSignInModule', data: { breadcrumb: 'Vendor Registration ' } },
+            //{ path: 'auth', loadChildren: './pages/auth/auth.module#AuthModule', data: { breadcrumb: 'Auth ' } },
+            //{ path: 'hotel-sign-up', loadChildren: './pages/hotel-sign-in/hotel-sign-in.module#HotelSignInModule', data: { breadcrumb: 'Hotel Registration ' } },
+            //{ path: 'vendor-sign-up', loadChildren: './pages/vendor-sign-in/vendor-sign-in.module#VendorSignInModule', data: { breadcrumb: 'Vendor Registration ' } },
             { path: 'brands', loadChildren: './pages/brands/brands.module#BrandsModule', data: { breadcrumb: 'Brands' } },
             { path: ':city/hotels', loadChildren: './pages/products/product-search/product-search.module#ProductSearchModule', data: { breadcrumb: 'Hotels'} },
             { path: ':city/vendors', loadChildren: './pages/products/productv-search/productv-search.module#ProductvSearchModule', data: { breadcrumb: 'Vendors'} },
@@ -26,6 +29,7 @@ export const routes: Routes = [
             { path: 'products', loadChildren: './pages/products/products.module#ProductsModule', data: { breadcrumb: 'All Products' } }
         ]
     },
+    //{ path: 'auth', component: SignInComponent}
     { path: '**', component: NotFoundComponent }
 ];
 

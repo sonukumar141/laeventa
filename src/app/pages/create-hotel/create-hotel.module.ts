@@ -5,9 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CreateHotelComponent } from './create-hotel.component';
 import { SharedModule } from '../../shared/shared.module';
+import { AuthGuard } from '../shared/auth.guard';
+import { AuthService } from '../shared/auth.service';
 
 export const routes = [
-  { path: '', component: CreateHotelComponent }
+  {path: '', component: CreateHotelComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -22,7 +24,8 @@ export const routes = [
     CreateHotelComponent
   ],
   providers: [
-
+    AuthGuard,
+    AuthService
   ]
 })
 export class CreateHotelModule { }

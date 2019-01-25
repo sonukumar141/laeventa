@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Producth } from '../../app.models';
+import { AppService } from '../../app.service';
 
 
 @Component({
@@ -10,9 +11,9 @@ import { Producth } from '../../app.models';
 export class CreateHotelComponent implements OnInit {
  
   newProducth: Producth;
+  producthCategories = Producth.CATEGORIES;
 
-
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
     this.newProducth = new Producth();
@@ -20,7 +21,18 @@ export class CreateHotelComponent implements OnInit {
     this.newProducth.ac = false;
   }
 
-  createProducth(){
-    console.log(this.newProducth);
+  handleImageChange(){
+    this.newProducth.images = [{"small": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg"}]
   }
+  createProducth(){
+    this.appService.createProducth(this.newProducth).subscribe(
+      () => {
+        debugger;
+      },
+      () => {
+
+      }
+    )
+  }
+
 }
