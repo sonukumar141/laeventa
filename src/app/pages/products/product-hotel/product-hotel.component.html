@@ -1,4 +1,4 @@
-<div fxLayout="row wrap">
+<div>
     <div fxFlex="100" fxFlex.gt-md="35" fxFlex.md="45">
         
         <mat-card class="product-image">
@@ -7,6 +7,7 @@
         </mat-card>       
 
         <div class="small-carousel"> 
+            
             <div class="swiper-container" [swiper]="config">
                 <!-- <div class="swiper-wrapper"> 
                     <div *ngFor="let image of producth?.image_medium" class="swiper-slide">
@@ -18,19 +19,34 @@
                 </div> -->
                 <div class="swiper-wrapper"> 
                     <div class="swiper-slide">
-                        <mat-card (click)="selectImage(producth.image_small)" class="p-1">
+                        <mat-card  (click)="selectImage(producth.image_small)" class="p-1">
                             <img [src]="producth.image_small" class="swiper-lazy"/> 
                             <div class="swiper-lazy-preloader"></div>
                         </mat-card>
+                    </div> 
+                    <div class="swiper-slide">
                         <mat-card (click)="selectImage(producth.image_medium)" class="p-1">
                                 <img [src]="producth.image_medium" class="swiper-lazy"/> 
                                 <div class="swiper-lazy-preloader"></div>
                         </mat-card>
-                    </div>                    
+                    </div>
+                    <div class="swiper-slide">
+                            <mat-card (click)="selectImage(producth.image_big)" class="p-1">
+                                    <img [src]="producth.image_big" class="swiper-lazy"/> 
+                                    <div class="swiper-lazy-preloader"></div>
+                            </mat-card>
+                    </div>  
+                    <div class="swiper-slide">
+                            <mat-card (click)="selectImage(producth.image_extra)" class="p-1">
+                                    <img [src]="producth.image_extra" class="swiper-lazy"/> 
+                                    <div class="swiper-lazy-preloader"></div>
+                            </mat-card>
+                    </div>              
                 </div>
                 <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
                 <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button> 
             </div>
+            
         </div>
 
 

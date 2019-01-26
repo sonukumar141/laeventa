@@ -26,7 +26,7 @@ export const routes: Routes = [
             { path: ':city/hotels', loadChildren: './pages/products/product-search/product-search.module#ProductSearchModule', data: { breadcrumb: 'Hotels'} },
             { path: ':city/vendors', loadChildren: './pages/products/productv-search/productv-search.module#ProductvSearchModule', data: { breadcrumb: 'Vendors'} },
             { path: 'create-venue/new', loadChildren: './pages/create-hotel/create-hotel.module#CreateHotelModule', data: { breadcrumb: 'List new Hotel/Venue'} },
-            { path: 'productsh', loadChildren: './pages/products/productsh/productsh.module#ProductshModule', data: { breadcrumb: 'All Hotels' } }
+            { path: 'productsh', loadChildren: './pages/products/productsh/productsh.module#ProductshModule', data: { breadcrumb: 'Hotel/Venue' } }
         ]
     },
     //{ path: 'auth', component: SignInComponent}
