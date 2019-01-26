@@ -35,6 +35,14 @@ export class AppService {
         return this.http.get<Product[]>('/api/v1/products');
     }
 
+    public getProductsv(): Observable<Productv[]>{        
+        return this.http.get<Productv[]>('/api/v1/productsv');
+    }
+
+    public getProductsh(): Observable<Producth[]>{        
+        return this.http.get<Producth[]>('/api/v1/productsh');
+    }
+
     public getProductById(productId: string): Observable<Product>{
         return this.http.get<Product>('/api/v1/products/' + productId);
     }

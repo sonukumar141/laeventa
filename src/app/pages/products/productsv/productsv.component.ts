@@ -1,21 +1,16 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-import { AppService } from '../../../app.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { Product, Category } from '../../../app.models';
-import { Producth } from '../../../app.models';
-import { Productv } from '../../../app.models';
 import { ProductDialogComponent } from '../../../shared/products-carousel/product-dialog/product-dialog.component';
-
-import { HttpErrorResponse } from '@angular/common/http';
-import { keyValuesToMap } from '@angular/flex-layout/extended/typings/style/style-transforms';
+import { AppService } from '../../../app.service';
+import { Productv, Category } from "../../../app.models";
 
 @Component({
-  selector: 'laeventa-product-search',
-  templateUrl: './product-search.component.html',
-  styleUrls: ['./product-search.component.scss']
+  selector: 'app-productsv',
+  templateUrl: './productsv.component.html',
+  styleUrls: ['./productsv.component.scss']
 })
-export class ProductSearchComponent implements OnInit {
+export class ProductsvComponent implements OnInit {
   @ViewChild('sidenav') sidenav: any;
   public sidenavOpen:boolean = true;
   private sub: any;
@@ -25,8 +20,7 @@ export class ProductSearchComponent implements OnInit {
   public count:any;
   public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
   public sort:any;
-  //public products: Array<Product> = [];
-  public productsh: Array<Producth> = [];
+  public products: Array<Productv> = [];
   public categories:Category[];
   public brands = [];
   public priceFrom: number = 750;
@@ -35,28 +29,9 @@ export class ProductSearchComponent implements OnInit {
   public sizes = ["S","M","L","XL","2XL","32","36","38","46","52","13.3\"","15.4\"","17\"","21\"","23.4\""];
   public page:any;
 
-  city: string;
-  //productsh: Producth[] = [];
-  //productsv: Productv[] = [];
-
-  errors: any[] = [];
-
-  constructor(private activatedRoute: ActivatedRoute, 
-             public appService: AppService, 
-             public dialog: MatDialog, 
-             private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, public appService:AppService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
-  	 this.activatedRoute.params.subscribe((params) => {
-  	 	this.city = params['city'];
-        this.getProductsh();
-        //this.getProductsv();
-        //this.getAllProducts();
-    });
-    
-  }
-
-  getSearchJobs() {
     this.count = this.counts[0];
     this.sort = this.sortings[0];
     this.sub = this.activatedRoute.params.subscribe(params => {
@@ -69,17 +44,17 @@ export class ProductSearchComponent implements OnInit {
       this.viewCol = 33.3;
     };
 
-    //this.getCategories();
+    this.getCategories();
     this.getBrands();
-    this.getAllProducts();  
+    this.getAllProducts();   
   }
 
   public getAllProducts(){
-    this.appService.getProductsh().subscribe(data=>{
-      this.productsh = data; 
+    this.appService.getProductsv().subscribe(data=>{
+      this.products = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {
-        this.productsh = this.productsh.concat(this.productsh);        
+        this.products = this.products.concat(this.products);        
       }
     });
   }
@@ -100,9 +75,9 @@ export class ProductSearchComponent implements OnInit {
     this.brands = this.appService.getBrands();
   }
 
-  // ngOnDestroy() {
-  //   this.sub.unsubscribe();
-  // }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
   @HostListener('window:resize')
   public onWindowResize():void {
@@ -144,18 +119,8 @@ export class ProductSearchComponent implements OnInit {
 
   public onChangeCategory(event){
     if(event.target){
-      this.router.navigate(['/productsh', event.target.innerText.toLowerCase()]); 
+      this.router.navigate(['/products', event.target.innerText.toLowerCase()]); 
     }   
   }
-
-  getProductsh(){
-    this.appService.getProductshByCity(this.city).subscribe(
-        (productsh: any) => {
-            this.productsh = productsh;
-        },
-        (errorResponse: HttpErrorResponse) => {
-          this.errors = errorResponse.error.errors;
-        });
-    }
 
 }

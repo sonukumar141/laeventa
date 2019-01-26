@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.hotel_signin(this.loginForm.value).subscribe(
         (token) => {
-          this.router.navigate(['/products']);
+          this.router.navigate(['/productsh']);
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;
@@ -47,7 +47,7 @@ export class SignInComponent implements OnInit {
 
       this.auth.vendor_signin(this.loginForm.value).subscribe(
         (token) => {
-          this.router.navigate(['/products']);
+          this.router.navigate(['/productsv']);
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;

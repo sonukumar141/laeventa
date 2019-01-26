@@ -45,6 +45,10 @@ export class Producth {
    _id: string;
    name: string;
    images: Array<any>
+              image_small: string;
+              image_medium: string;
+              image_big: string;
+              image_extra: string;
               oldPrice: number;
               newPrice: number;
               city: string;

@@ -6,19 +6,20 @@ import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { Data, AppService } from '../../../app.service';
 import { Producth } from "../../../app.models";
 import { emailValidator } from '../../../theme/utils/app-validators';
-import { ProducthZoomComponent } from './producth-zoom/producth-zoom.component';
+import { ProductHotelZoomComponent } from './product-hotel-zoom/product-hotel-zoom.component';
 
 @Component({
-  selector: 'app-producth',
-  templateUrl: './producth.component.html',
-  styleUrls: ['./producth.component.scss']
+  selector: 'app-product-hotel',
+  templateUrl: './product-hotel.component.html',
+  styleUrls: ['./product-hotel.component.scss']
 })
-export class ProducthComponent implements OnInit {
+export class ProductHotelComponent implements OnInit {
   @ViewChild('zoomViewer') zoomViewer;
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
   public config: SwiperConfigInterface={};
   public producth: Producth;
   public image: any;
+  public images: any;
   public zoomImage: any;
   private sub: any;
   public form: FormGroup;
@@ -38,7 +39,9 @@ export class ProducthComponent implements OnInit {
       'name': [null, Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': [null, Validators.compose([Validators.required, emailValidator])]
     }); 
-    this.getRelatedProducts();    
+    this.getRelatedProducts();  
+    
+    
   }
 
   ngAfterViewInit(){
@@ -51,6 +54,7 @@ export class ProducthComponent implements OnInit {
       pagination: false,       
       loop: false, 
       preloadImages: false,
+      
       lazy: true, 
       breakpoints: {
         480: {
@@ -66,8 +70,8 @@ export class ProducthComponent implements OnInit {
   public getProducthById(_id){
     this.appService.getProducthById(_id).subscribe(data=>{
       this.producth = data;
-      this.image = data.images[0].medium;
-      this.zoomImage = data.images[0].big;
+      this.image = data.image_medium;
+      this.zoomImage = data.image_big;
       setTimeout(() => { 
         this.config.observer = true;
        // this.directiveRef.setIndex(0);
@@ -82,8 +86,8 @@ export class ProducthComponent implements OnInit {
   }
 
   public selectImage(image){
-    this.image = image.medium;
-    this.zoomImage = image.big;
+    this.image = image;
+    this.zoomImage = image;
   }
 
   public onMouseMove(e){
@@ -109,7 +113,7 @@ export class ProducthComponent implements OnInit {
   }
 
   public openZoomViewer(){
-    this.dialog.open(ProducthZoomComponent, {
+    this.dialog.open(ProductHotelZoomComponent, {
       data: this.zoomImage,
       panelClass: 'zoom-dialog'
     });

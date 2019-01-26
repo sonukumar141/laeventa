@@ -74,25 +74,28 @@
                     <input class="w3-input" 
                            type="file"
                            id="image1"
-                           (change)="handleImageChange()"></p>
+                           (change)="handleImage1Change()"></p>
                     <p>
                     <br>
                     <label>Upload Image 2</label>
                     <input class="w3-input" 
                            type="file"
-                           id=""></p>
+                           id="image2"
+                           (change)="handleImage2Change()"></p>
                     <p>
                     <br>
                     <label>Upload Image 3</label>
                     <input class="w3-input" 
                            type="file"
-                           id=""></p>
+                           id="image3"
+                           (change)="handleImage3Change()"></p>
                     <p>
                     <br>
                     <label>Upload Image 4</label>
                     <input class="w3-input" 
                            type="file"
-                           id=""></p>
+                           id="image4"
+                           (change)="handleImage4Change()"></p>
                     <p>
                     <br>
                     <input class="w3-input" 
@@ -177,5 +180,11 @@
             </button>                                                                
                     
             </form>
+            <br>
+            <div *ngIf="errors.length > 0" class="alert alert-danger">
+              <p *ngFor="let error of errors">
+                     {{error.detail}}
+              </p>
+       </div>
     </div>
 </div>

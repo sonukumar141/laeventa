@@ -58,13 +58,13 @@ router.get('', function(req, res){
 });
 
 router.post('', UserCtrlh.authMiddleware, function(req, res) {
-    const {name, images, oldPrice, newPrice, city, street, category, phone, email,
+    const {name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
     completeAddress, landmark, timings, veg_package, non_veg_package,
     dailyRate, shared, ac, guests, rooms, discount, description, categoryId} = req.body;
 
 	const userh = res.locals.userh;
 
-	const jobh = new Jobh({name, images, oldPrice, newPrice, city, street, category, phone, email,
+	const jobh = new Jobh({name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
         completeAddress, landmark, timings, veg_package, non_veg_package,
         dailyRate, shared, ac, guests, rooms, discount, description, categoryId});
 	jobh.userh = userh;
