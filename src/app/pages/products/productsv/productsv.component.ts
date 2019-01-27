@@ -20,7 +20,7 @@ export class ProductsvComponent implements OnInit {
   public count:any;
   public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
   public sort:any;
-  public products: Array<Productv> = [];
+  public productsv: Array<Productv> = [];
   public categories:Category[];
   public brands = [];
   public priceFrom: number = 750;
@@ -51,10 +51,10 @@ export class ProductsvComponent implements OnInit {
 
   public getAllProducts(){
     this.appService.getProductsv().subscribe(data=>{
-      this.products = data; 
+      this.productsv = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {
-        this.products = this.products.concat(this.products);        
+        this.productsv = this.productsv.concat(this.productsv);        
       }
     });
   }
@@ -99,14 +99,14 @@ export class ProductsvComponent implements OnInit {
     this.viewCol = viewCol;
   }
 
-  public openProductDialog(product){   
+  public openProductDialog(productv){   
     let dialogRef = this.dialog.open(ProductDialogComponent, {
-        data: product,
+        data: productv,
         panelClass: 'product-dialog'
     });
-    dialogRef.afterClosed().subscribe(product => {
-      if(product){
-        this.router.navigate(['/products', product._id, product.name]); 
+    dialogRef.afterClosed().subscribe(productv => {
+      if(productv){
+        this.router.navigate(['/productsv', productv._id, productv.name]); 
       }
     });
   }
@@ -119,7 +119,7 @@ export class ProductsvComponent implements OnInit {
 
   public onChangeCategory(event){
     if(event.target){
-      this.router.navigate(['/products', event.target.innerText.toLowerCase()]); 
+      this.router.navigate(['/productsv', event.target.innerText.toLowerCase()]); 
     }   
   }
 

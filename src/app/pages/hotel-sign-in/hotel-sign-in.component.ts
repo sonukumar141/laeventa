@@ -39,8 +39,6 @@ export class HotelSignInComponent implements OnInit {
       'passwordConfirmation': ['', Validators.required]
     },{validator: matchingPasswords('password', 'passwordConfirmation')});
 
-    //this.newUserh = new Userh();
-
   }
 
   public onLoginFormSubmit(values:Object):void {

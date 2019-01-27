@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { emailValidator, matchingPasswords } from '../../theme/utils/app-validators';
 import { AuthService } from '../shared/auth.service';
+import { Userv } from '../../app.models';
 
 @Component({
   selector: 'app-vendor-sign-in',
@@ -13,6 +14,7 @@ import { AuthService } from '../shared/auth.service';
 export class VendorSignInComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
+  userhCategory =  Userv.CATEGORIES;
 
   constructor(public formBuilder: FormBuilder, 
               public router:Router, 
@@ -26,6 +28,7 @@ export class VendorSignInComponent implements OnInit {
     });
     // Vendor registration form controls
     this.registerForm = this.formBuilder.group({
+      'category': ['', Validators.required],
       'businessName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'businessType': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -39,7 +42,7 @@ export class VendorSignInComponent implements OnInit {
 
   public onLoginFormSubmit(values:Object):void {
     if (this.loginForm.valid) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/productsv']);
     }
   }
 

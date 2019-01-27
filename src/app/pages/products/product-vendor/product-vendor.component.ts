@@ -6,19 +6,20 @@ import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { Data, AppService } from '../../../app.service';
 import { Productv } from "../../../app.models";
 import { emailValidator } from '../../../theme/utils/app-validators';
-import { ProductvZoomComponent } from './productv-zoom/productv-zoom.component';
+import { ProductVendorZoomComponent } from './product-vendor-zoom/product-vendor-zoom.component';
 
 @Component({
-  selector: 'app-productv',
-  templateUrl: './productv.component.html',
-  styleUrls: ['./productv.component.scss']
+  selector: 'app-product-hotel',
+  templateUrl: './product-vendor.component.html',
+  styleUrls: ['./product-vendor.component.scss']
 })
-export class ProductvComponent implements OnInit {
+export class ProductVendorComponent implements OnInit {
   @ViewChild('zoomViewer') zoomViewer;
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
   public config: SwiperConfigInterface={};
   public productv: Productv;
   public image: any;
+  public images: any;
   public zoomImage: any;
   private sub: any;
   public form: FormGroup;
@@ -38,7 +39,7 @@ export class ProductvComponent implements OnInit {
       'name': [null, Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': [null, Validators.compose([Validators.required, emailValidator])]
     }); 
-    this.getRelatedProducts();    
+    this.getRelatedProducts();      
   }
 
   ngAfterViewInit(){
@@ -51,6 +52,7 @@ export class ProductvComponent implements OnInit {
       pagination: false,       
       loop: false, 
       preloadImages: false,
+      
       lazy: true, 
       breakpoints: {
         480: {
@@ -66,8 +68,8 @@ export class ProductvComponent implements OnInit {
   public getProductvById(_id){
     this.appService.getProductvById(_id).subscribe(data=>{
       this.productv = data;
-      this.image = data.images[0].medium;
-      this.zoomImage = data.images[0].big;
+      this.image = data.image_medium;
+      this.zoomImage = data.image_big;
       setTimeout(() => { 
         this.config.observer = true;
        // this.directiveRef.setIndex(0);
@@ -109,7 +111,7 @@ export class ProductvComponent implements OnInit {
   }
 
   public openZoomViewer(){
-    this.dialog.open(ProductvZoomComponent, {
+    this.dialog.open(ProductVendorZoomComponent, {
       data: this.zoomImage,
       panelClass: 'zoom-dialog'
     });

@@ -74,7 +74,7 @@ export class ProductvSearchComponent implements OnInit {
   }
 
   public getAllProducts(){
-    this.appService.getProducts().subscribe(data=>{
+    this.appService.getProductsv().subscribe(data=>{
       this.productsv = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {

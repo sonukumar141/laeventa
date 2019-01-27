@@ -8,7 +8,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { PipesModule } from '../../../theme/pipes/pipes.module';
 import { MapModule } from '../../../theme/components/map/map.module';
 import { ProductsvComponent } from './productsv.component';
-import { ProductvComponent } from '../productv/productv.component';
+import { ProductVendorComponent } from '../product-vendor/product-vendor.component';
 import { ProductvZoomComponent } from '../productv/productv-zoom/productv-zoom.component';
 import { AuthGuard } from '../../shared/auth.guard';
 
@@ -17,7 +17,7 @@ import { NgPipesModule } from 'ngx-pipes';
 export const routes = [
   { path: '', component: ProductsvComponent, pathMatch: 'full' },
   { path: ':name', component: ProductsvComponent },
-  { path: ':_id/:name', component: ProductvComponent }
+  { path: ':_id/:name', component: ProductVendorComponent }
 ];
 
 @NgModule({
@@ -35,11 +35,11 @@ export const routes = [
   ],
   declarations: [
     ProductsvComponent, 
-    ProductvComponent,
+    ProductVendorComponent,
     ProductvZoomComponent
   ],
   entryComponents:[
     ProductvZoomComponent
   ]
 })
-export class ProductsModule { }
+export class ProductsvModule { }
