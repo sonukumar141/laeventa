@@ -55,13 +55,13 @@ router.get('', function(req, res){
 });
 
 router.post('', UserCtrlv.authMiddleware, function(req, res) {
-    const {name, images, oldPrice, newPrice, city, street, category, phone, email,
+    const {name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
     completeAddress, landmark, timings, veg_package, non_veg_package,
     dailyRate, discount, description, categoryId} = req.body;
 
 	const userv = res.locals.userv;
 
-	const jobv = new Jobv({name, images, oldPrice, newPrice, city, street, category, phone, email,
+	const jobv = new Jobv({name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
         completeAddress, landmark, timings, veg_package, non_veg_package,
         dailyRate, discount, description, categoryId});
 	jobv.userv = userv;

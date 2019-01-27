@@ -14,7 +14,7 @@ import { Userv } from '../../app.models';
 export class VendorSignInComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
-  userhCategory =  Userv.CATEGORIES;
+  uservCategory =  Userv.CATEGORIES;
 
   constructor(public formBuilder: FormBuilder, 
               public router:Router, 
@@ -30,7 +30,6 @@ export class VendorSignInComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       'category': ['', Validators.required],
       'businessName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-      'businessType': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': ['', Validators.compose([Validators.required, emailValidator])],
       'mobile': ['', Validators.compose([Validators.required, Validators.minLength(10)])],

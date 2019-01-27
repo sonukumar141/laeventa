@@ -11,10 +11,6 @@ const uservSchema = new Schema({
 		min: [4, 'Too short, Min is 4 characers'],
 		max: [32, 'Too Long, Max character is 50']
     },
-	businesstype: {type: String,
-		min: [4, 'Too short, Min is 4 characers'],
-		max: [32, 'Too Long, Max character is 64']
-    },
     username: {
 		type: String,
 		min: [4, 'Too short, Min is 4 characers'],

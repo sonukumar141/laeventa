@@ -7,6 +7,10 @@ const jobvSchema = new Schema({
                 'Mixed'
             ]
         },
+        image_small: String,
+        image_medium: String,
+        image_big: String,
+        image_extra: String,
         oldPrice: Number,
         newPrice: Number,
         city: { type: String, required: true, lowercase: true },

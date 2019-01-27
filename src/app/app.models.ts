@@ -97,10 +97,10 @@ export class Productv {
               _id: string;
               name: string;
               images: Array<any>;
-              image_small;
-              image_medium;
-              image_big;
-              image_extra;
+              image_small: string;
+              image_medium: string;
+              image_big: string;
+              image_extra: string;
               oldPrice: number;
               newPrice: number;
               city: string;

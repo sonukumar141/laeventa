@@ -19,26 +19,26 @@
                 </div> -->
                 <div class="swiper-wrapper"> 
                     <div class="swiper-slide">
-                        <mat-card  (click)="selectImage(producth.image_small)" class="p-1">
-                            <img [src]="producth.image_small" class="swiper-lazy"/> 
+                        <mat-card  (click)="selectImage(productv.image_small)" class="p-1">
+                            <img [src]="productv.image_small" class="swiper-lazy"/> 
                             <div class="swiper-lazy-preloader"></div>
                         </mat-card>
                     </div> 
                     <div class="swiper-slide">
-                        <mat-card (click)="selectImage(producth.image_medium)" class="p-1">
-                                <img [src]="producth.image_medium" class="swiper-lazy"/> 
+                        <mat-card (click)="selectImage(productv.image_medium)" class="p-1">
+                                <img [src]="productv.image_medium" class="swiper-lazy"/> 
                                 <div class="swiper-lazy-preloader"></div>
                         </mat-card>
                     </div>
                     <div class="swiper-slide">
-                            <mat-card (click)="selectImage(producth.image_big)" class="p-1">
-                                    <img [src]="producth.image_big" class="swiper-lazy"/> 
+                            <mat-card (click)="selectImage(productv.image_big)" class="p-1">
+                                    <img [src]="productv.image_big" class="swiper-lazy"/> 
                                     <div class="swiper-lazy-preloader"></div>
                             </mat-card>
                     </div>  
                     <div class="swiper-slide">
-                            <mat-card (click)="selectImage(producth.image_extra)" class="p-1">
-                                    <img [src]="producth.image_extra" class="swiper-lazy"/> 
+                            <mat-card (click)="selectImage(productv.image_extra)" class="p-1">
+                                    <img [src]="productv.image_extra" class="swiper-lazy"/> 
                                     <div class="swiper-lazy-preloader"></div>
                             </mat-card>
                     </div>              
@@ -57,27 +57,27 @@
             <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></mat-card>
         </div>
 
-        <h2>{{producth?.name | ucwords }}</h2>
+        <h2>{{productv?.name | ucwords }}</h2>
         <div class="py-1 lh">
-            <p><span class="text-muted fw-500">Category: </span><span>{{ ( appService.Data.categories | filterById : producth?.categoryId )?.name }}</span></p>
-            <p><span class="text-muted fw-500">Hotel Availibility: </span><span>{{ (producth?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
+            <p><span class="text-muted fw-500">Category: </span><span>{{ ( appService.Data.categories | filterById : productv?.categoryId )?.name }}</span></p>
+            <p><span class="text-muted fw-500">Hotel Availibility: </span><span>{{ (productv?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
         </div>                 
         <div class="py-1">
-            <app-rating [ratingsCount]="producth?.ratingsCount" [ratingsValue]="producth?.ratingsValue" [direction]="'row'"></app-rating>
+            <app-rating [ratingsCount]="productv?.ratingsCount" [ratingsValue]="productv?.ratingsValue" [direction]="'row'"></app-rating>
         </div>
-        <p class="py-1 text-muted lh">{{producth?.description}}</p>
+        <p class="py-1 text-muted lh">{{productv?.description}}</p>
 
         <div class="divider mt-1"></div>
-        <h2 class="py-2 new-price">Rs {{ producth?.dailyRate }}</h2>
+        <h2 class="py-2 new-price">Rs {{ productv?.dailyRate }}</h2>
 
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
-            <div *ngIf="producth?.color" class="color">
+            <div *ngIf="productv?.color" class="color">
                 <span class="fw-500">Select Color:</span>
-                <button mat-raised-button *ngFor="let color of producth?.color" [style.background]="color">&nbsp;</button>              
+                <button mat-raised-button *ngFor="let color of productv?.color" [style.background]="color">&nbsp;</button>              
             </div>
-            <div *ngIf="producth?.size" class="size" ngClass.xs="mt-1">
+            <div *ngIf="productv?.size" class="size" ngClass.xs="mt-1">
                 <span class="fw-500">Select Size:</span>
-                <button mat-raised-button *ngFor="let size of producth?.size">{{size}}</button>
+                <button mat-raised-button *ngFor="let size of productv?.size">{{size}}</button>
             </div>
         </div>
 
@@ -180,7 +180,7 @@
                     <mat-tab label="Map & Location">
                     <div class="full-desc lh">
                         <p>Map location of </p>
-                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
+                        <app-map [location]="productv?.city + ', ' +  productv?.street"></app-map>
                         
                     </div>
                 </mat-tab>
