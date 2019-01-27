@@ -28,10 +28,8 @@ router.get('/:id', function(req, res){
 });
 
 router.get('', function(req, res){
-	const city = req.query.city;
-
-
-
+    const city = req.query.city;
+    
     if(city){
         Jobh.find({city: city.toLowerCase()})
             .exec(function(err, filteredJobsh){
