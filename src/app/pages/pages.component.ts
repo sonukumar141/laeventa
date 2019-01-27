@@ -7,6 +7,8 @@ import { Category, Product } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
 import { AuthService } from './shared/auth.service';
 
+import { MatMenuTrigger } from '@angular/material';
+
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
@@ -19,6 +21,7 @@ export class PagesComponent implements OnInit {
   public category:Category;
   public sidenavMenuItems:Array<any>;
   @ViewChild('sidenav') sidenav:any;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   public settings: Settings;
   constructor(public appSettings:AppSettings, 
@@ -27,6 +30,14 @@ export class PagesComponent implements OnInit {
               public router:Router,
               private auth: AuthService) { 
     this.settings = this.appSettings.settings; 
+  }
+
+  methodOpenMenu() {
+    this.trigger.openMenu();
+  }
+
+  methodCloseMenu() {
+    this.trigger.closeMenu();
   }
 
   ngOnInit() {
