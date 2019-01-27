@@ -5,6 +5,7 @@ import { Settings, AppSettings } from '../app.settings';
 import { AppService } from '../app.service';
 import { Category, Product } from '../app.models';
 import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
+import { AuthService } from './shared/auth.service';
 
 @Component({
   selector: 'app-pages',
@@ -23,7 +24,8 @@ export class PagesComponent implements OnInit {
   constructor(public appSettings:AppSettings, 
               public appService:AppService, 
               public sidenavMenuService:SidenavMenuService,
-              public router:Router) { 
+              public router:Router,
+              private auth: AuthService) { 
     this.settings = this.appSettings.settings; 
   }
 
