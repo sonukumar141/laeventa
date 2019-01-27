@@ -80,6 +80,17 @@ export class Producth {
               categoryId: number;
 }
 
+export class Userh {
+    static readonly CATEGORIES = ['Hotel', 'Venue'];
+    category: String;
+    businessName: String;
+    username; String;
+    email: String;
+    mobile: Number;
+    password: String;
+
+}
+
 export class Productv {
   constructor(public _id: string,
               public name: string,

@@ -9,6 +9,7 @@ import 'rxjs/Rx';
 class DecodedToken{
   exp: number = 0;
   username: string = '';
+  category: string= '';
 }
 
 @Injectable()
@@ -82,6 +83,11 @@ export class AuthService{
 
   public getUserName(): string{
     return this.decodedToken.username;
+  }
+
+  public getCategoryName(): string{
+    console.log(this.decodedToken.category);
+    return this.decodedToken.category;
   }
 
   public getAuthToken(): string {

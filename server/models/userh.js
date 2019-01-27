@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userhSchema = new Schema({
+	category: {
+		type: String
+	}, 
     businessname: {
 		type: String,
 		min: [4, 'Too short, Min is 4 characers'],

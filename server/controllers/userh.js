@@ -22,7 +22,8 @@ exports.auth =  function(req, res){
 			// Jwt token
 			const token = jwt.sign({
   			userId: userh.id,
-  			username: userh.username
+			  username: userh.username,
+			  category: userh.category
 			}, config.SECRET, { expiresIn: '1h' });
 
 			return res.json(token);
@@ -35,7 +36,7 @@ exports.auth =  function(req, res){
 
 exports.signup =  function(req, res){
 
-    const {businessname, username, email, mobile, password, passwordConfirmation} = req.body;
+    const {category, businessname, username, email, mobile, password, passwordConfirmation} = req.body;
 
     if(!email || !mobile || !password){
         return res.status(422).send({errors: [{title: 'Data Missing!', detail: 'Provide email, mobile and password'}]});
@@ -55,6 +56,7 @@ exports.signup =  function(req, res){
 		}
 
 		const userh = new Userh({
+			category,
             businessname,
 			username,
             email,

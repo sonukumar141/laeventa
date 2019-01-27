@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { emailValidator, matchingPasswords } from '../../theme/utils/app-validators';
 import { AuthService } from '../shared/auth.service';
+import { Userh } from '../../app.models';
 
 @Component({
   selector: 'app-hotel-sign-in',
@@ -13,6 +14,9 @@ import { AuthService } from '../shared/auth.service';
 export class HotelSignInComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
+  newUserh: Userh;
+  userhCategory =  Userh.CATEGORIES;
+  
 
   constructor(public formBuilder: FormBuilder, 
               public router:Router, 
@@ -26,6 +30,7 @@ export class HotelSignInComponent implements OnInit {
     });
     // Hotel registration form controls
     this.registerForm = this.formBuilder.group({
+      'category': ['', Validators.required],
       'businessName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': ['', Validators.compose([Validators.required, emailValidator])],
@@ -33,6 +38,8 @@ export class HotelSignInComponent implements OnInit {
       'password': ['', Validators.required],
       'passwordConfirmation': ['', Validators.required]
     },{validator: matchingPasswords('password', 'passwordConfirmation')});
+
+    //this.newUserh = new Userh();
 
   }
 

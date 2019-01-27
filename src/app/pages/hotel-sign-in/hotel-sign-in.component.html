@@ -4,9 +4,15 @@
                 <h2 class="text-muted text-center">Hotel Venue Registration. Sign up now!</h2>
                 <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit(registerForm.value)">
                     <mat-form-field class="w-100 mt-2">
-                      <input matInput placeholder="Business Name" formControlName="businessName" required>
-                      <mat-error *ngIf="registerForm.controls.businessName.errors?.required">Business Name</mat-error>
-                      <mat-error *ngIf="registerForm.controls.businessName.hasError('minlength')">Full Name isn't long enough, minimum of 3 characters</mat-error>
+                        <mat-select formControlName="category" placeholder="Business Type" required> 
+                            <mat-option *ngFor="let category of userhCategory" value="Hotel/Venue">{{category}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="registerForm.controls.category.errors?.required">Category is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100 mt-2">
+                        <input matInput placeholder="Business Name" formControlName="businessName" required>
+                        <mat-error *ngIf="registerForm.controls.businessName.errors?.required">Business Name</mat-error>
+                        <mat-error *ngIf="registerForm.controls.businessName.hasError('minlength')">Full Name isn't long enough, minimum of 3 characters</mat-error>
                     </mat-form-field>
                     <mat-form-field class="w-100 mt-2">
                       <input matInput placeholder="Full Name" formControlName="username" required>

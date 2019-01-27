@@ -64,13 +64,13 @@
                             <button mat-menu-item>Item 2</button>
                         </mat-menu>
             </div> -->
-            <div *ngIf="auth.isAuthenticated()" class="user_account">
+            <div *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'" class="user_account">
                 <button mat-button [matMenuTriggerFor]="menu" (mouseenter)="methodOpenMenu()">
                         <mat-icon class="mat-icon-lg">account_circle</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu" overlapTrigger="false">
                         <span (mouseleave)="methodCloseMenu()">
-                            <button mat-menu-item >Create New Listing</button>
+                            <button mat-menu-item routerLink="/create-venue/new">Create New Listing</button>
                             <button mat-menu-item >Card</button>
                             <button mat-menu-item >About</button>
                         </span>
