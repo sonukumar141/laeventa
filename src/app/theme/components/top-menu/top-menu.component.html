@@ -3,7 +3,7 @@
         <!-- <span fxShow="false" fxShow.gt-sm>
                 <a mat-button routerLink="/sign-in">List your business</a>
         </span>  -->
-        <span style='margin-right:1.5em'>
+        <span *ngIf="!auth.isAuthenticated()" style='margin-right:1.5em'>
             <button mat-button [matMenuTriggerFor]="menu" (mouseenter)="methodOpenMenu()">
                     <mat-icon class="mat-icon-md">business_center</mat-icon>
             </button>
