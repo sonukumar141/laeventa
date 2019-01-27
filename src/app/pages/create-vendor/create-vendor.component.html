@@ -1,0 +1,157 @@
+<div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
+
+    <div class="container">
+            <form #productvForm="ngForm" class="w3-container">
+                    <p>
+                    <label></label>
+                    <input class="w3-input" 
+                           type="text"
+                           placeholder="Product/Service"
+                           id="name"
+                           name="name"
+                           [(ngModel)]="newProductv.name"></p>
+                    <p>
+                    <br>
+                    <select class="w3-input"
+                            id="category"
+                            name="category"
+                            [(ngModel)]="newProductv.category">
+                            <option [ngValue]="undefined" disabled selected>Select Category </option>
+                        <option *ngFor="let category of productvCategories">{{category}} </option>
+                     </select></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="city"
+                           name="city"
+                           [(ngModel)]="newProductv.city">
+                     <option [ngValue]="undefined" disabled selected>Select City </option>
+                     <option *ngFor="let city of productvCities">{{city}} </option>  
+                     </select></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                            type="text"
+                            placeholder="Street"
+                            id="street"
+                            name="street"
+                            [(ngModel)]="newProductv.street"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                            type="text"
+                            placeholder="Address"
+                            id="address"
+                            name="address"
+                            [(ngModel)]="newProductv.address"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                            type="text"
+                            placeholder="Landmark"
+                            id="landmark"
+                            name="landmark"
+                            [(ngModel)]="newProductv.landmark"></p>
+                    <p>    
+                    <br>    
+                    <input class="w3-input" 
+                            type="email"
+                            placeholder="Email"
+                            id="email"
+                            name="email"
+                            [(ngModel)]="newProductv.email"></p>                    
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Mobile"
+                           id="mobile"
+                           name="mobile"
+                           [(ngModel)]="newProductv.mobile"></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 1</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id="image1"
+                           (change)="handleImage1Change()"></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 2</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id="image2"
+                           (change)="handleImage2Change()"></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 3</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id="image3"
+                           (change)="handleImage3Change()"></p>
+                    <p>
+                    <br>
+                    <label>Upload Image 4</label>
+                    <input class="w3-input" 
+                           type="file"
+                           id="image4"
+                           (change)="handleImage4Change()"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Price per day"
+                           id="dailyRate"
+                           name="dailyRate"
+                           [(ngModel)]="newProductv.dailyRate"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Per plate cost (veg)"
+                           id="vegPackage"
+                           name="vegPackage"
+                           [(ngModel)]="newProductv.veg_package"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Per plate cost (Non-veg)"
+                           id="nonVegPackage"
+                           name="nonVegPackage"
+                           [(ngModel)]="newProductv.non_veg_package"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Discount %"
+                           id="discount"
+                           name="discount"
+                           [(ngModel)]="newProductv.discount"></p>
+                    <p>
+                    <br>
+                    <textarea rows="5"
+                              cols="80"
+                        type="text"
+                        class="w3-input"
+                        id="description"
+                        placeholder="Describe your venue"
+                        name="description"
+                        [(ngModel)]="newProductv.description"
+                        required> </textarea>
+            <br>
+            <button (click)="createProductv()" 
+                        type="button" 
+                        class="">Submit
+            </button>                                                                
+                    
+            </form>
+            <br>
+            <div *ngIf="errors.length > 0" class="alert alert-danger">
+              <p *ngFor="let error of errors">
+                     {{error.detail}}
+              </p>
+       </div>
+    </div>
+</div>

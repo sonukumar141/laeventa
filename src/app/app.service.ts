@@ -63,6 +63,10 @@ export class AppService {
         return this.http.post('/api/v1/productsh', producth);
     }
 
+    public createProductv(productv: Productv): Observable<any>{
+        return this.http.post('/api/v1/productsv', productv);
+    }
+
     public getProductshByCity(city: string): Observable<Producth>{
         return this.http.get<Producth>(`/api/v1/productsh?city=${city}`);
     }

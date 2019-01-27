@@ -92,6 +92,8 @@ export class Userh {
 }
 
 export class Productv {
+  static readonly CATEGORIES = ['Phographers', 'Flower Vendor', 'Mehndi', 'Band/Baaza'];
+  static readonly CITIES = ['Pune', 'Vadodara', 'Mumbai', 'Delhi'];
               _id: string;
               name: string;
               images: Array<any>;
