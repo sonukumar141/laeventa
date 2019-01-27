@@ -42,6 +42,7 @@ export class Product {
 export class Producth {
 
   static readonly CATEGORIES = ['Hotel', 'Banquet Hall', 'Conference Hall', 'Wedding Venue'];
+  static readonly CITIES = ['Pune', 'Vadodara', 'Mumbai', 'Delhi'];
    _id: string;
    name: string;
    images: Array<any>

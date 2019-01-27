@@ -14,6 +14,7 @@ export class CreateHotelComponent implements OnInit {
  
   newProducth: Producth;
   producthCategories = Producth.CATEGORIES;
+  producthCities = Producth.CITIES;
   errors: any[] = [];
 
   constructor(private appService: AppService,

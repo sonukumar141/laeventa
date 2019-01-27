@@ -16,18 +16,19 @@
                             id="category"
                             name="category"
                             [(ngModel)]="newProducth.category">
+                            <option [ngValue]="undefined" disabled selected>Select Category </option>
                         <option *ngFor="let category of producthCategories">{{category}} </option>
- 
-                    </select></p>
+                     </select></p>
                     <p>
                     <br>
                     <label></label>
-                    <input class="w3-input" 
-                           type="text"
-                           placeholder="City"
+                    <select class="w3-input" 
                            id="city"
                            name="city"
-                           [(ngModel)]="newProducth.city"></p>
+                           [(ngModel)]="newProducth.city">
+                     <option [ngValue]="undefined" disabled selected>Select City </option>
+                     <option *ngFor="let city of producthCities">{{city}} </option>  
+                     </select></p>
                     <p>
                     <br>
                     <input class="w3-input" 
