@@ -38,11 +38,6 @@
                 </div> 
 
             </form>
-            <div *ngIf="errors.length > 0" class="alert alert-danger">
-                <p *ngFor="let error of errors">
-                  {{error.detail}}
-                </p>
-            </div>
         </div>
         <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
             <h2 class="text-muted text-center">Don't have an account? Sign up now!</h2>
@@ -67,13 +62,13 @@
                   <mat-error *ngIf="registerForm.controls.passwordConfirmation.errors?.required">Confirm Password is required</mat-error>
                   <mat-error *ngIf="registerForm.controls.passwordConfirmation.hasError('mismatchedPasswords')">Passwords do not match</mat-error>
                 </mat-form-field>
-                <h3 class="text-muted text-center">Sign up & list your business.</h3>
                 <div class="text-center mt-2">
                     <button mat-fab color="primary" class="mat-elevation-z6" [disabled]="!registerForm.valid" (click)="onRegisterFormSubmit(registerForm.value)">
                         <mat-icon>person_add</mat-icon>
                     </button>
                 </div>
             </form>
+            <br>
         </div>
     </div> 
 </mat-card>

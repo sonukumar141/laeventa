@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Data, AppService } from '../../../app.service';
 import { AuthService } from '../../../pages/shared/auth.service';
 import { Router } from '@angular/router';
+
+import { MatMenuTrigger } from '@angular/material';
 
 @Component({
   selector: 'app-top-menu',
@@ -18,6 +20,7 @@ export class TopMenuComponent implements OnInit {
     { name:'Turkish', image: 'assets/images/flags/tr.svg' }
   ]
   public flag:any;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   constructor(public appService:AppService,
               private auth: AuthService,
@@ -40,5 +43,13 @@ export class TopMenuComponent implements OnInit {
     this.auth.logout();
     this.router.navigate(['/sign-in']);
   }  
+
+  methodOpenMenu() {
+    this.trigger.openMenu();
+  }
+
+  methodCloseMenu() {
+    this.trigger.closeMenu();
+  }
 
 }

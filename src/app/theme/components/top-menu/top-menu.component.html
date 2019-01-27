@@ -1,9 +1,19 @@
 <div class="top-menu">    
     <ng-container *ngIf="!auth.isAuthenticated()">
-        <span fxShow="false" fxShow.gt-sm>
+        <!-- <span fxShow="false" fxShow.gt-sm>
                 <a mat-button routerLink="/sign-in">List your business</a>
-        </span> 
-
+        </span>  -->
+        <span style='margin-right:1.5em'>
+            <button mat-button [matMenuTriggerFor]="menu" (mouseenter)="methodOpenMenu()">
+                    <mat-icon class="mat-icon-md">business_center</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" overlapTrigger="false">
+                    <span (mouseleave)="methodCloseMenu()">
+                        <button mat-menu-item routerLink="/hotel-sign-up">Hotel/Venue Registration</button>
+                        <button mat-menu-item routerLink="/vendor-sign-up">Vendor Registration</button>
+                    </span>
+            </mat-menu>
+        </span>
         <span fxShow="false" fxShow.gt-sm>
             <a mat-button routerLink="/sign-in">Login/Signup</a>
         </span>  
