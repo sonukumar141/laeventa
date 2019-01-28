@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Jobh = require('../models/jobh');
+const Jobv = require('../models/jobv');
 const Userh = require('../models/userh');
 const { normalizeErrors } = require('../helpers/mongoose');
 
@@ -55,6 +56,45 @@ router.get('', function(req, res){
     
 });
 
+router.get('/search', function(req, res){
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi ');
+        Jobh.find({name: regex}, function(err, allJobsh){
+            if(err){
+                console.log(err);
+            }else{
+                res.render("products/index", {jobs: allJobsh})
+            }
+        });
+
+        Jobv.find({name: regex}, function(err, allJobsv){
+            if(err){
+                console.log(err);
+            }else{
+                res.render("products/index", {jobs: allJobsv})
+            }
+        });
+
+    }else {
+        Jobh.find({}, function(err, allJobsh){
+            if(err){
+                console.log(err);
+            }else{
+                res.render("products/index", {jobsh: allJobsh});
+            }
+        });
+
+        Jobv.find({}, function(err, allJobsv){
+            if(err){
+                console.log(err);
+            }else{
+                res.render("products/index", {jobsv: allJobsv});
+            }
+        });
+        
+    }
+});
+
 router.post('', UserCtrlh.authMiddleware, function(req, res) {
     const {name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
     completeAddress, landmark, timings, veg_package, non_veg_package,
@@ -78,6 +118,8 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
 	});
 });
 
-
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
 
 module.exports = router;
