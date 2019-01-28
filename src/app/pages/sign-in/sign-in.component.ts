@@ -56,7 +56,7 @@ export class SignInComponent implements OnInit {
       this.auth.signin(this.loginForm.value).subscribe(
         (token) => {
           
-          this.router.navigate(['/products']);
+          this.router.navigate(['/']);
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;
