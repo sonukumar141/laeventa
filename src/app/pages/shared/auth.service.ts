@@ -92,6 +92,10 @@ export class AuthService{
 
   public getAuthToken(): string {
 		return localStorage.getItem('laeventa_auth');
-	}
+  }
+  
+  public password_reset(userData: any): Observable<any>{
+		return this.http.post('api/v1/users/forgot', userData);
+  }
 
 }

@@ -24,6 +24,8 @@ const userSchema = new Schema({
 		required: 'Password is required',
 
 	},
+	resetPasswordToken: String,
+	resetPasswordExpires: Date,
 	jobs: [{type: Schema.Types.ObjectId, ref: 'Job'}],
 	bookings: [{type: Schema.Types.ObjectId, ref: 'Booking'}]	
 

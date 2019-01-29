@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "7.0.4",
     "@angular/router": "7.0.4",
     "@auth0/angular-jwt": "^2.1.0",
+    "async": "^2.6.1",
     "aws-sdk": "^2.376.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
@@ -42,6 +43,7 @@
     "ngx-pipes": "^2.3.6",
     "ngx-spinner": "6.1.2",
     "ngx-swiper-wrapper": "7.0.0",
+    "nodemailer": "^5.1.1",
     "rxjs": "6.3.3",
     "rxjs-compat": "6.3.3",
     "zone.js": "0.8.26"
