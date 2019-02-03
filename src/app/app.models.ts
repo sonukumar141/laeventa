@@ -138,3 +138,12 @@ export class Userv {
   password: String;
 
 }
+
+export class User {
+  username; String;
+  email: String;
+  mobile: Number;
+  password: String;
+  resetPasswordToken: String;
+
+}

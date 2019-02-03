@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 const jwt = new JwtHelperService();
 import * as moment from 'moment';
 import 'rxjs/Rx';
+import { User } from 'src/app/app.models';
 
 class DecodedToken{
   exp: number = 0;
@@ -16,6 +17,8 @@ class DecodedToken{
 export class AuthService{
 
     private decodedToken;
+
+    private resetToken = this.return_token();
 
     constructor(private http: HttpClient) {
       this.decodedToken = JSON.parse(localStorage.getItem('laeventa_meta')) || new DecodedToken();
@@ -97,5 +100,13 @@ export class AuthService{
   public password_reset(userData: any): Observable<any>{
 		return this.http.post('api/v1/users/forgot', userData);
   }
+
+  public reset_password(userData: any): Observable<any>{
+    return this.http.post(`api/v1/users/reset/resetToken`, userData);
+  }
+
+  public return_token(): Observable<User>{        
+    return this.http.get<User>('/api/v1/users/reset/:token');
+  } 
 
 }
