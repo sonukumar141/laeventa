@@ -42,9 +42,8 @@ router.get('', function(req, res){
         }
 
         return res.json(filteredJobsv);
-    })
-        
-    }
+    });
+}
 
     else{
         Jobv.find({})
