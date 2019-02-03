@@ -17,8 +17,7 @@ import { NgPipesModule } from 'ngx-pipes';
 
 export const routes = [
   { path: '', component: ProductSearchComponent, pathMatch: 'full' },
-  { path: ':city/:_id/:name', component: ProducthComponent },
-  { path: ':city/:_id/:name', component: ProductvComponent }
+  { path: ':city/:_id/:name', component: ProducthComponent }
 ];
 
 @NgModule({
@@ -38,6 +37,10 @@ export const routes = [
     ProductSearchComponent,
     ProducthComponent,
     ProductvComponent
+  ],
+  exports: [
+    ProductSearchComponent,
+    ProducthComponent
   ],
   providers: [
     ProducthZoomComponent,

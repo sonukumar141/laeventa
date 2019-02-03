@@ -36,6 +36,10 @@ export const routes = [
     ProductvSearchComponent,
     ProductvComponent
   ],
+  exports: [
+    ProductvSearchComponent,
+    ProductvComponent
+  ],
   providers: [
     ProductvZoomComponent
   ]
