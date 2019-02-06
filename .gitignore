@@ -44,4 +44,5 @@ testem.log
 Thumbs.db
 /server/config/
 /server
+/server/routes
 .vscode/
