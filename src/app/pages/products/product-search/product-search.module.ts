@@ -13,6 +13,8 @@ import { MapModule } from '../../../theme/components/map/map.module';
 import { ProducthZoomComponent } from '../producth/producth-zoom/producth-zoom.component';
 import { ProductvZoomComponent } from '../productv/productv-zoom/productv-zoom.component';
 
+import { ProducthModule } from '../producth/producth.module';
+
 import { NgPipesModule } from 'ngx-pipes';
 
 export const routes = [
@@ -31,16 +33,15 @@ export const routes = [
     MapModule,
     NgPipesModule,
     NgxPaginationModule,
-    SwiperModule
+    SwiperModule,
+    ProducthModule
   ],
   declarations: [
     ProductSearchComponent,
-    ProducthComponent,
     ProductvComponent
   ],
   exports: [
-    ProductSearchComponent,
-    ProducthComponent
+    ProductSearchComponent
   ],
   providers: [
     ProducthZoomComponent,

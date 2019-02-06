@@ -43,7 +43,35 @@ router.get('', function(req, res){
         }
 
         return res.json(filteredJobsh);
-    })
+    });
+        
+    }
+
+    else{
+        Jobh.find({})
+            .exec(function(err, foundJobsh){
+                return res.json(foundJobsh);
+            });
+    }
+    
+});
+
+router.get('', function(req, res){
+    const category = req.query.category;
+    
+    if(category){
+        Jobh.find({category: category.toLowerCase()})
+            .exec(function(err, filteredJobsh){
+        if(err){
+            return res.status(422).send({errors: normalizeErrors(err.errors)});
+        }
+
+        if(filteredJobsh.length === 0){
+            return res.status(422).send({errors: [{title: 'No hotels Found!', detail: `Currently no hotels listed in category ${category}`}]});
+        }
+
+        return res.json(filteredJobsh);
+    });
         
     }
 

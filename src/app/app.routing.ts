@@ -4,9 +4,6 @@ import { ModuleWithProviders } from '@angular/core';
 import { PagesComponent } from './pages/pages.component';
 import { ProductSearchComponent } from './pages/products/product-search/product-search.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { AuthGuard } from './pages/shared/auth.guard';
-import { AuthService } from './pages/shared/auth.service';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 export const routes: Routes = [
     { 
@@ -30,8 +27,8 @@ export const routes: Routes = [
             { path: 'productsh', loadChildren: './pages/products/productsh/productsh.module#ProductshModule', data: { breadcrumb: 'Hotel/Venue' } },
             { path: 'productsv', loadChildren: './pages/products/productsv/productsv.module#ProductsvModule', data: { breadcrumb: 'Vendors' } },
             { path: 'forgot', loadChildren: './pages/forgot-password/password-reset.module#ForgotPasswordModule', data: { breadcrumb: 'Password Reset' } },
-            { path: 'reset', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordModule', data: { breadcrumb: 'Password Reset' } }
-            //{ path: ':category/hotels', loadChildren: './pages/products/hotel-search-by-category/hotel-search-by-category#HotelSearchByCategory', data: { breadcrumb: 'Category' } }
+            { path: 'reset', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordModule', data: { breadcrumb: 'Password Reset' } },
+            { path: 'h/:category', loadChildren: './pages/products/hotel-search-by-category/hotel-search-by-category.module#HotelSearchByCategoryModule', data: { breadcrumb: 'Category' } }
         ]
     },
     //{ path: 'auth', component: SignInComponent}

@@ -59,6 +59,10 @@ export class AppService {
         return this.http.get<Productv>(`/api/v1/productsv?city=${city}`);
     }
 
+    public getHotelsByCategory(category: string): Observable<Producth>{
+        return this.http.get<Producth>(`/api/v1/productsh?category=${category}`);
+    }
+
     public createProducth(producth: Producth): Observable<any>{
         return this.http.post('/api/v1/productsh', producth);
     }

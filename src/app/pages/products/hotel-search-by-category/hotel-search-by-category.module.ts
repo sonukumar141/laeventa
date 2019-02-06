@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
-import { ProductSearchComponent } from '../product-search/product-search.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HotelSearchComponentByCategory } from './hotel-search-by-category.component';
 import { ProducthComponent } from '../producth/producth.component';
 
 
 import { NgPipesModule } from 'ngx-pipes';
-import { ProductSearchModule } from '../product-search/product-search.module';
+import { ProducthModule } from '../producth/producth.module';
 
 export const routes = [
-  { path: '', component: ProductSearchComponent, pathMatch: 'full' },
+  { path: '', component: HotelSearchComponentByCategory, pathMatch: 'full' },
   { path: ':category/:_id/:name', component: ProducthComponent }
 ];
 
@@ -22,15 +23,16 @@ export const routes = [
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    ProductSearchModule
+    NgPipesModule,
+    NgxPaginationModule,
+    ProducthModule
 
   ],
   declarations: [
-    ProductSearchComponent,
-    ProducthComponent
+    HotelSearchComponentByCategory,
   ],
   exports: [
-
+    HotelSearchComponentByCategory
   ],
   providers: [
 
