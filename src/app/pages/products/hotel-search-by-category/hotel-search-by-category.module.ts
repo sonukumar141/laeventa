@@ -7,7 +7,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HotelSearchComponentByCategory } from './hotel-search-by-category.component';
 import { ProducthComponent } from '../producth/producth.component';
 
-
 import { NgPipesModule } from 'ngx-pipes';
 import { ProducthModule } from '../producth/producth.module';
 
