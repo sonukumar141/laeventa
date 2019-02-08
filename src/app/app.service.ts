@@ -67,6 +67,10 @@ export class AppService {
         return this.http.post('/api/v1/productsh', producth);
     }
 
+    public createHotelAddress(producth: Producth): Observable<any>{
+        return this.http.post('/api/v1/productsh', producth);
+    }
+
     public createProductv(productv: Productv): Observable<any>{
         return this.http.post('/api/v1/productsv', productv);
     }

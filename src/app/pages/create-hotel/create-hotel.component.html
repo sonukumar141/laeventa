@@ -1,7 +1,15 @@
 <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
 
     <div class="container">
+
+              
             <form #producthForm="ngForm" class="w3-container">
+                     <mat-expansion-panel>
+                                   <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                                 <h4>Name</h4>
+                                          </mat-panel-title>
+                                   </mat-expansion-panel-header>
                     <p>
                     <label></label>
                     <input class="w3-input" 
@@ -10,6 +18,14 @@
                            id="name"
                            name="name"
                            [(ngModel)]="newProducth.name"></p>
+                     </mat-expansion-panel>
+                     <br>
+                     <mat-expansion-panel>
+                                   <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                                 <h4>Address</h4>
+                                          </mat-panel-title>
+                                   </mat-expansion-panel-header>
                     <p>
                     <br>
                     <select class="w3-input"
@@ -19,6 +35,7 @@
                             <option [ngValue]="undefined" disabled selected>Select Category </option>
                         <option *ngFor="let category of producthCategories">{{category}} </option>
                      </select></p>
+                     </mat-expansion-panel>
                     <p>
                     <br>
                     <label></label>

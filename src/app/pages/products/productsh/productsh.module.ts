@@ -10,6 +10,7 @@ import { MapModule } from '../../../theme/components/map/map.module';
 import { ProductshComponent } from './productsh.component';
 import { ProductHotelComponent } from '../product-hotel/product-hotel.component';
 import { ProducthZoomComponent } from '../producth/producth-zoom/producth-zoom.component';
+import { ProducthZoomModule } from '../producth/producth-zoom/producth-zoom.module';
 
 import { NgPipesModule } from 'ngx-pipes';
 
@@ -30,12 +31,12 @@ export const routes = [
     SharedModule,
     PipesModule,
     NgPipesModule,
-    MapModule
+    MapModule,
+    ProducthZoomModule
   ],
   declarations: [
     ProductshComponent, 
-    ProductHotelComponent,
-    ProducthZoomComponent
+    ProductHotelComponent
   ],
   exports: [
     ProductshComponent
