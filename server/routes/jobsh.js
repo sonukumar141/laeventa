@@ -62,8 +62,7 @@ router.get('/category', function(req, res){
 
         return res.json(filteredJobsh);
     });
-        
-    }
+}
 
     else{
         Jobh.find({})

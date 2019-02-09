@@ -20,6 +20,7 @@ export class ProductHotelComponent implements OnInit {
   public producth: Producth;
   public image: any;
   public images: any;
+  public items: Array<any>= [];
   public zoomImage: any;
   private sub: any;
   public form: FormGroup;
@@ -28,7 +29,14 @@ export class ProductHotelComponent implements OnInit {
   constructor(public appService:AppService, 
               private activatedRoute: ActivatedRoute, 
               public dialog: MatDialog, 
-              public formBuilder: FormBuilder) {  }
+              public formBuilder: FormBuilder) { 
+                this.items = [
+                  {url: 'producth.image_small'},
+                  {url: 'producth.image_medium'},
+                  {url: 'producth.image_big'},
+                  {url: 'producth.image_extra'}
+                ];
+               }
 
   ngOnInit() {      
     this.sub = this.activatedRoute.params.subscribe(params => { 

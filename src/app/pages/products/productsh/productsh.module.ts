@@ -13,6 +13,7 @@ import { ProducthZoomComponent } from '../producth/producth-zoom/producth-zoom.c
 import { ProducthZoomModule } from '../producth/producth-zoom/producth-zoom.module';
 
 import { NgPipesModule } from 'ngx-pipes';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 export const routes = [
   { path: '', component: ProductshComponent, pathMatch: 'full' },
@@ -32,7 +33,8 @@ export const routes = [
     PipesModule,
     NgPipesModule,
     MapModule,
-    ProducthZoomModule
+    ProducthZoomModule,
+    Ng2CarouselamosModule
   ],
   declarations: [
     ProductshComponent, 

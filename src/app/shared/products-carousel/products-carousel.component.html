@@ -1,12 +1,12 @@
 <div *ngIf="products" class="swiper-container" [swiper]="config">
     <div class="swiper-wrapper h-100">      
-        <div *ngFor="let product of products" class="swiper-slide">
+        <div *ngFor="let product of productsh" class="swiper-slide">
             <mat-card class="product-item">
                 <mat-chip-list *ngIf="product.discount">
                     <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
                 </mat-chip-list>
-                <a [routerLink]="['/products', product._id, product.name]" class="image-link">
-                    <img [attr.data-src]="product.images[0].medium" class="swiper-lazy"/>
+                <a [routerLink]="['/productsh', product._id, product.name]" class="image-link">
+                    <img [src]="product.image_medium" class="swiper-lazy"/>
                     <div class="swiper-lazy-preloader"></div>
                 </a>
                 <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>                                                                     

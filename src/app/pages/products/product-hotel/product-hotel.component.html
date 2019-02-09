@@ -1,14 +1,37 @@
 <div>
-    <div fxFlex="100" fxFlex.gt-md="35" fxFlex.md="45">
+        <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
         
-        <mat-card class="product-image">
-            <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
-            <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/>
-        </mat-card>       
+        
+            <!-- <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
+            <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/> -->
+                
+                <div ng2-carouselamos class="slider-wrapper"
+                     [items]="items"
+                     [$prev]="prev"
+                     [$next]="next"
+                     [$item]="item">
+                </div>
 
-        <div class="small-carousel"> 
+                <ng-template #prev>
+                        <img src="assets/images/arrows/prev.png" alt="">
+                </ng-template>
+                
+                <ng-template #next>
+                        <img src="assets/images/arrows/next.png" alt="">
+                </ng-template>
+                
+                <ng-template #item>
+                       
+                    <img [src]="producth.image_big" class="swiper-lazy"/> 
+                    <img [src]="producth.image_small" class="swiper-lazy"/>                                 
+                    <img [src]="producth.image_medium" class="swiper-lazy"/>  
+                    <img [src]="producth.image_extra" class="swiper-lazy"/>
+                      
+                </ng-template>      
             
-            <div class="swiper-container" [swiper]="config">
+        <!-- <div class="small-carousel"> 
+            
+            <div class="swiper-container" [swiper]="config"> -->
                 <!-- <div class="swiper-wrapper"> 
                     <div *ngFor="let image of producth?.image_medium" class="swiper-slide">
                         <mat-card (click)="selectImage(image)" class="p-1">
@@ -17,7 +40,7 @@
                         </mat-card>
                     </div>                    
                 </div> -->
-                <div class="swiper-wrapper"> 
+                <!-- <div class="swiper-wrapper"> 
                     <div class="swiper-slide">
                         <mat-card  (click)="selectImage(producth.image_small)" class="p-1">
                             <img [src]="producth.image_small" class="swiper-lazy"/> 
@@ -42,12 +65,12 @@
                                     <div class="swiper-lazy-preloader"></div>
                             </mat-card>
                     </div>              
-                </div>
-                <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
+                </div> -->
+                <!-- <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
                 <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button> 
             </div>
             
-        </div>
+        </div> -->
 
 
     </div>
