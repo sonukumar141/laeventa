@@ -36,7 +36,7 @@
                             <option [ngValue]="undefined" disabled selected>Select Category </option>
                         <option *ngFor="let category of producthCategories">{{category}} </option>
                      </select></p>
-                     </mat-expansion-panel>
+                     
                     <p>
                     <br>
                     <label></label>
@@ -55,6 +55,7 @@
                             id="street"
                             name="street"
                             [(ngModel)]="newProducth.street"></p>
+                     </mat-expansion-panel>
                     <p>
                     <br>
                     <input class="w3-input" 
@@ -149,22 +150,24 @@
                            [(ngModel)]="newProducth.guests"></p>
                     <p>
                     <br>
-                    <label >AC &nbsp;</label>
-                    <input class="w3-check" 
-                           type="checkbox"
-                           placeholder="AC"
+                    <label></label>
+                    <select class="w3-input" 
                            id="ac"
                            name="ac"
-                           [(ngModel)]="newProducth.ac"></p>
-                    <p>
+                           [(ngModel)]="newProducth.ac">
+                     <option [ngValue]="undefined" disabled selected>Air Conditioning </option>
+                     <option *ngFor="let ac of producthAc">{{ac}} </option>  
+                     </select></p>
+                     <p>
                     <br>
-                    <label >Wifi &nbsp;</label>
-                    <input class="w3-check" 
-                           type="checkbox"
-                           placeholder="Wifi"
+                    <label></label>
+                    <select class="w3-input" 
                            id="wifi"
                            name="wifi"
-                           [(ngModel)]="newProducth.shared"></p>
+                           [(ngModel)]="newProducth.wifi">
+                     <option [ngValue]="undefined" disabled selected>Wifi </option>
+                     <option *ngFor="let wifi of producthWifi">{{wifi}} </option>  
+                     </select></p>
                     <p>
                     <br>
                     <input class="w3-input" 
@@ -176,11 +179,83 @@
                     <p>
                     <br>
                     <input class="w3-input" 
+                           type="text"
+                           placeholder="Parking"
+                           id="parking"
+                           name="parking"
+                           [(ngModel)]="newProducth.parking"></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="restaurant"
+                           name="restaurant"
+                           [(ngModel)]="newProducth.restaurant">
+                     <option [ngValue]="undefined" disabled selected>Restaurant Available? </option>
+                     <option *ngFor="let restaurant of producthRestaurant">{{restaurant}} </option>  
+                     </select></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="text"
+                           placeholder="USP"
+                           id="usp1"
+                           name="usp1"
+                           [(ngModel)]="newProducth.usp1"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                           type="text"
+                           placeholder="USP"
+                           id="usp2"
+                           name="usp2"
+                           [(ngModel)]="newProducth.usp2"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
+                            type="text"
+                            placeholder="USP"
+                            id="usp3"
+                            name="usp3"
+                            [(ngModel)]="newProducth.usp3"></p>
+                    <p>
+                    <br>
+                    <input class="w3-input" 
                            type="number"
                            placeholder="Discount %"
                            id="discount"
                            name="discount"
                            [(ngModel)]="newProducth.discount"></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="fireworks"
+                           name="fireworks"
+                           [(ngModel)]="newProducth.fireworks">
+                     <option [ngValue]="undefined" disabled selected>Fireworks Allowed </option>
+                     <option *ngFor="let fireworks of producthFireworks">{{fireworks}} </option>  
+                     </select></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="music"
+                           name="music"
+                           [(ngModel)]="newProducth.music">
+                     <option [ngValue]="undefined" disabled selected>Music Allowed </option>
+                     <option *ngFor="let music of producthMusic">{{music}} </option>  
+                     </select></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="advance_payment"
+                           name="advance_payment"
+                           [(ngModel)]="newProducth.advance_payment">
+                     <option [ngValue]="undefined" disabled selected>Advance Payment </option>
+                     <option *ngFor="let advance_payment of producthAdvancePayment">{{advance_payment}} </option>  
+                     </select></p>
                     <p>
                     <br>
                     <textarea rows="5"

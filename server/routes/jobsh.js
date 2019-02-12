@@ -127,13 +127,15 @@ router.get('/search', function(req, res){
 router.post('', UserCtrlh.authMiddleware, function(req, res) {
     const {name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
     completeAddress, landmark, timings, veg_package, non_veg_package,
-    dailyRate, shared, ac, guests, rooms, discount, description, categoryId} = req.body;
+    dailyRate, shared, wifi, ac, guests, rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
+    fireworks, music, lodging, discount, description, categoryId} = req.body;
 
 	const userh = res.locals.userh;
 
 	const jobh = new Jobh({name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
         completeAddress, landmark, timings, veg_package, non_veg_package,
-        dailyRate, shared, ac, guests, rooms, discount, description, categoryId});
+        dailyRate, shared, wifi, ac, guests, rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
+        fireworks, music, lodging, discount, description, categoryId});
 	jobh.userh = userh;
 
 	Jobh.create(jobh, function(err, newJobh) {

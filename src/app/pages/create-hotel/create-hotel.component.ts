@@ -15,6 +15,13 @@ export class CreateHotelComponent implements OnInit {
   newProducth: Producth;
   producthCategories = Producth.CATEGORIES;
   producthCities = Producth.CITIES;
+  producthWifi = Producth.WIFI;
+  producthAc = Producth.AC;
+  producthRestaurant = Producth.RESTAURANT;
+  producthParking = Producth.PARKING;
+  producthAdvancePayment = Producth.ADVANCE_PAYMENT;
+  producthFireworks = Producth.FIREWORKS;
+  producthMusic = Producth.MUSIC;
   errors: any[] = [];
 
   constructor(private appService: AppService,
@@ -22,8 +29,6 @@ export class CreateHotelComponent implements OnInit {
 
   ngOnInit() {
     this.newProducth = new Producth();
-    this.newProducth.shared = false;
-    this.newProducth.ac = false;
   }
 
   handleImage1Change(){

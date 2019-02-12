@@ -43,6 +43,14 @@ export class Producth {
 
   static readonly CATEGORIES = ['Hotel', 'Banquet Hall', 'Conference Hall', 'Wedding Venue'];
   static readonly CITIES = ['Pune', 'Vadodara', 'Mumbai', 'Delhi'];
+  static readonly WIFI = ['Yes', 'No'];
+  static readonly AC = ['Yes', 'No'];
+  static readonly RESTAURANT = ['Yes', 'No'];
+  static readonly PARKING = ['Yes', 'No'];
+  static readonly ADVANCE_PAYMENT = ['Yes', 'No'];
+  static readonly FIREWORKS = ['Yes', 'No'];
+  static readonly MUSIC = ['Yes', 'No'];
+
    _id: string;
    name: string;
    images: Array<any>
@@ -64,9 +72,19 @@ export class Producth {
               non_veg_package: number;
               dailyRate: number;
               shared: boolean;
-              ac: boolean;
+              wifi: string;
+              ac: string;              
               guests: number;
               rooms: number;
+              usp1: string;
+              usp2: string;
+              usp3: string;
+              parking: string;
+              restaurant: string;
+              advance_payment: string;
+              fireworks: string;
+              music: string;
+              lodging: string;
               createdAt: string;
               discount: number;
               ratingsCount: number;
