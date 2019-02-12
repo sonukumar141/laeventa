@@ -86,6 +86,7 @@ export class Producth {
               music: string;
               lodging: string;
               createdAt: string;
+              seating: string;
               discount: number;
               ratingsCount: number;
               ratingsValue: number;

@@ -14,7 +14,7 @@
                     <label></label>
                     <input class="w3-input" 
                            type="text"
-                           placeholder="Hotel/Venue Name"
+                           placeholder="Venue Name"
                            id="name"
                            name="name"
                            [(ngModel)]="newProducth.name"></p>
@@ -150,6 +150,14 @@
                            [(ngModel)]="newProducth.guests"></p>
                     <p>
                     <br>
+                    <input class="w3-input" 
+                           type="number"
+                           placeholder="Max Seating Capacity"
+                           id="seating"
+                           name="seating"
+                           [(ngModel)]="newProducth.seating"></p>
+                    <p>
+                    <br>
                     <label></label>
                     <select class="w3-input" 
                            id="ac"
@@ -263,7 +271,7 @@
                         type="text"
                         class="w3-input"
                         id="description"
-                        placeholder="Describe your venue"
+                        placeholder="Describe your venue. Give detailed description."
                         name="description"
                         [(ngModel)]="newProducth.description"
                         required> </textarea>

@@ -38,6 +38,8 @@ const jobhSchema = new Schema({
         fireworks: String,
         music: String,
         lodging: String,
+        seating_hall: String,
+        seating_lawn: String,
         createdAt: { type: Date, default: Date.now },
         discount: Number,
         description: { type: String, required: true },
