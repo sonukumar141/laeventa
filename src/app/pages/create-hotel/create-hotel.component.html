@@ -126,7 +126,7 @@
                            [(ngModel)]="newProducth.dailyRate"></p>
                     <p>
                     <br>
-                    <input class="w3-input" 
+                    <input *ngIf="newProducth.category === 'Wedding' || newProducth.category === 'Banquet'" class="w3-input" 
                            type="number"
                            placeholder="Per plate cost (veg)"
                            id="vegPackage"
