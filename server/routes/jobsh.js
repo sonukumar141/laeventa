@@ -125,17 +125,25 @@ router.get('/search', function(req, res){
 });
 
 router.post('', UserCtrlh.authMiddleware, function(req, res) {
-    const {name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
-    completeAddress, landmark, timings, veg_package, non_veg_package,
-    dailyRate, shared, wifi, ac, guests, rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
-    fireworks, music, lodging, seating, discount, description, categoryId} = req.body;
+    const {name, images, tags, image_small, image_medium, image_big, image_extra, oldPrice, 
+           newPrice, city, street, category, phone, email, completeAddress, landmark, 
+           timings, veg_package, non_veg_package, caterer, dailyRate, shared, wifi, ac, guests, 
+           rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
+           fireworks, music, theater, print_scan, open_space, party_room, stage, bar,
+           lodging, seating, discount, description, categoryId, badminton, basketball,
+           cricket, football, futsal, hockey, netball, squash, table_tennis,
+           tennis, volley_ball, swimming, gym} = req.body;
 
 	const userh = res.locals.userh;
 
-	const jobh = new Jobh({name, images, image_small, image_medium, image_big, image_extra, oldPrice, newPrice, city, street, category, phone, email,
-        completeAddress, landmark, timings, veg_package, non_veg_package,
-        dailyRate, shared, wifi, ac, guests, rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
-        fireworks, music, lodging, seating, discount, description, categoryId});
+    const jobh = new Jobh({name, images, tags, image_small, image_medium, image_big, image_extra, oldPrice, 
+                           newPrice, city, street, category, phone, email, completeAddress, landmark, 
+                           timings, veg_package, caterer, non_veg_package, caterer, dailyRate, shared, wifi, ac, guests, 
+                           rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
+                           fireworks, music, theater, print_scan, open_space, party_room, stage, bar, lodging, 
+                           seating, discount, description, categoryId, badminton, basketball,
+                           cricket,football, futsal, hockey, netball, squash, table_tennis,
+                           tennis, volley_ball, swimming, gym});
 	jobh.userh = userh;
 
 	Jobh.create(jobh, function(err, newJobh) {

@@ -43,6 +43,7 @@ export class Producth {
 
   static readonly CATEGORIES = ['Hotel', 'Banquet','Sports', 'Conference', 'Meeting','Wedding'];
   static readonly CITIES = ['Pune', 'Vadodara', 'Mumbai', 'Delhi'];
+  static readonly CATEROR = ['Yes', 'No'];
   static readonly WIFI = ['Yes', 'No'];
   static readonly AC = ['Yes', 'No'];
   static readonly RESTAURANT = ['Yes', 'No'];
@@ -50,10 +51,31 @@ export class Producth {
   static readonly ADVANCE_PAYMENT = ['Yes', 'No'];
   static readonly FIREWORKS = ['Yes', 'No'];
   static readonly MUSIC = ['Yes', 'No'];
+  static readonly THEATER = ['Yes', 'No'];
+  static readonly SAUNA_SPA = ['Yes', 'No'];
+  static readonly PRINT_SCAN = ['Yes', 'No'];
+  static readonly PARTY_ROOM = ['Yes', 'No'];
+  static readonly STAGE = ['Yes', 'No'];
+  static readonly BAR = ['Yes', 'No'];
+  static readonly LODGING = ['Yes', 'No'];
+  static readonly BADMINTON = ['Yes', 'No'];
+  static readonly BASKETBALL = ['Yes', 'No'];
+  static readonly CRICKET = ['Yes', 'No'];
+  static readonly FOOTBALL = ['Yes', 'No'];
+  static readonly FUTSAL = ['Yes', 'No'];
+  static readonly HOCKEY = ['Yes', 'No'];
+  static readonly NETBALL = ['Yes', 'No'];
+  static readonly SQUASH = ['Yes', 'No'];
+  static readonly TABLETENNIS = ['Yes', 'No'];
+  static readonly TENNIS = ['Yes', 'No'];
+  static readonly VOLLEYBALL = ['Yes', 'No'];
+  static readonly SWIMMING = ['Yes', 'No'];
+  static readonly GYM = ['Yes', 'No'];
 
    _id: string;
    name: string;
    images: Array<any>
+              tags: Array<any>;
               image_small: string;
               image_medium: string;
               image_big: string;
@@ -70,6 +92,7 @@ export class Producth {
               timings: string;
               veg_package: number;
               non_veg_package: number;
+              caterer: String;
               dailyRate: number;
               shared: boolean;
               wifi: string;
@@ -84,9 +107,16 @@ export class Producth {
               advance_payment: string;
               fireworks: string;
               music: string;
+              theater: string;
+              print_scan: string;
+              open_space: number;
+              sauna_spa: string;
+              party_room: string;
+              stage: string;
+              bar: string;
               lodging: string;
               createdAt: string;
-              seating: string;
+              seating: number;
               discount: number;
               ratingsCount: number;
               ratingsValue: number;
@@ -97,6 +127,20 @@ export class Producth {
               size: Array<string>;
               weight: number;
               categoryId: number;
+              badminton: string;
+              basketball: string;
+              cricket: string;
+              football: string;
+              futsal: string;
+              hockey: string;
+              netball: string;
+              squash: string;
+              table_tennis: string;
+              tennis: string;
+              volley_ball: string;
+              swimming: string;
+              gym: string;
+
 }
 
 export class Userh {

@@ -15,6 +15,7 @@ export class CreateHotelComponent implements OnInit {
   newProducth: Producth;
   producthCategories = Producth.CATEGORIES;
   producthCities = Producth.CITIES;
+  producthCateror = Producth.CATEROR;
   producthWifi = Producth.WIFI;
   producthAc = Producth.AC;
   producthRestaurant = Producth.RESTAURANT;
@@ -22,6 +23,26 @@ export class CreateHotelComponent implements OnInit {
   producthAdvancePayment = Producth.ADVANCE_PAYMENT;
   producthFireworks = Producth.FIREWORKS;
   producthMusic = Producth.MUSIC;
+  producthTheater = Producth.THEATER;
+  producthSaunaSpa = Producth.SAUNA_SPA;
+  producthPrintScan = Producth.PRINT_SCAN;
+  producthPartyRoom = Producth.PARTY_ROOM;
+  producthStage = Producth.STAGE;
+  producthBar = Producth.BAR;
+  producthLodging = Producth.LODGING;
+  producthBadminton = Producth.BADMINTON;
+  producthBasketball = Producth.BASKETBALL;
+  producthCricket = Producth.CRICKET;
+  producthFootball = Producth.FOOTBALL;
+  producthFutsal = Producth.FUTSAL;
+  producthHockey = Producth.HOCKEY;
+  producthNetball = Producth.NETBALL;
+  producthSquash = Producth.SQUASH;
+  producthTableTennis = Producth.TABLETENNIS;
+  producthTennis = Producth.TENNIS;
+  producthVolleyball= Producth.VOLLEYBALL;
+  producthSwimming = Producth.SWIMMING;
+  producthGym = Producth.GYM;
   errors: any[] = [];
 
   constructor(private appService: AppService,

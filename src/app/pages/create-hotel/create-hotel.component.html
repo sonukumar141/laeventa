@@ -3,13 +3,13 @@
     <div class="container">
 
               
-            <form #producthForm="ngForm" class="w3-container">
-                     <mat-expansion-panel>
-                                   <mat-expansion-panel-header>
-                                          <mat-panel-title>
-                                                 <h4>Name</h4>
-                                          </mat-panel-title>
-                                   </mat-expansion-panel-header>
+       <form #producthForm="ngForm" class="w3-container">
+              <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Venue Name & Category</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>
                     <p>
                     <label></label>
                     <input class="w3-input" 
@@ -18,14 +18,6 @@
                            id="name"
                            name="name"
                            [(ngModel)]="newProducth.name"></p>
-                     </mat-expansion-panel>
-                     <br>
-                     <mat-expansion-panel>
-                                   <mat-expansion-panel-header>
-                                          <mat-panel-title>
-                                                 <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon>
-                                          </mat-panel-title>
-                                   </mat-expansion-panel-header>
                      
                     <p>
                     <br>
@@ -36,9 +28,14 @@
                             <option [ngValue]="undefined" disabled selected>Select Category </option>
                         <option *ngFor="let category of producthCategories">{{category}} </option>
                      </select></p>
-                     
-                    <p>
+              </mat-expansion-panel>
                     <br>
+                    <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Address</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>
                     <label></label>
                     <select class="w3-input" 
                            id="city"
@@ -46,7 +43,7 @@
                            [(ngModel)]="newProducth.city">
                      <option [ngValue]="undefined" disabled selected>Select City </option>
                      <option *ngFor="let city of producthCities">{{city}} </option>  
-                     </select></p>
+                     </select>
                     <p>
                     <br>
                     <input class="w3-input" 
@@ -55,7 +52,6 @@
                             id="street"
                             name="street"
                             [(ngModel)]="newProducth.street"></p>
-                     </mat-expansion-panel>
                     <p>
                     <br>
                     <input class="w3-input" 
@@ -72,14 +68,20 @@
                             id="landmark"
                             name="landmark"
                             [(ngModel)]="newProducth.landmark"></p>
-                    <p>    
-                    <br>    
+                    </mat-expansion-panel>
+                    <br>
+                    <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Contact Info</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>    
                     <input class="w3-input" 
                             type="email"
                             placeholder="Email"
                             id="email"
                             name="email"
-                            [(ngModel)]="newProducth.email"></p>                    
+                            [(ngModel)]="newProducth.email">                   
                     <p>
                     <br>
                     <input class="w3-input" 
@@ -88,13 +90,19 @@
                            id="mobile"
                            name="mobile"
                            [(ngModel)]="newProducth.mobile"></p>
-                    <p>
+                    </mat-expansion-panel>
                     <br>
+                    <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Add Images</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header> 
                     <label>Upload Image 1</label>
                     <input class="w3-input" 
                            type="file"
                            id="image1"
-                           (change)="handleImage1Change()"></p>
+                           (change)="handleImage1Change()">
                     <p>
                     <br>
                     <label>Upload Image 2</label>
@@ -116,17 +124,35 @@
                            type="file"
                            id="image4"
                            (change)="handleImage4Change()"></p>
+                    </mat-expansion-panel>
+                     <br>
+                     <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Food and Restaurant</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                           id="restaurant"
+                           name="restaurant"
+                           [(ngModel)]="newProducth.restaurant">
+                     <option [ngValue]="undefined" disabled selected>Restaurant </option>
+                     <option *ngFor="let restaurant of producthRestaurant">{{restaurant}} </option>  
+                     </select>
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="caterer"
+                            name="caterer"
+                            [(ngModel)]="newProducth.caterer">
+                     <option [ngValue]="undefined" disabled selected>Catering </option>
+                     <option *ngFor="let cateror of producthCateror">{{cateror}} </option>  
+                     </select></p>
                     <p>
                     <br>
                     <input class="w3-input" 
-                           type="number"
-                           placeholder="Price per day"
-                           id="dailyRate"
-                           name="dailyRate"
-                           [(ngModel)]="newProducth.dailyRate"></p>
-                    <p>
-                    <br>
-                    <input *ngIf="newProducth.category === 'Wedding' || newProducth.category === 'Banquet'" class="w3-input" 
                            type="number"
                            placeholder="Per plate cost (veg)"
                            id="vegPackage"
@@ -140,25 +166,75 @@
                            id="nonVegPackage"
                            name="nonVegPackage"
                            [(ngModel)]="newProducth.non_veg_package"></p>
-                    <p>
-                    <br>
-                    <input class="w3-input" 
+                     </mat-expansion-panel>
+                     <br>
+                     <mat-expansion-panel>
+                                   <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                                 <h4>Pricing and Discount</h4>
+                                          </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                     <input class="w3-input" 
                            type="number"
-                           placeholder="Max guests allowed"
+                           placeholder="Price per day"
+                           id="dailyRate"
+                           name="dailyRate"
+                           [(ngModel)]="newProducth.dailyRate">
+                     <br>
+                     <p>
+                     <input class="w3-input" 
+                            type="number"
+                            placeholder="Discount %"
+                            id="discount"
+                            name="discount"
+                            [(ngModel)]="newProducth.discount"></p>
+                     </mat-expansion-panel>
+                     <br>
+                     <mat-expansion-panel>
+                                   <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                                 <h4>Capacity</h4>
+                                          </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                     <input class="w3-input" 
+                           type="number"
+                           placeholder="Max guests Capacity"
                            id="guests"
                            name="guests"
-                           [(ngModel)]="newProducth.guests"></p>
-                    <p>
-                    <br>
-                    <input class="w3-input" 
+                           [(ngModel)]="newProducth.guests">
+                     <p>
+                     <br>
+                     <input class="w3-input" 
                            type="number"
                            placeholder="Max Seating Capacity"
                            id="seating"
                            name="seating"
                            [(ngModel)]="newProducth.seating"></p>
-                    <p>
+                     <p>
+                     <br>
+                     <input class="w3-input" 
+                           type="number"
+                           placeholder="Open space Capacity"
+                           id="open_space"
+                           name="open_space"
+                           [(ngModel)]="newProducth.open_space"></p>
+                     </mat-expansion-panel>
                     <br>
-                    <label></label>
+                    <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Extra Facilities</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>
+                     <select class="w3-input" 
+                                   id="parking"
+                                   name="parking"
+                                   [(ngModel)]="newProducth.parking">
+                     <option [ngValue]="undefined" disabled selected>Parking </option>
+                     <option *ngFor="let parking of producthParking">{{parking}} </option>  
+                     </select>
+                     <p>
+                     <br>
                     <select class="w3-input" 
                            id="ac"
                            name="ac"
@@ -167,103 +243,289 @@
                      <option *ngFor="let ac of producthAc">{{ac}} </option>  
                      </select></p>
                      <p>
-                    <br>
-                    <label></label>
-                    <select class="w3-input" 
-                           id="wifi"
-                           name="wifi"
-                           [(ngModel)]="newProducth.wifi">
+                     <br>
+                     <select class="w3-input" 
+                            id="wifi"
+                            name="wifi"
+                            [(ngModel)]="newProducth.wifi">
                      <option [ngValue]="undefined" disabled selected>Wifi </option>
                      <option *ngFor="let wifi of producthWifi">{{wifi}} </option>  
                      </select></p>
-                    <p>
-                    <br>
-                    <input class="w3-input" 
-                           type="text"
-                           placeholder="Timings"
-                           id="timings"
-                           name="timings"
-                           [(ngModel)]="newProducth.timings"></p>
-                    <p>
-                    <br>
-                    <input class="w3-input" 
-                           type="text"
-                           placeholder="Parking"
-                           id="parking"
-                           name="parking"
-                           [(ngModel)]="newProducth.parking"></p>
-                    <p>
-                    <br>
-                    <label></label>
-                    <select class="w3-input" 
-                           id="restaurant"
-                           name="restaurant"
-                           [(ngModel)]="newProducth.restaurant">
-                     <option [ngValue]="undefined" disabled selected>Restaurant Available? </option>
-                     <option *ngFor="let restaurant of producthRestaurant">{{restaurant}} </option>  
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="saunaspa"
+                            name="saunaspa"
+                            [(ngModel)]="newProducth.sauna_spa">
+                     <option [ngValue]="undefined" disabled selected>Sauna & Spa </option>
+                     <option *ngFor="let saunaspa of producthSaunaSpa">{{saunaspa}} </option>  
                      </select></p>
-                    <p>
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="printscan"
+                            name="printscan"
+                            [(ngModel)]="newProducth.print_scan">
+                     <option [ngValue]="undefined" disabled selected>Print & Scan </option>
+                     <option *ngFor="let printscan of producthPrintScan">{{printscan}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="partyroom"
+                            name="partyroom"
+                            [(ngModel)]="newProducth.party_room">
+                     <option [ngValue]="undefined" disabled selected>Party Room </option>
+                     <option *ngFor="let partyroom of producthPartyRoom">{{partyroom}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="theater"
+                            name="theater"
+                            [(ngModel)]="newProducth.theater">
+                     <option [ngValue]="undefined" disabled selected>Theater </option>
+                     <option *ngFor="let theater of producthTheater">{{theater}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="stage"
+                            name="stage"
+                            [(ngModel)]="newProducth.stage">
+                     <option [ngValue]="undefined" disabled selected>Stage </option>
+                     <option *ngFor="let stage of producthStage">{{stage}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="bar"
+                            name="bar"
+                            [(ngModel)]="newProducth.bar">
+                     <option [ngValue]="undefined" disabled selected>Bar </option>
+                     <option *ngFor="let bar of producthBar">{{bar}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="lodging"
+                            name="lodging"
+                            [(ngModel)]="newProducth.lodging">
+                     <option [ngValue]="undefined" disabled selected>Lodging </option>
+                     <option *ngFor="let lodging of producthLodging">{{lodging}} </option>  
+                     </select></p>
+                     </mat-expansion-panel>
                     <br>
-                    <input class="w3-input" 
-                           type="text"
-                           placeholder="USP"
-                           id="usp1"
-                           name="usp1"
-                           [(ngModel)]="newProducth.usp1"></p>
-                    <p>
-                    <br>
-                    <input class="w3-input" 
-                           type="text"
-                           placeholder="USP"
-                           id="usp2"
-                           name="usp2"
-                           [(ngModel)]="newProducth.usp2"></p>
-                    <p>
-                    <br>
-                    <input class="w3-input" 
+                    <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Policies</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>
+                     <input class="w3-input" 
                             type="text"
-                            placeholder="USP"
-                            id="usp3"
-                            name="usp3"
-                            [(ngModel)]="newProducth.usp3"></p>
-                    <p>
-                    <br>
-                    <input class="w3-input" 
-                           type="number"
-                           placeholder="Discount %"
-                           id="discount"
-                           name="discount"
-                           [(ngModel)]="newProducth.discount"></p>
-                    <p>
-                    <br>
-                    <label></label>
-                    <select class="w3-input" 
-                           id="fireworks"
-                           name="fireworks"
-                           [(ngModel)]="newProducth.fireworks">
+                            placeholder="Timings"
+                            id="timings"
+                            name="timings"
+                            [(ngModel)]="newProducth.timings">
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="fireworks"
+                            name="fireworks"
+                            [(ngModel)]="newProducth.fireworks">
                      <option [ngValue]="undefined" disabled selected>Fireworks Allowed </option>
                      <option *ngFor="let fireworks of producthFireworks">{{fireworks}} </option>  
                      </select></p>
-                    <p>
-                    <br>
-                    <label></label>
-                    <select class="w3-input" 
-                           id="music"
-                           name="music"
-                           [(ngModel)]="newProducth.music">
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="music"
+                            name="music"
+                            [(ngModel)]="newProducth.music">
                      <option [ngValue]="undefined" disabled selected>Music Allowed </option>
                      <option *ngFor="let music of producthMusic">{{music}} </option>  
                      </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="advance_payment"
+                            name="advance_payment"
+                            [(ngModel)]="newProducth.advance_payment">
+                     <option [ngValue]="undefined" disabled selected>Advance Payment </option>
+                     <option *ngFor="let advance_payment of producthAdvancePayment">{{advance_payment}} </option>  
+                     </select></p>
+                     </mat-expansion-panel>
+                    <br>
+                    <mat-expansion-panel *ngIf="newProducth.category === 'Sports'">
+                                   <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                                 <h4>Add Sports </h4>
+                                          </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="badminton"
+                           name="badminton"
+                           [(ngModel)]="newProducth.badminton">
+                     <option [ngValue]="undefined" disabled selected>Badminton </option>
+                     <option *ngFor="let badminton of producthBadminton">{{badminton}} </option>  
+                     </select>
                     <p>
                     <br>
                     <label></label>
                     <select class="w3-input" 
-                           id="advance_payment"
-                           name="advance_payment"
-                           [(ngModel)]="newProducth.advance_payment">
-                     <option [ngValue]="undefined" disabled selected>Advance Payment </option>
-                     <option *ngFor="let advance_payment of producthAdvancePayment">{{advance_payment}} </option>  
+                           id="basketball"
+                           name="basketball"
+                           [(ngModel)]="newProducth.basketball">
+                     <option [ngValue]="undefined" disabled selected>Basket Ball </option>
+                     <option *ngFor="let basketball of producthBasketball">{{basketball}} </option>  
                      </select></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="cricket"
+                           name="cricket"
+                           [(ngModel)]="newProducth.cricket">
+                     <option [ngValue]="undefined" disabled selected>Cricket </option>
+                     <option *ngFor="let cricket of producthCricket">{{cricket}} </option>  
+                     </select></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="football"
+                           name="football"
+                           [(ngModel)]="newProducth.football">
+                     <option [ngValue]="undefined" disabled selected>Football </option>
+                     <option *ngFor="let football of producthFootball">{{football}} </option>  
+                     </select></p>
+                    <p>
+                    <br>
+                    <label></label>
+                    <select class="w3-input" 
+                           id="futsal"
+                           name="futsal"
+                           [(ngModel)]="newProducth.futsal">
+                     <option [ngValue]="undefined" disabled selected>Futsal </option>
+                     <option *ngFor="let futsal of producthFutsal">{{futsal}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                           id="hockey"
+                           name="hockey"
+                           [(ngModel)]="newProducth.hockey">
+                     <option [ngValue]="undefined" disabled selected>Hockey </option>
+                     <option *ngFor="let hockey of producthHockey">{{hockey}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                           id="netball"
+                           name="netball"
+                           [(ngModel)]="newProducth.netball">
+                     <option [ngValue]="undefined" disabled selected>Netball </option>
+                     <option *ngFor="let netball of producthNetball">{{netball}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="squash"
+                            name="squash"
+                            [(ngModel)]="newProducth.squash">
+                     <option [ngValue]="undefined" disabled selected>Squash </option>
+                     <option *ngFor="let squash of producthSquash">{{squash}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="tabletennis"
+                            name="tabletennis"
+                            [(ngModel)]="newProducth.table_tennis">
+                     <option [ngValue]="undefined" disabled selected>Table Tennis </option>
+                     <option *ngFor="let tabletennis of producthTableTennis">{{tabletennis}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="tennis"
+                            name="tennis"
+                            [(ngModel)]="newProducth.tennis">
+                     <option [ngValue]="undefined" disabled selected>Tennis </option>
+                     <option *ngFor="let tennis of producthTennis">{{tennis}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="volleyball"
+                            name="volleyball"
+                            [(ngModel)]="newProducth.volley_ball">
+                     <option [ngValue]="undefined" disabled selected>Volley Ball </option>
+                     <option *ngFor="let volleyball of producthVolleyball">{{volleyball}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="swimming"
+                            name="swimming"
+                            [(ngModel)]="newProducth.swimming">
+                     <option [ngValue]="undefined" disabled selected>Swimming </option>
+                     <option *ngFor="let swimming of producthSwimming">{{swimming}} </option>  
+                     </select></p>
+                     <p>
+                     <br>
+                     <label></label>
+                     <select class="w3-input" 
+                            id="gym"
+                            name="gym"
+                            [(ngModel)]="newProducth.gym">
+                     <option [ngValue]="undefined" disabled selected>Gym </option>
+                     <option *ngFor="let gym of producthGym">{{gym}} </option>  
+                     </select></p>
+                     </mat-expansion-panel>
+                     <br>
+                     <mat-expansion-panel *ngIf="newProducth.category === 'Sports'">
+                                   <mat-expansion-panel-header>
+                                          <mat-panel-title>
+                                                 <h4>Other USP </h4>
+                                          </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                     <input class="w3-input" 
+                            type="text"
+                            placeholder="USP"
+                            id="usp1"
+                            name="usp1"
+                            [(ngModel)]="newProducth.usp1">
+                     <p>
+                     <br>
+                     <input class="w3-input" 
+                            type="text"
+                            placeholder="USP"
+                            id="usp2"
+                            name="usp2"
+                            [(ngModel)]="newProducth.usp2"></p>
+                     <p>
+                     <br>
+                     <input class="w3-input" 
+                                   type="text"
+                                   placeholder="USP"
+                                   id="usp3"
+                                   name="usp3"
+                                   [(ngModel)]="newProducth.usp3"></p>
+                     </mat-expansion-panel>
                     <p>
                     <br>
                     <textarea rows="5"

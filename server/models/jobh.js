@@ -3,10 +3,8 @@ const Schema = mongoose.Schema;
 
 const jobhSchema = new Schema({
         name: { type: String, required: true, max: [128, 'Too long, max is 128 characters']},
-        images: {type: [
-                'Mixed'
-            ]
-        },
+        images: {type: ['Mixed']},
+        tags: {type: ['Mixed']},
         image_small: String,
         image_medium: String,
         image_big: String,
@@ -23,6 +21,7 @@ const jobhSchema = new Schema({
         timings: String,
         veg_package: Number,
         non_veg_package: Number,
+        caterer: String,
         dailyRate: Number,
         shared: Boolean,
         wifi: String,
@@ -37,14 +36,33 @@ const jobhSchema = new Schema({
         advance_payment: String,
         fireworks: String,
         music: String,
+        theater: String,
+        print_scan: String,
+        open_space: Number,
+        sauna_spa: String,
+        party_room: String,
+        stage: String,
+        bar: String,        
         lodging: String,
-        seating_hall: String,
-        seating_lawn: String,
+        seating: Number,
         createdAt: { type: Date, default: Date.now },
         discount: Number,
         description: { type: String, required: true },
         categoryId: Number,
-        userh: {type: Schema.Types.ObjectId, ref: 'Userh'}
+        userh: {type: Schema.Types.ObjectId, ref: 'Userh'},
+        badminton: String,
+        basketball: String,
+        cricket: String,
+        football: String,
+        futsal: String,
+        hockey: String,
+        netball: String,
+        squash: String,
+        table_tennis: String,
+        tennis: String,
+        volley_ball: String,
+        swimming: String,
+        gym: String
 });
 
 module.exports = mongoose.model('Jobh', jobhSchema);
