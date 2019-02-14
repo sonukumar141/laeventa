@@ -75,7 +75,7 @@
     <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
         <img src="assets/images/icons/price.png" alt="price img">
         <div class="content">
-            <p><b style="font-size:20px; margin-left: 10px;">{{ producth?.dailyRate }}</b></p>
+            <p><b style="font-size:20px; margin-left: 10px;">Avg Price: {{ producth?.dailyRate }} /Day</b></p>
         </div> 
     </mat-card>
 
@@ -280,6 +280,19 @@
                                 </div> 
                             </mat-card>
                             SAUNA/SPA
+                        </div> 
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <strong>USP</strong>
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <div class="content">
+                                    <ul> 
+                                       <li><b style="font-size:15px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
+                                       <li> <b style="font-size:15px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
+                                    </ul>
+                                </div> 
+                            </mat-card>
                         </div> 
                     </div>
                 </mat-tab>
