@@ -154,7 +154,7 @@
                     </div> 
                 </mat-card>
             </div>
-            <div fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+            <div *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding' || producth?.category === 'banquet'" fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                     <img src="assets/images/icons/veg.png" alt="veg per plate">
                     <div class="content">
@@ -162,7 +162,7 @@
                     </div> 
                 </mat-card>
             </div>
-            <div fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+            <div *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding' || producth?.category === 'banquet'" fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                     <img src="assets/images/icons/non-veg.png" alt="veg per plate">
                     <div class="content">
@@ -187,7 +187,7 @@
     <div fxFlex="100" fxFlex.gt-md="78" fxFlex.md="74">
         <mat-card> 
             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
-                <mat-tab label="Details">
+                <mat-tab *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding'" label="Details">
                     <div class="full-desc lh">
                         <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
                             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
@@ -288,8 +288,262 @@
                             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                 <div class="content">
                                     <ul> 
-                                       <li><b style="font-size:15px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
-                                       <li> <b style="font-size:15px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
+                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
+                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
+                                    </ul>
+                                </div> 
+                            </mat-card>
+                        </div> 
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <strong>POLICIES</strong>
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <div class="content">
+                                    <ul> 
+                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
+                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
+                                    </ul>
+                                </div> 
+                            </mat-card>
+                        </div> 
+                    </div>
+                </mat-tab>
+                <mat-tab *ngIf="producth?.category === 'sports'" label="Details">
+                    <div class="full-desc lh">
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/cricket.png" alt="cricket img">
+                                <div class="content">
+                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.cricket | ucwords}}</b></p>
+                                </div> 
+                            </mat-card>
+                            CRICKET
+                        </div>
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/football.png" alt="football img">
+                                <div class="content">
+                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.football | ucwords}}</b></p>
+                                </div> 
+                            </mat-card>
+                            FOOTBALL
+                        </div>
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/futsal.png" alt="futsal img">
+                                <div class="content">
+                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.futsal | ucwords}}</b></p>
+                                </div> 
+                            </mat-card>
+                            FUTSAL
+                        </div>
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/netball.png" alt="bar img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.netball | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            NETBALL
+                        </div>
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/badminton.png" alt="badminton img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.badminton | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            BADMINTON
+                        </div> 
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/basketball.png" alt="basketball img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.basketball | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            BASKET BALL
+                        </div> 
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/volleyball.png" alt="volley ball img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.volley_ball | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            VOLLEY BALL
+                        </div> 
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/tennis.png" alt="tennis img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.tennis | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            TENNIS
+                        </div> 
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/table_tennis.png" alt="table tennis img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.table_tennis | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            TABLE TENNIS
+                        </div> 
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/squash.png" alt="squash img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.squash | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            SQUASH
+                        </div> 
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/swimming.png" alt="swimming img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.swimming | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            SWIMMING
+                        </div> 
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/gym.png" alt="gym img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.gym | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            GYM
+                        </div> 
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <strong>USP</strong>
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <div class="content">
+                                    <ul> 
+                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
+                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
+                                    </ul>
+                                </div> 
+                            </mat-card>
+                        </div> 
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <strong>POLICIES</strong>
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <div class="content">
+                                    <ul> 
+                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
+                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
+                                    </ul>
+                                </div> 
+                            </mat-card>
+                        </div> 
+                    </div>
+                </mat-tab>
+                <mat-tab *ngIf="producth?.category === 'conference' || producth?.category === 'meeting'" label="Details">
+                    <div class="full-desc lh">
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/wifi.png" alt="wifi img">
+                                <div class="content">
+                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.wifi | ucwords}}</b></p>
+                                </div> 
+                            </mat-card>
+                            WIFI
+                        </div>
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/restaurant.png" alt="restaurant img">
+                                <div class="content">
+                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.restaurant | ucwords}}</b></p>
+                                </div> 
+                            </mat-card>
+                            RESTAURANT
+                        </div>
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/print_scan.png" alt="print scan img">
+                                <div class="content">
+                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.print_scan | ucwords}}</b></p>
+                                </div> 
+                            </mat-card>
+                            PRINT/SCAN
+                        </div>
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <img src="assets/images/icons/parking.png" alt="parking img">
+                                <div class="content">
+                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.parking | ucwords }}</b></p>
+                                </div> 
+                            </mat-card>
+                            PARKING
+                        </div>
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <strong>USP</strong>
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <div class="content">
+                                    <ul> 
+                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
+                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
+                                    </ul>
+                                </div> 
+                            </mat-card>
+                        </div> 
+                    </div>
+                    <div class="full-desc lh">
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
+                            <strong>POLICIES</strong>
+                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <div class="content">
+                                    <ul> 
+                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
+                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
                                     </ul>
                                 </div> 
                             </mat-card>
@@ -298,30 +552,44 @@
                 </mat-tab>
                 <mat-tab label="Contact Info">
                     <div class="full-desc lh">
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <ul class="px-2 mt-1">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                            <li>Donec et elit at nulla congue interdum sit amet varius erat.</li>
-                            <li>Nulla sit amet risus pellentesque, dignissim massa ut, dignissim arcu.</li>
-                            <li>Morbi dapibus ligula at faucibus tempus. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                            <li>Nunc sodales justo ut nisi euismod, quis condimentum leo varius.</li>
-                        </ul>
-                        <ul class="px-2 mt-1">
-                            <li>Phasellus eu justo dictum, varius eros ut, posuere sapien.</li>
-                            <li>Nulla eu erat sit amet enim lobortis rhoncus.</li>
-                            <li>Etiam eu mauris in massa convallis ornare non id ex.</li>
-                            <li>Nam sagittis augue at pretium pharetra.</li>
-                            <li>Sed a sem id massa egestas porta a sit amet felis.</li>
-                            <li>Duis aliquam urna in sapien cursus consequat. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                        </ul>
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Address</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Email</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.email}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
+                            <div class="outer">
+                                <div class="inner"></div>
+                            </div>
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Landmark</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.landmark}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Contact</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.phone}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
                     </div>
                 </mat-tab>
                     <mat-tab label="Map">
                     <div class="full-desc lh">
-                        <p>Map location of </p>
                         <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
-                        
                     </div>
                 </mat-tab>
                 <mat-tab label="Reviews">
@@ -405,12 +673,6 @@
         <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%202" alt="" class="mw-100 d-block mt-3">
         <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%203" alt="" class="mw-100 d-block mt-3">
     </div>
-</div>
-
-<div class="py-2 mt-2">
-    <h2>Related Products</h2>
-    <div class="divider"></div>
-    <app-products-carousel [products]="relatedProducts"></app-products-carousel>
 </div>
 
 

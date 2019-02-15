@@ -4,32 +4,31 @@
 
               
        <form #producthForm="ngForm" class="w3-container">
-              <mat-expansion-panel>
+                     <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                    <mat-panel-title>
                                           <h4>Venue Name & Category</h4>
                                    </mat-panel-title>
                             </mat-expansion-panel-header>
-                    <p>
-                    <label></label>
-                    <input class="w3-input" 
-                           type="text"
-                           placeholder="Venue Name"
-                           id="name"
-                           name="name"
-                           [(ngModel)]="newProducth.name"></p>
-                     
-                    <p>
-                    <br>
-                    <select class="w3-input"
-                            id="category"
-                            name="category"
-                            [(ngModel)]="newProducth.category">
-                            <option [ngValue]="undefined" disabled selected>Select Category </option>
-                        <option *ngFor="let category of producthCategories">{{category}} </option>
-                     </select></p>
-              </mat-expansion-panel>
-                    <br>
+                     <p>
+                     <label></label>
+                     <input class="w3-input" 
+                            type="text"
+                            placeholder="Venue Name"
+                            id="name"
+                            name="name"
+                            [(ngModel)]="newProducth.name"></p>
+                     <p>
+                     <br>
+                     <select class="w3-input"
+                                   id="category"
+                                   name="category"
+                                   [(ngModel)]="newProducth.category">
+                                   <option [ngValue]="undefined" disabled selected>Select Category </option>
+                            <option *ngFor="let category of producthCategories">{{category}} </option>
+                            </select></p>
+                     </mat-expansion-panel>
+                     <br>
                     <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                    <mat-panel-title>
@@ -133,8 +132,12 @@
                                    </mat-panel-title>
                             </mat-expansion-panel-header>
                      <br>
-                     <label></label>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                    newProducth.category === 'Banquet' ||
+                                    newProducth.category === 'Hotel' ||
+                                    newProducth.category === 'Meeting' ||
+                                    newProducth.category === 'Conference'"
+                           class="w3-input" 
                            id="restaurant"
                            name="restaurant"
                            [(ngModel)]="newProducth.restaurant">
@@ -143,7 +146,10 @@
                      </select>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                            class="w3-input" 
                             id="caterer"
                             name="caterer"
                             [(ngModel)]="newProducth.caterer">
@@ -152,7 +158,10 @@
                      </select></p>
                     <p>
                     <br>
-                    <input class="w3-input" 
+                    <input *ngIf="newProducth.category === 'Wedding' || 
+                                  newProducth.category === 'Banquet' ||
+                                  newProducth.category === 'Hotel'"
+                           class="w3-input" 
                            type="number"
                            placeholder="Per plate cost (veg)"
                            id="vegPackage"
@@ -160,7 +169,10 @@
                            [(ngModel)]="newProducth.veg_package"></p>
                     <p>
                     <br>
-                    <input class="w3-input" 
+                    <input *ngIf="newProducth.category === 'Wedding' || 
+                                  newProducth.category === 'Banquet' ||
+                                  newProducth.category === 'Hotel'"
+                           class="w3-input" 
                            type="number"
                            placeholder="Per plate cost (Non-veg)"
                            id="nonVegPackage"
@@ -212,7 +224,10 @@
                            [(ngModel)]="newProducth.seating"></p>
                      <p>
                      <br>
-                     <input class="w3-input" 
+                     <input *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                           class="w3-input" 
                            type="number"
                            placeholder="Open space Capacity"
                            id="open_space"
@@ -235,7 +250,10 @@
                      </select>
                      <p>
                      <br>
-                    <select class="w3-input" 
+                    <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                           class="w3-input" 
                            id="ac"
                            name="ac"
                            [(ngModel)]="newProducth.ac">
@@ -244,7 +262,12 @@
                      </select></p>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel' ||
+                                   newProducth.category === 'Meeting' ||
+                                   newProducth.category === 'Conference'"
+                            class="w3-input" 
                             id="wifi"
                             name="wifi"
                             [(ngModel)]="newProducth.wifi">
@@ -253,8 +276,10 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                            class="w3-input" 
                             id="saunaspa"
                             name="saunaspa"
                             [(ngModel)]="newProducth.sauna_spa">
@@ -263,7 +288,12 @@
                      </select></p>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel' ||
+                                   newProducth.category === 'Meeting' ||
+                                   newProducth.category === 'Conference'"
+                            class="w3-input" 
                             id="printscan"
                             name="printscan"
                             [(ngModel)]="newProducth.print_scan">
@@ -272,7 +302,10 @@
                      </select></p>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                            class="w3-input" 
                             id="partyroom"
                             name="partyroom"
                             [(ngModel)]="newProducth.party_room">
@@ -281,7 +314,10 @@
                      </select></p>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                            class="w3-input" 
                             id="theater"
                             name="theater"
                             [(ngModel)]="newProducth.theater">
@@ -290,7 +326,10 @@
                      </select></p>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                            class="w3-input" 
                             id="stage"
                             name="stage"
                             [(ngModel)]="newProducth.stage">
@@ -299,7 +338,10 @@
                      </select></p>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                            class="w3-input" 
                             id="bar"
                             name="bar"
                             [(ngModel)]="newProducth.bar">
@@ -308,7 +350,10 @@
                      </select></p>
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select *ngIf="newProducth.category === 'Wedding' || 
+                                   newProducth.category === 'Banquet' ||
+                                   newProducth.category === 'Hotel'"
+                            class="w3-input" 
                             id="lodging"
                             name="lodging"
                             [(ngModel)]="newProducth.lodging">
@@ -417,7 +462,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                            id="hockey"
                            name="hockey"
@@ -427,7 +471,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                            id="netball"
                            name="netball"
@@ -437,7 +480,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                             id="squash"
                             name="squash"
@@ -447,7 +489,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                             id="tabletennis"
                             name="tabletennis"
@@ -457,7 +498,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                             id="tennis"
                             name="tennis"
@@ -467,7 +507,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                             id="volleyball"
                             name="volleyball"
@@ -477,7 +516,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                             id="swimming"
                             name="swimming"
@@ -487,7 +525,6 @@
                      </select></p>
                      <p>
                      <br>
-                     <label></label>
                      <select class="w3-input" 
                             id="gym"
                             name="gym"
