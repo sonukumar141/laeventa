@@ -188,7 +188,7 @@
                                    </mat-expansion-panel-header>
                      <input class="w3-input" 
                            type="number"
-                           placeholder="Price per day"
+                           placeholder="Average Price per day"
                            id="dailyRate"
                            name="dailyRate"
                            [(ngModel)]="newProducth.dailyRate">
@@ -261,7 +261,7 @@
                      <option *ngFor="let ac of producthAc">{{ac}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel' ||
@@ -275,7 +275,7 @@
                      <option *ngFor="let wifi of producthWifi">{{wifi}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel'"
@@ -287,7 +287,7 @@
                      <option *ngFor="let saunaspa of producthSaunaSpa">{{saunaspa}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel' ||
@@ -301,7 +301,7 @@
                      <option *ngFor="let printscan of producthPrintScan">{{printscan}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel'"
@@ -313,7 +313,7 @@
                      <option *ngFor="let partyroom of producthPartyRoom">{{partyroom}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel'"
@@ -325,7 +325,7 @@
                      <option *ngFor="let theater of producthTheater">{{theater}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel'"
@@ -337,7 +337,7 @@
                      <option *ngFor="let stage of producthStage">{{stage}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel'"
@@ -349,7 +349,7 @@
                      <option *ngFor="let bar of producthBar">{{bar}} </option>  
                      </select></p>
                      <p>
-                     <br>
+                     <br *ngIf="newProducth.category !== 'Sports'">
                      <select *ngIf="newProducth.category === 'Wedding' || 
                                    newProducth.category === 'Banquet' ||
                                    newProducth.category === 'Hotel'"
