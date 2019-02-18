@@ -17,6 +17,17 @@ router.get('/secret', UserCtrlh.authMiddleware, function(req, res){
 //     });
 // });
 
+router.get('/manage', UserCtrlh.authMiddleware, function(req, res){
+    const userh = res.locals.userh;
+    Jobh.where({userh})
+        .exec(function(err, foundJobsh){
+            if(err){
+                return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
+
+            return res.json(foundJobsh);
+        });
+});
 
 router.get('', function(req, res){
     const city = req.query.city;
@@ -84,6 +95,7 @@ router.get('/:id', function(req, res){
         res.json(foundJobsh);
     });
 });
+
 
 router.delete('/:id', UserCtrlh.authMiddleware, function(req, res){
     const userh = res.locals.userh;
