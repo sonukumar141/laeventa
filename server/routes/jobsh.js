@@ -29,6 +29,17 @@ router.get('/manage', UserCtrlh.authMiddleware, function(req, res){
         });
 });
 
+router.get('/:id', function(req, res){
+    const jobhId = req.params.id;
+
+    Jobh.findById(jobhId, function(err, foundJobsh){
+        if(err){
+            return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+        }
+        res.json(foundJobsh);
+    });
+});
+
 router.get('', function(req, res){
     const city = req.query.city;
     
@@ -84,18 +95,6 @@ router.get('/category', function(req, res){
     //return res.json({category});
     
 });
-
-router.get('/:id', function(req, res){
-    const jobhId = req.params.id;
-
-    Jobh.findById(jobhId, function(err, foundJobsh){
-        if(err){
-            return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
-        }
-        res.json(foundJobsh);
-    });
-});
-
 
 router.delete('/:id', UserCtrlh.authMiddleware, function(req, res){
     const userh = res.locals.userh;
