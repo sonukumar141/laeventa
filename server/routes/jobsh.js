@@ -85,6 +85,29 @@ router.get('/:id', function(req, res){
     });
 });
 
+router.delete('/:id', UserCtrlh.authMiddleware, function(req, res){
+    const userh = res.locals.userh;
+    Jobh.findById(req.params.id)
+        .populate('userh', '_id')
+        .exec(function(err, foundJobh){
+            if(err){
+                return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
+
+            if(userh.id !== foundJobh.userh.id){
+                return res.status(422).send({errors: [{title: 'Invalid User', detail: 'You are not allowed to delete'}]});
+            }
+
+            foundJobh.remove(function(err){
+                if(err){
+                    return res.status(422).send({errors: normalizeErrors(err.errors)});
+                }
+
+                return res.json({'status': 'deleted'});
+            });
+        });
+});
+
 router.get('/search', function(req, res){
     if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi ');
