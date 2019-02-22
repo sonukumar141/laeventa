@@ -1,1 +1,54 @@
-<h1>This is manage component</h1>
+<div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
+    <ng-container *ngIf="productsh.length > 0">
+        <div *ngFor="let product of productsh; let i = index">
+                <mat-card class="product-item">
+                        <div fxLayout="row wrap">
+                                <div fxFlex="100" fxFlex.gt-xs="40" class="p-2">
+                                    <p><strong>Business Name:</strong> </p>
+                                    <br>
+                                    <p><strong>City:</strong> </p>
+                                    <br>
+                                    <p><strong>Update Venue: </strong></p>
+                                    <br>
+                                    <p><strong>Delete Venue: </strong></p>
+                                </div>
+                                <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">                                                                                                     
+                                    <a [routerLink]="['/productsh', product._id, product.name]" class="title">
+                                        {{product.name | ucwords}}
+                                    </a>
+                                    <p class="py-1 text-muted lh">{{product.city | ucwords}}</p>
+                                    <a class="btn btn-warning btn-edit" routerLink="">Update Venue</a>
+                                    <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
+                                        <div fxLayout="column" fxLayoutAlign="center start">
+
+                                        </div>
+                                    </div>                            
+                                    <div class="divider"></div>
+                                    <p>Created At: {{product.createdAt}}</p>
+
+                                                <button (click)="producthDeleteIndex = i"
+                                                        *ngIf="producthDeleteIndex !== i"
+                                                        type="button" 
+                                                        class="">Delete</button>
+                                                <div *ngIf="producthDeleteIndex === i">
+                                                    clicked
+                                                <p class="confirm-message">Do you confirm delete?</p> 
+                                                    <button (click)="deleteProducth(product._id)"
+                                                            class="btn btn-success">Yes</button>
+                                                    <button (click)="producthDeleteIndex = undefined"
+                                                            class="btn btn-danger">No</button>
+                                                </div>
+                                </div>
+                                <div *ngIf="productsh && productsh.length === 0" class="col-md-8">
+                                        <div class="alert alert-warning">
+                                          You dont have any venues currenty created. If you want advertised your business, 
+                                          please follow this link.
+                                          <a class="btn btn-bwm" routerLink="/venues/new">List your business</a>
+                                        </div>
+                                </div>
+                            </div>
+                </mat-card>
+                <br>
+        </div>
+    </ng-container>
+</div>

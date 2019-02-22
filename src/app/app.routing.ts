@@ -29,7 +29,7 @@ export const routes: Routes = [
             { path: 'reset', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordModule', data: { breadcrumb: 'Password Reset' } },
             { path: 'h/:category', loadChildren: './pages/products/hotel-search-by-category/hotel-search-by-category.module#HotelSearchByCategoryModule', data: { breadcrumb: 'Category' } },
             { path: 'dashboard/h', loadChildren: './pages/dashboard/hotel-dashboard/hotel-dashboard.module#HotelDashboardModule', data: { breadcrumb: 'Dashboard' } },
-            { path: 'manage', loadChildren: './pages/manage/manage.module#ManageModule', data: {breadcrumb: 'Manage'} },
+            { path: 'manage/venues', loadChildren: './pages/manage/manage.module#ManageModule', data: {breadcrumb: 'Manage'} },
         ]
     },
     //{ path: 'auth', component: SignInComponent}

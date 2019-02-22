@@ -26,6 +26,14 @@ export class AppService {
     )
     public url = "assets/data/";
     constructor(public http:HttpClient, public snackBar: MatSnackBar) { }
+
+    public getOwnerVenues(): Observable<any> {
+        return this.http.get('/api/v1/productsh/manage');
+    }
+
+    public deleteOwnerVenue(productId: string): Observable<any> {
+        return this.http.delete('/api/v1/productsh/' + productId);
+    }
     
     public getCategories(): Observable<Category[]>{
         return this.http.get<Category[]>(this.url + 'categories.json');
