@@ -96,6 +96,32 @@ router.get('/category', function(req, res){
     
 });
 
+router.patch('/:id', UserCtrlh.authMiddleware, function(req, res){
+    const jobhData = req.body;
+    const userh = res.locals.userh;
+
+    Jobh.findById(req.params.id)
+        .populate('userh')
+        .exec(function(err, foundJobh){
+            if(err){
+                return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
+
+            if(foundJobh.userh.id !== userh.id){
+                return res.status(422).send({errors: [{title: 'Invalid User', detail: 'You are not allowed to update'}]});
+            }
+
+            foundJobh.set(jobhData);
+            foundJobh.save(function(err){
+                if(err){
+                    return res.status(422).send({errors: normalizeErrors(err.errors)});
+                }
+
+                return res.status(200).send(foundJobh);
+            })
+        });
+});
+
 router.delete('/:id', UserCtrlh.authMiddleware, function(req, res){
     const userh = res.locals.userh;
     Jobh.findById(req.params.id)
