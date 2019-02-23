@@ -30,7 +30,7 @@ export const routes: Routes = [
             { path: 'h/:category', loadChildren: './pages/products/hotel-search-by-category/hotel-search-by-category.module#HotelSearchByCategoryModule', data: { breadcrumb: 'Category' } },
             { path: 'dashboard/h', loadChildren: './pages/dashboard/hotel-dashboard/hotel-dashboard.module#HotelDashboardModule', data: { breadcrumb: 'Dashboard' } },
             { path: 'manage/venues', loadChildren: './pages/manage/manage.module#ManageModule', data: {breadcrumb: 'Manage'} },
-            { path: 'update/venues', loadChildren: './pages/update/update-venue/product-venue-update.module#ProductVenueUpdateModule', data: {breadcrumb: 'Update'} },
+            { path: '', loadChildren: './pages/update/update-venue/product-venue-update.module#ProductVenueUpdateModule', data: {breadcrumb: 'Update'} },
         ]
     },
     //{ path: 'auth', component: SignInComponent}

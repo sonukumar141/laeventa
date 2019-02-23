@@ -78,7 +78,7 @@ export class ProductVenueUpdateComponent implements OnInit {
   public getProducthById(_id){
     this.appService.getProducthById(_id).subscribe(data=>{
       this.producth = data;
-      this.image = data.image_medium;
+      this.image = data.image_big;
       this.zoomImage = data.image_big;
       setTimeout(() => { 
         this.config.observer = true;
@@ -135,5 +135,10 @@ export class ProductVenueUpdateComponent implements OnInit {
     if (this.form.valid) {
       //email sent
     }
+  }
+
+  public updateVenue(value){
+    console.log(value);
+    alert('Update Venue');
   }
 }

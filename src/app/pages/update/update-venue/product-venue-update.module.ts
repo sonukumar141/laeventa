@@ -11,10 +11,11 @@ import { NgPipesModule } from 'ngx-pipes';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { MapModule } from '../../../theme/components/map/map.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditableModule } from '../../editable/editable.module';
 
 export const routes = [	
 
-  {path: '', component: ProductVenueUpdateComponent, canActivate: [AuthGuard] }			
+  {path: 'productsh/:_id/:name/edit', component: ProductVenueUpdateComponent, canActivate: [AuthGuard] }			
 ];
 
 @NgModule({
@@ -27,7 +28,8 @@ export const routes = [
     Ng2CarouselamosModule,
     MapModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditableModule
   ],
   declarations: [
     ProductVenueUpdateComponent,

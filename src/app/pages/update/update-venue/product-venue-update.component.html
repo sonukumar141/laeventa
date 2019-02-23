@@ -22,10 +22,10 @@
                 
                 <ng-template #item>
                        
-                    <img [src]="producth.image_big" class="swiper-lazy"/> 
-                    <img [src]="producth.image_small" class="swiper-lazy"/>                                 
-                    <img [src]="producth.image_medium" class="swiper-lazy"/>  
-                    <img [src]="producth.image_extra" class="swiper-lazy"/>
+                    <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/> 
+                    <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/>                                 
+                    <img [src]="assets/images/arrows/next.png onerror="this.style.visibility='hidden'" class="swiper-lazy"/>  
+                    <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/>
                       
                 </ng-template>      
             
@@ -87,6 +87,12 @@
         </div>
 
         <h2>{{producth?.name | ucwords }}</h2>
+        <laeventa-editable-input
+        [(entity)]="producth"
+        [field]="'name'"
+        [className]="''"
+        (entityUpdated)="updateVenue($event)">
+        </laeventa-editable-input>
         <div class="py-1 lh">
             <p><span class="text-muted fw-500"></span><span>{{ producth?.category | ucwords}}</span></p>
         </div>  
