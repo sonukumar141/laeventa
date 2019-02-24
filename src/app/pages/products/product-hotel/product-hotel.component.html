@@ -29,48 +29,6 @@
                       
                 </ng-template>      
             
-        <!-- <div class="small-carousel"> 
-            
-            <div class="swiper-container" [swiper]="config"> -->
-                <!-- <div class="swiper-wrapper"> 
-                    <div *ngFor="let image of producth?.image_medium" class="swiper-slide">
-                        <mat-card (click)="selectImage(image)" class="p-1">
-                            <img [attr.data-src]="image" class="swiper-lazy"/>
-                            <div class="swiper-lazy-preloader"></div>
-                        </mat-card>
-                    </div>                    
-                </div> -->
-                <!-- <div class="swiper-wrapper"> 
-                    <div class="swiper-slide">
-                        <mat-card  (click)="selectImage(producth.image_small)" class="p-1">
-                            <img [src]="producth.image_small" class="swiper-lazy"/> 
-                            <div class="swiper-lazy-preloader"></div>
-                        </mat-card>
-                    </div> 
-                    <div class="swiper-slide">
-                        <mat-card (click)="selectImage(producth.image_medium)" class="p-1">
-                                <img [src]="producth.image_medium" class="swiper-lazy"/> 
-                                <div class="swiper-lazy-preloader"></div>
-                        </mat-card>
-                    </div>
-                    <div class="swiper-slide">
-                            <mat-card (click)="selectImage(producth.image_big)" class="p-1">
-                                    <img [src]="producth.image_big" class="swiper-lazy"/> 
-                                    <div class="swiper-lazy-preloader"></div>
-                            </mat-card>
-                    </div>  
-                    <div class="swiper-slide">
-                            <mat-card (click)="selectImage(producth.image_extra)" class="p-1">
-                                    <img [src]="producth.image_extra" class="swiper-lazy"/> 
-                                    <div class="swiper-lazy-preloader"></div>
-                            </mat-card>
-                    </div>              
-                </div> -->
-                <!-- <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
-                <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button> 
-            </div>
-            
-        </div> -->
     <br>
     <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
         <img src="assets/images/icons/price.png" alt="price img">
@@ -87,6 +45,7 @@
         </div>
 
         <h2>{{producth?.name | ucwords }}</h2>
+        
         <div class="py-1 lh">
             <p><span class="text-muted fw-500"></span><span>{{ producth?.category | ucwords}}</span></p>
         </div>  
@@ -97,26 +56,6 @@
             </div> 
         </mat-card>
         <div class="divider mt-1"></div>
-
-        <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="details text-muted py-1">
-            <div *ngIf="producth?.color" class="color">
-                <span class="fw-500">Select Color:</span>
-                <button mat-raised-button *ngFor="let color of producth?.color" [style.background]="color">&nbsp;</button>              
-            </div>
-            <div *ngIf="producth?.size" class="size" ngClass.xs="mt-1">
-                <span class="fw-500">Select Size:</span>
-                <button mat-raised-button *ngFor="let size of producth?.size">{{size}}</button>
-            </div>
-        </div> -->
-        
-
-        <!-- <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
-            <button mat-button><img src="assets/images/icons/email.png" alt="email img"> {{producth?.email}} </button>
-            <button mat-icon-button><mat-icon>share</mat-icon></button>
-        </div> -->
-        <!-- <div class="py-2">
-            <img src="assets/images/icons/email.png" alt="email img"> {{ producth?.email}}
-        </div>  -->
          
             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                 <img src="assets/images/icons/email.png" alt="email img">

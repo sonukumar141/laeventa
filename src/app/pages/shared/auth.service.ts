@@ -89,7 +89,6 @@ export class AuthService{
   }
 
   public getCategoryName(): string{
-    console.log(this.decodedToken.category);
     return this.decodedToken.category;
   }
 

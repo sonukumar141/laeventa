@@ -1,14 +1,16 @@
 <div>
     <input *ngIf="isActiveInput" 
-           class={{className}}
+           class="{{className}}"
            type="text"
            [(ngModel)]="entity[field]"
            [value]="entity[field]">
+           
     <span *ngIf="!isActiveInput" class="{{className}} inline"> {{ entity[field] }} </span>
 
     <div class="inline">
-        <button *ngIf="isActiveInput" (click)="updateEntity()">Save</button>
+        
         <button *ngIf="!isActiveInput" (click)="isActiveInput = true">Edit</button>
+        <button *ngIf="isActiveInput" (click)="updateEntity()">Save</button>
         <button *ngIf="isActiveInput" (click)="isActiveInput = false">Cancel</button>
     </div>
 </div>

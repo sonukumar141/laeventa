@@ -34,6 +34,10 @@ export class AppService {
     public deleteOwnerVenue(productId: string): Observable<any> {
         return this.http.delete('/api/v1/productsh/' + productId);
     }
+
+    public updateOwnerVenue(productId: string, producthData: any): Observable<any> {
+        return this.http.patch('/api/v1/productsh/' + productId, producthData);
+    }
     
     public getCategories(): Observable<Category[]>{
         return this.http.get<Category[]>(this.url + 'categories.json');

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 
 @Component({
@@ -18,12 +18,13 @@ export class EditableInputComponent implements OnInit {
 
     isActiveInput: boolean = false;
 
-    constructor() {}
-    ngOnInit() {
+    constructor(private cdr: ChangeDetectorRef) {}
+    ngOnInit(){
 
-      }
+    }
 
     updateEntity(){
-        this.entityUpdated.emit('some value');
+        this.entityUpdated.emit({[this.field]: this.entity[this.field]});
+        this.isActiveInput = false;
     }
 }

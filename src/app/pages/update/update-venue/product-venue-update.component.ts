@@ -137,8 +137,15 @@ export class ProductVenueUpdateComponent implements OnInit {
     }
   }
 
-  public updateVenue(value){
-    console.log(value);
-    alert('Update Venue');
+  public updateVenue(producthId: string, producthData: any){
+      this.appService.updateOwnerVenue(producthId, producthData).subscribe(
+        (updatedProducth: Producth) =>{
+          debugger;
+          this.producth = updatedProducth;
+        },
+        () =>{
+
+        }
+      )
   }
 }
