@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const UserCtrl = require('../controllers/user');
+const UserCtrl = require('../controllers/userh');
 
 const upload = require('../services/image-upload');
 

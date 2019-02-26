@@ -101,11 +101,11 @@ export class AuthService{
   }
 
   public reset_password(userData: any): Observable<any>{
-    return this.http.post(`api/v1/users/reset/resetToken`, userData);
+    return this.http.post(`api/v1/users/reset/token`, userData);
   }
 
   public return_token(): Observable<User>{        
-    return this.http.get<User>('/api/v1/users/reset/:token');
+    return this.http.get<User>('/api/v1/users/reset/Token');
   } 
 
 }

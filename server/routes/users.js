@@ -5,6 +5,8 @@ const router = express.Router();
 const async = require("async");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const jwt = require('jsonwebtoken');	
+const config = require('../config');
 
 
 router.post('/sign-in', User.auth);
@@ -20,18 +22,24 @@ router.get('/forgot', function(req, res){
 
 router.post('/forgot', function(req, res, next){
     async.waterfall([
+        // function(done){
+        //     crypto.randomBytes(20, function(err, buf){
+        //         const token = buf.toString('hex');
+        //         done(err, token);
+        //     });
+        // },
         function(done){
-            crypto.randomBytes(20, function(err, buf){
-                const token = buf.toString('hex');
-                done(err, token);
-            });
-        },
-        function(token, done){
             Usermodel.findOne({email: req.body.email}, function(err, user){
                 if(!user){
                     return res.status(422).send({errors: [{title: 'Invalid email!', detail: 'User does not exist'}]});
                 }
 
+                const token = jwt.sign({
+                    userId: user.id,
+                    username: user.username,
+                    resetPasswordToken: user.resetPasswordToken
+                  }, config.SECRET, { expiresIn: '1h' });
+                  
                 user.resetPasswordToken = token;
                 user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
 
@@ -45,8 +53,8 @@ router.post('/forgot', function(req, res, next){
             const smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: 'sonukumar141@gmail.com',
-                    pass: 'S25password'
+                    user: 'XXXX',
+                    pass: 'XXXX'
                 }
             });
 
@@ -56,7 +64,8 @@ router.post('/forgot', function(req, res, next){
                 subject: 'Nodejs password reset',
                 text: 'You are receiving this email. Please click on the email for password reset ' +
                       'http://' + req.headers.host + '/reset/' + token + '\n\n' + 
-                      'If you did not request this, please ignore this email'
+                      'If you did not request this, please ignore this email' +
+                      'Your password is 1234'
             };
             smtpTransport.sendMail(mailOptions, function(err){
                 console.log('mail sent');
@@ -73,7 +82,7 @@ router.get('/reset/:token', function(req, res){
         if(!user) {
             return res.status(422).send({errors: [{title: 'Invalid token!', detail: 'User does not exist'}]});
         }   
-        res.render('reset', {token: req.params.token});
+        res.json('reset', {token: req.params.token});
     });
 });
 
@@ -105,8 +114,8 @@ router.post('/reset/:token', function(req, res){
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: 'xxxx',
-                    pass: 'xxxx'
+                    user: 'XXXX',
+                    pass: 'XXXX'
                 }
             });
 

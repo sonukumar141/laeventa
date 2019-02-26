@@ -6,7 +6,7 @@ const config = require('../config');
 aws.config.update({
   secretAccessKey: config.AWS_SECRET_ACCESS_KEY,
   accessKeyId: config.AWS_ACCESS_KEY_ID,
-  region: 'us-east-2'
+  region: 'ap-south-1'
 });
  
 const s3 = new aws.S3();
@@ -24,7 +24,7 @@ const upload = multer({
   storage: multerS3({
     acl: 'public-read',
     s3: s3,
-    bucket: 'stream-db',
+    bucket: 'laeventa-ng',
     metadata: function (req, file, cb) {
       cb(null, {fieldName: 'TESTING_METADATA'});
     },

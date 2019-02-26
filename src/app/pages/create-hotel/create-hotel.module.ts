@@ -7,6 +7,7 @@ import { CreateHotelComponent } from './create-hotel.component';
 import { SharedModule } from '../../shared/shared.module';
 import { AuthGuard } from '../shared/auth.guard';
 import { AuthService } from '../shared/auth.service';
+import { ImageUploadModule } from '../image-upload/image-upload.module';
 
 export const routes = [
   {path: '', component: CreateHotelComponent, canActivate: [AuthGuard]}
@@ -18,7 +19,8 @@ export const routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    ImageUploadModule
   ],
   declarations: [
     CreateHotelComponent
