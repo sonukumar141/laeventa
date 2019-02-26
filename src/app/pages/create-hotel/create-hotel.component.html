@@ -102,28 +102,43 @@
                            type="file"
                            id="image1"
                            (change)="handleImage1Change()"> -->
-                           <laeventa-image-upload></laeventa-image-upload>
+                           <laeventa-image-upload
+                           (imageUploaded)="handleImage1Change($event)"
+                                         (imageError)="handleImage1Error()"
+                           ></laeventa-image-upload>
                     <p>
                     <br>
                     <label>Upload Image 2</label>
-                    <input class="w3-input" 
+                    <!-- <input class="w3-input" 
                            type="file"
                            id="image2"
-                           (change)="handleImage2Change()"></p>
+                           (change)="handleImage2Change()"></p> -->
+                           <laeventa-image-upload
+                           (imageUploaded)="handleImage2Change($event)"
+                                         (imageError)="handleImage2Error()"
+                           ></laeventa-image-upload>
                     <p>
                     <br>
                     <label>Upload Image 3</label>
-                    <input class="w3-input" 
+                    <!-- <input class="w3-input" 
                            type="file"
                            id="image3"
-                           (change)="handleImage3Change()"></p>
+                           (change)="handleImage3Change()"></p> -->
+                           <laeventa-image-upload
+                           (imageUploaded)="handleImage3Change($event)"
+                                         (imageError)="handleImage3Error()"
+                           ></laeventa-image-upload>
                     <p>
                     <br>
                     <label>Upload Image 4</label>
-                    <input class="w3-input" 
+                    <!-- <input class="w3-input" 
                            type="file"
                            id="image4"
-                           (change)="handleImage4Change()"></p>
+                           (change)="handleImage4Change()"></p> -->
+                           <laeventa-image-upload
+                           (imageUploaded)="handleImage4Change($event)"
+                                         (imageError)="handleImage4Error()"
+                           ></laeventa-image-upload>
                     </mat-expansion-panel>
                      <br>
                      <mat-expansion-panel>

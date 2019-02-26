@@ -52,20 +52,35 @@ export class CreateHotelComponent implements OnInit {
     this.newProducth = new Producth();
   }
 
-  handleImage1Change(){
-    this.newProducth.image_medium = "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg";
+  handleImage1Change(imageUrl: string){
+    this.newProducth.image_big = imageUrl;
   }
 
-  handleImage2Change(){
-    this.newProducth.image_big = "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg";
+  handleImage2Change(imageUrl: string){
+    this.newProducth.image_medium = imageUrl;
   }
 
-  handleImage3Change(){
-    this.newProducth.image_small = "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/4/image.jpeg";
+  handleImage3Change(imageUrl: string){
+    this.newProducth.image_small = imageUrl;
   }
 
-  handleImage4Change(){
-    this.newProducth.image_extra = "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg";
+  handleImage4Change(imageUrl: string){
+    this.newProducth.image_extra = imageUrl;
+  }
+
+  handleImage1Error(){
+    this.newProducth.image_big = '';
+  }
+
+  handleImage2Error(){
+    this.newProducth.image_medium = '';
+  }
+  handleImage3Error(){
+    this.newProducth.image_small = '';
+  }
+
+  handleImage4Error(){
+    this.newProducth.image_extra = '';
   }
 
   createProducth(){
