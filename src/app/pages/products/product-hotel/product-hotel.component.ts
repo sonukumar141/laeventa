@@ -136,4 +136,6 @@ export class ProductHotelComponent implements OnInit {
       //email sent
     }
   }
+
+  
 }

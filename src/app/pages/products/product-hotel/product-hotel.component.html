@@ -5,7 +5,7 @@
             <!-- <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
             <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/> -->
                 
-                <div ng2-carouselamos class="slider-wrapper"
+                 <div ng2-carouselamos class="mat-card.product-image"
                      [items]="items"
                      [$prev]="prev"
                      [$next]="next"
@@ -19,15 +19,13 @@
                 <ng-template #next>
                         <img src="assets/images/arrows/next.png" alt="">
                 </ng-template>
-                
+
                 <ng-template #item>
-                       
-                    <img [src]="producth.image_big" class="swiper-lazy"/> 
-                    <img [src]="producth.image_small" class="swiper-lazy"/>                                 
-                    <img [src]="producth.image_medium" class="swiper-lazy"/>  
-                    <img [src]="producth.image_extra" class="swiper-lazy"/>
-                      
-                </ng-template>      
+                    <img *ngIf="producth.image_big" [src]="producth.image_big" style="width:113%; height: 50%;">
+                    <img *ngIf="producth.image_small" [src]="producth.image_small" style="width:113%; height: 50%;">
+                    <img *ngIf="producth.image_medium" [src]="producth.image_medium" style="width:113%; height: 50%;">
+                    <img *ngIf="producth.image_extra" [src]="producth.image_extra" style="width:113%; height: 50%;">
+                </ng-template>
             
     <br>
     <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
