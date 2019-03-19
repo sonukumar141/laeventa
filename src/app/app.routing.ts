@@ -27,6 +27,8 @@ export const routes: Routes = [
             { path: 'productsv', loadChildren: './pages/products/productsv/productsv.module#ProductsvModule', data: { breadcrumb: 'Vendors' } },
             { path: 'forgot', loadChildren: './pages/forgot-password/password-reset.module#ForgotPasswordModule', data: { breadcrumb: 'Password Reset' } },
             { path: 'reset', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordModule', data: { breadcrumb: 'Password Reset' } },
+            { path: 'forgot-password', loadChildren: './pages/forgot-password-venue/password-reset-venue.module#ForgotPasswordVenueModule', data: { breadcrumb: 'Password Reset' } },
+            { path: 'reset-password', loadChildren: './pages/reset-password-venue/reset-password-venue.module#ResetPasswordVenueModule', data: { breadcrumb: 'Password Reset' } },
             { path: 'h/:category', loadChildren: './pages/products/hotel-search-by-category/hotel-search-by-category.module#HotelSearchByCategoryModule', data: { breadcrumb: 'Category' } },
             { path: 'dashboard/h', loadChildren: './pages/dashboard/hotel-dashboard/hotel-dashboard.module#HotelDashboardModule', data: { breadcrumb: 'Dashboard' } },
             { path: 'manage/venues', loadChildren: './pages/manage/manage.module#ManageModule', data: {breadcrumb: 'Manage'} },

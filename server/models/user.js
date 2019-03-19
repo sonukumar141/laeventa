@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+//var passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new Schema({
 	username: {
@@ -32,19 +33,33 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.hasSamePassword = function(requestedPassword) {
-	return bcrypt.compareSync(requestedPassword, this.password);
+	//console.log(bcrypt.compareSync(requestedPassword, this.password));
+	//requestedPassword = this.password;
+	//var hash = bcrypt.hashSync(requestedPassword, 10);
+	//console.log(bcrypt.compareSync(requestedPassword, hash));
+	//console.log(requestedPassword);
+	return requestedPassword === this.password;//, function(err, isMatch){
+	//	if(err) return cb(err);
+	//	cb(null, isMatch);
+	//});
+	//return bcrypt.compareSync(requestedPassword, this.password);
 }
 
-userSchema.pre('save', function(next){
-	const user = this;
 
-	bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(user.password, salt, function(err, hash) {
-        // Store hash in your password DB.
-        	user.password = hash;
-        	next();
-    	});
-	});
-});
+// userSchema.pre('save', function(next){
+// 	const user = this;
+
+// 	//bcrypt.genSalt(10, function(err, salt) {
+//     var hash = bcrypt.hashSync(user.password, 10)//, function(err, hash) {
+//         // Store hash in your password DB.
+//         //	user.password = hash;
+//         //	next();
+//     //	});
+// 	//});
+// 	user.password = hash;
+// 	next();
+// });
+
+//userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', userSchema);

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { Router } from '@angular/router';
 const jwt = new JwtHelperService();
 import * as moment from 'moment';
 import 'rxjs/Rx';
@@ -11,17 +12,23 @@ class DecodedToken{
   exp: number = 0;
   username: string = '';
   category: string= '';
+
 }
 
 @Injectable()
 export class AuthService{
 
     private decodedToken;
-
-    private resetToken = this.return_token();
-
-    constructor(private http: HttpClient) {
+    href = "";
+    t="";
+    t1="";
+    constructor(private http: HttpClient,
+                private router: Router) {
       this.decodedToken = JSON.parse(localStorage.getItem('laeventa_meta')) || new DecodedToken();
+      this.href = router.url;
+      this.t = this.href.split('/').slice(-1)[0];
+      this.t1 = this.href.split('/').slice(-1)[0];
+      console.log(this.t);
     }
 
     public saveToken(token: any): string {
@@ -96,16 +103,20 @@ export class AuthService{
 		return localStorage.getItem('laeventa_auth');
   }
   
-  public password_reset(userData: any): Observable<any>{
-		return this.http.post('api/v1/users/forgot', userData);
+  public forgot_password(userData: any): Observable<any>{
+		return this.http.post('api/v1/users/forgot', userData, {responseType: 'text'});
   }
-
+ 
   public reset_password(userData: any): Observable<any>{
-    return this.http.post(`api/v1/users/reset/token`, userData);
-  }
+    return this.http.post(`api/v1/users/reset/${this.t}`, userData, {responseType: 'text'});
+  } 
 
-  public return_token(): Observable<User>{        
-    return this.http.get<User>('/api/v1/users/reset/Token');
+  public forgot_password_venue(userData: any): Observable<any>{
+		return this.http.post('api/v1/usersh/forgot', userData, {responseType: 'text'});
+  }
+ 
+  public reset_password_venue(userData: any): Observable<any>{
+    return this.http.post(`api/v1/usersh/reset/${this.t1}`, userData, {responseType: 'text'});
   } 
 
 }

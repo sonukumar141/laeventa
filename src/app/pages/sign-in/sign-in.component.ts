@@ -35,7 +35,7 @@ export class SignInComponent implements OnInit {
 
   }
 
-  public onLoginFormSubmit(values:Object):void {
+  public onLoginFormSubmit() {
     if (this.loginForm.valid) {
       this.auth.hotel_signin(this.loginForm.value).subscribe(
         (token) => {
@@ -67,7 +67,7 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  public onRegisterFormSubmit(values:Object):void {
+  public onRegisterFormSubmit(){
 
     this.auth.signup(this.registerForm.value).subscribe(
       () => {
@@ -86,5 +86,9 @@ export class SignInComponent implements OnInit {
   refresh(): void {
     window.location.reload();
 }
+logout(){
+  this.auth.logout();
+  this.router.navigate(['/forgot']);
+}  
 
 }

@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  selector: 'app-reset-password-venue',
+  templateUrl: './reset-password-venue.component.html',
+  styleUrls: ['./reset-password-venue.component.scss']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordVenueComponent implements OnInit {
 
   resetPasswordForm: FormGroup;
 
@@ -29,8 +29,9 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     public onResetPasswordFormSubmit(){
-        this.auth.reset_password(this.resetPasswordForm.value).subscribe(
+        this.auth.reset_password_venue(this.resetPasswordForm.value).subscribe(
             () => {
+              console.log('success');
               if(this.resetPasswordForm.valid){
                 this.snackBar.open('Password reset sucessfull. You can Login.', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
                 this.router.navigate(['/sign-in']);
@@ -39,7 +40,7 @@ export class ResetPasswordComponent implements OnInit {
             (errorResponse) => {
               console.log(errorResponse);
               this.snackBar.open('Something went wrong. Try again!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
-              this.router.navigate(['/forgot']);
+              this.router.navigate(['/forgot-password']);
             }
           )
         }

@@ -36,24 +36,27 @@ const userhSchema = new Schema({
 		max: [32, 'Too Long, Max character is 32'],
 		required: 'Password is required',
 
-    },
+		},
+		resetPasswordToken: String,
+		resetPasswordExpires: Date,
     jobsh: [{type: Schema.Types.ObjectId, ref: 'Jobh'}]
 });
 
 userhSchema.methods.hasSamePassword = function(requestedPassword) {
-	return bcrypt.compareSync(requestedPassword, this.password);
+	return requestedPassword === this.password;
+	//return bcrypt.compareSync(requestedPassword, this.password);
 }
 
-userhSchema.pre('save', function(next){
-	const userh = this;
+// userhSchema.pre('save', function(next){
+// 	const userh = this;
 
-	bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(userh.password, salt, function(err, hash) {
-        // Store hash in your password DB.
-        	userh.password = hash;
-        	next();
-    	});
-	});
-});
+// 	bcrypt.genSalt(10, function(err, salt) {
+//     bcrypt.hash(userh.password, salt, function(err, hash) {
+//         // Store hash in your password DB.
+//         	userh.password = hash;
+//         	next();
+//     	});
+// 	});
+// });
 
 module.exports = mongoose.model('Userh', userhSchema);

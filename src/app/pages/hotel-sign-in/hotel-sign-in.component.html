@@ -46,6 +46,18 @@
                         </button>
                     </div>
                 </form>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+                    <div class="divider w-100"></div>
+                    <h3 class="text-muted auth">
+                        <span fxShow="false" fxShow.gt-sm>
+                            <a mat-button (click)="logout()">Forgot Password?</a>
+                        </span>     
+                    </h3>
+                    <div class="divider w-100"></div>
+                </div>
             </div>
         </div> 
 </mat-card>
+
+   

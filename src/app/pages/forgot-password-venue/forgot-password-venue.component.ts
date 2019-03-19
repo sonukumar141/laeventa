@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  selector: 'app-forgot-password-venue',
+  templateUrl: './forgot-password-venue.component.html',
+  styleUrls: ['./forgot-password-venue.component.scss']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordVenueComponent implements OnInit {
 
     passwordResetForm: FormGroup;
 
@@ -28,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     public onPasswordResetFormSubmit() {
-        this.auth.forgot_password(this.passwordResetForm.value).subscribe(
+        this.auth.forgot_password_venue(this.passwordResetForm.value).subscribe(
             () => {
               console.log('success');
               if(this.passwordResetForm.valid){

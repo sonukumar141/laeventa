@@ -7,4 +7,8 @@ router.post('/sign-in', Userh.auth);
 
 router.post('/hotel-sign-up', Userh.signup);
 
+router.post('/forgot',Userh.forgot);
+
+router.post('/reset/:token',Userh.reset);
+
 module.exports = router;
