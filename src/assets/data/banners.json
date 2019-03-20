@@ -1,8 +1,8 @@
 [
     { "title": "Book Sports Venues", "subtitle": "Special corporate discount", "image": "assets/images/home-page/sports.jpg" },
     { "title": "Best Hotels", "subtitle": "Now starting at Rs 999", "image": "assets/images/home-page/hotel.jpg" },
-    { "title": "Wedding Venues", "subtitle": "Make you day special", "image": "assets/images/home-page/wedding.jpg" },
     { "title": "Book Banquet Hall", "subtitle": "Awesome deal awaiting", "image": "assets/images/home-page/banquet.jpg" },
     { "title": "Book Conference Hall", "subtitle": "Get the best deal now", "image": "assets/images/home-page/conference.jpg" },    
-    { "title": "Book Meeting Rooms", "subtitle": "Get the best deal now", "image": "assets/images/home-page/meetings.jpg" }
+    { "title": "Book Meeting Rooms", "subtitle": "Get the best deal now", "image": "assets/images/home-page/meetings.jpg" },
+    { "title": "Wedding Venues", "subtitle": "Make you day special", "image": "assets/images/home-page/wedding.jpg" }
 ]
