@@ -33,15 +33,43 @@
         </mat-toolbar-row>
         <mat-toolbar-row fxLayoutAlign="space-between center" class="logo-toolbar theme-container">
             <a class="logo" routerLink="/">Laeventa</a>
-            <a routerLink="/">Sports</a>
-            <!-- <div fxFlex fxFlexOffset.gt-sm="10" fxShow="false" fxShow.gt-sm>
-                    <form action="/search" method="GET">
-                        <div>
-                            <input type="text" name="search" placeholder="Search">
-                            <input type="submit" name="" id="" value="Search">
+            
+            <div fxFlex fxFlexOffset.gt-sm="5" fxShow="false" fxShow.gt-sm>
+                <div class="dropdown">
+                        <a class="dropbtn">Venues</a>   
+                        <div class="dropdown-content">
+                            <a mat-menu-item href="/pune/hotels">Pune</a>
+                            <a mat-menu-item href="/mumbai/hotels">Mumbai</a>              
+                            <a mat-menu-item href="/vadodara/hotels">Vadodara</a>
+                            <a mat-menu-item href="/delhi/hotels">Delhi</a> 
                         </div>
-                    </form>
-            </div> -->
+                </div>
+            </div>
+
+            <div fxFlex fxFlexOffset.gt-sm="-45" fxShow="false" fxShow.gt-sm>
+                    <div class="dropdown">
+                            <a class="dropbtn">Categories</a>   
+                            <div class="dropdown-content">
+                                <a mat-menu-item href="/h/sports">Sports</a>
+                                <a mat-menu-item href="/h/wedding">Wedding</a>              
+                                <a mat-menu-item href="/h/conference">Conference</a>
+                                <a mat-menu-item href="/h/meeting">Meetings</a> 
+                                <a mat-menu-item href="/h/hotel">Hotels</a> 
+                            </div>
+                    </div>
+            </div>
+
+            <div fxFlex fxFlexOffset.gt-sm="-43" fxShow="false" fxShow.gt-sm>
+                <div class="dropdown">
+                    <a class="dropbtn" href="/">Contact Us</a>
+                </div>
+            </div>
+
+            <div fxFlex fxFlexOffset.gt-sm="-42" fxShow="false" fxShow.gt-sm>
+                    <div class="dropdown">
+                        <a class="dropbtn" href="/">About Us</a>
+                    </div>
+            </div>
           
             <!-- <div *ngIf="auth.isAuthenticated()" class="user_account">
                     <button mat-button [matMenuTriggerFor]="menu"
@@ -53,6 +81,7 @@
                             <button mat-menu-item>Item 2</button>
                         </mat-menu>
             </div> -->
+
             <div *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'" class="user_account">
                 <button mat-button [matMenuTriggerFor]="menu" (mouseenter)="methodOpenMenu()">
                         <mat-icon class="mat-icon-lg">account_circle</mat-icon>
