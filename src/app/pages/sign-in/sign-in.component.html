@@ -12,28 +12,29 @@
                     <input matInput placeholder="Password" formControlName="password" type="password" required>
                     <mat-error *ngIf="loginForm.controls.password.errors?.required">Password is required</mat-error>
                     <mat-error *ngIf="loginForm.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
-                </mat-form-field> 
+                </mat-form-field>
+                
+                    <h3 class="text-muted">
+                        <a style="padding:0%" mat-button (click)="logout()">Forgot Password?</a>                           
+                    </h3>
+                 
                 <div class="text-center mt-2">
                     <button mat-fab color="primary" class="mat-elevation-z6" type="submit">
                         <mat-icon>exit_to_app</mat-icon>
                     </button>
                 </div> 
 
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+                <!-- <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
                     <div class="divider w-100"></div>
                     <h3 class="text-muted auth">Sign in with one click</h3>
                     <div class="divider w-100"></div>
-                </div> 
-
+                </div>  -->
+                
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
-                    <div class="divider w-100"></div>
-                    <h3 class="text-muted auth">
-                        <span fxShow="false" fxShow.gt-sm>
-                            <a mat-button (click)="logout()">Forgot Password?</a>
-                        </span>     
-                    </h3>
-                    <div class="divider w-100"></div>
-                </div>               
+                        <div class="divider w-100"></div>
+                        <h3 class="text-muted auth">Forgot Business Password?</h3>
+                        <div class="divider w-100"></div>
+                </div> 
                 
                 <!-- <div class="text-center py-2">                   
                     <svg class="social-icon" viewBox="0 0 24 24" matTooltip="Facebook">
@@ -78,6 +79,15 @@
                     </button>
                 </div>
             </form>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+                    <div class="divider w-100"></div>
+                    <h3 class="text-muted auth">
+                        <span fxShow="false" fxShow.gt-sm>
+                            <a mat-button routerLink="/hotel-sign-up">Do you have business?</a>
+                        </span>     
+                    </h3>
+                    <div class="divider w-100"></div>
+                </div>
             <br>
         </div>
     </div> 

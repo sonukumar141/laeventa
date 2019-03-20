@@ -5,7 +5,7 @@
                 <mat-chip-list *ngIf="product.discount">
                     <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
                 </mat-chip-list>
-                <a [routerLink]="['/productsh', product._id, product.name]" class="image-link">
+                <a [routerLink]="['/venues', product._id, product.name]" class="image-link">
                     <img [src]="product.image_medium" class="swiper-lazy"/>
                     <div class="swiper-lazy-preloader"></div>
                 </a>

@@ -4,7 +4,7 @@
                 <a mat-button routerLink="/sign-in">List your business</a>
         </span>  -->
         <span *ngIf="!auth.isAuthenticated()" style='margin-right:1.5em'>
-            <button mat-button [matMenuTriggerFor]="menu" (mouseenter)="methodOpenMenu()">
+            <!-- <button mat-button [matMenuTriggerFor]="menu" (mouseenter)="methodOpenMenu()">
                     <mat-icon class="mat-icon-md">business_center</mat-icon>
             </button>
             <mat-menu #menu="matMenu" overlapTrigger="false">
@@ -12,7 +12,8 @@
                         <button mat-menu-item routerLink="/hotel-sign-up">Hotel/Venue Registration</button>
                         <button mat-menu-item routerLink="/vendor-sign-up">Vendor Registration</button>
                     </span>
-            </mat-menu>
+            </mat-menu> -->
+            <a mat-button routerLink="/hotel-sign-up">List your business</a>
         </span>
         <span fxShow="false" fxShow.gt-sm>
             <a mat-button routerLink="/sign-in">Login/Signup</a>

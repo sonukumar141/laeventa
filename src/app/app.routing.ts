@@ -23,7 +23,7 @@ export const routes: Routes = [
             { path: ':city/vendors', loadChildren: './pages/products/productv-search/productv-search.module#ProductvSearchModule', data: { breadcrumb: 'Vendors'} },
             { path: 'create-venue/new', loadChildren: './pages/create-hotel/create-hotel.module#CreateHotelModule', data: { breadcrumb: 'List new Venue'} },
             { path: 'create-vendor/new', loadChildren: './pages/create-vendor/create-vendor.module#CreateVendorModule', data: { breadcrumb: 'List your Business'} },
-            { path: 'productsh', loadChildren: './pages/products/productsh/productsh.module#ProductshModule', data: { breadcrumb: 'Hotel/Venue' } },
+            { path: 'venues', loadChildren: './pages/products/productsh/productsh.module#ProductshModule', data: { breadcrumb: 'Hotel/Venue' } },
             { path: 'productsv', loadChildren: './pages/products/productsv/productsv.module#ProductsvModule', data: { breadcrumb: 'Vendors' } },
             { path: 'forgot', loadChildren: './pages/forgot-password/password-reset.module#ForgotPasswordModule', data: { breadcrumb: 'Password Reset' } },
             { path: 'reset', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordModule', data: { breadcrumb: 'Password Reset' } },

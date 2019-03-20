@@ -143,7 +143,7 @@ export class HotelSearchComponentByCategory implements OnInit {
 
   public onChangeCategory(event){
     if(event.target){
-      this.router.navigate(['/productsh', event.target.innerText.toLowerCase()]); 
+      this.router.navigate(['/venues', event.target.innerText.toLowerCase()]); 
     }   
   }
 

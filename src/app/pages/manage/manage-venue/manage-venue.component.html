@@ -13,12 +13,12 @@
                                     <p><strong>Delete Venue: </strong></p>
                                 </div>
                                 <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">                                                                                                     
-                                    <a [routerLink]="['/productsh', product._id, product.name]" class="title">
+                                    <a [routerLink]="['/venues', product._id, product.name]" class="title">
                                         {{product.name | ucwords}}
                                     </a>
 
                                     <p class="py-1 text-muted lh">{{product.city | ucwords}}</p>
-                                    <a [routerLink]="['/productsh', product._id, product.name, 'update']" class="title">
+                                    <a [routerLink]="['/venues', product._id, product.name, 'update']" class="title">
                                         Update Venue
                                     </a>
                                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">

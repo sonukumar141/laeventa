@@ -86,7 +86,7 @@ export class CreateHotelComponent implements OnInit {
   createProducth(){
     this.appService.createProducth(this.newProducth).subscribe(
       (producth: Producth) => {
-        this.router.navigate([`/productsh/${producth._id}/${producth.name}`])
+        this.router.navigate([`/venues/${producth._id}/${producth.name}`])
       },
       (errorResponse: HttpErrorResponse) => {
         this.errors = errorResponse.error.errors;

@@ -15,7 +15,7 @@ import { EditableModule } from '../../editable/editable.module';
 
 export const routes = [	
 
-  {path: 'productsh/:_id/:name/update', component: ProductVenueUpdateComponent, canActivate: [AuthGuard] }			
+  {path: 'venues/:_id/:name/update', component: ProductVenueUpdateComponent, canActivate: [AuthGuard] }			
 ];
 
 @NgModule({
