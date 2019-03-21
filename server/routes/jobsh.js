@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Jobh = require('../models/jobh');
+const VenueArea = require('../models/venuearea');
 const Jobv = require('../models/jobv');
 const Userh = require('../models/userh');
 const { normalizeErrors } = require('../helpers/mongoose');
@@ -216,6 +217,27 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
 
 		return res.json(newJobh);
 	});
+});
+
+router.post('/venuearea', UserCtrlh.authMiddleware, function(req, res){
+    const {image1, image2, image3, image4, image5, image6, price, features } = req.body;
+
+    const userh = res.locals.userh;
+
+    const venuearea = new VenueArea({image1, image2, image3, image4, image5, image6, price, features});
+
+    venuearea.userh = userh;
+
+    VenueArea.create(venuearea, function(err, newVenueArea){
+        if(err){
+            return res.status(422).send({errors: normalizeErrors(err.errors)});
+        }
+
+        Userh.update({_id: userh.id}, {$push: {areas: newVenueArea}}, function(){});
+
+        return res.json(newVenueArea);
+    });
+
 });
 
 function escapeRegex(text) {
