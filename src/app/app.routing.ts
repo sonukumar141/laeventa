@@ -22,6 +22,7 @@ export const routes: Routes = [
             { path: ':city/hotels', loadChildren: './pages/products/product-search/product-search.module#ProductSearchModule', data: { breadcrumb: 'Hotels'} },
             { path: ':city/vendors', loadChildren: './pages/products/productv-search/productv-search.module#ProductvSearchModule', data: { breadcrumb: 'Vendors'} },
             { path: 'create-venue/new', loadChildren: './pages/create-hotel/create-hotel.module#CreateHotelModule', data: { breadcrumb: 'List new Venue'} },
+            { path: 'create-venue-area', loadChildren: './theme/components/create-venue-area/create-venue-area.module#CreateVenueAreaModule', data: { breadcrumb: 'Create new Area'} },
             { path: 'create-vendor/new', loadChildren: './pages/create-vendor/create-vendor.module#CreateVendorModule', data: { breadcrumb: 'List your Business'} },
             { path: 'venues', loadChildren: './pages/products/productsh/productsh.module#ProductshModule', data: { breadcrumb: 'Hotel/Venue' } },
             { path: 'productsv', loadChildren: './pages/products/productsv/productsv.module#ProductsvModule', data: { breadcrumb: 'Vendors' } },

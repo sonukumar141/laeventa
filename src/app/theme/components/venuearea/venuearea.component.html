@@ -1,1 +1,14 @@
-<h1>Venue component areas</h1>
+<!-- <div *ngIf="viewType == 'grid'" fxLayout="row wrap" class="products-wrapper"> -->
+    <div *ngFor="let area of venueareas" >
+        <mat-card class="product-item text-center">
+            <h4 class="category text-muted">{{ area.category }}</h4>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
+                <div fxLayout="column" fxLayoutAlign="center start">
+                    <p class="new-price">Rs {{ area.price }}</p>
+                </div>
+                <!-- <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating> -->
+            </div>                            
+            <div class="divider mt-2"></div>
+        </mat-card>
+    </div>
+<!-- </div> -->

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
-import { Category, Product, Producth, Productv } from './app.models';
+import { Category, Product, Producth, Productv, VenueArea } from './app.models';
 import { AuthService } from './pages/shared/auth.service';
 
 export class Data {
@@ -26,6 +26,14 @@ export class AppService {
     )
     public url = "assets/data/";
     constructor(public http:HttpClient, public snackBar: MatSnackBar) { }
+
+    public getAllVenueAreas(): Observable<VenueArea[]>{        
+        return this.http.get<VenueArea[]>('/api/v1/productsh/venuearea');
+    }
+
+    public createVenueArea(venueArea: VenueArea): Observable<any> {
+        return this.http.post('/api/v1/productsh/venuearea', venueArea);
+    }
 
     public getOwnerVenues(): Observable<any> {
         return this.http.get('/api/v1/productsh/manage');

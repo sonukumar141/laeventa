@@ -8,9 +8,12 @@ const areaSchema = new Schema({
     image4: String,
     image5: String,
     image6: String,
-	price: Number,
+    price: Number,
+    category: String,
 	features: {type: ['Mixed']},
-	createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now },
+    userh: { type: Schema.Types.ObjectId, ref: 'Userh' },
+    jobh: { type: Schema.Types.ObjectId, ref: 'Jobh' }
 });
 
 module.exports = mongoose.model('VenueAreas', areaSchema);

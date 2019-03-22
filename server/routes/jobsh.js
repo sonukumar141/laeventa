@@ -87,17 +87,6 @@ router.get('/category', function(req, res){
     
 });
 
-router.get('/:id', function(req, res){
-    const jobhId = req.params.id;
-
-    Jobh.findById(jobhId, function(err, foundJobsh){
-        if(err){
-            return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
-        }
-        res.json(foundJobsh);
-    });
-});
-
 router.patch('/:id', UserCtrlh.authMiddleware, function(req, res){
     const jobhData = req.body;
     const userh = res.locals.userh;
@@ -220,11 +209,11 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
 });
 
 router.post('/venuearea', UserCtrlh.authMiddleware, function(req, res){
-    const {image1, image2, image3, image4, image5, image6, price, features } = req.body;
+    const {image1, image2, image3, image4, image5, image6, price, category, features } = req.body;
 
     const userh = res.locals.userh;
 
-    const venuearea = new VenueArea({image1, image2, image3, image4, image5, image6, price, features});
+    const venuearea = new VenueArea({image1, image2, image3, image4, image5, image6, price, category, features});
 
     venuearea.userh = userh;
 
@@ -238,6 +227,47 @@ router.post('/venuearea', UserCtrlh.authMiddleware, function(req, res){
         return res.json(newVenueArea);
     });
 
+});
+
+// router.get('/venuearea', UserCtrlh.authMiddleware, function(req, res){
+//     const userh = res.locals.userh;
+
+//     VenueArea.findById(req.params.id)
+//        // .populate('userh')
+//         .exec(function(err, foundVenueArea){
+//             if(err){
+//                 return res.status(422).send({errors: normalizeErrors(err.errors)});
+//             }
+
+//             if(userh.id !== foundVenueArea.userh.id){
+//                 return res.status(422).send({errors: [{title: 'Invalid User', detail: 'You are not allowed to delete'}]});
+//             }
+//             res.json(foundVenueArea);
+//         });
+// });
+
+router.get('/venuearea', UserCtrlh.authMiddleware, function(req, res){
+    //const  areaData  = req.body;
+    const userh = res.locals.userh;   
+    VenueArea.where({userh})
+        .exec(function(err, foundVenueAreas){
+            if(err){
+                return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+            }
+
+            return res.json(foundVenueAreas);
+        });
+});
+
+router.get('/:id', function(req, res){
+    const jobhId = req.params.id;
+
+    Jobh.findById(jobhId, function(err, foundJobsh){
+        if(err){
+            return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+        }
+        res.json(foundJobsh);
+    });
 });
 
 function escapeRegex(text) {
