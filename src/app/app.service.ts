@@ -32,7 +32,7 @@ export class AppService {
     }
 
     public createVenueArea(venueArea: VenueArea): Observable<any> {
-        return this.http.post('/api/v1/productsh/venuearea', venueArea);
+        return this.http.post('/api/v1/venuearea', venueArea);
     }
 
     public getOwnerVenues(): Observable<any> {

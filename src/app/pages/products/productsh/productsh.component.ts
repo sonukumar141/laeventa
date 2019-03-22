@@ -54,7 +54,7 @@ export class ProductshComponent implements OnInit {
       this.productsh = data; 
       //for show more product  
       for (var index = 0; index < 3; index++) {
-        this.productsh = this.productsh.concat(this.productsh);        
+        //this.productsh = this.productsh.concat(this.productsh);        
       }
     });
   }

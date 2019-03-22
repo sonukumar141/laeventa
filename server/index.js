@@ -14,7 +14,8 @@ const jobRoutes = require('./routes/jobs'),
 	  userRoutes = require('./routes/users'),
 	  userhRoutes = require('./routes/usersh'),
 	  uservRoutes = require('./routes/usersv'),
-      bookingRoutes = require('./routes/bookings'),
+	  bookingRoutes = require('./routes/bookings'),
+	  venueareaRoutes = require('./routes/venueareas'),
 	  imageUploadRoutes = require('./routes/image-upload'),
 	  reviewRoutes = require('./routes/reviews');
 
@@ -37,6 +38,7 @@ app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/usersh', userhRoutes);
 app.use('/api/v1/usersv', uservRoutes);
 app.use('/api/v1/bookings', bookingRoutes);
+app.use('/api/v1/venuearea', venueareaRoutes);
 app.use('/api/v1/reviews', reviewRoutes);
 app.use('/api/v1', imageUploadRoutes);
 

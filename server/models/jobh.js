@@ -63,7 +63,8 @@ const jobhSchema = new Schema({
         volley_ball: String,
         swimming: String,
         gym: String,
-        areas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}]
+        venueareas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}],
+        userh: {type: Schema.Types.ObjectId, ref: 'Userh'}
 });
 
 module.exports = mongoose.model('Jobh', jobhSchema);

@@ -40,7 +40,7 @@ const userhSchema = new Schema({
 		resetPasswordToken: String,
 		resetPasswordExpires: Date,
 		jobsh: [{type: Schema.Types.ObjectId, ref: 'Jobh'}],
-		areas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}]
+		venueareas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}]
 });
 
 userhSchema.methods.hasSamePassword = function(requestedPassword) {

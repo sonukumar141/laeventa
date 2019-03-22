@@ -1,0 +1,51 @@
+const VenueArea = require('../models/venuearea');
+const Userh = require('../models/userh');
+const Jobh = require('../models/jobh');
+const { normalizeErrors } = require('../helpers/mongoose');
+
+exports.createVenueArea = function(req, res){
+    const {image1, image2, image3, image4, image5, image6, price, category, features, jobh } = req.body;
+
+    const userh = res.locals.userh;
+    const venuearea = new VenueArea({image1, image2, image3, image4, image5, image6, price, category, features});
+
+   // venuearea.userh = userh;
+
+    Jobh.findById(jobh._id)
+        .populate('venueareas')
+        .populate('userh')
+        .exec(function(err, foundJobh){
+            if(err){
+                return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
+
+            if(foundJobh.userh.id !== userh.id){
+                return res.status(422).send({errors: [{title: 'Invalid User!', detail: 'You cannot add venue area'}]});
+            }
+            venuearea.userh = userh;
+            venuearea.jobh = foundJobh;
+            foundJobh.venueareas.push(venuearea);
+
+            venuearea.save(function(err){
+                if(err){
+                    return res.status(422).send({errors: normalizeErrors(err.errors)});
+                }
+
+                foundJobh.save();
+
+                Userh.update({_id: userh.id}, {$push: {venueareas: venuearea}}, function(){});
+
+                res.json({"created": "true"});
+            });
+            
+        });
+    // VenueArea.create(venuearea, function(err, newVenueArea){
+    //     if(err){
+    //         return res.status(422).send({errors: normalizeErrors(err.errors)});
+    //     }
+
+    //     Userh.update({_id: userh.id}, {$push: {areas: newVenueArea}}, function(){});
+
+    //     return res.json(newVenueArea);
+    // });
+}
