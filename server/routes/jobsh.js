@@ -13,11 +13,16 @@ router.get('/secret', UserCtrlh.authMiddleware, function(req, res){
 	res.json({"secret": true});
 });
 
-// router.get('', function(req, res){
-//     Jobh.find({}, function(err, foundJobsh){
-//         res.json(foundJobsh);
-//     });
-// });
+router.get('', function(req, res){
+    Jobh.find({})
+    .populate('venueareas')
+    .exec(function(err, foundJobh){
+        if(err){
+            return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+        }
+        return res.json(foundJobh);
+    });
+});
 
 router.get('/manage', UserCtrlh.authMiddleware, function(req, res){
     const userh = res.locals.userh;
@@ -235,12 +240,21 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
 router.get('/:id', function(req, res){
     const jobhId = req.params.id;
 
-    Jobh.findById(jobhId, function(err, foundJobsh){
-        if(err){
-            return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
-        }
-        res.json(foundJobsh);
-    });
+    Jobh.findById(jobhId)
+        .populate('venueareas')
+        .exec(function(err, foundJobh){
+            if(err){
+                return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+            }
+            return res.json(foundJobh);
+        });
+
+    // Jobh.findById(jobhId, function(err, foundJobsh){
+    //     if(err){
+    //         return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+    //     }
+    //     res.json(foundJobsh);
+    // });
 });
 
 function escapeRegex(text) {
