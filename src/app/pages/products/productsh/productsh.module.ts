@@ -12,6 +12,7 @@ import { ProductHotelComponent } from '../product-hotel/product-hotel.component'
 import { ProducthZoomComponent } from '../producth/producth-zoom/producth-zoom.component';
 import { ProducthZoomModule } from '../producth/producth-zoom/producth-zoom.module';
 import { VenueAreaComponent } from '../../../theme/components/venuearea/venuearea.component';
+import { ImageUploadModule } from '../../../pages/image-upload/image-upload.module';
 
 import { NgPipesModule } from 'ngx-pipes';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
@@ -35,7 +36,8 @@ export const routes = [
     NgPipesModule,
     MapModule,
     ProducthZoomModule,
-    Ng2CarouselamosModule
+    Ng2CarouselamosModule,
+    ImageUploadModule
   ],
   declarations: [
     ProductshComponent, 

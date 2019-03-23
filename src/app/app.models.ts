@@ -140,6 +140,7 @@ export class Producth {
               volley_ball: string;
               swimming: string;
               gym: string;
+              venueareas: VenueArea[];
 
 }
 
@@ -156,15 +157,17 @@ export class Userh {
 
 export class VenueArea {
   static readonly CATEGORIES = ['Football', 'Basketball','Conference Room', 'Party Hall', 'Meeting Room'];
-  image1: String;
-  image2: String;
-  image3: String;
-  image4: String;
-  image5: String;
-  image6: String;
-  price: Number;
-  category: String;
+  _id: string;
+  image1: string;
+  image2: string;
+  image3: string;
+  image4: string;
+  image5: string;
+  image6: string;
+  price: number;
+  category: string;
   features: Array<any>;
+  producth: Producth;
 
 }
 

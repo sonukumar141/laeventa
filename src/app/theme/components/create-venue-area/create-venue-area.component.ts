@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { VenueArea } from '../../../app.models';
 import { AppService } from '../../../app.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Producth } from '../../../app.models';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 export class CreateVenueAreaComponent implements OnInit {
  
   newVenueArea: VenueArea;
+  @Input() producth: Producth;
   //producthCategories = Producth.CATEGORIES;
   venueAreaCategories = VenueArea.CATEGORIES;
 
@@ -71,7 +73,9 @@ export class CreateVenueAreaComponent implements OnInit {
     this.newVenueArea.image1 = '';
   }
 
+
   createVenueArea(){
+    this.newVenueArea.producth = this.producth;
     this.appService.createVenueArea(this.newVenueArea).subscribe(
       (venuearea: VenueArea) => {
         

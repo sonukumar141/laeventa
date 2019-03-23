@@ -13,17 +13,16 @@ router.get('/secret', UserCtrlh.authMiddleware, function(req, res){
 	res.json({"secret": true});
 });
 
-router.get('', function(req, res){
-    Jobh.find({})
-    .populate('venueareas')
-    .exec(function(err, foundJobh){
-        if(err){
-            return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
-        }
-        return res.json(foundJobh);
-    });
-});
-
+// router.get('', function(req, res){
+//     Jobh.find({})
+//     //.populate('venueareas')
+//     .exec(function(err, foundJobh){
+//         if(err){
+//             return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+//         }
+//         return res.json(foundJobh);
+//     });
+// });
 router.get('/manage', UserCtrlh.authMiddleware, function(req, res){
     const userh = res.locals.userh;
     Jobh.where({userh})
@@ -35,6 +34,28 @@ router.get('/manage', UserCtrlh.authMiddleware, function(req, res){
             return res.json(foundJobsh);
         });
 });
+
+router.get('/:id', function(req, res){
+    const jobhId = req.params.id;
+
+    Jobh.findById(jobhId)
+        .populate('venueareas')
+        .exec(function(err, foundJobh){
+            if(err){
+                return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+            }
+            return res.json(foundJobh);
+        });
+
+    // Jobh.findById(jobhId, function(err, foundJobsh){
+    //     if(err){
+    //         return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
+    //     }
+    //     res.json(foundJobsh);
+    // });
+});
+
+
 
 
 router.get('', function(req, res){
@@ -202,19 +223,23 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
                            cricket,football, futsal, hockey, netball, squash, table_tennis,
                            tennis, volley_ball, swimming, gym});
 	jobh.userh = userh;
+    
 
-	Jobh.create(jobh, function(err, newJobh) {
-		if(err) {
-			return res.status(422).send({errors: normalizeErrors(err.errors)});
-		}
+    Jobh.create(jobh, function(err, newJobh) {
+        if(err) {
+            return res.status(422).send({errors: normalizeErrors(err.errors)});
+        }
 
         Userh.update({_id: userh.id}, {$push: {jobsh: newJobh}}, function(){});
 
-		return res.json(newJobh);
-	});
+        return res.json(newJobh);
+    });
+        
 });
 
+function isValid(proposedCreateJob, jobh){
 
+}
 // router.get('/venuearea', UserCtrlh.authMiddleware, function(req, res){
 //     const userh = res.locals.userh;
 
@@ -237,25 +262,6 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
     
 // });
 
-router.get('/:id', function(req, res){
-    const jobhId = req.params.id;
-
-    Jobh.findById(jobhId)
-        .populate('venueareas')
-        .exec(function(err, foundJobh){
-            if(err){
-                return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
-            }
-            return res.json(foundJobh);
-        });
-
-    // Jobh.findById(jobhId, function(err, foundJobsh){
-    //     if(err){
-    //         return res.status(422).send({errors: [{title: 'Job Error', detail: 'Could not find Job'}]});
-    //     }
-    //     res.json(foundJobsh);
-    // });
-});
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

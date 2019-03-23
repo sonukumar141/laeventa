@@ -1,12 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { Data, AppService } from '../../../app.service';
-import { Producth } from "../../../app.models";
+import { Producth, VenueArea } from "../../../app.models";
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductHotelZoomComponent } from './product-hotel-zoom/product-hotel-zoom.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-product-hotel',
@@ -26,7 +28,12 @@ export class ProductHotelComponent implements OnInit {
   public form: FormGroup;
   public relatedProducts: Array<Producth>;
 
+  newVenueArea: VenueArea;
+  //producthCategories = Producth.CATEGORIES;
+  venueAreaCategories = VenueArea.CATEGORIES;
+
   constructor(public appService:AppService, 
+              private auth: AuthService,
               private activatedRoute: ActivatedRoute, 
               public dialog: MatDialog, 
               public formBuilder: FormBuilder) { 
@@ -41,6 +48,7 @@ export class ProductHotelComponent implements OnInit {
   ngOnInit() {      
     this.sub = this.activatedRoute.params.subscribe(params => { 
       this.getProducthById(params['_id']); 
+      this.newVenueArea = new VenueArea();
     }); 
     this.form = this.formBuilder.group({ 
       'review': [null, Validators.required],            
@@ -49,7 +57,67 @@ export class ProductHotelComponent implements OnInit {
     }); 
     this.getRelatedProducts();  
     
-    
+  }
+
+  handleImage1Change(imageUrl: string){
+    this.newVenueArea.image1 = imageUrl;
+  }
+
+  handleImage2Change(imageUrl: string){
+    this.newVenueArea.image2 = imageUrl;
+  }
+
+  handleImage3Change(imageUrl: string){
+    this.newVenueArea.image3 = imageUrl;
+  }
+
+  handleImage4Change(imageUrl: string){
+    this.newVenueArea.image4 = imageUrl;
+  }
+
+  handleImage5Change(imageUrl: string){
+    this.newVenueArea.image5 = imageUrl;
+  }
+
+  handleImage6Change(imageUrl: string){
+    this.newVenueArea.image6 = imageUrl;
+  }
+
+  handleImage1Error(){
+    this.newVenueArea.image1 = '';
+  }
+
+  handleImage2Error(){
+    this.newVenueArea.image1 = '';
+  }
+
+  handleImage3Error(){
+    this.newVenueArea.image1 = '';
+  }
+
+  handleImage4Error(){
+    this.newVenueArea.image1 = '';
+  }
+
+  handleImage5Error(){
+    this.newVenueArea.image1 = '';
+  }
+
+  handleImage6Error(){
+    this.newVenueArea.image1 = '';
+  }
+  //this.newVenueArea.producthInput = this.producth;
+  createVenueArea(){
+    this.newVenueArea.producth = this.producth;
+    console.log(this.newVenueArea.producth);
+    this.appService.createVenueArea(this.newVenueArea).subscribe(
+      (venuearea: VenueArea) => {
+        
+      },
+      (errorResponse: HttpErrorResponse) => {
+       
+      }
+    )
   }
 
   ngAfterViewInit(){

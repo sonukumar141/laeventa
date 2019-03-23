@@ -28,7 +28,7 @@ export class AppService {
     constructor(public http:HttpClient, public snackBar: MatSnackBar) { }
 
     public getAllVenueAreas(): Observable<VenueArea[]>{        
-        return this.http.get<VenueArea[]>('/api/v1/productsh/venuearea');
+        return this.http.get<VenueArea[]>('/api/v1/venuearea');
     }
 
     public createVenueArea(venueArea: VenueArea): Observable<any> {

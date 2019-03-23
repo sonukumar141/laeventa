@@ -4,14 +4,14 @@ const Jobh = require('../models/jobh');
 const { normalizeErrors } = require('../helpers/mongoose');
 
 exports.createVenueArea = function(req, res){
-    const {image1, image2, image3, image4, image5, image6, price, category, features, jobh } = req.body;
+    const {image1, image2, image3, image4, image5, image6, price, category, features, producth } = req.body;
 
     const userh = res.locals.userh;
     const venuearea = new VenueArea({image1, image2, image3, image4, image5, image6, price, category, features});
 
    // venuearea.userh = userh;
 
-    Jobh.findById(jobh._id)
+    Jobh.findById(producth._id)
         .populate('venueareas')
         .populate('userh')
         .exec(function(err, foundJobh){
@@ -49,3 +49,16 @@ exports.createVenueArea = function(req, res){
     //     return res.json(newVenueArea);
     // });
 }
+
+// exports.getVenueArea = function(req, res){
+//     const {jobh } = req.body;
+//     VenueArea.find({})
+//     //.populate('venueareas')
+//     .exec(function(err, foundVenueArea){
+//         if(err){
+//             return res.status(422).send({errors: [{title: 'No venue area', detail: 'Venue area could not be found'}]});
+//         }
+//         if(jobh._id == foundVenueArea.jobh.id)
+//         return res.json(foundVenueArea);
+//     });
+// }
