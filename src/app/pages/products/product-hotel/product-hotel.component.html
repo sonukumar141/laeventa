@@ -69,119 +69,6 @@
             </mat-card>
             <div class="divider"></div>            
     </div>
-    <div *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'" fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
-
-            <div class="container">
-        
-                      
-               <form #venueareaForm="ngForm" class="w3-container">
-                             <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                           <mat-panel-title>
-                                                  <h4>Area type</h4>
-                                           </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                             <p>
-                             <p>
-                             <br>
-                             <select class="w3-input"
-                                           id="category"
-                                           name="category"
-                                           [(ngModel)]="newVenueArea.category">
-                                           <option [ngValue]="undefined" disabled selected>Select Area </option>
-                                    <option *ngFor="let category of venueAreaCategories">{{category}} </option>
-                                    </select></p>
-                            </mat-expansion-panel>
-                            <br>
-                            <br>
-                            <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                           <mat-panel-title>
-                                                  <h4>Add Images</h4>
-                                           </mat-panel-title>
-                                    </mat-expansion-panel-header> 
-                            <label>Upload Image 1</label>
-                            <!-- <input class="w3-input" 
-                                   type="file"
-                                   id="image1"
-                                   (change)="handleImage1Change()"> -->
-                                   <laeventa-image-upload
-                                   (imageUploaded)="handleImage1Change($event)"
-                                                 (imageError)="handleImage1Error()"
-                                   ></laeventa-image-upload>
-                            <p>
-                            <br>
-                            <label>Upload Image 2</label>
-                            <!-- <input class="w3-input" 
-                                   type="file"
-                                   id="image2"
-                                   (change)="handleImage2Change()"></p> -->
-                                   <laeventa-image-upload
-                                   (imageUploaded)="handleImage2Change($event)"
-                                                 (imageError)="handleImage2Error()"
-                                   ></laeventa-image-upload>
-                            <p>
-                            <br>
-                            <label>Upload Image 3</label>
-                            <!-- <input class="w3-input" 
-                                   type="file"
-                                   id="image3"
-                                   (change)="handleImage3Change()"></p> -->
-                                   <laeventa-image-upload
-                                   (imageUploaded)="handleImage3Change($event)"
-                                                 (imageError)="handleImage3Error()"
-                                   ></laeventa-image-upload>
-                            <p>
-                            <br>
-                            <label>Upload Image 4</label>
-                            <!-- <input class="w3-input" 
-                                   type="file"
-                                   id="image4"
-                                   (change)="handleImage4Change()"></p> -->
-                                   <laeventa-image-upload
-                                   (imageUploaded)="handleImage4Change($event)"
-                                                 (imageError)="handleImage4Error()"
-                                   ></laeventa-image-upload>
-                             <p>
-                             <br>
-                             <label>Upload Image 5</label>
-                                    <!-- <input class="w3-input" 
-                                    type="file"
-                                    id="image4"
-                                    (change)="handleImage4Change()"></p> -->
-                                    <laeventa-image-upload
-                                    (imageUploaded)="handleImage5Change($event)"
-                                                  (imageError)="handleImage4Error()"
-                                    ></laeventa-image-upload>
-                             <p>
-                             <br>
-                             <label>Upload Image 6</label>
-                                    <!-- <input class="w3-input" 
-                                    type="file"
-                                    id="image4"
-                                    (change)="handleImage4Change()"></p> -->
-                                    <laeventa-image-upload
-                                    (imageUploaded)="handleImage6Change($event)"
-                                                  (imageError)="handleImage4Error()"
-                                    ></laeventa-image-upload>                                                       
-                            </mat-expansion-panel>
-                             <br>
-        
-                    <br>
-                    <button (click)="createVenueArea()" 
-                                type="button" 
-                                class="">Submit
-                    </button>                                                                
-                            
-                    </form>
-                    <br>
-                    <!-- <div *ngIf="errors.length > 0" class="alert alert-danger">
-                      <p *ngFor="let error of errors">
-                             {{error.detail}}
-                      </p>
-               </div> -->
-            </div>
-        </div>
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md> 
 
         <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
@@ -642,6 +529,144 @@
                     </div>
                 </mat-tab>
                 <mat-tab label="Areas">
+                        <div *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'" fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
+
+                            <div class="container">
+                        
+                                      
+                               <form #venueareaForm="ngForm" class="w3-container">
+                                             <mat-expansion-panel>
+                                                    <mat-expansion-panel-header>
+                                                           <mat-panel-title>
+                                                                  <h4>Area type</h4>
+                                                           </mat-panel-title>
+                                                    </mat-expansion-panel-header>
+                                             <p>
+                                             <p>
+                                             <br>
+                                             <select class="w3-input"
+                                                           id="category"
+                                                           name="category"
+                                                           [(ngModel)]="newVenueArea.category">
+                                                           <option [ngValue]="undefined" disabled selected>Select Area </option>
+                                                    <option *ngFor="let category of venueAreaCategories">{{category}} </option>
+                                                    </select></p>
+                                            </mat-expansion-panel>
+                                            <br>
+                                            <mat-expansion-panel>
+                                                    <mat-expansion-panel-header>
+                                                           <mat-panel-title>
+                                                                  <h4>Add Images</h4>
+                                                           </mat-panel-title>
+                                                    </mat-expansion-panel-header> 
+                                            <label>Upload Image 1</label>
+                                            <!-- <input class="w3-input" 
+                                                   type="file"
+                                                   id="image1"
+                                                   (change)="handleImage1Change()"> -->
+                                                   <laeventa-image-upload
+                                                   (imageUploaded)="handleImage1Change($event)"
+                                                                 (imageError)="handleImage1Error()"
+                                                   ></laeventa-image-upload>
+                                            <p>
+                                            <br>
+                                            <label>Upload Image 2</label>
+                                            <!-- <input class="w3-input" 
+                                                   type="file"
+                                                   id="image2"
+                                                   (change)="handleImage2Change()"></p> -->
+                                                   <laeventa-image-upload
+                                                   (imageUploaded)="handleImage2Change($event)"
+                                                                 (imageError)="handleImage2Error()"
+                                                   ></laeventa-image-upload>
+                                            <p>
+                                            <br>
+                                            <label>Upload Image 3</label>
+                                            <!-- <input class="w3-input" 
+                                                   type="file"
+                                                   id="image3"
+                                                   (change)="handleImage3Change()"></p> -->
+                                                   <laeventa-image-upload
+                                                   (imageUploaded)="handleImage3Change($event)"
+                                                                 (imageError)="handleImage3Error()"
+                                                   ></laeventa-image-upload>
+                                            <p>
+                                            <br>
+                                            <label>Upload Image 4</label>
+                                            <!-- <input class="w3-input" 
+                                                   type="file"
+                                                   id="image4"
+                                                   (change)="handleImage4Change()"></p> -->
+                                                   <laeventa-image-upload
+                                                   (imageUploaded)="handleImage4Change($event)"
+                                                                 (imageError)="handleImage4Error()"
+                                                   ></laeventa-image-upload>
+                                             <p>
+                                             <br>
+                                             <label>Upload Image 5</label>
+                                                    <!-- <input class="w3-input" 
+                                                    type="file"
+                                                    id="image4"
+                                                    (change)="handleImage4Change()"></p> -->
+                                                    <laeventa-image-upload
+                                                    (imageUploaded)="handleImage5Change($event)"
+                                                                  (imageError)="handleImage4Error()"
+                                                    ></laeventa-image-upload>
+                                             <p>
+                                             <br>
+                                             <label>Upload Image 6</label>
+                                                    <!-- <input class="w3-input" 
+                                                    type="file"
+                                                    id="image4"
+                                                    (change)="handleImage4Change()"></p> -->
+                                                    <laeventa-image-upload
+                                                    (imageUploaded)="handleImage6Change($event)"
+                                                                  (imageError)="handleImage4Error()"
+                                                    ></laeventa-image-upload>                                                       
+                                            </mat-expansion-panel>
+                                            <br>
+                                            <mat-expansion-panel>
+                                                    <mat-expansion-panel-header>
+                                                           <mat-panel-title>
+                                                                  <h4>Features</h4>
+                                                           </mat-panel-title>
+                                                    </mat-expansion-panel-header>
+                                             <p>
+                                             <p>
+                                             <br>
+                                             <select class="w3-input"
+                                                           id="price"
+                                                           name="price"
+                                                           [(ngModel)]="newVenueArea.price">
+                                                           <option [ngValue]="undefined" disabled selected>Price </option>
+                                                    <option *ngFor="let category of venueAreaCategories">{{category}} </option>
+                                                    </select></p>
+                                            <p>
+                                            <input class="w3-input" 
+                                                            type="number"
+                                                            placeholder="Price"
+                                                            id="price"
+                                                            name="price"
+                                                            [(ngModel)]="newVenueArea.price"></p>                                                    
+                                            </mat-expansion-panel>
+                                            <br>                                            
+                                             <br>
+                        
+                                    <br>
+                                    <button (click)="createVenueArea()" 
+                                                type="button" 
+                                                class="">Submit
+                                    </button>                                                                
+                                            
+                                    </form>
+                                    <br>
+                                    <!-- <div *ngIf="errors.length > 0" class="alert alert-danger">
+                                      <p *ngFor="let error of errors">
+                                             {{error.detail}}
+                                      </p>
+                               </div> -->
+                            </div>
+                        </div>
                         <app-venue-area></app-venue-area>
                         <h1 *ngFor="let area of producth?.venueareas">
                                 {{area.category}}
