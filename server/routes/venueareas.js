@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const VenueAreaCtrl = require('../controllers/venueareas');
-const Jobv = require('../models/jobv');
-const Userh = require('../models/userh');
-const { normalizeErrors } = require('../helpers/mongoose');
-const VenueArea = require('../models/venuearea');
 
 const UserCtrlh = require('../controllers/userh');
 
 router.post('', UserCtrlh.authMiddleware, VenueAreaCtrl.createVenueArea);
+
+router.delete('/:id', UserCtrlh.authMiddleware, VenueAreaCtrl.deleteVenueArea);
+
+router.get('', UserCtrlh.authMiddleware, VenueAreaCtrl.getVenueAreas);
 
 //router.get('', VenueAreaCtrl.getVenueArea);
 

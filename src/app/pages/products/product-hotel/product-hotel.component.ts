@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { Data, AppService } from '../../../app.service';
 import { Producth, VenueArea } from "../../../app.models";
@@ -9,6 +9,7 @@ import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductHotelZoomComponent } from './product-hotel-zoom/product-hotel-zoom.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../shared/auth.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-product-hotel',
@@ -31,11 +32,14 @@ export class ProductHotelComponent implements OnInit {
   newVenueArea: VenueArea;
   //producthCategories = Producth.CATEGORIES;
   venueAreaCategories = VenueArea.CATEGORIES;
+  public venueareas: Array<VenueArea> = [];
+  venueareaDeleteIndex: number;
 
   constructor(public appService:AppService, 
               private auth: AuthService,
               private activatedRoute: ActivatedRoute, 
               public dialog: MatDialog, 
+              public snackBar: MatSnackBar,
               public formBuilder: FormBuilder) { 
                 this.items = [
                   {url: 'producth.image_small'},
@@ -56,6 +60,11 @@ export class ProductHotelComponent implements OnInit {
       'email': [null, Validators.compose([Validators.required, emailValidator])]
     }); 
     this.getRelatedProducts();  
+
+    this.appService.getOwnerVenueAreas().subscribe(
+      data => {
+        this.venueareas = data;
+      });
     
   }
 
@@ -112,12 +121,25 @@ export class ProductHotelComponent implements OnInit {
     console.log(this.newVenueArea.producth);
     this.appService.createVenueArea(this.newVenueArea).subscribe(
       (venuearea: VenueArea) => {
-        
+        this.snackBar.open('New Area Created successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 4000 });
       },
       (errorResponse: HttpErrorResponse) => {
        
       }
     )
+  }
+
+  deleteVenueArea(venueareaId: string)  {
+
+    this.appService.deleteVenueArea(venueareaId).subscribe(
+    () => {
+      this.venueareas.splice(this.venueareaDeleteIndex, 1);
+      this.venueareaDeleteIndex = undefined;
+      this.snackBar.open('Area deleted successfully!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+    },
+    () => {
+
+    })
   }
 
   ngAfterViewInit(){
@@ -203,6 +225,10 @@ export class ProductHotelComponent implements OnInit {
     if (this.form.valid) {
       //email sent
     }
+  }
+
+  public onCreateVenueArea(){
+    // TBD
   }
 
   

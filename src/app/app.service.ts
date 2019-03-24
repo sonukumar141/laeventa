@@ -35,6 +35,14 @@ export class AppService {
         return this.http.post('/api/v1/venuearea', venueArea);
     }
 
+    public deleteVenueArea(venueAreaId: string): Observable<any> {
+        return this.http.delete('/api/v1/venuearea/' + venueAreaId);
+    }
+
+    public getOwnerVenueAreas(): Observable<any> {
+        return this.http.get('/api/v1/venuearea/');
+    }
+
     public getOwnerVenues(): Observable<any> {
         return this.http.get('/api/v1/productsh/manage');
     }

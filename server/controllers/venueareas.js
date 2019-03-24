@@ -50,6 +50,40 @@ exports.createVenueArea = function(req, res){
     // });
 }
 
+exports.deleteVenueArea = function(req, res){
+    const userh = res.locals.userh;
+    VenueArea.findById(req.params.id)
+        .populate('userh', '_id')
+        .exec(function(err, foundVenueArea){
+            if(err){
+                return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
+
+            if(userh.id !== foundVenueArea.userh.id){
+                return res.status(422).send({errors: [{title: 'Invalid User', detail: 'You are not allowed to delete'}]});
+            }
+
+            foundVenueArea.remove(function(err){
+                if(err){
+                    return res.status(422).send({errors: normalizeErrors(err.errors)});
+                }
+
+                return res.json({'status': 'deleted'});
+            });
+        });
+}
+
+exports.getVenueAreas =  function(req, res){
+    const userh = res.locals.userh;
+    VenueArea.where({userh})
+        .exec(function(err, foundVenueAreas){
+            if(err){
+                return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
+
+            return res.json(foundVenueAreas);
+        });
+}
 // exports.getVenueArea = function(req, res){
 //     const {jobh } = req.body;
 //     VenueArea.find({})

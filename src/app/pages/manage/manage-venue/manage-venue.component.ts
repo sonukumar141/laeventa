@@ -18,9 +18,7 @@ export class ManageVenueComponent implements OnInit {
         this.appService.getOwnerVenues().subscribe(
           data => {
             this.productsh = data;
-          }
-
-        )
+          });
       }
 
       deleteProducth(producthId: string)  {
