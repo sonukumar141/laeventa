@@ -10,6 +10,8 @@ import { ProductHotelZoomComponent } from './product-hotel-zoom/product-hotel-zo
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../shared/auth.service';
 import { MatSnackBar } from '@angular/material';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-hotel',
@@ -28,6 +30,7 @@ export class ProductHotelComponent implements OnInit {
   private sub: any;
   public form: FormGroup;
   public relatedProducts: Array<Producth>;
+  errors: any[] = [];
 
   newVenueArea: VenueArea;
   //producthCategories = Producth.CATEGORIES;
@@ -39,6 +42,7 @@ export class ProductHotelComponent implements OnInit {
               private auth: AuthService,
               private activatedRoute: ActivatedRoute, 
               public dialog: MatDialog, 
+              public router:Router, 
               public snackBar: MatSnackBar,
               public formBuilder: FormBuilder) { 
                 this.items = [
@@ -137,8 +141,9 @@ export class ProductHotelComponent implements OnInit {
       this.venueareaDeleteIndex = undefined;
       this.snackBar.open('Area deleted successfully!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
     },
-    () => {
-
+    (errorResponse) => {
+      this.errors = errorResponse.error.errors;
+      this.router.navigate(['/manage']);
     })
   }
 

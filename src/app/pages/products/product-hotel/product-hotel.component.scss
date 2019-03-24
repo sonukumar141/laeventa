@@ -82,7 +82,59 @@
     box-shadow: 0px 0px 30px 20px grey;
   }
 
+  #custom-image {
+     max-width: 100% !important;
+    // height: auto !important;
+    height: 380px;
+    //max-height: 20px; 
+  }
+  
+  .trigger {
+    display: none;
+  }
+  
+.custom-slider{
+    max-height: 200px;
+}
 
+.delete-button{
+    margin-bottom: 15px !important;
+}
+
+#area-number{
+   text-align: center !important;
+   font-family: 'Times New Roman', Times, serif;
+}
+
+
+//   @media only screen and (min-width: 1024px) {
+//     .slider, .slider-wrapper {
+//       height: 480px;
+//     }
+  
+//     .slide-caption {
+//       width: 65%;
+//       font-size: 1.5rem;
+//     }
+//   }
+  
+//   @media only screen and (max-width: 1023px) and (min-width: 768px) {
+//     .slider, .slider-wrapper {
+//       height: 360px;
+//     }
+  
+//     .slide-caption {
+//       width: 75%;
+//       font-size: 1.25rem;
+//     }
+//   }
+  
+//   @media only screen and (min-width: 768px) {
+//     .slide-img {
+//       width: 100%;
+//       height: auto;
+//     }
+//   }
 // @media (min-width: 1280px) {  
 //     .mat-card.product-image img{
 //         cursor: zoom-in;

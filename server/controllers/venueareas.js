@@ -60,7 +60,7 @@ exports.deleteVenueArea = function(req, res){
             }
 
             if(userh.id !== foundVenueArea.userh.id){
-                return res.status(422).send({errors: [{title: 'Invalid User', detail: 'You are not allowed to delete'}]});
+                return res.status(422).send({errors: [{title: 'Invalid User', detail: 'This is not your Listing. Go to manage section'}]});
             }
 
             foundVenueArea.remove(function(err){

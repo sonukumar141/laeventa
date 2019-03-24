@@ -1,10 +1,10 @@
 <div>
-        <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+        <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="25" ngClass.gt-sm="px-2 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
         
         
             <!-- <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
             <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/> -->
-                
+               <mat-card >
                 <div ng2-carouselamos class="mat-card.product-image"
                      [items]="items"
                      [$prev]="prev"
@@ -19,13 +19,18 @@
                 <ng-template #next>
                         <img src="assets/images/arrows/next.png" alt="">
                 </ng-template>
-
+                
                 <ng-template #item>
-                    <img *ngIf="producth.image_big" [src]="producth.image_big" style="width:113%; height: 50%;">
-                    <img *ngIf="producth.image_small" [src]="producth.image_small" style="width:113%; height: 50%;">
-                    <img *ngIf="producth.image_medium" [src]="producth.image_medium" style="width:113%; height: 50%;">
-                    <img *ngIf="producth.image_extra" [src]="producth.image_extra" style="width:113%; height: 50%;">
+                        
+                    <img id="custom-image" *ngIf="producth.image_big" [src]="producth.image_big" >
+                    <img id="custom-image" *ngIf="producth.image_small" [src]="producth.image_small" >
+                    <img id="custom-image" *ngIf="producth.image_medium" [src]="producth.image_medium" >
+                    <img id="custom-image" *ngIf="producth.image_extra" [src]="producth.image_extra" >
+                        
                 </ng-template>
+                </mat-card>
+          
+            
             
     <br>
     <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
@@ -36,7 +41,8 @@
     </mat-card>
 
     </div>
-    <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+    
+    <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-2 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
         
         <div #zoomViewer fxShow="false" fxShow.gt-md>
             <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></mat-card>
@@ -67,10 +73,7 @@
                     <p><b style="font-size:15px; margin-left: 10px;">+91 {{ producth?.phone }}</b></p>
                 </div> 
             </mat-card>
-            <div class="divider"></div>
-            <button mat-raised-button  (click)="onCreateVenueArea()">
-                    <mat-icon>add</mat-icon>Create
-            </button>        
+            <div class="divider"></div>      
     </div>
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md> 
 
@@ -126,7 +129,7 @@
     <div fxFlex="100" fxFlex.gt-md="78" fxFlex.md="74">
         <mat-card> 
             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
-                <mat-tab *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding'" label="Details">
+                <mat-tab *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding'" label="Overview">
                     <div class="full-desc lh">
                         <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
                             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
@@ -247,8 +250,46 @@
                             </mat-card>
                         </div> 
                     </div>
+                    <div class="full-desc lh">
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Address</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Email</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.email}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
+                            <div class="outer">
+                                <div class="inner"></div>
+                            </div>
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Landmark</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.landmark}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Contact</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.phone}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
+                    </div>
+                    <div class="full-desc lh">
+                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
+                    </div>
                 </mat-tab>
-                <mat-tab *ngIf="producth?.category === 'sports'" label="Details">
+                <mat-tab *ngIf="producth?.category === 'sports'" label="Overview">
                     <div class="full-desc lh">
                         <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
                             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
@@ -413,8 +454,46 @@
                             </mat-card>
                         </div> 
                     </div>
+                    <div class="full-desc lh">
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Address</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Email</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.email}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
+                            <div class="outer">
+                                <div class="inner"></div>
+                            </div>
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Landmark</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.landmark}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Contact</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.phone}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
+                    </div>
+                    <div class="full-desc lh">
+                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
+                    </div>
                 </mat-tab>
-                <mat-tab *ngIf="producth?.category === 'conference' || producth?.category === 'meeting'" label="Details">
+                <mat-tab *ngIf="producth?.category === 'conference' || producth?.category === 'meeting'" label="Overview">
                     <div class="full-desc lh">
                         <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
                             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
@@ -488,8 +567,6 @@
                             </mat-card>
                         </div> 
                     </div>
-                </mat-tab>
-                <mat-tab label="Contact Info">
                     <div class="full-desc lh">
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
@@ -525,8 +602,6 @@
                                 </mat-card>
                             </div>
                     </div>
-                </mat-tab>
-                    <mat-tab label="Map">
                     <div class="full-desc lh">
                         <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
                     </div>
@@ -670,8 +745,9 @@
                             
                         </div>
                         <mat-card>
-
+                        <h3 id="area-number"> Number of Areas: {{producth?.venueareas.length}} </h3>
                         <div *ngFor="let venuearea of producth?.venueareas; let i = index">
+                           
 
                             <div ng2-carouselamos class="mat-card.product-image"
                                 [items]="items"
@@ -698,20 +774,26 @@
                                 </ng-template>
 
                                 <br>
-                                <h1>{{ 
-                                    venuearea.category
-                                }}</h1>
-                                <br>
-                                <h1>{{
-                                    venuearea.price
-                                }}</h1>
-                                <div *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
+                                <div id="area-detail">
+                                    <h3>{{ 
+                                        venuearea.category
+                                    }}</h3>
+
+                                    <h3> Pricing: {{
+                                        venuearea.price
+                                    }}</h3>
+                                    <h3> Features: {{
+                                            venuearea.features
+                                        }}</h3>
+                                </div>
+                                <div id="delete-button" *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
                                 <button (click)="venueareaDeleteIndex = i"
                                 *ngIf="venueareaDeleteIndex !== i"
                                 type="button" 
                                 class="">Delete</button>
-                                <div class="divider"></div>
                                 <br>
+                                <div class="divider"></div>
+                               
                         <div *ngIf="venueareaDeleteIndex === i">
                             clicked
                                 
@@ -721,7 +803,15 @@
                                 <button (click)="venueareaDeleteIndex = undefined"
                                         class="btn btn-danger">No</button>
                             </div>
+                            <div *ngIf="errors.length > 0" class="alert alert-danger">
+                                    <p *ngFor="let error of errors">
+                                           {{error.detail}}
+                                    </p>
+                                    <a style="background-color: Green" mat-button routerLink="/manage/venues">Manage</a>
+                             </div>
                         </div>
+                        <div class="divider"></div>
+                        <br>
                         </div>
 
                     </mat-card>
@@ -743,8 +833,54 @@
                             </div>
                         </div> -->
                         
-                </mat-tab>                
-                <mat-tab label="Reviews">
+                </mat-tab>   
+                <mat-tab label="Policies">
+                    <div class="full-desc lh">
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Address</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Email</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.email}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
+                            <div class="outer">
+                                <div class="inner"></div>
+                            </div>
+                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Landmark</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.landmark}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Contact</strong> 
+                                    <div class="content">
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.phone}}</p> 
+                                    </div> 
+                                </mat-card>
+                            </div>
+                    </div>
+                    <div class="full-desc lh">
+                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
+                    </div>
+                </mat-tab>
+                    <!-- <mat-tab label="Map">
+                    <div class="full-desc lh">
+                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
+                    </div>
+                </mat-tab> -->
+             
+                <!-- <mat-tab label="Reviews">
                     <div class="full-desc lh">
                         <mat-list class="reviews">
                             <mat-list-item class="h-100 py-1">
@@ -814,7 +950,7 @@
                             </div>
                         </form>    
                     </div>
-                </mat-tab>
+                </mat-tab> -->
             </mat-tab-group>
         </mat-card>
     </div>
