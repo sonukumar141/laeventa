@@ -32,9 +32,8 @@
                                                 <button (click)="producthDeleteIndex = i"
                                                         *ngIf="producthDeleteIndex !== i"
                                                         type="button" 
-                                                        class="">Delete</button>
+                                                        id="btn-delete">Delete</button>
                                                 <div *ngIf="producthDeleteIndex === i">
-                                                    clicked
                                                 <p class="confirm-message">Do you confirm delete?</p> 
                                                     <button (click)="deleteProducth(product._id)"
                                                             class="btn btn-success">Yes</button>
@@ -54,4 +53,9 @@
                 <br>
         </div>
     </ng-container>
+</div>
+<div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
+<div>
+    <mat-icon color="primary" class="mat-icon-xlg">person</mat-icon>
+</div>
 </div>
