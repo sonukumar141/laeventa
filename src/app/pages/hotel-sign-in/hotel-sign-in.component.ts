@@ -47,7 +47,7 @@ export class HotelSignInComponent implements OnInit {
     }
   }
 
-  public onRegisterFormSubmit(values:Object):void {
+  public onRegisterFormSubmit() {
     this.auth.hotel_signup(this.registerForm.value).subscribe(
       () => {
         console.log('success');

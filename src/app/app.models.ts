@@ -41,7 +41,7 @@ export class Product {
 
 export class Producth {
 
-  static readonly CATEGORIES = ['Hotel', 'Banquet','Sports', 'Conference', 'Meeting','Wedding'];
+  static readonly CATEGORIES = ['Sports', 'Wedding', 'Conference','Meeting', 'Concert', 'Party'];
   static readonly CITIES = ['Pune', 'Vadodara', 'Mumbai', 'Delhi'];
   static readonly CATEROR = ['Yes', 'No'];
   static readonly WIFI = ['Yes', 'No'];

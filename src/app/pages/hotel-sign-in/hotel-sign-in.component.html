@@ -2,7 +2,7 @@
     <div fxLayout="row wrap">
             <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
                 <h2 class="text-muted text-center">Hotel/Venue Registration. Sign up now!</h2>
-                <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit(registerForm.value)">
+                <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit()">
                     <mat-form-field class="w-100 mt-2">
                         <mat-select formControlName="category" placeholder="Business Type" required> 
                             <mat-option *ngFor="let category of userhCategory" value="Hotel/Venue">{{category}}</mat-option>
@@ -41,7 +41,7 @@
                     </mat-form-field>
                     <h3 class="text-muted text-center">Sign up & list your business.</h3>
                     <div class="text-center mt-2">
-                        <button mat-fab color="primary" class="mat-elevation-z6" [disabled]="!registerForm.valid" (click)="onRegisterFormSubmit(registerForm.value)">
+                        <button mat-fab color="primary" class="mat-elevation-z6" [disabled]="!registerForm.valid" type="submit">
                             <mat-icon>person_add</mat-icon>
                         </button>
                     </div>

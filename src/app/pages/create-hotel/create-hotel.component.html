@@ -141,18 +141,18 @@
                            ></laeventa-image-upload>
                     </mat-expansion-panel>
                      <br>
-                     <mat-expansion-panel>
+                     <mat-expansion-panel *ngIf="newProducth.category === 'Wedding' || 
+                     newProducth.category === 'Banquet' ||
+                     newProducth.category === 'Hotel' ||
+                     newProducth.category === 'Meeting' ||
+                     newProducth.category === 'Conference'">
                             <mat-expansion-panel-header>
                                    <mat-panel-title>
                                           <h4>Food and Restaurant</h4>
                                    </mat-panel-title>
                             </mat-expansion-panel-header>
                      <br>
-                     <select *ngIf="newProducth.category === 'Wedding' || 
-                                    newProducth.category === 'Banquet' ||
-                                    newProducth.category === 'Hotel' ||
-                                    newProducth.category === 'Meeting' ||
-                                    newProducth.category === 'Conference'"
+                     <select 
                            class="w3-input" 
                            id="restaurant"
                            name="restaurant"
@@ -162,9 +162,7 @@
                      </select>
                      <p>
                      <br>
-                     <select *ngIf="newProducth.category === 'Wedding' || 
-                                   newProducth.category === 'Banquet' ||
-                                   newProducth.category === 'Hotel'"
+                     <select 
                             class="w3-input" 
                             id="caterer"
                             name="caterer"
@@ -174,9 +172,7 @@
                      </select></p>
                     <p>
                     <br>
-                    <input *ngIf="newProducth.category === 'Wedding' || 
-                                  newProducth.category === 'Banquet' ||
-                                  newProducth.category === 'Hotel'"
+                    <input 
                            class="w3-input" 
                            type="number"
                            placeholder="Per plate cost (veg)"
@@ -185,9 +181,7 @@
                            [(ngModel)]="newProducth.veg_package"></p>
                     <p>
                     <br>
-                    <input *ngIf="newProducth.category === 'Wedding' || 
-                                  newProducth.category === 'Banquet' ||
-                                  newProducth.category === 'Hotel'"
+                    <input 
                            class="w3-input" 
                            type="number"
                            placeholder="Per plate cost (Non-veg)"
@@ -251,7 +245,7 @@
                            [(ngModel)]="newProducth.open_space"></p>
                      </mat-expansion-panel>
                     <br>
-                    <mat-expansion-panel>
+                    <!-- <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                    <mat-panel-title>
                                           <h4>Extra Facilities</h4>
@@ -376,7 +370,7 @@
                      <option [ngValue]="undefined" disabled selected>Lodging </option>
                      <option *ngFor="let lodging of producthLodging">{{lodging}} </option>  
                      </select></p>
-                     </mat-expansion-panel>
+                     </mat-expansion-panel> -->
                     <br>
                     <mat-expansion-panel>
                             <mat-expansion-panel-header>
@@ -421,7 +415,7 @@
                      </select></p>
                      </mat-expansion-panel>
                     <br>
-                    <mat-expansion-panel *ngIf="newProducth.category === 'Sports'">
+                    <!-- <mat-expansion-panel *ngIf="newProducth.category === 'Sports'">
                                    <mat-expansion-panel-header>
                                           <mat-panel-title>
                                                  <h4>Add Sports </h4>
@@ -548,7 +542,7 @@
                      <option [ngValue]="undefined" disabled selected>Gym </option>
                      <option *ngFor="let gym of producthGym">{{gym}} </option>  
                      </select></p>
-                     </mat-expansion-panel>
+                     </mat-expansion-panel> -->
                      <br>
                      <mat-expansion-panel *ngIf="newProducth.category === 'Sports'">
                                    <mat-expansion-panel-header>

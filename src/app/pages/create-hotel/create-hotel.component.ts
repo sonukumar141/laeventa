@@ -3,6 +3,7 @@ import { Producth } from '../../app.models';
 import { AppService } from '../../app.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -46,6 +47,7 @@ export class CreateHotelComponent implements OnInit {
   errors: any[] = [];
 
   constructor(private appService: AppService,
+              private snackBar: MatSnackBar,
               private router: Router) { }
 
   ngOnInit() {
@@ -86,7 +88,8 @@ export class CreateHotelComponent implements OnInit {
   createProducth(){
     this.appService.createProducth(this.newProducth).subscribe(
       (producth: Producth) => {
-        this.router.navigate([`/venues/${producth._id}/${producth.name}`])
+        this.snackBar.open('Created your listing successfully!. Add new areas to your listing', '×', { panelClass: 'success', verticalPosition: 'top', duration: 6000 });
+        this.router.navigate([`/venues/${producth._id}/${producth.name}`]);
       },
       (errorResponse: HttpErrorResponse) => {
         this.errors = errorResponse.error.errors;
