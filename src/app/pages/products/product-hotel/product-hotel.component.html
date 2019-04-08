@@ -35,7 +35,8 @@
     <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
         <img src="assets/images/icons/summary.png" alt="summary img">
         <div class="content">
-            <p><b style="font-size:20px; margin-left: 10px;">Summary:</b></p>
+            <p><b style="font-size:18px; margin-left: 10px;">Summary:</b></p>
+            <p style="font-size:14px; margin-left: 10px;">{{producth?.summary}}</p>
         </div> 
     </mat-card>
 
@@ -81,8 +82,8 @@
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                     <img src="assets/images/icons/price.png" alt="Price img">
                     <div class="content">
-                        <p>Min Rate<b style="font-size:18px; margin-left :40px ">{{ producth?.min_rate }}</b></p>
-                        <p>Max Rate<b style="font-size:18px; margin-left :40px ">{{ producth?.max_rate }}</b></p>
+                        <p style="font-size:14px; margin-left :10px ">Min Rate: Rs. {{ producth?.min_rate }}</p>
+                        <p style="font-size:14px; margin-left :10px ">Max Rate: Rs. {{ producth?.max_rate }}</p>
                     </div> 
                 </mat-card> 
             </div>
@@ -93,6 +94,11 @@
                 <img src="assets/images/icons/usp.png" alt="Usp img">
                 <div class="content">
                     <p style="font-size:18px; margin-left :10px ">USP</p>
+                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp1}}</p>
+                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp2}}</p>
+                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp3}}</p>
+                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp4}}</p>
+                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp5}}</p>
                 </div> 
             </mat-card> 
         </div>
