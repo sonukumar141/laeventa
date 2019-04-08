@@ -300,14 +300,15 @@
                         type="text"
                         class="w3-input"
                         id="summary"
-                        placeholder="Describe your venue. Give detailed description."
+                        placeholder="Describe your venue within 1000 characters."
                         name="summary"
+                        maxlength="1000"
                         [(ngModel)]="newProducth.summary"
                         required> </textarea>
               <br>
               <button (click)="createProducth()" 
                         type="button" 
-                        class="">Submit
+                        class="w3-btn w3-blue">Create Venue
               </button>                                                                
                     
               </form>
