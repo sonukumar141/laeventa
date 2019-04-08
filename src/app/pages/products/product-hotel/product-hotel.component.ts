@@ -46,10 +46,11 @@ export class ProductHotelComponent implements OnInit {
               public snackBar: MatSnackBar,
               public formBuilder: FormBuilder) { 
                 this.items = [
-                  {url: 'producth.image_small'},
-                  {url: 'producth.image_medium'},
-                  {url: 'producth.image_big'},
-                  {url: 'producth.image_extra'}
+                  {url: 'producth.image1'},
+                  {url: 'producth.image2'},
+                  {url: 'producth.image3'},
+                  {url: 'producth.image4'},
+                  {url: 'producth.image5'}
                 ];
                }
 
@@ -173,8 +174,8 @@ export class ProductHotelComponent implements OnInit {
   public getProducthById(_id){
     this.appService.getProducthById(_id).subscribe(data=>{
       this.producth = data;
-      this.image = data.image_medium;
-      this.zoomImage = data.image_big;
+      this.image = data.image1;
+      this.zoomImage = data.image2;
       setTimeout(() => { 
         this.config.observer = true;
        // this.directiveRef.setIndex(0);

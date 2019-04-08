@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { AuthGuard } from '../shared/auth.guard';
 import { AuthService } from '../shared/auth.service';
 import { ImageUploadModule } from '../image-upload/image-upload.module';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 export const routes = [
   {path: '', component: CreateHotelComponent, canActivate: [AuthGuard]}
@@ -20,7 +21,8 @@ export const routes = [
     ReactiveFormsModule,
     SharedModule,
     FormsModule,
-    ImageUploadModule
+    ImageUploadModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   declarations: [
     CreateHotelComponent

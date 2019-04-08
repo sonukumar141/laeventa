@@ -78,8 +78,8 @@ export class ProductVenueUpdateComponent implements OnInit {
   public getProducthById(_id){
     this.appService.getProducthById(_id).subscribe(data=>{
       this.producth = data;
-      this.image = data.image_big;
-      this.zoomImage = data.image_big;
+      this.image = data.image1;
+      this.zoomImage = data.image2;
       setTimeout(() => { 
         this.config.observer = true;
        // this.directiveRef.setIndex(0);

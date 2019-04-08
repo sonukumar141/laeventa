@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-vendor.component.scss']
 })
 export class CreateVendorComponent implements OnInit {
- 
+
   newProductv: Productv;
   productvCategories = Productv.CATEGORIES;
   productvCities = Productv.CITIES;

@@ -16,34 +16,8 @@ export class CreateHotelComponent implements OnInit {
   newProducth: Producth;
   producthCategories = Producth.CATEGORIES;
   producthCities = Producth.CITIES;
-  producthCateror = Producth.CATEROR;
-  producthWifi = Producth.WIFI;
-  producthAc = Producth.AC;
-  producthRestaurant = Producth.RESTAURANT;
-  producthParking = Producth.PARKING;
-  producthAdvancePayment = Producth.ADVANCE_PAYMENT;
-  producthFireworks = Producth.FIREWORKS;
-  producthMusic = Producth.MUSIC;
-  producthTheater = Producth.THEATER;
-  producthSaunaSpa = Producth.SAUNA_SPA;
-  producthPrintScan = Producth.PRINT_SCAN;
-  producthPartyRoom = Producth.PARTY_ROOM;
-  producthStage = Producth.STAGE;
-  producthBar = Producth.BAR;
-  producthLodging = Producth.LODGING;
-  producthBadminton = Producth.BADMINTON;
-  producthBasketball = Producth.BASKETBALL;
-  producthCricket = Producth.CRICKET;
-  producthFootball = Producth.FOOTBALL;
-  producthFutsal = Producth.FUTSAL;
-  producthHockey = Producth.HOCKEY;
-  producthNetball = Producth.NETBALL;
-  producthSquash = Producth.SQUASH;
-  producthTableTennis = Producth.TABLETENNIS;
-  producthTennis = Producth.TENNIS;
-  producthVolleyball= Producth.VOLLEYBALL;
-  producthSwimming = Producth.SWIMMING;
-  producthGym = Producth.GYM;
+  producthRegion = Producth.REGION;
+  productFacilities = Producth.FACILITIES;
   errors: any[] = [];
 
   constructor(private appService: AppService,
@@ -54,35 +28,47 @@ export class CreateHotelComponent implements OnInit {
     this.newProducth = new Producth();
   }
 
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  
   handleImage1Change(imageUrl: string){
-    this.newProducth.image_big = imageUrl;
+    this.newProducth.image1 = imageUrl;
   }
 
   handleImage2Change(imageUrl: string){
-    this.newProducth.image_medium = imageUrl;
+    this.newProducth.image2 = imageUrl;
   }
 
   handleImage3Change(imageUrl: string){
-    this.newProducth.image_small = imageUrl;
+    this.newProducth.image3 = imageUrl;
   }
 
   handleImage4Change(imageUrl: string){
-    this.newProducth.image_extra = imageUrl;
+    this.newProducth.image4 = imageUrl;
+  }
+
+  handleImage5Change(imageUrl: string){
+    this.newProducth.image5 = imageUrl;
   }
 
   handleImage1Error(){
-    this.newProducth.image_big = '';
+    this.newProducth.image1 = '';
   }
 
   handleImage2Error(){
-    this.newProducth.image_medium = '';
+    this.newProducth.image2 = '';
   }
   handleImage3Error(){
-    this.newProducth.image_small = '';
+    this.newProducth.image3 = '';
   }
 
   handleImage4Error(){
-    this.newProducth.image_extra = '';
+    this.newProducth.image4 = '';
+  }
+
+  handleImage5Error(){
+    this.newProducth.image5 = '';
   }
 
   createProducth(){

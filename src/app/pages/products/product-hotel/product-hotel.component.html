@@ -22,21 +22,20 @@
                 
                 <ng-template #item>
                         
-                    <img id="custom-image" *ngIf="producth.image_big" [src]="producth.image_big" >
-                    <img id="custom-image" *ngIf="producth.image_small" [src]="producth.image_small" >
-                    <img id="custom-image" *ngIf="producth.image_medium" [src]="producth.image_medium" >
-                    <img id="custom-image" *ngIf="producth.image_extra" [src]="producth.image_extra" >
+                    <img id="custom-image" *ngIf="producth.image1" [src]="producth.image1" >
+                    <img id="custom-image" *ngIf="producth.image2" [src]="producth.image2" >
+                    <img id="custom-image" *ngIf="producth.image3" [src]="producth.image3" >
+                    <img id="custom-image" *ngIf="producth.image4" [src]="producth.image4" >
+                    <img id="custom-image" *ngIf="producth.image5" [src]="producth.image5" >
                         
                 </ng-template>
                 </mat-card>
-          
-            
-            
+        
     <br>
     <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-        <img src="assets/images/icons/price.png" alt="price img">
+        <img src="assets/images/icons/summary.png" alt="summary img">
         <div class="content">
-            <p><b style="font-size:20px; margin-left: 10px;">Avg Price: {{ producth?.dailyRate }} /Day</b></p>
+            <p><b style="font-size:20px; margin-left: 10px;">Summary:</b></p>
         </div> 
     </mat-card>
 
@@ -56,7 +55,7 @@
         <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
             <img src="assets/images/icons/location.png" alt="location img">
             <div class="content">
-                <p><b style="font-size:15px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</b></p>
+                <p><b style="font-size:15px; margin-left: 10px;">{{ producth?.plot_flat | ucwords}}, {{ producth?.city | ucwords}}, {{producth?.region | ucwords}}</b></p>
             </div> 
         </mat-card>
         <div class="divider mt-1"></div>
@@ -80,48 +79,34 @@
         <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <!-- <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon> -->
-                    <img src="assets/images/icons/guest.png" alt="Guest img">
+                    <img src="assets/images/icons/price.png" alt="Price img">
                     <div class="content">
-                        <p>MAXIMUM GUESTS<br><b style="font-size:18px; margin-left :40px ">{{ producth?.guests }}</b></p>
+                        <p>Min Rate<b style="font-size:18px; margin-left :40px ">{{ producth?.min_rate }}</b></p>
+                        <p>Max Rate<b style="font-size:18px; margin-left :40px ">{{ producth?.max_rate }}</b></p>
                     </div> 
                 </mat-card> 
             </div>
-            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <!-- <mat-icon class="mat-icon-xlg text-muted m-0">local_shipping</mat-icon> -->
-                    <img src="assets/images/icons/seating.png" alt="seating img">
-                    <div class="content">
-                        <p>MAXIMUM SEATING<br><b style="font-size:18px; margin-left :40px ">{{ producth?.seating }}</b></p>
-                    </div> 
-                </mat-card>
-            </div>
-            <div *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding' || producth?.category === 'banquet'" fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <img src="assets/images/icons/veg.png" alt="veg per plate">
-                    <div class="content">
-                        <p>PER-PLATE: <b style="font-size:15px;">Rs {{ producth?.veg_package }}</b></p>
-                    </div> 
-                </mat-card>
-            </div>
-            <div *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding' || producth?.category === 'banquet'" fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <img src="assets/images/icons/non-veg.png" alt="veg per plate">
-                    <div class="content">
-                        <p>PER-PLATE: <b style="font-size:15px;">Rs {{ producth?.non_veg_package }}</b></p>
-                    </div> 
-                </mat-card>
-            </div>
-            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
-                    <div class="content">
-                        <p>ONLINE SUPPORT 24/7</p> 
-                        <span class="text-muted m-0">Call us: (+100) 123 456 7890</span>
-                    </div> 
-                </mat-card>
-            </div>
-        </div>       
+        </div> 
+
+        <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
+            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                <img src="assets/images/icons/usp.png" alt="Usp img">
+                <div class="content">
+                    <p style="font-size:18px; margin-left :10px ">USP</p>
+                </div> 
+            </mat-card> 
+        </div>
+
+        <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
+            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                <img src="assets/images/icons/available.png" alt="available img">
+                <div class="content">
+                    <p style="font-size:18px; margin-left :10px ">Best suited for</p>
+                    <p style="font-size:14px; margin-left :10px ">{{ producth?.facilities }}</p>
+                </div> 
+            </mat-card> 
+        </div>
+             
     </div>
 </div>
 
@@ -255,7 +240,7 @@
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Address</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</p> 
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.region | ucwords}} {{producth?.address | ucwords}}</p> 
                                     </div> 
                                 </mat-card>
                                 <br>
@@ -286,7 +271,7 @@
                             </div>
                     </div>
                     <div class="full-desc lh">
-                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
+                        <app-map [location]="producth?.city + ', ' +  producth?.region"></app-map>
                     </div>
                 </mat-tab>
                 <mat-tab label="Areas">

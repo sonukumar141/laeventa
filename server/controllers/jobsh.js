@@ -1,32 +1,19 @@
-const express = require('express');
-const router = express.Router();
 const Jobh = require('../models/jobh');
-const VenueArea = require('../models/venuearea');
-const VenueAreaCtrl = require('../controllers/venueareas');
-const Jobv = require('../models/jobv');
 const Userh = require('../models/userh');
 const { normalizeErrors } = require('../helpers/mongoose');
 
 exports.createJobh = function(req, res) {
-    const {name, images, tags, image_small, image_medium, image_big, image_extra, oldPrice, 
-           newPrice, city, street, category, phone, email, completeAddress, landmark, 
-           timings, veg_package, non_veg_package, caterer, dailyRate, shared, wifi, ac, guests, 
-           rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
-           fireworks, music, theater, print_scan, open_space, party_room, stage, bar,
-           lodging, seating, discount, description, categoryId, badminton, basketball,
-           cricket, football, futsal, hockey, netball, squash, table_tennis,
-           tennis, volley_ball, swimming, gym} = req.body;
+    const {name, images, tags, image1, image2, image3, image4, image5,
+           plot_flat, city, region, category, phone, email, pincode, landmark, 
+           open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
+           facilities, summary} = req.body;
 
     const userh = res.locals.userh;
 
-    const jobh = new Jobh({name, images, tags, image_small, image_medium, image_big, image_extra, oldPrice, 
-                           newPrice, city, street, category, phone, email, completeAddress, landmark, 
-                           timings, veg_package, caterer, non_veg_package, caterer, dailyRate, shared, wifi, ac, guests, 
-                           rooms, usp1, usp2, usp3, parking, restaurant, advance_payment, 
-                           fireworks, music, theater, print_scan, open_space, party_room, stage, bar, lodging, 
-                           seating, discount, description, categoryId, badminton, basketball,
-                           cricket,football, futsal, hockey, netball, squash, table_tennis,
-                           tennis, volley_ball, swimming, gym});
+    const jobh = new Jobh({name, images, tags, image1, image2, image3, image4, image5,
+        plot_flat, city, region, category, phone, email, pincode, landmark, 
+        open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
+        facilities, summary});
 	jobh.userh = userh;
     
 

@@ -43,103 +43,44 @@ export class Producth {
 
   static readonly CATEGORIES = ['Sports', 'Wedding', 'Conference','Meeting', 'Concert', 'Party'];
   static readonly CITIES = ['Pune', 'Vadodara', 'Mumbai', 'Delhi'];
-  static readonly CATEROR = ['Yes', 'No'];
-  static readonly WIFI = ['Yes', 'No'];
-  static readonly AC = ['Yes', 'No'];
-  static readonly RESTAURANT = ['Yes', 'No'];
-  static readonly PARKING = ['Yes', 'No'];
-  static readonly ADVANCE_PAYMENT = ['Yes', 'No'];
-  static readonly FIREWORKS = ['Yes', 'No'];
-  static readonly MUSIC = ['Yes', 'No'];
-  static readonly THEATER = ['Yes', 'No'];
-  static readonly SAUNA_SPA = ['Yes', 'No'];
-  static readonly PRINT_SCAN = ['Yes', 'No'];
-  static readonly PARTY_ROOM = ['Yes', 'No'];
-  static readonly STAGE = ['Yes', 'No'];
-  static readonly BAR = ['Yes', 'No'];
-  static readonly LODGING = ['Yes', 'No'];
-  static readonly BADMINTON = ['Yes', 'No'];
-  static readonly BASKETBALL = ['Yes', 'No'];
-  static readonly CRICKET = ['Yes', 'No'];
-  static readonly FOOTBALL = ['Yes', 'No'];
-  static readonly FUTSAL = ['Yes', 'No'];
-  static readonly HOCKEY = ['Yes', 'No'];
-  static readonly NETBALL = ['Yes', 'No'];
-  static readonly SQUASH = ['Yes', 'No'];
-  static readonly TABLETENNIS = ['Yes', 'No'];
-  static readonly TENNIS = ['Yes', 'No'];
-  static readonly VOLLEYBALL = ['Yes', 'No'];
-  static readonly SWIMMING = ['Yes', 'No'];
-  static readonly GYM = ['Yes', 'No'];
+  static readonly REGION = ['Ravet', 'Hinjewadi'];
+  static readonly FACILITIES = ['Cricket ', ' Football ', ' Badminton ', ' Basketball ', ' Cycling ', ' Hockey ',
+                                ' Golf ', ' Chess ', ' Table tennis ', ' Volleyball ', ' Snooker/Pool ', ' Skating ',
+                                ' Horse riding ', ' Swimming ', ' Archery ', ' Go karting ', ' Laser tag ',
+                                ' Lawn tennis ', ' PC gaming ', ' Squash ', ' Shooting ', ' Bowling ', ' Boating ',
+                                ' Paintball ', ' Sky diving ', ' Rock climbing ', ' Scuba diving ', ' Foosball ',
+                                ' Karate ', ' Kick boxing ', ' Boxing ', ' Judo ', ' Pilates ', ' Spinning ',
+                                ' Taekwondo ', ' Weightlifting ', ' Wrestling '];
 
    _id: string;
    name: string;
-   images: Array<any>
+   images: Array<any>;
               tags: Array<any>;
-              image_small: string;
-              image_medium: string;
-              image_big: string;
-              image_extra: string;
-              oldPrice: number;
-              newPrice: number;
+              image1: string;
+              image2: string;
+              image3: string;
+              image4: string;
+              image5: string;
+              plot_flat: string;
               city: string;
-              street: string;
+              region: string;
               category: string;
               phone: number;
               email: string;
-              completeAddress: string;
+              pincode: string;
               landmark: string;
-              timings: string;
-              veg_package: number;
-              non_veg_package: number;
-              caterer: String;
-              dailyRate: number;
-              shared: boolean;
-              wifi: string;
-              ac: string;              
-              guests: number;
-              rooms: number;
+              open_timing: string;
+              close_timing: string;
+              min_rate: number;
+              max_rate: number;
               usp1: string;
               usp2: string;
               usp3: string;
-              parking: string;
-              restaurant: string;
-              advance_payment: string;
-              fireworks: string;
-              music: string;
-              theater: string;
-              print_scan: string;
-              open_space: number;
-              sauna_spa: string;
-              party_room: string;
-              stage: string;
-              bar: string;
-              lodging: string;
-              createdAt: string;
-              seating: number;
-              discount: number;
-              ratingsCount: number;
-              ratingsValue: number;
-              description: string;
-              availibilityCount: number;
-              cartCount: number;
-              color: Array<string>;
-              size: Array<string>;
-              weight: number;
-              categoryId: number;
-              badminton: string;
-              basketball: string;
-              cricket: string;
-              football: string;
-              futsal: string;
-              hockey: string;
-              netball: string;
-              squash: string;
-              table_tennis: string;
-              tennis: string;
-              volley_ball: string;
-              swimming: string;
-              gym: string;
+              usp4: string;
+              usp5: string;
+              facilities: string;
+              summary: string;
+
               venueareas: VenueArea[];
 
 }
