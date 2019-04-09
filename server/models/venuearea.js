@@ -7,7 +7,6 @@ const areaSchema = new Schema({
     image3: String,
     image4: String,
     image5: String,
-    image6: String,
     price: Number,
     category: String,
 	features: {type: ['Mixed']},

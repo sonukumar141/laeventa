@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { Data, AppService } from '../../../app.service';
-import { Producth } from "../../../app.models";
+import { Producth, VenueArea } from "../../../app.models";
 import { emailValidator } from '../../../theme/utils/app-validators';
 import { ProductVenueUpdateZoomComponent } from './product-venue-update-zoom/product-venue-update-zoom.component';
 
@@ -26,15 +26,21 @@ export class ProductVenueUpdateComponent implements OnInit {
   public form: FormGroup;
   public relatedProducts: Array<Producth>;
 
+  newVenueArea: VenueArea;
+  //producthCategories = Producth.CATEGORIES;
+  venueAreaCategories = VenueArea.CATEGORIES;
+  public venueareas: Array<VenueArea> = [];
+
   constructor(public appService:AppService, 
               private activatedRoute: ActivatedRoute, 
               public dialog: MatDialog, 
               public formBuilder: FormBuilder) { 
                 this.items = [
-                  {url: 'producth.image_small'},
-                  {url: 'producth.image_medium'},
-                  {url: 'producth.image_big'},
-                  {url: 'producth.image_extra'}
+                  {url: 'producth.image1'},
+                  {url: 'producth.image2'},
+                  {url: 'producth.image3'},
+                  {url: 'producth.image4'},
+                  {url: 'producth.image5'}
                 ];
                }
 

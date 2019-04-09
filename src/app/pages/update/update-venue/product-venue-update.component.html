@@ -4,7 +4,7 @@
         
             <!-- <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
             <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/> -->
-                
+            <mat-card >
                 <div ng2-carouselamos class="slider-wrapper"
                      [items]="items"
                      [$prev]="prev"
@@ -27,7 +27,24 @@
                     <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/>  
                     <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/>
                       
-                </ng-template>      
+                </ng-template>   
+            </mat-card>   
+
+            <br>
+            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                <img src="assets/images/icons/summary.png" alt="summary img">
+                <div class="content">
+                    <p><b style="font-size:18px; margin-left: 10px;">Summary:</b></p>
+                    <p style="font-size:14px; margin-left: 10px;">
+                        <laeventa-editable-input
+                        [(entity)]="producth"
+                        [field]="'summary'"
+                        [className]="''"
+                        (entityUpdated)="updateVenue(producth._id, $event)">
+                        </laeventa-editable-input>
+                    </p>
+                </div> 
+            </mat-card>
             
         <!-- <div class="small-carousel"> 
             
@@ -71,13 +88,13 @@
             </div>
             
         </div> -->
-    <br>
+    <!-- <br>
     <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
         <img src="assets/images/icons/price.png" alt="price img">
         <div class="content">
             <p><b style="font-size:20px; margin-left: 10px;">Avg Price: {{ producth?.dailyRate }} /Day</b></p>
         </div> 
-    </mat-card>
+    </mat-card> -->
 
     </div>
     <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
@@ -106,27 +123,34 @@
                     <!-- {{ producth?.city | ucwords}}, 
                     {{producth?.street | ucwords}} 
                     {{producth?.address | ucwords}} -->
+
+                    <laeventa-editable-input
+                    [(entity)]="producth"
+                    [field]="'plot_flat'"
+                    [className]="''"
+                    (entityUpdated)="updateVenue(producth._id, $event)">
+                    </laeventa-editable-input>
                 
                     <laeventa-editable-input
                     [(entity)]="producth"
-                    [field]="'city'"
+                    [field]="'region'"
                     [className]="''"
                     (entityUpdated)="updateVenue(producth._id, $event)">
                     </laeventa-editable-input>  
                     
                     <laeventa-editable-input
                     [(entity)]="producth"
-                    [field]="'street'"
+                    [field]="'city'"
                     [className]="''"
                     (entityUpdated)="updateVenue(producth._id, $event)">
                     </laeventa-editable-input>
                 
-                    <laeventa-editable-input
+                    <!-- <laeventa-editable-input
                     [(entity)]="producth"
                     [field]="'address'"
                     [className]="''"
                     (entityUpdated)="updateVenue(producth._id, $event)">
-                    </laeventa-editable-input>
+                    </laeventa-editable-input> -->
                 </b></p>
             </div> 
         </mat-card>
@@ -165,84 +189,95 @@
     </div>
   
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md> 
-
         <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <!-- <mat-icon class="mat-icon-xlg text-muted m-0">card_giftcard</mat-icon> -->
-                    <img src="assets/images/icons/guest.png" alt="Guest img">
+                    <img src="assets/images/icons/price.png" alt="Price img">
                     <div class="content">
-                        <p>MAXIMUM GUESTS<br><b style="font-size:18px; margin-left :40px ">
-                            <!-- {{ producth?.guests }} -->
+                        <p style="font-size:14px; margin-left :10px ">Price Range 
                             <laeventa-editable-input
                             [(entity)]="producth"
-                            [field]="'guests'"
+                            [field]="'min_rate'"
                             [className]="''"
                             (entityUpdated)="updateVenue(producth._id, $event)">
                             </laeventa-editable-input>
-                        </b></p>
+                        </p>
+                        <p style="font-size:14px; margin-left :10px "> 
+                            <laeventa-editable-input
+                            [(entity)]="producth"
+                            [field]="'max_rate'"
+                            [className]="''"
+                            (entityUpdated)="updateVenue(producth._id, $event)">
+                            </laeventa-editable-input>
+                        </p>
                     </div> 
                 </mat-card> 
             </div>
-            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <!-- <mat-icon class="mat-icon-xlg text-muted m-0">local_shipping</mat-icon> -->
-                    <img src="assets/images/icons/seating.png" alt="seating img">
-                    <div class="content">
-                        <p>MAXIMUM SEATING<br><b style="font-size:18px; margin-left :40px ">
-                            <!-- {{ producth?.seating }} -->
-                            <laeventa-editable-input
-                            [(entity)]="producth"
-                            [field]="'seating'"
-                            [className]="''"
-                            (entityUpdated)="updateVenue(producth._id, $event)">
-                            </laeventa-editable-input>
-                        </b></p>
-                    </div> 
-                </mat-card>
-            </div>
-            <div *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding' || producth?.category === 'banquet'" fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <img src="assets/images/icons/veg.png" alt="veg per plate">
-                    <div class="content">
-                        <p>PER-PLATE: <b style="font-size:15px;">Rs 
-                            <!-- {{ producth?.veg_package }} -->
-                            <laeventa-editable-input
-                            [(entity)]="producth"
-                            [field]="'veg_package'"
-                            [className]="''"
-                            (entityUpdated)="updateVenue(producth._id, $event)">
-                            </laeventa-editable-input>
-                        </b></p>
-                    </div> 
-                </mat-card>
-            </div>
-            <div *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding' || producth?.category === 'banquet'" fxFlex="100" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <img src="assets/images/icons/non-veg.png" alt="veg per plate">
-                    <div class="content">
-                        <p>PER-PLATE: <b style="font-size:15px;">Rs 
-                            <!-- {{ producth?.non_veg_package }} -->
-                            <laeventa-editable-input
-                            [(entity)]="producth"
-                            [field]="'non_veg_package'"
-                            [className]="''"
-                            (entityUpdated)="updateVenue(producth._id, $event)">
-                            </laeventa-editable-input>
-                        </b></p>
-                    </div> 
-                </mat-card>
-            </div>
-            <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16"> 
-                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                    <mat-icon class="mat-icon-xlg text-muted m-0">history</mat-icon>
-                    <div class="content">
-                        <p>ONLINE SUPPORT 24/7</p> 
-                        <span class="text-muted m-0">Call us: (+100) 123 456 7890</span>
-                    </div> 
-                </mat-card>
-            </div>
-        </div>       
+        </div>  
+        <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
+            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                <img src="assets/images/icons/usp.png" alt="Usp img">
+                <div class="content">
+                    <p style="font-size:18px; margin-left :10px ">USP</p>
+                    <p style="font-size:14px; margin-left :10px ">
+                        <laeventa-editable-input
+                        [(entity)]="producth"
+                        [field]="'usp1'"
+                        [className]="''"
+                        (entityUpdated)="updateVenue(producth._id, $event)">
+                        </laeventa-editable-input>
+                    </p>
+                    <p style="font-size:14px; margin-left :10px ">
+                        <laeventa-editable-input
+                        [(entity)]="producth"
+                        [field]="'usp2'"
+                        [className]="''"
+                        (entityUpdated)="updateVenue(producth._id, $event)">
+                        </laeventa-editable-input>
+                    </p>
+                    <p style="font-size:14px; margin-left :10px ">
+                        <laeventa-editable-input
+                        [(entity)]="producth"
+                        [field]="'usp3'"
+                        [className]="''"
+                        (entityUpdated)="updateVenue(producth._id, $event)">
+                        </laeventa-editable-input>
+                    </p>
+                    <p style="font-size:14px; margin-left :10px ">
+                        <laeventa-editable-input
+                        [(entity)]="producth"
+                        [field]="'usp4'"
+                        [className]="''"
+                        (entityUpdated)="updateVenue(producth._id, $event)">
+                        </laeventa-editable-input>
+                    </p>
+                    <p style="font-size:14px; margin-left :10px ">
+                        <laeventa-editable-input
+                        [(entity)]="producth"
+                        [field]="'usp5'"
+                        [className]="''"
+                        (entityUpdated)="updateVenue(producth._id, $event)">
+                        </laeventa-editable-input>
+                    </p>
+                </div> 
+            </mat-card> 
+        </div> 
+        <!-- <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
+            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                <img src="assets/images/icons/available.png" alt="available img">
+                <div class="content">
+                    <p style="font-size:18px; margin-left :10px ">Best suited for</p>
+                    <p style="font-size:14px; margin-left :10px ">
+                        <laeventa-editable-input
+                        [(entity)]="producth"
+                        [field]="'facilities'"
+                        [className]="''"
+                        (entityUpdated)="updateVenue(producth._id, $event)">
+                        </laeventa-editable-input>
+                    </p>
+                </div> 
+            </mat-card> 
+        </div>                -->
     </div>
 </div>
 
@@ -250,534 +285,13 @@
     <div fxFlex="100" fxFlex.gt-md="78" fxFlex.md="74">
         <mat-card> 
             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
-                <mat-tab *ngIf="producth?.category === 'hotel' || producth?.category === 'wedding'" label="Details">
-                    <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/wifi.png" alt="wifi">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">
-                                        <!-- {{ producth?.wifi | ucwords}} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'wifi'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            WIFI
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/ac.png" alt="AC img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">
-                                        <!-- {{ producth?.ac | ucwords}} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'ac'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            AC
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/parking.png" alt="parking img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">
-                                        <!-- {{ producth?.parking | ucwords}} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'parking'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            PARKING
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/bar.png" alt="bar img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.bar | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'bar'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            BAR
-                        </div>
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/party_room.png" alt="party room img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        {{ producth?.party_room | ucwords }}
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'party_room'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            PARTY ROOM
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/stage.png" alt="stage img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.stage | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'stage'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            STAGE
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/theater.png" alt="theater img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.theater | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'theater'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            THEATER
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/sauna_spa.png" alt="sauna/spa img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.sauna_spa | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'sauna_spa'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            SAUNA/SPA
-                        </div> 
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>USP</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.usp1 | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.usp2 | ucwords }}</b></li>
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.usp3 | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>POLICIES</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.timings | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.music | ucwords }}</b></li>
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.advance_payment | ucwords }}</b></li>
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.fireworks | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div>
-                </mat-tab>
-                <mat-tab *ngIf="producth?.category === 'sports'" label="Details">
-                    <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/cricket.png" alt="cricket img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">
-                                        <!-- {{ producth?.cricket | ucwords}} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'cricket'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            CRICKET
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/football.png" alt="football img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">
-                                        <!-- {{ producth?.football | ucwords}} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'football'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            FOOTBALL
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/futsal.png" alt="futsal img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">
-                                        <!-- {{ producth?.futsal | ucwords}} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'futsal'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            FUTSAL
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/netball.png" alt="bar img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.netball | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'netball'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            NETBALL
-                        </div>
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/badminton.png" alt="badminton img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.badminton | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'badminton'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            BADMINTON
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/basketball.png" alt="basketball img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.basketball | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'basketball'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            BASKET BALL
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/volleyball.png" alt="volley ball img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.volley_ball | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'volley_ball'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            VOLLEY BALL
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/tennis.png" alt="tennis img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.tennis | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'tennis'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            TENNIS
-                        </div> 
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/table_tennis.png" alt="table tennis img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.table_tennis | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'table_tennis'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            TABLE TENNIS
-                        </div> 
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/squash.png" alt="squash img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.squash | ucwords }}</b></p>
-                                </div> 
-                            </mat-card>
-                            SQUASH
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/swimming.png" alt="swimming img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.swimming | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'swimming'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            SWIMMING
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/gym.png" alt="gym img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">
-                                        <!-- {{ producth?.gym | ucwords }} -->
-                                        <laeventa-editable-input
-                                        [(entity)]="producth"
-                                        [field]="'gym'"
-                                        [className]="''"
-                                        (entityUpdated)="updateVenue(producth._id, $event)">
-                                        </laeventa-editable-input>
-                                    </b></p>
-                                </div> 
-                            </mat-card>
-                            GYM
-                        </div> 
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>USP</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.usp1 | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.usp2 | ucwords }}</b></li>
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.usp3 | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>POLICIES</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.timings | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.music | ucwords }}</b></li>
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.advance_payment | ucwords }}</b></li>
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.fireworks | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div>
-                </mat-tab>
-                <mat-tab *ngIf="producth?.category === 'conference' || producth?.category === 'meeting'" label="Details">
-                    <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/wifi.png" alt="wifi img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.wifi | ucwords}}</b></p>
-                                </div> 
-                            </mat-card>
-                            WIFI
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/restaurant.png" alt="restaurant img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.restaurant | ucwords}}</b></p>
-                                </div> 
-                            </mat-card>
-                            RESTAURANT
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/print_scan.png" alt="print scan img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.print_scan | ucwords}}</b></p>
-                                </div> 
-                            </mat-card>
-                            PRINT/SCAN
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/parking.png" alt="parking img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.parking | ucwords }}</b></p>
-                                </div> 
-                            </mat-card>
-                            PARKING
-                        </div>
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>USP</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div>
-                    <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>POLICIES</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div>
-                </mat-tab>
-                <mat-tab label="Contact Info">
-                    <div class="full-desc lh">
+                <mat-tab label="Overview">
+                        <div class="full-desc lh">
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Address</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</p> 
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.region | ucwords}} {{producth?.address | ucwords}}</p> 
                                     </div> 
                                 </mat-card>
                                 <br>
@@ -807,92 +321,95 @@
                                 </mat-card>
                             </div>
                     </div>
-                </mat-tab>
-                    <mat-tab label="Map">
                     <div class="full-desc lh">
-                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
+                        <app-map [location]="producth?.city + ', ' +  producth?.region"></app-map>
                     </div>
                 </mat-tab>
-                <mat-tab label="Reviews">
+                <mat-tab label="Areas">
                     <div class="full-desc lh">
-                        <mat-list class="reviews">
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-1.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Bruno Vespa</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Dissatisfied" matTooltipPosition="after">sentiment_dissatisfied</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>13 January, 2018 at 7:09</small></p>
-                                <p matLine class="text">Integer id eros et mi fringilla imperdiet. In dictum turpis eget magna viverra condimentum. Ut malesuada interdum ultrices. Proin tristique sem pellentesque, posuere dui in, maximus magna. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna.</p>
-                            </mat-list-item>
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-2.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Julia Aniston</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Very Satisfied" matTooltipPosition="after">sentiment_very_satisfied</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>04 February, 2018 at 10:22</small></p>
-                                <p matLine class="text">Nulla accumsan, lacus sed suscipit rutrum, turpis augue accumsan metus, in accumsan urna mi vehicula lorem. Pellentesque semper nibh vitae augue placerat finibus. Nulla sed porttitor nunc, quis tristique sem. Quisque in varius nisl. Integer turpis lorem, ultricies sed sem nec, commodo molestie arcu. Nulla finibus ex tortor, et suscipit magna semper consectetur. Cras sit amet metus dui. Maecenas eget dui at ex varius malesuada vel non felis.</p>
-                            </mat-list-item>
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-3.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Andy Warhol</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Neutral" matTooltipPosition="after">sentiment_neutral</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>14 February, 2018 at 11:10</small></p>
-                                <p matLine class="text">Pellentesque hendrerit vel turpis aliquam placerat. Suspendisse ullamcorper congue feugiat. Etiam gravida metus ac massa posuere venenatis. Pellentesque vehicula lobortis dolor, ac pretium dolor maximus quis. Fusce vitae iaculis mauris, quis posuere ex. Mauris vitae convallis nibh. Etiam eget enim at orci interdum maximus nec in ante.</p>
-                            </mat-list-item>
-                        </mat-list>
-                        
-                        <h3 class="mt-2">LEAVE YOUR REVIEW</h3>
-                        <div class="divider"></div>
-                        <p class="mt-2 text-muted">Your email address will not be published. Required fields are marked *</p>
-                        <h3 fxLayoutAlign="start center" class="mt-2">
-                            <span>Your Rating:</span>
-                            <button mat-icon-button matTooltip="Very Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_dissatisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_dissatisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Neutral" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_neutral</mat-icon></button>
-                            <button mat-icon-button matTooltip="Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_satisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Very Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_satisfied</mat-icon></button>
-                        </h3>
+                        <mat-card>
+                            <h3 id="area-number"> Number of Areas: {{producth?.venueareas.length}} </h3>
+                            <div *ngFor="let venuearea of producth?.venueareas; let i = index">
+                               
+    
+                                <div ng2-carouselamos class="mat-card.product-image"
+                                    [items]="items"
+                                    [$prev]="prev"
+                                    [$next]="next"
+                                    [$item]="item">
+                                </div>
+        
+                                <ng-template #prev>
+                                        <img src="assets/images/arrows/prev.png" alt="">
+                                </ng-template>
+                                
+                                <ng-template #next>
+                                        <img src="assets/images/arrows/next.png" alt="">
+                                </ng-template>
+                                                                                        
+                                    <ng-template #item>
+                                        <img *ngIf="venuearea.image1" [src]="venuearea.image1" style="width:113%; height: 50%;">
+                                        <img *ngIf="venuearea.image2" [src]="venuearea.image2" style="width:113%; height: 50%;">
+                                        <img *ngIf="venuearea.image3" [src]="venuearea.image3" style="width:113%; height: 50%;">
+                                        <img *ngIf="venuearea.image4" [src]="venuearea.image4" style="width:113%; height: 50%;">
+                                        <img *ngIf="venuearea.image5" [src]="venuearea.image5" style="width:113%; height: 50%;">
+                                        <img *ngIf="venuearea.image6" [src]="venuearea.image6" style="width:113%; height: 50%;">
+                                    </ng-template>
+    
+                                    <br>
+                                    <div id="area-detail">
+                                        <h3>{{ 
+                                            venuearea.category
+                                        }}</h3>
+    
+                                        <h3> Pricing: {{
+                                            venuearea.price
+                                        }}</h3>
+                                        <h3> Features: {{
+                                                venuearea.features
+                                            }}</h3>
+                                    </div>
+                                    <!-- <div id="delete-button" *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
+                                    <button (click)="venueareaDeleteIndex = i"
+                                    *ngIf="venueareaDeleteIndex !== i"
+                                    type="button" 
+                                    class="">Delete</button>
+                                    <br>
+                                    <div class="divider"></div>
+                                   
+                            <div *ngIf="venueareaDeleteIndex === i">
+                                clicked
+                                    
+                                <p class="confirm-message">Do you confirm delete?</p> 
+                                    <button (click)="deleteVenueArea(venuearea._id)"
+                                            class="btn btn-success">Yes</button>
+                                    <button (click)="venueareaDeleteIndex = undefined"
+                                            class="btn btn-danger">No</button>
+                                </div>
+                                <div *ngIf="errors.length > 0" class="alert alert-danger">
+                                        <p *ngFor="let error of errors">
+                                               {{error.detail}}
+                                        </p>
+                                        <a style="background-color: Green" mat-button routerLink="/manage/venues">Manage</a>
+                                 </div>
+                            </div> -->
+                            <div class="divider"></div>
+                            <br>
+                            </div>
+    
+                        </mat-card>
+                    </div>
+                </mat-tab>
 
-                        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxLayout="row wrap">
-                            <div fxFlex="100" class="px-1 mt-1">
-                                <mat-form-field class="w-100">
-                                    <textarea matInput placeholder="Your review" formControlName="review" required></textarea>
-                                    <mat-error *ngIf="form.controls.review.errors?.required">Review is required</mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                <mat-form-field class="w-100">
-                                    <input matInput placeholder="Your name" formControlName="name" required>
-                                    <mat-error *ngIf="form.controls.name.errors?.required">Name is required</mat-error>
-                                    <mat-error *ngIf="form.controls.name.hasError('minlength')">Name isn't long enough, minimum of 4 characters</mat-error>
-                                </mat-form-field> 
-                            </div>
-                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                <mat-form-field class="w-100">
-                                    <input matInput placeholder="Your email" formControlName="email" required>
-                                    <mat-error *ngIf="form.controls.email.errors?.required">Email is required</mat-error>
-                                    <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
-                                </mat-form-field> 
-                            </div>
-                            <div fxFlex="100" class="mt-2 text-center w-100">
-                                <button mat-raised-button color="primary" type="submit">SUBMIT REVIEW</button>
-                            </div>
-                        </form>
+                <mat-tab label="Policies">
+                    <div class="full-desc lh">
+                        
 
                         
                     </div>
                 </mat-tab>
             </mat-tab-group>
         </mat-card>
-    </div>
-    <div fxFlex="100" fxFlex.gt-md="22" fxFlex.md="26" ngClass.gt-sm="pl-3" fxHide fxShow.gt-sm>
-        <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%201" alt="" class="mw-100 d-block">
-        <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%202" alt="" class="mw-100 d-block mt-3">
-        <img src="https://via.placeholder.com/400x310/EEEEEE/9E9E9E/?text=Banner%203" alt="" class="mw-100 d-block mt-3">
     </div>
 </div>
 

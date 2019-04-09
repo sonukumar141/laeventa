@@ -18,6 +18,16 @@ export class CreateHotelComponent implements OnInit {
   producthCities = Producth.CITIES;
   producthRegion = Producth.REGION;
   productFacilities = Producth.FACILITIES;
+  producthLodgingPolicy = Producth.LODGING_POLICIES;
+  producthFoodPolicy = Producth.FOOD_POLICIES;
+  producthAlcoholPolicy = Producth.ALCOHOL_POLICIES;
+  producthDecorPolicy = Producth.DECOR_POLICIES;
+  producthParkingPolicy = Producth.PARKING_POLICIES;
+  producthEquipmentPolicy = Producth.EQUIPMENT_POLICIES;
+  producthCanteenPolicy = Producth.CANTEEN_POLICIES;
+  producthWashroomPolicy = Producth.WASHROOM_POLICIES;
+  producthScoreboardPolicy = Producth.SCOREBOARD_POLICIES;
+  producthPowerPolicy = Producth.POWER_POLICIES;
   errors: any[] = [];
 
   constructor(private appService: AppService,
@@ -31,7 +41,7 @@ export class CreateHotelComponent implements OnInit {
   onItemSelect(item: any) {
     console.log(item);
   }
-  
+
   handleImage1Change(imageUrl: string){
     this.newProducth.image1 = imageUrl;
   }

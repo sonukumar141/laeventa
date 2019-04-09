@@ -22,11 +22,11 @@
                 
                 <ng-template #item>
                         
-                    <img id="custom-image" *ngIf="producth.image1" [src]="producth.image1" >
-                    <img id="custom-image" *ngIf="producth.image2" [src]="producth.image2" >
-                    <img id="custom-image" *ngIf="producth.image3" [src]="producth.image3" >
-                    <img id="custom-image" *ngIf="producth.image4" [src]="producth.image4" >
-                    <img id="custom-image" *ngIf="producth.image5" [src]="producth.image5" >
+                    <img id="custom-image" *ngIf="producth?.image1" [src]="producth.image1" >
+                    <img id="custom-image" *ngIf="producth?.image2" [src]="producth.image2" >
+                    <img id="custom-image" *ngIf="producth?.image3" [src]="producth.image3" >
+                    <img id="custom-image" *ngIf="producth?.image4" [src]="producth.image4" >
+                    <img id="custom-image" *ngIf="producth?.image5" [src]="producth.image5" >
                         
                 </ng-template>
                 </mat-card>
@@ -56,7 +56,7 @@
         <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
             <img src="assets/images/icons/location.png" alt="location img">
             <div class="content">
-                <p><b style="font-size:15px; margin-left: 10px;">{{ producth?.plot_flat | ucwords}}, {{ producth?.city | ucwords}}, {{producth?.region | ucwords}}</b></p>
+                <p><b style="font-size:15px; margin-left: 10px;">{{ producth?.plot_flat | ucwords}}, {{producth?.region | ucwords}}, {{ producth?.city | ucwords}}</b></p>
             </div> 
         </mat-card>
         <div class="divider mt-1"></div>
@@ -82,8 +82,8 @@
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                     <img src="assets/images/icons/price.png" alt="Price img">
                     <div class="content">
-                        <p style="font-size:14px; margin-left :10px ">Min Rate: Rs. {{ producth?.min_rate }}</p>
-                        <p style="font-size:14px; margin-left :10px ">Max Rate: Rs. {{ producth?.max_rate }}</p>
+                        <p style="font-size:14px; margin-left :10px ">Price Range</p>
+                        <p style="font-size:14px; margin-left :10px ">Rs. {{ producth?.max_rate }} - Rs. {{ producth?.max_rate }}</p>
                     </div> 
                 </mat-card> 
             </div>
@@ -94,11 +94,11 @@
                 <img src="assets/images/icons/usp.png" alt="Usp img">
                 <div class="content">
                     <p style="font-size:18px; margin-left :10px ">USP</p>
-                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp1}}</p>
-                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp2}}</p>
-                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp3}}</p>
-                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp4}}</p>
-                    <p style="font-size:14px; margin-left :10px ">{{producth?.usp5}}</p>
+                    <p *ngIf="producth?.usp1" style="font-size:14px; margin-left :10px ">{{producth?.usp1}}</p>
+                    <p *ngIf="producth?.usp2" style="font-size:14px; margin-left :10px ">2{{producth?.usp2}}</p>
+                    <p *ngIf="producth?.usp3" style="font-size:14px; margin-left :10px ">{{producth?.usp3}}</p>
+                    <p *ngIf="producth?.usp4" style="font-size:14px; margin-left :10px ">{{producth?.usp4}}</p>
+                    <p *ngIf="producth?.usp5" style="font-size:14px; margin-left :10px ">{{producth?.usp5}}</p>
                 </div> 
             </mat-card> 
         </div>
@@ -121,132 +121,12 @@
         <mat-card> 
             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
                 <mat-tab label="Overview">
-                    <!-- <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/wifi.png" alt="wifi">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.wifi | ucwords}}</b></p>
-                                </div> 
-                            </mat-card>
-                            WIFI
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/ac.png" alt="AC img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.ac | ucwords}}</b></p>
-                                </div> 
-                            </mat-card>
-                            AC
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/parking.png" alt="parking img">
-                                <div class="content">
-                                    <p><b style="font-size:15px; margin-left: 20px;">{{ producth?.parking | ucwords}}</b></p>
-                                </div> 
-                            </mat-card>
-                            PARKING
-                        </div>
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/bar.png" alt="bar img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.bar | ucwords }}</b></p>
-                                </div> 
-                            </mat-card>
-                            BAR
-                        </div>
-                    </div> -->
-                    <!-- <div class="full-desc lh">
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/party_room.png" alt="party room img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.party_room | ucwords }}</b></p>
-                                </div> 
-                            </mat-card>
-                            PARTY ROOM
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/stage.png" alt="stage img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.stage | ucwords }}</b></p>
-                                </div> 
-                            </mat-card>
-                            STAGE
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/theater.png" alt="theater img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.theater | ucwords }}</b></p>
-                                </div> 
-                            </mat-card>
-                            THEATER
-                        </div> 
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                        <div fxFlex="24" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <img src="assets/images/icons/sauna_spa.png" alt="sauna/spa img">
-                                <div class="content">
-                                    <p><b style="font-size:15px;  margin-left: 20px;">{{ producth?.sauna_spa | ucwords }}</b></p>
-                                </div> 
-                            </mat-card>
-                            SAUNA/SPA
-                        </div> 
-                    </div> -->
-                    <!-- <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>USP</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div> -->
-                    <!-- <div class="full-desc lh">
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16"> 
-                            <strong>POLICIES</strong>
-                            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <div class="content">
-                                    <ul> 
-                                       <li><b style="font-size:12px;  margin-left: 10px;">{{ producth?.city | ucwords }}</b></li> 
-                                       <li> <b style="font-size:12px;  margin-left: 10px;">{{ producth?.street | ucwords }}</b></li>
-                                    </ul>
-                                </div> 
-                            </mat-card>
-                        </div> 
-                    </div> -->
                     <div class="full-desc lh">
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Address</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.region | ucwords}} {{producth?.address | ucwords}}</p> 
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.region | ucwords}}</p> 
                                     </div> 
                                 </mat-card>
                                 <br>
@@ -281,148 +161,10 @@
                     </div>
                 </mat-tab>
                 <mat-tab label="Areas">
-                        <div *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
-
-                            
-                               <mat-card>                                                           
-                               <form #venueareaForm="ngForm" class="w3-container">
-                                            <h1>Add New Area</h1>
-                                             <mat-expansion-panel>
-                                                    <mat-expansion-panel-header>
-                                                           <mat-panel-title>
-                                                                  <h4>Area type</h4>
-                                                           </mat-panel-title>
-                                                    </mat-expansion-panel-header>
-                                             <p>
-                                             <p>
-                                             <br>
-                                             <select class="w3-input"
-                                                           id="category"
-                                                           name="category"
-                                                           [(ngModel)]="newVenueArea.category">
-                                                           <option [ngValue]="undefined" disabled selected>Select Area </option>
-                                                    <option *ngFor="let category of venueAreaCategories">{{category}} </option>
-                                                    </select></p>
-                                            </mat-expansion-panel>
-                                            <br>
-                                            <mat-expansion-panel>
-                                                    <mat-expansion-panel-header>
-                                                           <mat-panel-title>
-                                                                  <h4>Add Images</h4>
-                                                           </mat-panel-title>
-                                                    </mat-expansion-panel-header> 
-                                            <label>Upload Image 1</label>
-                                            <!-- <input class="w3-input" 
-                                                   type="file"
-                                                   id="image1"
-                                                   (change)="handleImage1Change()"> -->
-                                                   <laeventa-image-upload
-                                                   (imageUploaded)="handleImage1Change($event)"
-                                                                 (imageError)="handleImage1Error()"
-                                                   ></laeventa-image-upload>
-                                            <p>
-                                            <br>
-                                            <label>Upload Image 2</label>
-                                            <!-- <input class="w3-input" 
-                                                   type="file"
-                                                   id="image2"
-                                                   (change)="handleImage2Change()"></p> -->
-                                                   <laeventa-image-upload
-                                                   (imageUploaded)="handleImage2Change($event)"
-                                                                 (imageError)="handleImage2Error()"
-                                                   ></laeventa-image-upload>
-                                            <p>
-                                            <br>
-                                            <label>Upload Image 3</label>
-                                            <!-- <input class="w3-input" 
-                                                   type="file"
-                                                   id="image3"
-                                                   (change)="handleImage3Change()"></p> -->
-                                                   <laeventa-image-upload
-                                                   (imageUploaded)="handleImage3Change($event)"
-                                                                 (imageError)="handleImage3Error()"
-                                                   ></laeventa-image-upload>
-                                            <p>
-                                            <br>
-                                            <label>Upload Image 4</label>
-                                            <!-- <input class="w3-input" 
-                                                   type="file"
-                                                   id="image4"
-                                                   (change)="handleImage4Change()"></p> -->
-                                                   <laeventa-image-upload
-                                                   (imageUploaded)="handleImage4Change($event)"
-                                                                 (imageError)="handleImage4Error()"
-                                                   ></laeventa-image-upload>
-                                             <p>
-                                             <br>
-                                             <label>Upload Image 5</label>
-                                                    <!-- <input class="w3-input" 
-                                                    type="file"
-                                                    id="image4"
-                                                    (change)="handleImage4Change()"></p> -->
-                                                    <laeventa-image-upload
-                                                    (imageUploaded)="handleImage5Change($event)"
-                                                                  (imageError)="handleImage4Error()"
-                                                    ></laeventa-image-upload>
-                                             <p>
-                                             <br>
-                                             <label>Upload Image 6</label>
-                                                    <!-- <input class="w3-input" 
-                                                    type="file"
-                                                    id="image4"
-                                                    (change)="handleImage4Change()"></p> -->
-                                                    <laeventa-image-upload
-                                                    (imageUploaded)="handleImage6Change($event)"
-                                                                  (imageError)="handleImage4Error()"
-                                                    ></laeventa-image-upload>                                                       
-                                            </mat-expansion-panel>
-                                            <br>
-                                            <mat-expansion-panel>
-                                                    <mat-expansion-panel-header>
-                                                           <mat-panel-title>
-                                                                  <h4>Features</h4>
-                                                           </mat-panel-title>
-                                                    </mat-expansion-panel-header>
-                                             <p>
-                                             <p>
-                                             <br>
-                                             <select class="w3-input"
-                                                           id="price"
-                                                           name="price"
-                                                           [(ngModel)]="newVenueArea.price">
-                                                           <option [ngValue]="undefined" disabled selected>Price </option>
-                                                    <option *ngFor="let category of venueAreaCategories">{{category}} </option>
-                                                    </select></p>
-                                            <p>
-                                            <input class="w3-input" 
-                                                            type="number"
-                                                            placeholder="Price"
-                                                            id="price"
-                                                            name="price"
-                                                            [(ngModel)]="newVenueArea.price"></p>                                                    
-                                            </mat-expansion-panel>                                          
-                        
-                                    <br>
-                                    <button (click)="createVenueArea()" 
-                                                type="button" 
-                                                class="">Create New Area
-                                    </button>                                                                
-                                            
-                                    </form>
-                                </mat-card>  
-                                    <br>
-                                    <!-- <div *ngIf="errors.length > 0" class="alert alert-danger">
-                                      <p *ngFor="let error of errors">
-                                             {{error.detail}}
-                                      </p>
-                               </div> -->
-                            
-                        </div>
                         <mat-card>
                         <h3 id="area-number"> Number of Areas: {{producth?.venueareas.length}} </h3>
                         <div *ngFor="let venuearea of producth?.venueareas; let i = index">
                            
-
                             <div ng2-carouselamos class="mat-card.product-image"
                                 [items]="items"
                                 [$prev]="prev"
@@ -444,7 +186,6 @@
                                     <img *ngIf="venuearea.image3" [src]="venuearea.image3" style="width:113%; height: 50%;">
                                     <img *ngIf="venuearea.image4" [src]="venuearea.image4" style="width:113%; height: 50%;">
                                     <img *ngIf="venuearea.image5" [src]="venuearea.image5" style="width:113%; height: 50%;">
-                                    <img *ngIf="venuearea.image6" [src]="venuearea.image6" style="width:113%; height: 50%;">
                                 </ng-template>
 
                                 <br>
@@ -548,83 +289,131 @@
                         <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
                     </div> -->
                 </mat-tab>
-                    <!-- <mat-tab label="Map">
-                    <div class="full-desc lh">
-                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
-                    </div>
-                </mat-tab> -->
-             
-                <!-- <mat-tab label="Reviews">
-                    <div class="full-desc lh">
-                        <mat-list class="reviews">
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-1.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Bruno Vespa</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Dissatisfied" matTooltipPosition="after">sentiment_dissatisfied</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>13 January, 2018 at 7:09</small></p>
-                                <p matLine class="text">Integer id eros et mi fringilla imperdiet. In dictum turpis eget magna viverra condimentum. Ut malesuada interdum ultrices. Proin tristique sem pellentesque, posuere dui in, maximus magna. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna.</p>
-                            </mat-list-item>
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-2.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Julia Aniston</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Very Satisfied" matTooltipPosition="after">sentiment_very_satisfied</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>04 February, 2018 at 10:22</small></p>
-                                <p matLine class="text">Nulla accumsan, lacus sed suscipit rutrum, turpis augue accumsan metus, in accumsan urna mi vehicula lorem. Pellentesque semper nibh vitae augue placerat finibus. Nulla sed porttitor nunc, quis tristique sem. Quisque in varius nisl. Integer turpis lorem, ultricies sed sem nec, commodo molestie arcu. Nulla finibus ex tortor, et suscipit magna semper consectetur. Cras sit amet metus dui. Maecenas eget dui at ex varius malesuada vel non felis.</p>
-                            </mat-list-item>
-                            <mat-list-item class="h-100 py-1">
-                                <img matListAvatar [src]="'assets/images/avatars/avatar-3.png'" alt="image" class="review-author">
-                                <p matLine fxLayoutAlign="start center">
-                                    <span class="fw-500">Andy Warhol</span> 
-                                    <mat-icon class="text-muted px-1" matTooltip="Neutral" matTooltipPosition="after">sentiment_neutral</mat-icon>
-                                </p>
-                                <p matLine class="text-muted"><small>14 February, 2018 at 11:10</small></p>
-                                <p matLine class="text">Pellentesque hendrerit vel turpis aliquam placerat. Suspendisse ullamcorper congue feugiat. Etiam gravida metus ac massa posuere venenatis. Pellentesque vehicula lobortis dolor, ac pretium dolor maximus quis. Fusce vitae iaculis mauris, quis posuere ex. Mauris vitae convallis nibh. Etiam eget enim at orci interdum maximus nec in ante.</p>
-                            </mat-list-item>
-                        </mat-list>
-                        
-                        <h3 class="mt-2">LEAVE YOUR REVIEW</h3>
-                        <div class="divider"></div>
-                        <p class="mt-2 text-muted">Your email address will not be published. Required fields are marked *</p>
-                        <h3 fxLayoutAlign="start center" class="mt-2">
-                            <span>Your Rating:</span>
-                            <button mat-icon-button matTooltip="Very Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_dissatisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Dissatisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_dissatisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Neutral" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_neutral</mat-icon></button>
-                            <button mat-icon-button matTooltip="Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_satisfied</mat-icon></button>
-                            <button mat-icon-button matTooltip="Very Satisfied" matTooltipPosition="above"><mat-icon class="mat-icon-lg">sentiment_very_satisfied</mat-icon></button>
-                        </h3>
-
-                        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxLayout="row wrap">
-                            <div fxFlex="100" class="px-1 mt-1">
-                                <mat-form-field class="w-100">
-                                    <textarea matInput placeholder="Your review" formControlName="review" required></textarea>
-                                    <mat-error *ngIf="form.controls.review.errors?.required">Review is required</mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                <mat-form-field class="w-100">
-                                    <input matInput placeholder="Your name" formControlName="name" required>
-                                    <mat-error *ngIf="form.controls.name.errors?.required">Name is required</mat-error>
-                                    <mat-error *ngIf="form.controls.name.hasError('minlength')">Name isn't long enough, minimum of 4 characters</mat-error>
-                                </mat-form-field> 
-                            </div>
-                            <div fxFlex="100" fxFlex.gt-sm="50" class="px-1 mt-2">
-                                <mat-form-field class="w-100">
-                                    <input matInput placeholder="Your email" formControlName="email" required>
-                                    <mat-error *ngIf="form.controls.email.errors?.required">Email is required</mat-error>
-                                    <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
-                                </mat-form-field> 
-                            </div>
-                            <div fxFlex="100" class="mt-2 text-center w-100">
-                                <button mat-raised-button color="primary" type="submit">SUBMIT REVIEW</button>
-                            </div>
-                        </form>    
-                    </div>
-                </mat-tab> -->
+                <mat-tab *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'" label="Add New Areas">
+                    <mat-card>                                                           
+                        <form #venueareaForm="ngForm" class="w3-container">
+                                     <h1>Add New Area</h1>
+                                      <mat-expansion-panel>
+                                             <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                           <h4>Area type</h4>
+                                                    </mat-panel-title>
+                                             </mat-expansion-panel-header>
+                                      <p>
+                                      <p>
+                                      <br>
+                                      <select class="w3-input"
+                                                    id="category"
+                                                    name="category"
+                                                    [(ngModel)]="newVenueArea.category">
+                                                    <option [ngValue]="undefined" disabled selected>Select Area </option>
+                                             <option *ngFor="let category of venueAreaCategories">{{category}} </option>
+                                             </select></p>
+                                     </mat-expansion-panel>
+                                     <br>
+                                     <mat-expansion-panel>
+                                             <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                           <h4>Add Images</h4>
+                                                    </mat-panel-title>
+                                             </mat-expansion-panel-header> 
+                                     <label>Upload Image 1</label>
+                                     <!-- <input class="w3-input" 
+                                            type="file"
+                                            id="image1"
+                                            (change)="handleImage1Change()"> -->
+                                            <laeventa-image-upload
+                                            (imageUploaded)="handleImage1Change($event)"
+                                                          (imageError)="handleImage1Error()"
+                                            ></laeventa-image-upload>
+                                     <p>
+                                     <br>
+                                     <label>Upload Image 2</label>
+                                     <!-- <input class="w3-input" 
+                                            type="file"
+                                            id="image2"
+                                            (change)="handleImage2Change()"></p> -->
+                                            <laeventa-image-upload
+                                            (imageUploaded)="handleImage2Change($event)"
+                                                          (imageError)="handleImage2Error()"
+                                            ></laeventa-image-upload>
+                                     <p>
+                                     <br>
+                                     <label>Upload Image 3</label>
+                                     <!-- <input class="w3-input" 
+                                            type="file"
+                                            id="image3"
+                                            (change)="handleImage3Change()"></p> -->
+                                            <laeventa-image-upload
+                                            (imageUploaded)="handleImage3Change($event)"
+                                                          (imageError)="handleImage3Error()"
+                                            ></laeventa-image-upload>
+                                     <p>
+                                     <br>
+                                     <label>Upload Image 4</label>
+                                     <!-- <input class="w3-input" 
+                                            type="file"
+                                            id="image4"
+                                            (change)="handleImage4Change()"></p> -->
+                                            <laeventa-image-upload
+                                            (imageUploaded)="handleImage4Change($event)"
+                                                          (imageError)="handleImage4Error()"
+                                            ></laeventa-image-upload>
+                                      <p>
+                                      <br>
+                                      <label>Upload Image 5</label>
+                                             <!-- <input class="w3-input" 
+                                             type="file"
+                                             id="image4"
+                                             (change)="handleImage4Change()"></p> -->
+                                             <laeventa-image-upload
+                                             (imageUploaded)="handleImage5Change($event)"
+                                                           (imageError)="handleImage4Error()"
+                                             ></laeventa-image-upload>
+                                      <p>
+                                      <br>                                                    
+                                     </mat-expansion-panel>
+                                     <br>
+                                     <mat-expansion-panel>
+                                             <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                           <h4>Features</h4>
+                                                    </mat-panel-title>
+                                             </mat-expansion-panel-header>
+                                      <p>
+                                      <p>
+                                      <br>
+                                      <select class="w3-input"
+                                                    id="price"
+                                                    name="price"
+                                                    [(ngModel)]="newVenueArea.price">
+                                                    <option [ngValue]="undefined" disabled selected>Price </option>
+                                             <option *ngFor="let category of venueAreaCategories">{{category}} </option>
+                                             </select></p>
+                                     <p>
+                                     <input class="w3-input" 
+                                                     type="number"
+                                                     placeholder="Price"
+                                                     id="price"
+                                                     name="price"
+                                                     [(ngModel)]="newVenueArea.price"></p>                                                    
+                                     </mat-expansion-panel>                                          
+                 
+                             <br>
+                             <button (click)="createVenueArea()" 
+                                         type="button" 
+                                         class="">Create New Area
+                             </button>                                                                
+                                     
+                             </form>
+                         </mat-card>  
+                             <br>
+                        <div *ngIf="errors.length > 0" class="alert alert-danger">
+                               <p *ngFor="let error of errors">
+                                      {{error.detail}}
+                               </p>
+                        </div>                    
+                </mat-tab>                
             </mat-tab-group>
         </mat-card>
     </div>

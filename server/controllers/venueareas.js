@@ -4,10 +4,10 @@ const Jobh = require('../models/jobh');
 const { normalizeErrors } = require('../helpers/mongoose');
 
 exports.createVenueArea = function(req, res){
-    const {image1, image2, image3, image4, image5, image6, price, category, features, producth } = req.body;
+    const {image1, image2, image3, image4, image5, price, category, features, producth } = req.body;
 
     const userh = res.locals.userh;
-    const venuearea = new VenueArea({image1, image2, image3, image4, image5, image6, price, category, features});
+    const venuearea = new VenueArea({image1, image2, image3, image4, image5, price, category, features});
 
    // venuearea.userh = userh;
 

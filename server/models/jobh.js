@@ -29,6 +29,23 @@ const jobhSchema = new Schema({
         usp5: String,
         facilities: {type: ['Mixed']},
         summary: { type: String, required: true},
+        lodging_policy: String,
+        lodging_room_average_price: Number,
+        food_policy: String,
+        alcohol_policy: String,
+        decor_policy: String,
+        payment_policy_percentage: Number,
+        cancellation_policy_percentage: Number,
+
+        parking_policy: String,
+        parking_space_cars: Number,
+        parking_space_bikes: Number,
+
+        equipments_available_policy: String,
+        canteen_available_policy: String,
+        washroom_available_policy: String,
+        scoreboard_available_policy: String,
+        power_backup_available_policy: String,
         venueareas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}],
         userh: {type: Schema.Types.ObjectId, ref: 'Userh'}
 });

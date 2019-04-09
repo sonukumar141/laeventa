@@ -206,14 +206,24 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
     const {name, images, tags, image1, image2, image3, image4, image5,
         plot_flat, city, region, category, phone, email, pincode, landmark, 
         open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
-        facilities, summary} = req.body;
+        facilities, summary, lodging_policy, lodging_room_average_price, 
+        food_policy, alcohol_policy, decor_policy, payment_policy_percentage,
+        cancellation_policy_percentage, parking_policy, parking_space_cars,
+        parking_space_bikes, equipments_available_policy,
+        canteen_available_policy, washroom_available_policy, scoreboard_available_policy,
+        power_backup_available_policy} = req.body;
 
     const userh = res.locals.userh;
 
     const jobh = new Jobh({name, images, tags, image1, image2, image3, image4, image5,
         plot_flat, city, region, category, phone, email, pincode, landmark, 
         open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
-        facilities, summary});
+        facilities, summary, lodging_policy, lodging_room_average_price, 
+        food_policy, alcohol_policy, decor_policy, payment_policy_percentage,
+        cancellation_policy_percentage, parking_policy, parking_space_cars,
+        parking_space_bikes, equipments_available_policy,
+        canteen_available_policy, washroom_available_policy, scoreboard_available_policy,
+        power_backup_available_policy});
 	jobh.userh = userh;
     
 

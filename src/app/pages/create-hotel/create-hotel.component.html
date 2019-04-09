@@ -256,51 +256,171 @@
                                    [(ngModel)]="newProducth.usp5"></p>                                   
                      </mat-expansion-panel>
                      <br>
-                     <mat-expansion-panel>
+                     <mat-expansion-panel *ngIf="newProducth.category !== 'Sports'">
                              <mat-expansion-panel-header>
                                     <mat-panel-title>
                                            <h4>Policies</h4>
                                     </mat-panel-title>
                              </mat-expansion-panel-header>
+                     <select class="w3-input"                            
+                           id="lodging_policy"
+                           name="lodging_policy"                         
+                           [(ngModel)]="newProducth.lodging_policy">
+                           <option [ngValue]="undefined" disabled selected>Lodging Policy </option>
+                           <option *ngFor="let policy of producthLodgingPolicy">{{policy}}</option> 
+                     </select> 
+                      <p>
+                      <br>
                       <input class="w3-input" 
-                             type="text"
-                             placeholder="Timings"
-                             id="timings"
-                             name="timings"
-                             [(ngModel)]="newProducth.timings">
+                      type="number"
+                      placeholder="Average price of lodging"
+                      id="lodging_room_average_price"
+                      name="lodging_room_average_price"
+                      [(ngModel)]="newProducth.lodging_room_average_price"></p>
+                      <br>
+                      <select class="w3-input" 
+                             id="food_policy"
+                             name="food_policy"
+                             [(ngModel)]="newProducth.food_policy">
+                      <option [ngValue]="undefined" disabled selected>Food Policy </option>
+                      <option *ngFor="let policy of producthFoodPolicy">{{policy}} </option>  
+                      </select>
+                      <br>
+                      <select class="w3-input" 
+                             id="alcohol_policy"
+                             name="alcohol_policy"
+                             [(ngModel)]="newProducth.alcohol_policy">
+                      <option [ngValue]="undefined" disabled selected>Alcohol Policy </option>
+                      <option *ngFor="let policy of producthAlcoholPolicy">{{policy}} </option>  
+                      </select>   
+                      <br>
+                      <select class="w3-input" 
+                             id="decor_policy"
+                             name="decor_policy"
+                             [(ngModel)]="newProducth.decor_policy">
+                      <option [ngValue]="undefined" disabled selected>Decoration Policy </option>
+                      <option *ngFor="let policy of producthDecorPolicy">{{policy}} </option>  
+                      </select>    
+                      <p>
+                      <br>
+                      <input class="w3-input" 
+                      type="number"
+                      placeholder="Advanced payment policy. Write in %"
+                      id="payment_policy_percentage"
+                      name="payment_policy_percentage"
+                      [(ngModel)]="newProducth.payment_policy_percentage"></p> 
+                      <p>
+                      <br>
+                      <input class="w3-input" 
+                      type="number"
+                      placeholder="Cancellation charge policy. Write in %"
+                      id="cancellation_policy_percentage"
+                      name="cancellation_policy_percentage"
+                      [(ngModel)]="newProducth.cancellation_policy_percentage"></p>                                                              
                       <p>
                       <br>
                       <select class="w3-input" 
-                             id="fireworks"
-                             name="fireworks"
-                             [(ngModel)]="newProducth.fireworks">
-                      <option [ngValue]="undefined" disabled selected>Fireworks Allowed </option>
-                      <option *ngFor="let fireworks of producthFireworks">{{fireworks}} </option>  
-                      </select></p>
+                             id="parking_policy"
+                             name="parking_policy"
+                             [(ngModel)]="newProducth.parking_policy">
+                      <option [ngValue]="undefined" disabled selected>Parking Policy </option>
+                      <option *ngFor="let policy of producthParkingPolicy">{{policy}} </option>  
+                      </select>  
                       <p>
                       <br>
-                      <label></label>
-                      <select class="w3-input" 
-                             id="music"
-                             name="music"
-                             [(ngModel)]="newProducth.music">
-                      <option [ngValue]="undefined" disabled selected>Music Allowed </option>
-                      <option *ngFor="let music of producthMusic">{{music}} </option>  
-                      </select></p>
+                      <input class="w3-input" 
+                      type="number"
+                      placeholder="Parking space for cars(max number of cars)"
+                      id="parking_space_cars"
+                      name="parking_space_cars"
+                      [(ngModel)]="newProducth.parking_space_cars"></p>  
                       <p>
                       <br>
-                      <label></label>
-                      <select class="w3-input" 
-                             id="advance_payment"
-                             name="advance_payment"
-                             [(ngModel)]="newProducth.advance_payment">
-                      <option [ngValue]="undefined" disabled selected>Advance Payment </option>
-                      <option *ngFor="let advance_payment of producthAdvancePayment">{{advance_payment}} </option>  
-                      </select></p>
+                      <input class="w3-input" 
+                      type="number"
+                      placeholder="Parking space for bikes(max number of bikes)"
+                      id="parking_space_bikes"
+                      name="parking_space_bikes"
+                      [(ngModel)]="newProducth.parking_space_bikes"></p> 
                       </mat-expansion-panel>
-                     <br>                     
+                     <br> 
+                     <mat-expansion-panel *ngIf="newProducth.category === 'Sports'">
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Policies</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>
+                    <select class="w3-input"                            
+                          id="equipments_available_policy"
+                          name="equipments_available_policy"                         
+                          [(ngModel)]="newProducth.equipments_available_policy">
+                          <option [ngValue]="undefined" disabled selected>Equipment Available </option>
+                          <option *ngFor="let policy of producthEquipmentPolicy">{{policy}}</option> 
+                    </select> 
+                     <p>
                      <br>
-                    <textarea rows="5"
+                    <select class="w3-input"                            
+                          id="canteen_available_policy"
+                          name="canteen_available_policy"                         
+                          [(ngModel)]="newProducth.canteen_available_policy">
+                          <option [ngValue]="undefined" disabled selected>Canteen Available </option>
+                          <option *ngFor="let policy of producthCanteenPolicy">{{policy}}</option> 
+                    </select>  
+                    <p>
+                    <br>
+                    <select class="w3-input"                            
+                          id="washroom_available_policy"
+                          name="washroom_available_policy"                         
+                          [(ngModel)]="newProducth.washroom_available_policy">
+                          <option [ngValue]="undefined" disabled selected>Washroom Available </option>
+                          <option *ngFor="let policy of producthWashroomPolicy">{{policy}}</option> 
+                    </select>  
+                    <p>
+                    <br>
+                    <select class="w3-input"                            
+                          id="scoreboard_available_policy"
+                          name="scoreboard_available_policy"                         
+                          [(ngModel)]="newProducth.scoreboard_available_policy">
+                          <option [ngValue]="undefined" disabled selected>Scoreboard Available </option>
+                          <option *ngFor="let policy of producthScoreboardPolicy">{{policy}}</option> 
+                    </select>
+                    <p>
+                    <br>
+                    <select class="w3-input"                            
+                          id="power_backup_available_policy"
+                          name="power_backup_available_policy"                         
+                          [(ngModel)]="newProducth.power_backup_available_policy">
+                          <option [ngValue]="undefined" disabled selected>Scoreboard Available </option>
+                          <option *ngFor="let policy of producthPowerPolicy">{{policy}}</option> 
+                    </select>                                                            
+                     <p>
+                     <br>
+                     <select class="w3-input" 
+                            id="parking_policy"
+                            name="parking_policy"
+                            [(ngModel)]="newProducth.parking_policy">
+                     <option [ngValue]="undefined" disabled selected>Parking Policy </option>
+                     <option *ngFor="let policy of producthParkingPolicy">{{policy}} </option>  
+                     </select>  
+                     <p>
+                     <br>
+                     <input class="w3-input" 
+                     type="number"
+                     placeholder="Parking space for cars(max number of cars)"
+                     id="parking_space_cars"
+                     name="parking_space_cars"
+                     [(ngModel)]="newProducth.parking_space_cars"></p>  
+                     <p>
+                     <br>
+                     <input class="w3-input" 
+                     type="number"
+                     placeholder="Parking space for bikes(max number of bikes)"
+                     id="parking_space_bikes"
+                     name="parking_space_bikes"
+                     [(ngModel)]="newProducth.parking_space_bikes"></p> 
+                     </mat-expansion-panel>                                         
+                     <br>
+                     <textarea rows="5"
                               cols="80"
                         type="text"
                         class="w3-input"
@@ -309,8 +429,9 @@
                         name="summary"
                         maxlength="800"
                         [(ngModel)]="newProducth.summary"
-                        required> </textarea>
-              <br>
+                        required>
+                     </textarea>
+                     <br>
               <button (click)="createProducth()" 
                         type="button" 
                         class="w3-btn w3-blue">Create Venue
