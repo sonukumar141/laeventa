@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgPipesModule } from 'ngx-pipes';
 import { MatAutocompleteModule,
          MatButtonModule,
          MatButtonToggleModule,
@@ -91,7 +92,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
     MatTooltipModule,
     MatStepperModule,
     PerfectScrollbarModule,
-    PipesModule
+    PipesModule,
+    NgPipesModule
   ],
   exports: [
     RouterModule,

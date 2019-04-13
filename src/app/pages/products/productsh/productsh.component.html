@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-    <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
+    <!-- <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
         
         <mat-accordion displayMode="flat" multi="true">
             <mat-expansion-panel expanded>
@@ -90,7 +90,7 @@
 
         </mat-accordion>
 
-    </mat-sidenav>
+    </mat-sidenav> -->
     <mat-sidenav-content class="all-products" ngClass.gt-sm="p-left">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="filter-row mat-elevation-z1 text-muted">
             <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
@@ -138,23 +138,26 @@
                         <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
                     </mat-chip-list>
                     <a [routerLink]="['/venues', product._id, product.name]" class="image-link">
-                        <img [src]="product.image_medium" alt="">
+                        <img [src]="product.image1" alt="">
                     </a>
                     <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>                                                                     
                     <a [routerLink]="['/venues', product._id, product.name]" class="title text-truncate">
-                        {{product.name}} {{product.city}}
+                        {{product.name | ucwords}}
                     </a>
+                     {{product.city | ucwords}}, {{product.region | ucwords}}
+                    <h4>{{product.category | ucwords}} Venue</h4>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
-                        <div fxLayout="column" fxLayoutAlign="center start">
-                            <p class="old-price text-muted"><span *ngIf="product.oldPrice">Rs {{ product.oldPrice | number : '1.2-2'}}</span></p>
-                            <p class="new-price">Rs {{ product.dailyRate | number : '1.2-2'}}</p>
+                        <div class="light-block" fxLayout="row" fxLayoutAlign="center start">
+                            <b>Price Range: </b> &nbsp; Rs. {{ product.min_rate | number : '1.2-2' }} -
+                            Rs. {{ product.max_rate | number : '1.2-2'}}
+                            <!-- <p class="new-price"> - <img src="assets/images/icons/rupee.png" alt=""> {{product.max_rate | number : '1.2-2'}}</p> -->
                         </div>
-                        <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
+                        <!-- <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating> -->
                     </div>                            
                     <div class="divider mt-2"></div>
-                    <div class="icons">
+                    <!-- <div class="icons">
                         <app-controls [product]="product" (onOpenProductDialog)="openProductDialog(product)"></app-controls>
-                    </div>
+                    </div> -->
                 </mat-card>
             </div>
         </div>
@@ -185,9 +188,9 @@
                                 <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
                             </div>                            
                             <div class="divider"></div>
-                            <div class="icons">
+                            <!-- <div class="icons">
                                 <app-controls [product]="product" (onOpenProductDialog)="openProductDialog(product)"></app-controls>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </mat-card>
