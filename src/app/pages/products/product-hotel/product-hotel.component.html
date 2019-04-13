@@ -157,7 +157,8 @@
                             </div>
                     </div>
                     <div class="full-desc lh">
-                        <app-map [location]="producth?.city + ', ' +  producth?.region"></app-map>
+                        <h3>Map & Location</h3>
+                        <h4><app-map [location]="producth?.city + ', ' +  producth?.region + ', ' + producth?.landmark"></app-map></h4>
                     </div>
                 </mat-tab>
                 <mat-tab label="Areas">
@@ -178,8 +179,7 @@
                             
                             <ng-template #next>
                                     <img src="assets/images/arrows/next.png" alt="">
-                            </ng-template>
-                                                                                    
+                            </ng-template>                                       
                                 <ng-template #item>
                                     <img *ngIf="venuearea.image1" [src]="venuearea.image1" style="width:113%; height: 50%;">
                                     <img *ngIf="venuearea.image2" [src]="venuearea.image2" style="width:113%; height: 50%;">
@@ -189,18 +189,37 @@
                                 </ng-template>
 
                                 <br>
-                                <div id="area-detail">
-                                    <h3>{{ 
-                                        venuearea.category
-                                    }}</h3>
-
-                                    <h3> Pricing: {{
-                                        venuearea.price
-                                    }}</h3>
-                                    <h3> Features: {{
-                                            venuearea.features
-                                        }}</h3>
-                                </div>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                        <div class="content">
+                                            <p style="font-size:14px; margin-left: 10px;">
+                                                <b>Name: </b>{{venuearea?.name | ucwords}}
+                                            </p>
+                                            <p style="font-size:14px; margin-left: 10px;">
+                                                <b>Type: </b>{{venuearea?.category | ucwords}}
+                                            </p>
+                                            <p *ngIf="producth?.category !== 'sports'" style="font-size:14px; margin-left: 10px;">
+                                                <b>Price per plate: </b>{{venuearea?.price_per_plate | ucwords}}
+                                            </p>
+                                            <p *ngIf="producth?.category === 'sports'" style="font-size:14px; margin-left: 10px;">
+                                                <b>Price per hour</b>{{venuearea?.price_per_hour}}
+                                            </p>
+                                            <p *ngIf="producth?.category === 'sports'" style="font-size:14px; margin-left: 10px;">
+                                                <b>Price per hour</b>{{venuearea?.price_per_day}}
+                                            </p>
+                                            
+                                        </div> 
+                                </mat-card>   
+                                <br>                                
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Description: </strong> 
+                                    <div class="content">                                
+                                        <p style="font-size:14px; margin-left: 10px;">
+                                            <b>{{venuearea?.description}}</b>
+                                        </p>
+                                    </div> 
+                                </mat-card>  
+                                <br>                                
+                                
                                 <div id="delete-button" *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
                                 <button (click)="venueareaDeleteIndex = i"
                                 *ngIf="venueareaDeleteIndex !== i"
@@ -344,7 +363,7 @@
                                     </div> 
                                 </mat-card>   
                                 <mat-card *ngIf="producth?.parking_space_cars" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                    <strong>Max Car Parking:</strong> 
+                                    <strong>Max Parking Capacity(Cars):</strong> 
                                     <div class="content">
                                         <p style="font-size:14px; margin-left: 10px;">
                                             <b>{{producth?.parking_space_cars}}</b>
@@ -353,7 +372,7 @@
                                 </mat-card>
                                 <br>
                                 <mat-card *ngIf="producth?.parking_space_bikes" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                    <strong>Max Bike Parking:</strong> 
+                                    <strong>Max Parking Capacity(Bikes):</strong> 
                                     <div class="content">
                                         <p style="font-size:14px; margin-left: 10px;">
                                             <b>{{producth?.parking_space_bikes}}</b>
@@ -413,25 +432,25 @@
                                         <img src="assets/images/icons/not_available.png" alt="not available img">
                                     </p>
                                 </div> 
-                            </mat-card>                                                                 
+                            </mat-card>   
+                            <br>
+                            <mat-card *ngIf="producth?.decor_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Decoration</strong> 
+                                    <div class="content">
+                                        <p *ngIf="producth?.decor_policy === 'Decoration provided'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.decor_policy === 'Decoration not provided'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
+                                    </div> 
+                            </mat-card>                                                              
                                                        
                         </div>
                         <div class="outer">
                             <div class="inner"></div>
                         </div>
-                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
-                            <mat-card *ngIf="producth?.decor_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <strong>Decoration</strong> 
-                                <div class="content">
-                                    <p *ngIf="producth?.decor_policy === 'Decoration provided'" style="font-size:12px; margin-left: 10px;">
-                                        <img src="assets/images/icons/available.png" alt="available img">
-                                    </p>
-                                    <p *ngIf="producth?.decor_policy === 'Decoration not provided'" style="font-size:12px; margin-left: 10px;">
-                                        <img src="assets/images/icons/not_available.png" alt="not available img">
-                                    </p>
-                                </div> 
-                            </mat-card>
-                            <br>
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">                            
                             <mat-card *ngIf="producth?.payment_policy_percentage" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                 <strong>Advanced Payment </strong> 
                                 <div class="content">
@@ -480,12 +499,19 @@
                                       <mat-expansion-panel>
                                              <mat-expansion-panel-header>
                                                     <mat-panel-title>
-                                                           <h4>Area type</h4>
+                                                           <h4>Area Name & Type</h4>
                                                     </mat-panel-title>
                                              </mat-expansion-panel-header>
                                       <p>
                                       <p>
                                       <br>
+                                      <input class="w3-input" 
+                                                    type="text"
+                                                    placeholder="Name"
+                                                    id="name"
+                                                    name="name"
+                                                    [(ngModel)]="newVenueArea.name">
+                                      <br> 
                                       <select class="w3-input"
                                                     id="category"
                                                     name="category"
@@ -502,10 +528,6 @@
                                                     </mat-panel-title>
                                              </mat-expansion-panel-header> 
                                      <label>Upload Image 1</label>
-                                     <!-- <input class="w3-input" 
-                                            type="file"
-                                            id="image1"
-                                            (change)="handleImage1Change()"> -->
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage1Change($event)"
                                                           (imageError)="handleImage1Error()"
@@ -513,10 +535,6 @@
                                      <p>
                                      <br>
                                      <label>Upload Image 2</label>
-                                     <!-- <input class="w3-input" 
-                                            type="file"
-                                            id="image2"
-                                            (change)="handleImage2Change()"></p> -->
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage2Change($event)"
                                                           (imageError)="handleImage2Error()"
@@ -524,10 +542,6 @@
                                      <p>
                                      <br>
                                      <label>Upload Image 3</label>
-                                     <!-- <input class="w3-input" 
-                                            type="file"
-                                            id="image3"
-                                            (change)="handleImage3Change()"></p> -->
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage3Change($event)"
                                                           (imageError)="handleImage3Error()"
@@ -535,10 +549,6 @@
                                      <p>
                                      <br>
                                      <label>Upload Image 4</label>
-                                     <!-- <input class="w3-input" 
-                                            type="file"
-                                            id="image4"
-                                            (change)="handleImage4Change()"></p> -->
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage4Change($event)"
                                                           (imageError)="handleImage4Error()"
@@ -546,10 +556,6 @@
                                       <p>
                                       <br>
                                       <label>Upload Image 5</label>
-                                             <!-- <input class="w3-input" 
-                                             type="file"
-                                             id="image4"
-                                             (change)="handleImage4Change()"></p> -->
                                              <laeventa-image-upload
                                              (imageUploaded)="handleImage5Change($event)"
                                                            (imageError)="handleImage4Error()"
@@ -561,26 +567,43 @@
                                      <mat-expansion-panel>
                                              <mat-expansion-panel-header>
                                                     <mat-panel-title>
-                                                           <h4>Features</h4>
+                                                           <h4>Description</h4>
                                                     </mat-panel-title>
-                                             </mat-expansion-panel-header>
-                                      <p>
-                                      <p>
-                                      <br>
-                                      <select class="w3-input"
-                                                    id="price"
-                                                    name="price"
-                                                    [(ngModel)]="newVenueArea.price">
-                                                    <option [ngValue]="undefined" disabled selected>Price </option>
-                                             <option *ngFor="let category of venueAreaCategories">{{category}} </option>
-                                             </select></p>
+                                             </mat-expansion-panel-header>                                    
                                      <p>
-                                     <input class="w3-input" 
+                                     <input *ngIf="producth?.category !== 'sports'" class="w3-input" 
                                                      type="number"
-                                                     placeholder="Price"
+                                                     placeholder="Price per plate"
                                                      id="price"
                                                      name="price"
-                                                     [(ngModel)]="newVenueArea.price"></p>                                                    
+                                                     [(ngModel)]="newVenueArea.price_per_plate"></p>   
+                                                     <br>
+                                    <input *ngIf="producth?.category === 'sports'" class="w3-input" 
+                                                     type="number"
+                                                     placeholder="Price per hour"
+                                                     id="price_per_hour"
+                                                     name="price_per_hour"
+                                                     [(ngModel)]="newVenueArea.price_per_hour">  
+                                                     <br *ngIf="producth?.category === 'sports'">  
+                                     <input *ngIf="producth?.category === 'sports'" class="w3-input" 
+                                                     type="number"
+                                                     placeholder="Price per day"
+                                                     id="price_per_day"
+                                                     name="price_per_day"
+                                                     [(ngModel)]="newVenueArea.price_per_day">
+                                                     <br *ngIf="producth?.category === 'sports'">                                                                                                        
+                                     <textarea rows="5"
+                                                cols="80"
+                                                type="text"
+                                                class="w3-input"
+                                                id="summary"
+                                                placeholder="Describe the area within 800 characters."
+                                                name="summary"
+                                                maxlength="800"
+                                                [(ngModel)]="newVenueArea.description"
+                                                required>
+                                     </textarea>
+                                            <br>                                                                                                     
                                      </mat-expansion-panel>                                          
                  
                              <br>

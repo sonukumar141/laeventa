@@ -127,6 +127,8 @@ export class ProductHotelComponent implements OnInit {
     this.appService.createVenueArea(this.newVenueArea).subscribe(
       (venuearea: VenueArea) => {
         this.snackBar.open('New Area Created successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 4000 });
+        this.router.navigate(['']);
+        window.location.reload();
       },
       (errorResponse: HttpErrorResponse) => {
        
@@ -236,6 +238,10 @@ export class ProductHotelComponent implements OnInit {
   public onCreateVenueArea(){
     // TBD
   }
+
+  refresh(): void {
+    window.location.reload();
+}
 
   
 }
