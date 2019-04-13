@@ -53,14 +53,15 @@ export class Producth {
                                 ' Taekwondo ', ' Weightlifting ', ' Wrestling '];
   static readonly LODGING_POLICIES = ['Available', 'Not Available'];
   static readonly FOOD_POLICIES = ['Outside food allowed', 'Outside food not allowed'];
-  static readonly ALCOHOL_POLICIES = ['Outside alcohol allowed', 'Bar available'];
+  static readonly ALCOHOL_POLICIES = ['Alcohol allowed', 'Alcohol Not Allowed'];
   static readonly DECOR_POLICIES = ['Decoration provided', 'Decoration not provided'];
-  static readonly PARKING_POLICIES = ['Vallet parking available', 'Parking Available'];
+  static readonly PARKING_POLICIES = ['Vallet parking available', 'Parking Available', 'Parking not available'];
   static readonly EQUIPMENT_POLICIES = ['Sports equipment available', 'Sports equipment not available'];
   static readonly CANTEEN_POLICIES = ['Canteen available', 'Canteen not available'];
   static readonly WASHROOM_POLICIES = ['Washroom available', 'Washroom not available'];
   static readonly SCOREBOARD_POLICIES = ['Scoreboard available', 'Scoreboard not available'];
   static readonly POWER_POLICIES = ['Power backup available', 'Power backup not available'];
+  static readonly COMMENTATOR_POLICIES = ['Commentator available', 'Commentator not available'];
 
    _id: string;
    name: string;

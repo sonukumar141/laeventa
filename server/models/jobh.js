@@ -37,14 +37,15 @@ const jobhSchema = new Schema({
         payment_policy_percentage: Number,
         cancellation_policy_percentage: Number,
 
-        parking_policy: String,
-        parking_space_cars: Number,
-        parking_space_bikes: Number,
+        parking_policy: { type: String, required: true},
+        parking_space_cars: { type: Number, required: true},
+        parking_space_bikes: { type: Number, required: true},
 
         equipments_available_policy: String,
         canteen_available_policy: String,
         washroom_available_policy: String,
         scoreboard_available_policy: String,
+        commentator_available_policy: String,
         power_backup_available_policy: String,
         venueareas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}],
         userh: {type: Schema.Types.ObjectId, ref: 'Userh'}

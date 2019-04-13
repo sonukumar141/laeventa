@@ -250,44 +250,228 @@
                         
                 </mat-tab>   
                 <mat-tab label="Policies">
-                    <!-- <div class="full-desc lh">
+                    <div *ngIf="producth?.category === 'sports'" class="full-desc lh">
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
-                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                    <strong>Address</strong> 
+                                <mat-card *ngIf="producth?.equipments_available_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Sports Equipments</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.street | ucwords}} {{producth?.address | ucwords}}</p> 
+                                        <p *ngIf="producth?.equipments_available_policy === 'Sports equipment available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.equipments_available_policy === 'Sports equipment not available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
                                     </div> 
                                 </mat-card>
                                 <br>
-                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                    <strong>Email</strong> 
+                                <mat-card *ngIf="producth?.washroom_available_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Washroom</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.email}}</p> 
+                                        <p *ngIf="producth?.washroom_available_policy === 'Washroom available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.washroom_available_policy === 'Washroom not available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
                                     </div> 
                                 </mat-card>
+                                <br>
+                                <mat-card *ngIf="producth?.scoreboard_available_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Scoreboard</strong> 
+                                    <div class="content">
+                                        <p *ngIf="producth?.scoreboard_available_policy === 'Scoreboard available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.scoreboard_available_policy === 'Scoreboard not available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
+                                    </div> 
+                                </mat-card>
+                                <br> 
+                                <mat-card *ngIf="producth?.parking_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Parking</strong> 
+                                    <div class="content">
+                                        <p *ngIf="producth?.parking_policy === 'Parking Available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.parking_policy === 'Vallet parking available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="not available img">
+                                        </p>
+                                        <p *ngIf="producth?.parking_policy === 'Parking not available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
+                                    </div> 
+                                </mat-card>                                                                 
+                                                           
                             </div>
                             <div class="outer">
                                 <div class="inner"></div>
                             </div>
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
-                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                    <strong>Landmark</strong> 
+                                <mat-card *ngIf="producth?.canteen_available_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Canteen</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.landmark}}</p> 
+                                        <p *ngIf="producth?.canteen_available_policy === 'Canteen available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.canteen_available_policy === 'Canteen not available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
                                     </div> 
                                 </mat-card>
                                 <br>
-                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                    <strong>Contact</strong> 
+                                <mat-card *ngIf="producth?.power_backup_available_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Power Backup</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.phone}}</p> 
+                                        <p *ngIf="producth?.power_backup_available_policy === 'Power backup available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.power_backup_available_policy === 'Power backup not available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
+                                    </div> 
+                                </mat-card>  
+                                <br>
+                                <mat-card *ngIf="producth?.commentator_available_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Commentator</strong> 
+                                    <div class="content">
+                                        <p *ngIf="producth?.commentator_available_policy === 'Commentator available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/available.png" alt="available img">
+                                        </p>
+                                        <p *ngIf="producth?.commentator_available_policy === 'Commentator not available'" style="font-size:12px; margin-left: 10px;">
+                                            <img src="assets/images/icons/not_available.png" alt="not available img">
+                                        </p>
+                                    </div> 
+                                </mat-card>   
+                                <mat-card *ngIf="producth?.parking_space_cars" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Max Car Parking:</strong> 
+                                    <div class="content">
+                                        <p style="font-size:14px; margin-left: 10px;">
+                                            <b>{{producth?.parking_space_cars}}</b>
+                                        </p>
                                     </div> 
                                 </mat-card>
+                                <br>
+                                <mat-card *ngIf="producth?.parking_space_bikes" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Max Bike Parking:</strong> 
+                                    <div class="content">
+                                        <p style="font-size:14px; margin-left: 10px;">
+                                            <b>{{producth?.parking_space_bikes}}</b>
+                                        </p>
+                                    </div> 
+                                </mat-card>                                                               
                             </div>
                     </div>
-                    <div class="full-desc lh">
-                        <app-map [location]="producth?.city + ', ' +  producth?.street"></app-map>
-                    </div> -->
+                    <div *ngIf="producth?.category !== 'sports'" class="full-desc lh">
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                            <mat-card *ngIf="producth?.lodging_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Lodging</strong> 
+                                <div class="content">
+                                    <p *ngIf="producth?.lodging_policy === 'Available'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/available.png" alt="available img">
+                                    </p>
+                                    <p *ngIf="producth?.lodging_policy === 'Not Available'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/not_available.png" alt="not available img">
+                                    </p>
+                                </div> 
+                            </mat-card>
+                            <br>
+                            <mat-card *ngIf="producth?.food_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Outside food allowed</strong> 
+                                <div class="content">
+                                    <p *ngIf="producth?.food_policy === 'Outside food allowed'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/available.png" alt="available img">
+                                    </p>
+                                    <p *ngIf="producth?.food_policy === 'Outside food not allowed'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/not_available.png" alt="not available img">
+                                    </p>
+                                </div> 
+                            </mat-card>
+                            <br>
+                            <mat-card *ngIf="producth?.alcohol_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Alcohol</strong> 
+                                <div class="content">
+                                    <p *ngIf="producth?.alcohol_policy === 'Alcohol allowed'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/available.png" alt="available img">
+                                    </p>
+                                    <p *ngIf="producth?.alcohol_policy === 'Alcohol Not Allowed'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/not_available.png" alt="not available img">
+                                    </p>
+                                </div> 
+                            </mat-card>
+                            <br> 
+                            <mat-card *ngIf="producth?.parking_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Parking</strong> 
+                                <div class="content">
+                                    <p *ngIf="producth?.parking_policy === 'Parking Available'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/available.png" alt="available img">
+                                    </p>
+                                    <p *ngIf="producth?.parking_policy === 'Vallet parking available'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/available.png" alt="not available img">
+                                    </p>
+                                    <p *ngIf="producth?.parking_policy === 'Parking not available'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/not_available.png" alt="not available img">
+                                    </p>
+                                </div> 
+                            </mat-card>                                                                 
+                                                       
+                        </div>
+                        <div class="outer">
+                            <div class="inner"></div>
+                        </div>
+                        <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                            <mat-card *ngIf="producth?.decor_policy" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Decoration</strong> 
+                                <div class="content">
+                                    <p *ngIf="producth?.decor_policy === 'Decoration provided'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/available.png" alt="available img">
+                                    </p>
+                                    <p *ngIf="producth?.decor_policy === 'Decoration not provided'" style="font-size:12px; margin-left: 10px;">
+                                        <img src="assets/images/icons/not_available.png" alt="not available img">
+                                    </p>
+                                </div> 
+                            </mat-card>
+                            <br>
+                            <mat-card *ngIf="producth?.payment_policy_percentage" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Advanced Payment </strong> 
+                                <div class="content">
+                                    <p style="font-size:14px; margin-left: 10px;">
+                                        <b>{{producth?.payment_policy_percentage}} %</b>
+                                    </p>
+
+                                </div> 
+                            </mat-card> 
+                            <br>
+                            <mat-card *ngIf="producth?.cancellation_policy_percentage" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Cancellation Charge </strong> 
+                                <div class="content">
+                                    <p style="font-size:14px; margin-left: 10px;">
+                                        <b>{{producth?.cancellation_policy_percentage}} %</b>
+                                    </p>
+
+                                </div> 
+                            </mat-card>  
+                            <br> 
+                            <mat-card *ngIf="producth?.parking_space_cars" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Max Car Parking:</strong> 
+                                <div class="content">
+                                    <p style="font-size:14px; margin-left: 10px;">
+                                        <b>{{producth?.parking_space_cars}}</b>
+                                    </p>
+                                </div> 
+                            </mat-card>
+                            <br>
+                            <mat-card *ngIf="producth?.parking_space_bikes" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <strong>Max Bike Parking:</strong> 
+                                <div class="content">
+                                    <p style="font-size:14px; margin-left: 10px;">
+                                        <b>{{producth?.parking_space_bikes}}</b>
+                                    </p>
+                                </div> 
+                            </mat-card>                                                               
+                        </div>
+                </div>                    
+
                 </mat-tab>
                 <mat-tab *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'" label="Add New Areas">
                     <mat-card>                                                           

@@ -28,6 +28,7 @@ export class CreateHotelComponent implements OnInit {
   producthWashroomPolicy = Producth.WASHROOM_POLICIES;
   producthScoreboardPolicy = Producth.SCOREBOARD_POLICIES;
   producthPowerPolicy = Producth.POWER_POLICIES;
+  producthCommentatorPolicy = Producth.COMMENTATOR_POLICIES;
   errors: any[] = [];
 
   constructor(private appService: AppService,

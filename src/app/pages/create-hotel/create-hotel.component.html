@@ -92,7 +92,7 @@
                             [(ngModel)]="newProducth.facilities"
                             name="facilities"
                             multiple>
-                                   <mat-option *ngFor="let facility of productFacilities" [value]="facility">{{facility}} </mat-option>  
+                            <mat-option *ngFor="let facility of productFacilities" [value]="facility">{{facility}} </mat-option>  
                      </mat-select> 
                     </mat-expansion-panel>  
                     </div> 
@@ -384,6 +384,15 @@
                           <option [ngValue]="undefined" disabled selected>Scoreboard Available </option>
                           <option *ngFor="let policy of producthScoreboardPolicy">{{policy}}</option> 
                     </select>
+                    <p>
+                     <br>
+                     <select class="w3-input"                            
+                           id="commentator_available_policy"
+                           name="commentator_available_policy"                         
+                           [(ngModel)]="newProducth.commentator_available_policy">
+                           <option [ngValue]="undefined" disabled selected>Commentator Available </option>
+                           <option *ngFor="let policy of producthCommentatorPolicy">{{policy}}</option> 
+                     </select>                    
                     <p>
                     <br>
                     <select class="w3-input"                            
