@@ -10,15 +10,16 @@
                                     <br>
                                     <p><strong>Update Venue: </strong></p>
                                     <br>
+                                    <br>
                                     <p><strong>Delete Venue: </strong></p>
                                 </div>
                                 <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">                                                                                                     
-                                    <a [routerLink]="['/venues', product._id, product.name]" class="title">
+                                    <a [routerLink]="['/venues', product._id, product.name]" class="btn name">
                                         {{product.name | ucwords}}
                                     </a>
 
-                                    <p class="py-1 text-muted lh">{{product.city | ucwords}}</p>
-                                    <a [routerLink]="['/venues', product._id, product.name, 'update']" class="title">
+                                    <p class="py-1 text-muted lh">{{product.city | ucwords}}, {{product.region | ucwords}}</p>
+                                    <a [routerLink]="['/venues', product._id, product.name, 'update']" class="btn update">
                                         Update Venue
                                     </a>
                                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
@@ -26,19 +27,19 @@
 
                                         </div>
                                     </div>                            
-                                    <div class="divider"></div>
-                                    <p>Created At: {{product.createdAt}}</p>
+                                    <!-- <div class="divider"></div>
+                                    <p>Created At: {{product.createdAt}}</p> -->
 
                                                 <button (click)="producthDeleteIndex = i"
                                                         *ngIf="producthDeleteIndex !== i"
                                                         type="button" 
-                                                        id="btn-delete">Delete</button>
+                                                        class="btn delete">Delete</button>
                                                 <div *ngIf="producthDeleteIndex === i">
-                                                <p class="confirm-message">Do you confirm delete?</p> 
+                                                <p class="btn confirm">Do you confirm delete?</p> 
                                                     <button (click)="deleteProducth(product._id)"
-                                                            class="btn btn-success">Yes</button>
+                                                            class="btn success">Yes</button>
                                                     <button (click)="producthDeleteIndex = undefined"
-                                                            class="btn btn-danger">No</button>
+                                                            class="btn cancel">No</button>
                                                 </div>
                                 </div>
                                 <div *ngIf="productsh && productsh.length === 0" class="col-md-8">
