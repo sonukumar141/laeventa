@@ -70,7 +70,7 @@
             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                 <img src="assets/images/icons/mobile.png" alt="phone img">
                 <div class="content">
-                    <p><b style="font-size:15px; margin-left: 10px;">+91 {{ producth?.phone }}</b></p>
+                    <p><b style="font-size:15px; margin-left: 10px;">{{ producth?.phone }}</b></p>
                 </div> 
             </mat-card>
             <div class="divider"></div>      
@@ -105,7 +105,7 @@
 
         <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                <img src="assets/images/icons/available.png" alt="available img">
+                <img src="assets/images/icons/green_tick.png" alt="available img">
                 <div class="content">
                     <p style="font-size:18px; margin-left :10px ">Best suited for</p>
                     <p style="font-size:14px; margin-left :10px ">{{ producth?.facilities }}</p>
@@ -198,13 +198,13 @@
                                                 <b>Type: </b>{{venuearea?.category | ucwords}}
                                             </p>
                                             <p *ngIf="producth?.category !== 'sports'" style="font-size:14px; margin-left: 10px;">
-                                                <b>Price per plate: </b>{{venuearea?.price_per_plate | ucwords}}
+                                                <b>Price per plate: Rs. </b>{{venuearea?.price_per_plate | ucwords}}
                                             </p>
                                             <p *ngIf="producth?.category === 'sports'" style="font-size:14px; margin-left: 10px;">
-                                                <b>Price per hour</b>{{venuearea?.price_per_hour}}
+                                                <b>Price per hour: Rs. </b>{{venuearea?.price_per_hour}}
                                             </p>
                                             <p *ngIf="producth?.category === 'sports'" style="font-size:14px; margin-left: 10px;">
-                                                <b>Price per hour</b>{{venuearea?.price_per_day}}
+                                                <b>Price per day: Rs. </b>{{venuearea?.price_per_day}}
                                             </p>
                                             
                                         </div> 
