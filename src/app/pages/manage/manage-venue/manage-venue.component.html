@@ -35,11 +35,12 @@
                                                         type="button" 
                                                         class="btn delete">Delete</button>
                                                 <div *ngIf="producthDeleteIndex === i">
-                                                <p class="btn confirm">Do you confirm delete?</p> 
+                                                <p class="btn confirm">Delete Listing?</p>
+                                                    
                                                     <button (click)="deleteProducth(product._id)"
-                                                            class="btn success">Yes</button>
+                                                            class="btn success">Yes</button> &nbsp;
                                                     <button (click)="producthDeleteIndex = undefined"
-                                                            class="btn cancel">No</button>
+                                                            class="btn cancel">Cancel</button>
                                                 </div>
                                 </div>
                                 <div *ngIf="productsh && productsh.length === 0" class="col-md-8">
@@ -56,7 +57,7 @@
     </ng-container>
 </div>
 <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
-<div>
+<!-- <div>
     <mat-icon color="primary" class="mat-icon-xlg">person</mat-icon>
-</div>
+</div> -->
 </div>
