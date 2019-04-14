@@ -1,6 +1,9 @@
 <mat-card>
+    
     <div fxLayout="row wrap">
+        
         <div fxFlex="100" fxFlex.gt-sm="50" class="p-2">
+            <a mat-icon-button routerLink="/"><mat-icon class="text-muted">home</mat-icon> Home</a>
             <h2 class="text-muted text-center">Sign In</h2>
             <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
                 <mat-form-field class="w-100 mt-2">
