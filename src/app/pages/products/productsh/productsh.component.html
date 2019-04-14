@@ -142,13 +142,13 @@
                     </a>
                     <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>                                                                     
                     <a [routerLink]="['/venues', product._id, product.name]" class="title text-truncate">
-                        {{product.name | ucwords}}
+                        {{product.category | ucwords}}
                     </a>
-                     {{product.city | ucwords}}, {{product.region | ucwords}}
-                    <h4>{{product.category | ucwords}} Venue</h4>
+                     <h2>{{product.name| ucwords}}</h2>
+                    <h4>{{product.city | ucwords}}, {{product.region | ucwords}}</h4>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
-                        <div class="light-block" fxLayout="row" fxLayoutAlign="center start">
-                            <b>Price Range: </b> &nbsp; Rs. {{ product.min_rate | number : '1.2-2' }} -
+                        <div class="new-price" fxLayout="row" fxLayoutAlign="center start">
+                            Rs. {{ product.min_rate | number : '1.2-2' }} -
                             Rs. {{ product.max_rate | number : '1.2-2'}}
                             <!-- <p class="new-price"> - <img src="assets/images/icons/rupee.png" alt=""> {{product.max_rate | number : '1.2-2'}}</p> -->
                         </div>
@@ -171,23 +171,25 @@
                                 <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
                             </mat-chip-list>
                             <a [routerLink]="['/venues', product._id, product.name]" class="image-link">
-                                <img [src]="product.images[0].medium" alt="">
+                                <img [src]="product.image1" alt="">
                             </a>
                         </div>
                         <div fxFlex="100" fxFlex.gt-xs="60" class="p-2">
                             <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>                                                                     
                             <a [routerLink]="['/venues', product._id, product.name]" class="title">
-                                {{product.name}}
+                                {{product.category | ucwords}}
                             </a>
-                            <p class="py-1 text-muted lh">{{product.description}}</p>
+                            <h2>{{product.name| ucwords}}</h2>
+                            <h4>{{product.city | ucwords}}, {{product.region | ucwords}}</h4>
+                            
                             <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                                 <div fxLayout="column" fxLayoutAlign="center start">
-                                    <p class="old-price text-muted"><span *ngIf="product.oldPrice">${{product.oldPrice | number : '1.2-2'}}</span></p>
-                                    <p class="new-price">${{product.newPrice | number : '1.2-2'}}</p>
+                                    <b><h3>Price Range:</h3></b><p class="new-price">Rs. {{ product.min_rate | number : '1.2-2'}} - Rs. {{ product.max_rate | number : '1.2-2'}}</p>                                    
                                 </div>
-                                <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating>
+                                <!-- <app-rating [ratingsCount]="product.ratingsCount" [ratingsValue]="product.ratingsValue" [direction]="'column'"></app-rating> -->
                             </div>                            
                             <div class="divider"></div>
+                            <p class="py-1 text-muted lh">{{product.summary}}</p>
                             <!-- <div class="icons">
                                 <app-controls [product]="product" (onOpenProductDialog)="openProductDialog(product)"></app-controls>
                             </div> -->
