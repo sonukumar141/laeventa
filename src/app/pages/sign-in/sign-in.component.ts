@@ -73,8 +73,9 @@ export class SignInComponent implements OnInit {
       () => {
         console.log('success');
         if(this.registerForm.valid){
-          this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
-          this.router.navigate(['/sign-in']);
+          this.snackBar.open('You registered successfully. Login now', '×', { panelClass: 'success', verticalPosition: 'top', duration: 4000 });
+          this.router.navigate(['']);
+          //window.location.reload();
         }
       },
       (errorResponse) => {

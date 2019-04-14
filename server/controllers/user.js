@@ -106,19 +106,18 @@ exports.forgot =  function(req, res, next){
             const smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: 'xxxx.com',
-                    pass: 'xxxx'
+                    user: config.LAEVENTA_EMAIL,
+                    pass: config.LAEVENTA_EMAIL_PASS
                 }
             });
 
             const mailOptions = {
                 to: user.email,
-                from: 'xxxx.com',
-                subject: 'Nodejs password reset',
+                from: config.LAEVENTA_EMAIL,
+                subject: 'Laventa password reset',
                 text: 'You are receiving this email. Please click on the email for password reset ' +
                       'http://' + req.headers.host + '/reset/' + token + '\n\n' + 
-                      'If you did not request this, please ignore this email' +
-                      'Your password is 1234'
+                      'If you did not request this, please ignore this email' 
             };
             smtpTransport.sendMail(mailOptions, function(err){
                 console.log('mail sent');
@@ -166,14 +165,14 @@ exports.reset = function(req, res){
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: 'xxxx.com',
-                    pass: 'xxxx'
+                    user: config.LAEVENTA_EMAIL,
+                    pass: config.LAEVENTA_EMAIL_PASS
                 }
             });
 
             var mailOptions = {
                 to: user.email,
-                from: 'xxxx.com',
+                from: config.LAEVENTA_EMAIL,
                 subject: 'Your password has been changed',
                 text: 'Hello,\n\n' + 
                     'This is a confirmation that the password for your account ' + user.email + ' has just changed'
