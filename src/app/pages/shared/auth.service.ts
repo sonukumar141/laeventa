@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 const jwt = new JwtHelperService();
 import * as moment from 'moment';
 import 'rxjs/Rx';
-import { User } from 'src/app/app.models';
 
 class DecodedToken{
   exp: number = 0;

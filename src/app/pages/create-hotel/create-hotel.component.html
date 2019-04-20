@@ -37,7 +37,7 @@
                     <label></label>
                     <input class="w3-input" 
                     type="text"
-                    placeholder="Flat/Plot no."
+                    placeholder="Plot no."
                     id="plot_flat"
                     name="plot_flat"
                     [(ngModel)]="newProducth.plot_flat">
@@ -189,20 +189,33 @@
                                                  <h4>Timings</h4>
                                           </mat-panel-title>
                                    </mat-expansion-panel-header>
-                     <input class="w3-input" 
+                     <!-- <input class="w3-input" 
                            type="text"
                            placeholder="Opening timings of venue"
                            id="open_timing"
                            name="open_timing"
-                           [(ngModel)]="newProducth.open_timing">
+                           [(ngModel)]="newProducth.open_timing"> -->
+                           <label>Venue Opening Time</label> &nbsp;
+                           <input atp-time-picker 
+                                  type="time"
+                                  value="08:55"
+                                  [(ngModel)]="newProducth.open_timing"
+                                  name="opening_time">
+                     <br>
                      <br>
                      <p>
-                     <input class="w3-input" 
+                     <!-- <input class="w3-input" 
                             type="text"
                             placeholder="Closing timings of venue"
                             id="close_timing"
                             name="close_timing"
-                            [(ngModel)]="newProducth.close_timing"></p>
+                            [(ngModel)]="newProducth.close_timing"></p> -->
+                           <label>Venue Closing Time</label> &nbsp;
+                           <input atp-time-picker 
+                                  type="time"
+                                  value= "08:55"
+                                  [(ngModel)]="newProducth.close_timing"     
+                                  name="closing_time">
                      </mat-expansion-panel>
                      <br>
                      <mat-expansion-panel>
@@ -399,7 +412,7 @@
                           id="power_backup_available_policy"
                           name="power_backup_available_policy"                         
                           [(ngModel)]="newProducth.power_backup_available_policy">
-                          <option [ngValue]="undefined" disabled selected>Scoreboard Available </option>
+                          <option [ngValue]="undefined" disabled selected>Power Backup Available </option>
                           <option *ngFor="let policy of producthPowerPolicy">{{policy}}</option> 
                     </select>                                                            
                      <p>

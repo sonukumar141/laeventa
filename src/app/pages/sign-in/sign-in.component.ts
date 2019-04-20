@@ -43,28 +43,18 @@ export class SignInComponent implements OnInit {
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;
+          //this.snackBar.open('Wrong email or password', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
         });
 
-      this.auth.vendor_signin(this.loginForm.value).subscribe(
+       this.auth.signin(this.loginForm.value).subscribe(
         (token) => {
-          this.router.navigate(['/productsv']);
-        },
-        (errorResponse) => {
-          this.errors = errorResponse.error.errors;
-        });
- 
-      this.auth.signin(this.loginForm.value).subscribe(
-        (token) => {
-          
           this.router.navigate(['/']);
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;
-          
+          //this.snackBar.open('Wrong email or password', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
         });
-
-      
-    }
+      }
   }
 
   public onRegisterFormSubmit(){
@@ -73,13 +63,16 @@ export class SignInComponent implements OnInit {
       () => {
         console.log('success');
         if(this.registerForm.valid){
-          this.snackBar.open('You registered successfully. Login now', '×', { panelClass: 'success', verticalPosition: 'top', duration: 4000 });
-          this.router.navigate(['']);
+          this.snackBar.open('Registered successfully.', '×', { panelClass: 'success', verticalPosition: 'top', duration: 4000 });
+          
+          this.registerForm.reset();
+          //this.router.navigate(['/sign-in']);
           //window.location.reload();
         }
       },
       (errorResponse) => {
         console.log(errorResponse);
+        this.snackBar.open('Email already registered', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
       }
     )
   }

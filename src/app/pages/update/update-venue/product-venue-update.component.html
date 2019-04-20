@@ -22,79 +22,14 @@
                 
                 <ng-template #item>
                        
-                    <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/> 
-                    <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/>                                 
-                    <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/>  
-                    <img [src]="assets/images/arrows/next.png" onerror="this.style.visibility='hidden'" class="swiper-lazy"/>
+                        <img id="custom-image" *ngIf="producth?.image1" [src]="producth.image1" >
+                        <img id="custom-image" *ngIf="producth?.image2" [src]="producth.image2" >
+                        <img id="custom-image" *ngIf="producth?.image3" [src]="producth.image3" >
+                        <img id="custom-image" *ngIf="producth?.image4" [src]="producth.image4" >
+                        <img id="custom-image" *ngIf="producth?.image5" [src]="producth.image5" >
                       
                 </ng-template>   
             </mat-card>   
-
-            <br>
-            <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                <img src="assets/images/icons/summary.png" alt="summary img">
-                <div class="content">
-                    <p><b style="font-size:18px; margin-left: 10px;">Summary:</b></p>
-                    <p style="font-size:14px; margin-left: 10px;">
-                        <laeventa-editable-input
-                        [(entity)]="producth"
-                        [field]="'summary'"
-                        [className]="''"
-                        (entityUpdated)="updateVenue(producth._id, $event)">
-                        </laeventa-editable-input>
-                    </p>
-                </div> 
-            </mat-card>
-            
-        <!-- <div class="small-carousel"> 
-            
-            <div class="swiper-container" [swiper]="config"> -->
-                <!-- <div class="swiper-wrapper"> 
-                    <div *ngFor="let image of producth?.image_medium" class="swiper-slide">
-                        <mat-card (click)="selectImage(image)" class="p-1">
-                            <img [attr.data-src]="image" class="swiper-lazy"/>
-                            <div class="swiper-lazy-preloader"></div>
-                        </mat-card>
-                    </div>                    
-                </div> -->
-                <!-- <div class="swiper-wrapper"> 
-                    <div class="swiper-slide">
-                        <mat-card  (click)="selectImage(producth.image_small)" class="p-1">
-                            <img [src]="producth.image_small" class="swiper-lazy"/> 
-                            <div class="swiper-lazy-preloader"></div>
-                        </mat-card>
-                    </div> 
-                    <div class="swiper-slide">
-                        <mat-card (click)="selectImage(producth.image_medium)" class="p-1">
-                                <img [src]="producth.image_medium" class="swiper-lazy"/> 
-                                <div class="swiper-lazy-preloader"></div>
-                        </mat-card>
-                    </div>
-                    <div class="swiper-slide">
-                            <mat-card (click)="selectImage(producth.image_big)" class="p-1">
-                                    <img [src]="producth.image_big" class="swiper-lazy"/> 
-                                    <div class="swiper-lazy-preloader"></div>
-                            </mat-card>
-                    </div>  
-                    <div class="swiper-slide">
-                            <mat-card (click)="selectImage(producth.image_extra)" class="p-1">
-                                    <img [src]="producth.image_extra" class="swiper-lazy"/> 
-                                    <div class="swiper-lazy-preloader"></div>
-                            </mat-card>
-                    </div>              
-                </div> -->
-                <!-- <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
-                <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button> 
-            </div>
-            
-        </div> -->
-    <!-- <br>
-    <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-        <img src="assets/images/icons/price.png" alt="price img">
-        <div class="content">
-            <p><b style="font-size:20px; margin-left: 10px;">Avg Price: {{ producth?.dailyRate }} /Day</b></p>
-        </div> 
-    </mat-card> -->
 
     </div>
     <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
@@ -173,9 +108,7 @@
             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                 <img src="assets/images/icons/mobile.png" alt="phone img">
                 <div class="content">
-                    <p><b style="font-size:15px; margin-left: 10px;">+91 
-                        
-                        <!-- {{ producth?.phone }} -->
+                    <p><b style="font-size:15px; margin-left: 10px;">
                         <laeventa-editable-input
                         [(entity)]="producth"
                         [field]="'phone'"
@@ -227,7 +160,7 @@
                         (entityUpdated)="updateVenue(producth._id, $event)">
                         </laeventa-editable-input>
                     </p>
-                    <p style="font-size:14px; margin-left :10px ">
+                    <p *ngIf="producth?.usp2" style="font-size:14px; margin-left :10px ">
                         <laeventa-editable-input
                         [(entity)]="producth"
                         [field]="'usp2'"
@@ -235,7 +168,7 @@
                         (entityUpdated)="updateVenue(producth._id, $event)">
                         </laeventa-editable-input>
                     </p>
-                    <p style="font-size:14px; margin-left :10px ">
+                    <p *ngIf="producth?.usp3" style="font-size:14px; margin-left :10px ">
                         <laeventa-editable-input
                         [(entity)]="producth"
                         [field]="'usp3'"
@@ -243,7 +176,7 @@
                         (entityUpdated)="updateVenue(producth._id, $event)">
                         </laeventa-editable-input>
                     </p>
-                    <p style="font-size:14px; margin-left :10px ">
+                    <p *ngIf="producth?.usp4" style="font-size:14px; margin-left :10px ">
                         <laeventa-editable-input
                         [(entity)]="producth"
                         [field]="'usp4'"
@@ -251,7 +184,7 @@
                         (entityUpdated)="updateVenue(producth._id, $event)">
                         </laeventa-editable-input>
                     </p>
-                    <p style="font-size:14px; margin-left :10px ">
+                    <p *ngIf="producth?.usp5" style="font-size:14px; margin-left :10px ">
                         <laeventa-editable-input
                         [(entity)]="producth"
                         [field]="'usp5'"
@@ -289,6 +222,13 @@
                         <div class="full-desc lh">
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Opening Time:</strong> 
+                                    <div class="content">
+                                        <p style="font-size:16px; margin-left: 10px;">{{ producth?.open_timing}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Address</strong> 
                                     <div class="content">
                                         <p style="font-size:12px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.region | ucwords}} {{producth?.address | ucwords}}</p> 
@@ -307,16 +247,23 @@
                             </div>
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Closing Time:</strong> 
+                                    <div class="content">
+                                            <p style="font-size:16px; margin-left: 10px;">{{ producth?.close_timing}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Landmark</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.landmark}}</p> 
+                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.landmark | ucwords}}</p> 
                                     </div> 
                                 </mat-card>
                                 <br>
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Contact</strong> 
                                     <div class="content">
-                                        <p style="font-size:12px; margin-left: 10px;">{{ producth?.phone}}</p> 
+                                        <p style="font-size:16px; margin-left: 10px; color: green">{{ producth?.phone}}</p> 
                                     </div> 
                                 </mat-card>
                             </div>
@@ -324,6 +271,21 @@
                     <div class="full-desc lh">
                         <app-map [location]="producth?.city + ', ' +  producth?.region"></app-map>
                     </div>
+                    <br>
+                    <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                        <img src="assets/images/icons/summary.png" alt="summary img">
+                        <div class="content">
+                            <p><b style="font-size:18px; margin-left: 10px;">Summary:</b></p>
+                            <p style="font-size:14px; margin-left: 10px;">
+                                    <laeventa-editable-input
+                                    [(entity)]="producth"
+                                    [field]="'summary'"
+                                    [className]="''"
+                                    (entityUpdated)="updateVenue(producth._id, $event)">
+                                    </laeventa-editable-input>
+                            </p>
+                        </div> 
+                    </mat-card>
                 </mat-tab>
                 <mat-tab label="Areas">
                     <div class="full-desc lh">
@@ -403,7 +365,7 @@
 
                 <mat-tab label="Policies">
                     <div class="full-desc lh">
-                        
+
 
                         
                     </div>

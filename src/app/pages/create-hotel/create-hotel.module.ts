@@ -9,6 +9,7 @@ import { AuthGuard } from '../shared/auth.guard';
 import { AuthService } from '../shared/auth.service';
 import { ImageUploadModule } from '../image-upload/image-upload.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 export const routes = [
   {path: '', component: CreateHotelComponent, canActivate: [AuthGuard]}
@@ -22,6 +23,7 @@ export const routes = [
     SharedModule,
     FormsModule,
     ImageUploadModule,
+    AmazingTimePickerModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   declarations: [

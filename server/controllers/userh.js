@@ -33,14 +33,14 @@ exports.auth =  function(req, res){
 			return res.json(token);
 
 		}else {
-			return res.status(422).send({errors: [{title: 'Wrong Data!', detail: 'Wrong email or password'}]});
+			return res.status(422).send({errors: [{title: 'Invalid Password!', detail: 'Wrong email or password'}]});
 		}
 	});
 }
 
 exports.signup =  function(req, res){
 
-    const {category, businessname, username, email, mobile, password, passwordConfirmation} = req.body;
+    const {category, username, email, mobile, password, passwordConfirmation} = req.body;
 
     if(!email || !mobile || !password){
         return res.status(422).send({errors: [{title: 'Data Missing!', detail: 'Provide email, mobile and password'}]});
@@ -61,7 +61,6 @@ exports.signup =  function(req, res){
 
 		const userh = new Userh({
 			category,
-            businessname,
 			username,
             email,
             mobile,

@@ -31,7 +31,6 @@ export class HotelSignInComponent implements OnInit {
     // Hotel registration form controls
     this.registerForm = this.formBuilder.group({
       'category': ['', Validators.required],
-      'businessName': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'username': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': ['', Validators.compose([Validators.required, emailValidator])],
       'mobile': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
@@ -52,12 +51,13 @@ export class HotelSignInComponent implements OnInit {
       () => {
         console.log('success');
         if(this.registerForm.valid){
-          this.snackBar.open('You registered successfully! Sign-in', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+          this.snackBar.open('Registered Successfully.', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
           this.router.navigate(['/sign-in']);
         }
       },
       (errorResponse) => {
         console.log(errorResponse);
+        this.snackBar.open('Email already registered', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
       }
     )
   }

@@ -30,16 +30,6 @@
                         
                 </ng-template>
                 </mat-card>
-        
-    <br>
-    <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-        <img src="assets/images/icons/summary.png" alt="summary img">
-        <div class="content">
-            <p><b style="font-size:18px; margin-left: 10px;">Summary:</b></p>
-            <p style="font-size:14px; margin-left: 10px;">{{producth?.summary}}</p>
-        </div> 
-    </mat-card>
-
     </div>
     
     <div fxFlex="100" fxFlex.gt-md="45" fxFlex.md="55" ngClass.gt-sm="px-2 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
@@ -124,6 +114,13 @@
                     <div class="full-desc lh">
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Opening Time:</strong> 
+                                    <div class="content">
+                                        <p style="font-size:16px; margin-left: 10px;">{{ producth?.open_timing}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Address:</strong> 
                                     <div class="content">
                                         <p style="font-size:16px; margin-left: 10px;">{{ producth?.city | ucwords}}, {{producth?.region | ucwords}}</p> 
@@ -142,6 +139,13 @@
                             </div>
                             <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Closing Time:</strong> 
+                                    <div class="content">
+                                        <p style="font-size:16px; margin-left: 10px;">{{ producth?.close_timing}}</p> 
+                                    </div> 
+                                </mat-card>
+                                <br>
+                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Landmark:</strong> 
                                     <div class="content">
                                         <p style="font-size:16px; margin-left: 10px;">{{ producth?.landmark | ucwords}}</p> 
@@ -157,9 +161,17 @@
                             </div>
                     </div>
                     <div class="full-desc lh">
-                        <h3>Map & Location</h3>
-                        <h4><app-map [location]="producth?.city + ', ' +  producth?.region + ', ' + producth?.landmark"></app-map></h4>
+                        <h6>Map & Location</h6>
+                        <h4><app-map [location]="producth?.city + ', ' +  producth?.region"></app-map></h4>
                     </div>
+                    <br>
+                    <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                        <img src="assets/images/icons/summary.png" alt="summary img">
+                        <div class="content">
+                            <p><b style="font-size:18px; margin-left: 10px;">Summary:</b></p>
+                            <p style="font-size:14px; margin-left: 10px;">{{producth?.summary}}</p>
+                        </div> 
+                    </mat-card>
                 </mat-tab>
                 <mat-tab label="Areas">
                         <mat-card>
@@ -452,7 +464,7 @@
                         </div>
                         <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">                            
                             <mat-card *ngIf="producth?.payment_policy_percentage" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <strong>Advanced Payment </strong> 
+                                <strong>Advanced Payment: </strong> 
                                 <div class="content">
                                     <p style="font-size:14px; margin-left: 10px;">
                                         <b>{{producth?.payment_policy_percentage}} %</b>
@@ -462,7 +474,7 @@
                             </mat-card> 
                             <br>
                             <mat-card *ngIf="producth?.cancellation_policy_percentage" class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                <strong>Cancellation Charge </strong> 
+                                <strong>Cancellation Charge: </strong> 
                                 <div class="content">
                                     <p style="font-size:14px; margin-left: 10px;">
                                         <b>{{producth?.cancellation_policy_percentage}} %</b>

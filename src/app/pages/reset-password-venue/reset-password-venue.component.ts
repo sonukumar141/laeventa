@@ -39,8 +39,9 @@ export class ResetPasswordVenueComponent implements OnInit {
             },
             (errorResponse) => {
               console.log(errorResponse);
-              this.snackBar.open('Something went wrong. Try again!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
-              this.router.navigate(['/forgot-password']);
+              this.snackBar.open('Password do not match. Try again!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+              this.resetPasswordForm.reset();
+              //this.router.navigate(['/forgot-password']);
             }
           )
         }

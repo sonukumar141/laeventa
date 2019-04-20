@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export class Category {
   constructor(public id: number, 
               public name:string, 
@@ -183,9 +185,8 @@ export class Producth {
 }
 
 export class Userh {
-    static readonly CATEGORIES = ['Hotel', 'Venue'];
+    static readonly CATEGORIES = ['Venue', 'Sports'];
     category: String;
-    businessName: String;
     username; String;
     email: String;
     mobile: Number;

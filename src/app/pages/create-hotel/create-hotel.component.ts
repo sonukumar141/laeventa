@@ -4,6 +4,7 @@ import { AppService } from '../../app.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { AmazingTimePickerService } from 'amazing-time-picker';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class CreateHotelComponent implements OnInit {
  
+  openTiming: any;
   newProducth: Producth;
   producthCategories = Producth.CATEGORIES;
   producthCities = Producth.CITIES;
@@ -32,6 +34,7 @@ export class CreateHotelComponent implements OnInit {
   errors: any[] = [];
 
   constructor(private appService: AppService,
+              private atp: AmazingTimePickerService,
               private snackBar: MatSnackBar,
               private router: Router) { }
 
@@ -82,6 +85,16 @@ export class CreateHotelComponent implements OnInit {
     this.newProducth.image5 = '';
   }
 
+  selectOpenTime(){
+    const amazingTimePicker = this.atp.open();
+    amazingTimePicker.afterClose().subscribe(time =>{
+      
+      this.openTiming = time;
+      console.log(this.openTiming);
+      console.log(time);
+    });
+  }
+
   createProducth(){
     this.appService.createProducth(this.newProducth).subscribe(
       (producth: Producth) => {
@@ -90,6 +103,7 @@ export class CreateHotelComponent implements OnInit {
       },
       (errorResponse: HttpErrorResponse) => {
         this.errors = errorResponse.error.errors;
+        this.snackBar.open('Please fill the required fields', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
       }
     )
   }

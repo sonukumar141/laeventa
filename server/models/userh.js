@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -6,12 +5,8 @@ const userhSchema = new Schema({
 	category: {
 		type: String
 	}, 
-    businessname: {
-		type: String,
-		min: [4, 'Too short, Min is 4 characers'],
-		max: [32, 'Too Long, Max character is 32']
-	},
-    username: {
+
+  username: {
 		type: String,
 		min: [4, 'Too short, Min is 4 characers'],
 		max: [32, 'Too Long, Max character is 32']
