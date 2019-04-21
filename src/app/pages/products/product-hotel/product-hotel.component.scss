@@ -106,41 +106,28 @@
    font-family: 'Times New Roman', Times, serif;
 }
 
+.btn {
+    border: none;
+    color: white;
+    padding: 9px 13px;
+    font-size: 13px;
+    cursor: pointer;
+  }
 
-//   @media only screen and (min-width: 1024px) {
-//     .slider, .slider-wrapper {
-//       height: 480px;
-//     }
-  
-//     .slide-caption {
-//       width: 65%;
-//       font-size: 1.5rem;
-//     }
-//   }
-  
-//   @media only screen and (max-width: 1023px) and (min-width: 768px) {
-//     .slider, .slider-wrapper {
-//       height: 360px;
-//     }
-  
-//     .slide-caption {
-//       width: 75%;
-//       font-size: 1.25rem;
-//     }
-//   }
-  
-//   @media only screen and (min-width: 768px) {
-//     .slide-img {
-//       width: 100%;
-//       height: auto;
-//     }
-//   }
-// @media (min-width: 1280px) {  
-//     .mat-card.product-image img{
-//         cursor: zoom-in;
-//         cursor:url('../../../../assets/images/others/zoom.svg') 10 10, zoom-in;
-//     }
-// }
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
+
+.info {background-color: #2196F3;} /* Blue */
+.info:hover {background: #0b7dda;}
+
+.warning {background-color: #ff9800;} /* Orange */
+.warning:hover {background: #e68a00;}
+
+.danger {background-color: #f44336;} /* Red */ 
+.danger:hover {background: #da190b;}
+
+.default {background-color: #e7e7e7; color: black;} /* Gray */ 
+.default:hover {background: #ddd;}
 
 
 // w3-school css

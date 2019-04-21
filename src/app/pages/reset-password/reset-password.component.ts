@@ -12,35 +12,39 @@ import { AuthService } from '../shared/auth.service';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  resetPasswordForm: FormGroup;
+resetPasswordForm: FormGroup;
 
-    constructor(public formBuilder: FormBuilder,
-                public router:Router,
-                public snackBar: MatSnackBar,
-                public auth: AuthService){
+constructor(public formBuilder: FormBuilder,
+            public router:Router,
+            public snackBar: MatSnackBar,
+            public auth: AuthService){
 
-    }
+}
 
-    ngOnInit() {
-        this.resetPasswordForm = this.formBuilder.group({
-          'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-          'confirm': ['', Validators.compose([Validators.required, Validators.minLength(6)])] 
-          });
-    }
+ngOnInit() {
+    this.resetPasswordForm = this.formBuilder.group({
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      'confirm': ['', Validators.compose([Validators.required, Validators.minLength(6)])] 
+      });
+}
 
-    public onResetPasswordFormSubmit(){
-        this.auth.reset_password(this.resetPasswordForm.value).subscribe(
-            () => {
-              if(this.resetPasswordForm.valid){
-                this.snackBar.open('Password reset sucessfull. You can Login.', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
-                this.router.navigate(['/sign-in']);
-              }
-            },
-            (errorResponse) => {
-              console.log(errorResponse);
-              this.snackBar.open('Something went wrong. Try again!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
-              this.router.navigate(['/forgot']);
-            }
-          )
+public onResetPasswordFormSubmit(){
+    this.auth.reset_password(this.resetPasswordForm.value).subscribe(
+        () => {
+          if(this.resetPasswordForm.valid){
+            this.snackBar.open('Password reset sucessfull. You can Login.', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+            this.router.navigate(['/sign-in']);
+          }
+        },
+        (errorResponse) => {
+          console.log(errorResponse);
+          this.snackBar.open('Something went wrong. Try again!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+          this.router.navigate(['/forgot']);
         }
+      )
+    }
+logout(){
+  this.auth.logout();
+  window.location.reload();
+}         
 }

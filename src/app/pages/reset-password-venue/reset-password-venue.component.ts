@@ -12,37 +12,41 @@ import { AuthService } from '../shared/auth.service';
 })
 export class ResetPasswordVenueComponent implements OnInit {
 
-  resetPasswordForm: FormGroup;
+resetPasswordForm: FormGroup;
 
-    constructor(public formBuilder: FormBuilder,
-                public router:Router,
-                public snackBar: MatSnackBar,
-                public auth: AuthService){
+constructor(public formBuilder: FormBuilder,
+            public router:Router,
+            public snackBar: MatSnackBar,
+            public auth: AuthService){
 
-    }
+}
 
-    ngOnInit() {
-        this.resetPasswordForm = this.formBuilder.group({
-          'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-          'confirm': ['', Validators.compose([Validators.required, Validators.minLength(6)])] 
-          });
-    }
+ngOnInit() {
+    this.resetPasswordForm = this.formBuilder.group({
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      'confirm': ['', Validators.compose([Validators.required, Validators.minLength(6)])] 
+      });
+}
 
-    public onResetPasswordFormSubmit(){
-        this.auth.reset_password_venue(this.resetPasswordForm.value).subscribe(
-            () => {
-              console.log('success');
-              if(this.resetPasswordForm.valid){
-                this.snackBar.open('Password reset sucessfull. You can Login.', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
-                this.router.navigate(['/sign-in']);
-              }
-            },
-            (errorResponse) => {
-              console.log(errorResponse);
-              this.snackBar.open('Password do not match. Try again!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
-              this.resetPasswordForm.reset();
-              //this.router.navigate(['/forgot-password']);
-            }
-          )
+public onResetPasswordFormSubmit(){
+    this.auth.reset_password_venue(this.resetPasswordForm.value).subscribe(
+        () => {
+          console.log('success');
+          if(this.resetPasswordForm.valid){
+            this.snackBar.open('Password reset sucessfull. You can Login.', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+            this.router.navigate(['/sign-in']);
+          }
+        },
+        (errorResponse) => {
+          console.log(errorResponse);
+          this.snackBar.open('Password do not match. Try again!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+          this.resetPasswordForm.reset();
+          //this.router.navigate(['/forgot-password']);
         }
+      )
+    }
+  logout(){
+    this.auth.logout();
+    window.location.reload();
+  } 
 }
