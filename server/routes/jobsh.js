@@ -47,7 +47,7 @@ router.get('', function(req, res){
         }
 
         if(filteredJobsh.length === 0){
-            return res.status(422).send({errors: [{title: 'No hotels Found!', detail: `Currently no hotels listed in city ${city}`}]});
+            return res.status(422).send({errors: [{title: 'No Venue Found!', detail: `Currently no venues listed in city: ${city}`}]});
         }
 
         return res.json(filteredJobsh);
@@ -75,7 +75,7 @@ router.get('/category', function(req, res){
         }
 
         if(filteredJobsh.length === 0){
-            return res.status(422).send({errors: [{title: 'No hotels Found!', detail: `Currently no hotels listed in category ${category}`}]});
+            return res.status(422).send({errors: [{title: 'No venues Found!', detail: `Currently no venues listed in category: ${category}`}]});
         }
 
         return res.json(filteredJobsh);

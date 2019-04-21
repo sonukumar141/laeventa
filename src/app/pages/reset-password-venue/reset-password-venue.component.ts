@@ -45,8 +45,8 @@ public onResetPasswordFormSubmit(){
         }
       )
     }
-  logout(){
-    this.auth.logout();
-    window.location.reload();
-  } 
+logout(){
+  this.auth.logout();
+  window.location.reload();
+} 
 }
