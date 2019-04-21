@@ -13,7 +13,7 @@
                      <label></label>
                      <input class="w3-input" 
                             type="text"
-                            placeholder="Venue Name"
+                            placeholder="Venue Name*"
                             id="name"
                             name="name"
                             [(ngModel)]="newProducth.name"></p>
@@ -23,7 +23,7 @@
                                    id="category"
                                    name="category"
                                    [(ngModel)]="newProducth.category">
-                                   <option [ngValue]="undefined" disabled selected>Select Category </option>
+                                   <option [ngValue]="undefined" disabled selected>Select Category* </option>
                             <option *ngFor="let category of producthCategories">{{category}} </option>
                             </select></p>
                      </mat-expansion-panel>
@@ -37,7 +37,7 @@
                     <label></label>
                     <input class="w3-input" 
                     type="text"
-                    placeholder="Plot no."
+                    placeholder="Plot no.*"
                     id="plot_flat"
                     name="plot_flat"
                     [(ngModel)]="newProducth.plot_flat">
@@ -46,7 +46,7 @@
                            id="city"
                            name="city"                         
                            [(ngModel)]="newProducth.city">
-                           <option [ngValue]="undefined" disabled selected>Select City </option>
+                           <option [ngValue]="undefined" disabled selected>Select City* </option>
                            <option *ngFor="let city of producthCities">{{city}}</option> 
                      </select> 
                     
@@ -56,7 +56,7 @@
                            id="region"
                            name="region"
                            [(ngModel)]="newProducth.region">
-                           <option [ngValue]="undefined" disabled selected>Select Region </option>
+                           <option [ngValue]="undefined" disabled selected>Select Region* </option>
                            <option *ngFor="let region of producthRegion">{{region}} </option>  
                      </select> 
 
@@ -64,7 +64,7 @@
                     <br>
                     <input class="w3-input" 
                             type="text"
-                            placeholder="Pincode"
+                            placeholder="Pincode*"
                             id="pincode"
                             name="pincode"
                             [(ngModel)]="newProducth.pincode"></p>
@@ -72,7 +72,7 @@
                     <br>
                     <input class="w3-input" 
                             type="text"
-                            placeholder="Landmark"
+                            placeholder="Landmark*"
                             id="landmark"
                             name="landmark"
                             [(ngModel)]="newProducth.landmark"></p>
@@ -106,7 +106,7 @@
                             </mat-expansion-panel-header>    
                     <input class="w3-input" 
                             type="email"
-                            placeholder="Email"
+                            placeholder="Email*"
                             id="email"
                             name="email"
                             [(ngModel)]="newProducth.email">                   
@@ -114,7 +114,7 @@
                     <br>
                     <input class="w3-input" 
                            type="number"
-                           placeholder="Mobile"
+                           placeholder="Mobile*"
                            id="phone"
                            name="phone"
                            [(ngModel)]="newProducth.phone"></p>
@@ -126,7 +126,7 @@
                                           <h4>Add Images</h4>
                                    </mat-panel-title>
                             </mat-expansion-panel-header> 
-                    <label>Upload Image 1</label>
+                    <label>Upload Image 1*</label>
                            <laeventa-image-upload
                            (imageUploaded)="handleImage1Change($event)"
                                          (imageError)="handleImage1Error()"
@@ -195,7 +195,7 @@
                            id="open_timing"
                            name="open_timing"
                            [(ngModel)]="newProducth.open_timing"> -->
-                           <label>Venue Opening Time</label> &nbsp;
+                           <label>Venue Opening Time*</label> &nbsp;
                            <input atp-time-picker 
                                   type="time"
                                   value="08:55"
@@ -210,7 +210,7 @@
                             id="close_timing"
                             name="close_timing"
                             [(ngModel)]="newProducth.close_timing"></p> -->
-                           <label>Venue Closing Time</label> &nbsp;
+                           <label>Venue Closing Time*</label> &nbsp;
                            <input atp-time-picker 
                                   type="time"
                                   value= "08:55"
@@ -226,7 +226,7 @@
                                    </mat-expansion-panel-header>
                      <input class="w3-input" 
                             type="text"
-                            placeholder="USP"
+                            placeholder="USP*"
                             id="usp1"
                             name="usp1"
                             maxlength="20"
@@ -336,14 +336,14 @@
                              id="parking_policy"
                              name="parking_policy"
                              [(ngModel)]="newProducth.parking_policy">
-                      <option [ngValue]="undefined" disabled selected>Parking Policy </option>
+                      <option [ngValue]="undefined" disabled selected>Parking Policy* </option>
                       <option *ngFor="let policy of producthParkingPolicy">{{policy}} </option>  
                       </select>  
                       <p>
                       <br>
                       <input class="w3-input" 
                       type="number"
-                      placeholder="Parking space for cars(max number of cars)"
+                      placeholder="Parking space for cars(max number of cars)*"
                       id="parking_space_cars"
                       name="parking_space_cars"
                       [(ngModel)]="newProducth.parking_space_cars"></p>  
@@ -351,7 +351,7 @@
                       <br>
                       <input class="w3-input" 
                       type="number"
-                      placeholder="Parking space for bikes(max number of bikes)"
+                      placeholder="Parking space for bikes(max number of bikes)*"
                       id="parking_space_bikes"
                       name="parking_space_bikes"
                       [(ngModel)]="newProducth.parking_space_bikes"></p> 
@@ -421,14 +421,14 @@
                             id="parking_policy"
                             name="parking_policy"
                             [(ngModel)]="newProducth.parking_policy">
-                     <option [ngValue]="undefined" disabled selected>Parking Policy </option>
+                     <option [ngValue]="undefined" disabled selected>Parking Policy* </option>
                      <option *ngFor="let policy of producthParkingPolicy">{{policy}} </option>  
                      </select>  
                      <p>
                      <br>
                      <input class="w3-input" 
                      type="number"
-                     placeholder="Parking space for cars(max number of cars)"
+                     placeholder="Parking space for cars(max number of cars)*"
                      id="parking_space_cars"
                      name="parking_space_cars"
                      [(ngModel)]="newProducth.parking_space_cars"></p>  
@@ -436,7 +436,7 @@
                      <br>
                      <input class="w3-input" 
                      type="number"
-                     placeholder="Parking space for bikes(max number of bikes)"
+                     placeholder="Parking space for bikes(max number of bikes)*"
                      id="parking_space_bikes"
                      name="parking_space_bikes"
                      [(ngModel)]="newProducth.parking_space_bikes"></p> 
@@ -447,13 +447,22 @@
                         type="text"
                         class="w3-input"
                         id="summary"
-                        placeholder="Describe your venue within 800 characters."
+                        placeholder="Describe your venue within 800 characters.*"
                         name="summary"
                         maxlength="800"
                         [(ngModel)]="newProducth.summary"
                         required>
                      </textarea>
                      <br>
+                     <label for="policy-terms"></label>
+                     <input type="checkbox"
+                            id="policy-terms"
+                            name="policy-terms"
+                            [(ngModel)]="newProducth.policy_terms"
+                            required> &nbsp;
+                     <a routerLink="/privacy-policy">Privacy Policy</a> &nbsp; 
+                     <a routerLink="/terms-condition">Terms & Condition</a>
+                     <br> <br>
               <button (click)="createProducth()" 
                         type="button" 
                         class="w3-btn w3-blue">Create Venue

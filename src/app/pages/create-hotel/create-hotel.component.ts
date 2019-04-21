@@ -98,7 +98,7 @@ export class CreateHotelComponent implements OnInit {
   createProducth(){
     this.appService.createProducth(this.newProducth).subscribe(
       (producth: Producth) => {
-        this.snackBar.open('Created your listing successfully!. Add new areas to your listing', '×', { panelClass: 'success', verticalPosition: 'top', duration: 6000 });
+        this.snackBar.open('Created your listing successfully. Add new Areas', '×', { panelClass: 'success', verticalPosition: 'top', duration: 6000 });
         this.router.navigate([`/venues/${producth._id}/${producth.name}`]);
       },
       (errorResponse: HttpErrorResponse) => {

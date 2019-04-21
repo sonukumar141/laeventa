@@ -2,7 +2,6 @@ import { Routes, RouterModule, PreloadAllModules  } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { PagesComponent } from './pages/pages.component';
-import { ManageComponent } from './pages/manage/manage.component';
 
 export const routes: Routes = [
     { 
@@ -33,6 +32,9 @@ export const routes: Routes = [
             { path: 'h/:category', loadChildren: './pages/products/hotel-search-by-category/hotel-search-by-category.module#HotelSearchByCategoryModule', data: { breadcrumb: 'Category' } },
             { path: 'dashboard/h', loadChildren: './pages/dashboard/hotel-dashboard/hotel-dashboard.module#HotelDashboardModule', data: { breadcrumb: 'Dashboard' } },
             { path: 'manage/venues', loadChildren: './pages/manage/manage.module#ManageModule', data: {breadcrumb: 'Manage'} },
+            { path: 'privacy-policy', loadChildren: './pages/policy/policy.module#PolicyModule', data: {breadcrumb: 'Privacy Policy'} },
+            { path: 'terms-condition', loadChildren: './pages/terms/terms.module#TermsModule', data: {breadcrumb: 'Terms & Condition'} },
+            { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsModule', data: {breadcrumb: 'About Us'} },
             { path: '', loadChildren: './pages/update/update-venue/product-venue-update.module#ProductVenueUpdateModule', data: {breadcrumb: 'Update'} },
         ]
     },

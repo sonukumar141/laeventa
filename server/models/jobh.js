@@ -47,6 +47,9 @@ const jobhSchema = new Schema({
         scoreboard_available_policy: String,
         commentator_available_policy: String,
         power_backup_available_policy: String,
+
+        policy_terms : { type: Boolean, required: true},
+
         venueareas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}],
         userh: {type: Schema.Types.ObjectId, ref: 'Userh'}
 });

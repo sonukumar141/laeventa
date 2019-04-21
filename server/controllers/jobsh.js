@@ -11,7 +11,7 @@ exports.createJobh = function(req, res) {
         cancellation_policy_percentage, parking_policy, parking_space_cars,
         parking_space_bikes, equipments_available_policy, 
         canteen_available_policy, washroom_available_policy, scoreboard_available_policy,
-        commentator_available_policy,
+        commentator_available_policy, policy_terms, 
         power_backup_available_policy} = req.body;
 
     const userh = res.locals.userh;
@@ -24,7 +24,7 @@ exports.createJobh = function(req, res) {
         cancellation_policy_percentage, parking_policy, parking_space_cars,
         parking_space_bikes, equipments_available_policy,
         canteen_available_policy, washroom_available_policy, scoreboard_available_policy,
-        commentator_available_policy,
+        commentator_available_policy, policy_terms,
         power_backup_available_policy});
 	jobh.userh = userh;
     

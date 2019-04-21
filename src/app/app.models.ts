@@ -45,7 +45,8 @@ export class Producth {
 
   static readonly CATEGORIES = ['Sports', 'Wedding', 'Conference','Meeting', 'Concert', 'Party'];
   static readonly CITIES = ['Pune'];
-  static readonly REGION = ['Aundh',
+  static readonly REGION = [
+  'Aundh',
   'Balewadi',
   'Baner',
   'Baner-Sus',
@@ -113,7 +114,8 @@ export class Producth {
   'Wanowrie',
   'Wanwadi',
   'Warje',
-  'Yewalewadi'];
+  'Yewalewadi'
+];
   static readonly FACILITIES = ['Cricket ', ' Football ', ' Badminton ', ' Basketball ', ' Cycling ', ' Hockey ',
                                 ' Golf ', ' Chess ', ' Table tennis ', ' Volleyball ', ' Snooker/Pool ', ' Skating ',
                                 ' Horse riding ', ' Swimming ', ' Archery ', ' Go karting ', ' Laser tag ',
@@ -173,6 +175,8 @@ export class Producth {
               parking_policy: string;
               parking_space_cars: number;
               parking_space_bikes: number;
+
+              policy_terms: boolean;
 
               equipments_available_policy: string;
               canteen_available_policy: string;
