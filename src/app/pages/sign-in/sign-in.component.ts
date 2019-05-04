@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.hotel_signin(this.loginForm.value).subscribe(
         (token) => {
-          this.router.navigate(['/venues']);
+          this.router.navigate(['/manage/venues']);
         },
         (errorResponse) => {
           this.errors = errorResponse.error.errors;

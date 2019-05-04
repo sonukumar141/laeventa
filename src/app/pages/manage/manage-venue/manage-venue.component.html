@@ -1,5 +1,6 @@
 <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
-    <ng-container *ngIf="productsh.length > 0">
+    <ng-container *ngIf="productsh && productsh.length > 0">
+        <h2 class="page-title">Venue Dashboard</h2>
         <div *ngFor="let product of productsh; let i = index">
                 <mat-card class="product-item">
                         <div fxLayout="row wrap">
@@ -43,18 +44,21 @@
                                                             class="btn cancel">Cancel</button>
                                                 </div>
                                 </div>
-                                <div *ngIf="productsh && productsh.length === 0" class="col-md-8">
-                                        <div class="alert alert-warning">
-                                          You dont have any venues currenty created. If you want advertised your business, 
-                                          please follow this link.
-                                          <a class="btn btn-bwm" routerLink="/venues/new">List your business</a>
-                                        </div>
-                                </div>
+
                             </div>
                 </mat-card>
                 <br>
+        
         </div>
+
     </ng-container>
+    <!-- <div *ngIf="productsh.length === 0" class="col-md-8">
+            <div class="alert alert-warning">
+              You dont have any venues currenty created. If you want advertised your business, 
+              please follow this link.
+              <a class="btn btn-bwm" routerLink="/venues/new">List your business</a>
+            </div>
+    </div> -->
 </div>
 <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
 <!-- <div>

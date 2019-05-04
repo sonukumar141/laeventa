@@ -48,7 +48,9 @@ const jobhSchema = new Schema({
         commentator_available_policy: String,
         power_backup_available_policy: String,
 
-        policy_terms : { type: Boolean, required: true},
+        policy_terms : { type: String, required: true},
+
+        job_count : {type : Number, default: 0},
 
         venueareas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}],
         userh: {type: Schema.Types.ObjectId, ref: 'Userh'}

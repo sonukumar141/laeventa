@@ -31,6 +31,7 @@ export class CreateHotelComponent implements OnInit {
   producthScoreboardPolicy = Producth.SCOREBOARD_POLICIES;
   producthPowerPolicy = Producth.POWER_POLICIES;
   producthCommentatorPolicy = Producth.COMMENTATOR_POLICIES;
+  producthTerms = Producth.TERMS_CONDITION;
   errors: any[] = [];
 
   constructor(private appService: AppService,

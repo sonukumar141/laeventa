@@ -152,6 +152,7 @@ router.delete('/:id', UserCtrlh.authMiddleware, function(req, res){
             }
 
             foundJobh.remove(function(err){
+                //job_count = 0;
                 if(err){
                     return res.status(422).send({errors: normalizeErrors(err.errors)});
                 }
@@ -209,7 +210,7 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
         cancellation_policy_percentage, parking_policy, parking_space_cars,
         parking_space_bikes, equipments_available_policy,
         canteen_available_policy, washroom_available_policy, scoreboard_available_policy,
-        commentator_available_policy, policy_terms, 
+        commentator_available_policy, policy_terms, job_count,
         power_backup_available_policy} = req.body;
 
     const userh = res.locals.userh;
@@ -222,21 +223,26 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
         cancellation_policy_percentage, parking_policy, parking_space_cars,
         parking_space_bikes, equipments_available_policy,
         canteen_available_policy, washroom_available_policy, scoreboard_available_policy,
-        commentator_available_policy, policy_terms, 
+        commentator_available_policy, policy_terms, job_count,
         power_backup_available_policy});
 	jobh.userh = userh;
     
+    // if(Jobh.find(job_count == 0))
+    // {
+        Jobh.create(jobh, function(err, newJobh) {
+            job_count = 1;
+            if(err) {
+                return res.status(422).send({errors: normalizeErrors(err.errors)});
+            }
 
-    Jobh.create(jobh, function(err, newJobh) {
-        if(err) {
-            return res.status(422).send({errors: normalizeErrors(err.errors)});
-        }
+            Userh.update({_id: userh.id}, {$push: {jobsh: newJobh}}, function(){});
 
-        Userh.update({_id: userh.id}, {$push: {jobsh: newJobh}}, function(){});
-
-        return res.json(newJobh);
-    });
-        
+            return res.json(newJobh);
+        });
+    // }
+    // else{
+    //     return res.status(422).send({errors: normalizeErrors(err.errors)});
+    // }
 });
 
 function isValid(proposedCreateJob, jobh){

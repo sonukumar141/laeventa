@@ -1,6 +1,6 @@
 <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
 
-    <div class="container">
+    <div class="container" >
 
               <form #producthForm="ngForm" class="w3-container">
                      <mat-expansion-panel>
@@ -16,6 +16,8 @@
                             placeholder="Venue Name*"
                             id="name"
                             name="name"
+                            #venueNameControl="ngModel"
+                            maxlength="60"
                             [(ngModel)]="newProducth.name"></p>
                      <p>
                      <br>
@@ -40,6 +42,7 @@
                     placeholder="Plot no.*"
                     id="plot_flat"
                     name="plot_flat"
+                    maxlength="20"
                     [(ngModel)]="newProducth.plot_flat">
                     <br>
                    <select class="w3-input"                            
@@ -67,6 +70,7 @@
                             placeholder="Pincode*"
                             id="pincode"
                             name="pincode"
+                            maxlength="6"
                             [(ngModel)]="newProducth.pincode"></p>
                     <p>
                     <br>
@@ -75,6 +79,7 @@
                             placeholder="Landmark*"
                             id="landmark"
                             name="landmark"
+                            maxlength="40"
                             [(ngModel)]="newProducth.landmark"></p>
 
                      <br>    
@@ -109,15 +114,22 @@
                             placeholder="Email*"
                             id="email"
                             name="email"
-                            [(ngModel)]="newProducth.email">                   
+                            #contactemail="ngModel"
+                            ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                            [(ngModel)]="newProducth.email">  
+               
                     <p>
                     <br>
                     <input class="w3-input" 
-                           type="number"
-                           placeholder="Mobile*"
+                           type="text"
+                           placeholder="10 digit Mobile No.*"
                            id="phone"
                            name="phone"
-                           [(ngModel)]="newProducth.phone"></p>
+                           minlength="10" 
+                           maxlength="10"
+                           ng-pattern="/^[6-9][0-9]{9}$/"
+                           [(ngModel)]="newProducth.phone"
+                           required></p>
                     </mat-expansion-panel>
                     <br>
                     <mat-expansion-panel>
@@ -447,7 +459,7 @@
                         type="text"
                         class="w3-input"
                         id="summary"
-                        placeholder="Describe your venue within 800 characters.*"
+                        placeholder="Summary: Describe your venue within 800 characters.*"
                         name="summary"
                         maxlength="800"
                         [(ngModel)]="newProducth.summary"
@@ -455,18 +467,22 @@
                      </textarea>
                      <br>
                      <label for="policy-terms"></label>
-                     <input type="checkbox"
-                            id="policy-terms"
-                            name="policy-terms"
-                            [(ngModel)]="newProducth.policy_terms"
-                            required> &nbsp;
+                     <select class="w3-input"                            
+                          id="policy-terms"
+                          name="policy-terms"                         
+                          [(ngModel)]="newProducth.policy_terms">
+                          <option [ngValue]="undefined" disabled selected>Select Policy & Terms </option>
+                          <option *ngFor="let policy of producthTerms">{{policy}}</option> 
+                    </select>
                      <a routerLink="/privacy-policy">Privacy Policy</a> &nbsp; 
                      <a routerLink="/terms-condition">Terms & Condition</a>
                      <br> <br>
-              <button (click)="createProducth()" 
-                        type="button" 
-                        class="w3-btn w3-blue">Create Venue
-              </button>                                                                
+                     <div>
+                            <button (click)="createProducth()" 
+                                   type="button" 
+                                   class="w3-btn w3-blue">Create Venue
+                            </button>         
+                    </div>                                                       
                     
               </form>
               <br>

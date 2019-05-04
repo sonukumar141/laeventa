@@ -134,6 +134,7 @@ export class Producth {
   static readonly SCOREBOARD_POLICIES = ['Scoreboard available', 'Scoreboard not available'];
   static readonly POWER_POLICIES = ['Power backup available', 'Power backup not available'];
   static readonly COMMENTATOR_POLICIES = ['Commentator available', 'Commentator not available'];
+  static readonly TERMS_CONDITION = ['I Accept'];
 
    _id: string;
    name: string;
@@ -148,7 +149,7 @@ export class Producth {
               city: string;
               region: string;
               category: string;
-              phone: number;
+              phone: string;
               email: string;
               pincode: string;
               landmark: string;
@@ -176,7 +177,7 @@ export class Producth {
               parking_space_cars: number;
               parking_space_bikes: number;
 
-              policy_terms: boolean;
+              policy_terms: string;
 
               equipments_available_policy: string;
               canteen_available_policy: string;
