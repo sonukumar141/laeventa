@@ -102,6 +102,23 @@
                     </mat-expansion-panel>  
                     </div> 
 
+                    <br *ngIf="newProducth.category !== 'Sports'">
+                    <div *ngIf="newProducth.category !== 'Sports'">
+                    <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                          <h4>Facilities/Best Suited For</h4>
+                                   </mat-panel-title>
+                            </mat-expansion-panel-header>    
+                     <mat-select placeholder="Best Suited For"                          
+                            [(ngModel)]="newProducth.facilities"
+                            name="facilities"
+                            multiple>
+                            <mat-option *ngFor="let facility of productCasualFacilities" [value]="facility">{{facility}} </mat-option>  
+                     </mat-select> 
+                    </mat-expansion-panel>  
+                    </div> 
+
                     <br>
                     <mat-expansion-panel>
                             <mat-expansion-panel-header>
@@ -127,7 +144,7 @@
                            name="phone"
                            minlength="10" 
                            maxlength="10"
-                           ng-pattern="/^[6-9][0-9]{9}$/"
+                           ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;"
                            [(ngModel)]="newProducth.phone"
                            required></p>
                     </mat-expansion-panel>
@@ -138,41 +155,41 @@
                                           <h4>Add Images</h4>
                                    </mat-panel-title>
                             </mat-expansion-panel-header> 
-                    <label>Upload Image 1*</label>
+                            
                            <laeventa-image-upload
                            (imageUploaded)="handleImage1Change($event)"
                                          (imageError)="handleImage1Error()"
-                           ></laeventa-image-upload>
+                           ></laeventa-image-upload><label>*</label>
                     <p>
                     <br>
-                    <label>Upload Image 2</label>
+                    
                            <laeventa-image-upload
                            (imageUploaded)="handleImage2Change($event)"
                                          (imageError)="handleImage2Error()"
                            ></laeventa-image-upload>
                     <p>
                     <br>
-                    <label>Upload Image 3</label>
+              
                            <laeventa-image-upload
                            (imageUploaded)="handleImage3Change($event)"
                                          (imageError)="handleImage3Error()"
                            ></laeventa-image-upload>
                     <p>
                     <br>
-                    <label>Upload Image 4</label>
+                    
                            <laeventa-image-upload
                            (imageUploaded)="handleImage4Change($event)"
                                          (imageError)="handleImage4Error()"
                            ></laeventa-image-upload>
                     <p>
                     <br>
-                    <label>Upload Image 5</label>
+                    
                            <laeventa-image-upload
                            (imageUploaded)="handleImage5Change($event)"
                                          (imageError)="handleImage5Error()"
                            ></laeventa-image-upload>
                     </mat-expansion-panel>
-                     <br>                     
+                     <!-- <br>                     
                      <mat-expansion-panel>
                                    <mat-expansion-panel-header>
                                           <mat-panel-title>
@@ -193,7 +210,7 @@
                             id="max_rate"
                             name="max_rate"
                             [(ngModel)]="newProducth.max_rate"></p>
-                     </mat-expansion-panel>
+                     </mat-expansion-panel> -->
                      <br>
                      <mat-expansion-panel>
                                    <mat-expansion-panel-header>
@@ -492,4 +509,8 @@
               </p>
        </div>
     </div>
+</div>
+
+<div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
+       <h3>Instructions:</h3>
 </div>

@@ -67,7 +67,7 @@
     </div>
     <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md> 
 
-        <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
+        <!-- <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
             <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50">
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                     <img src="assets/images/icons/price.png" alt="Price img">
@@ -77,7 +77,7 @@
                     </div> 
                 </mat-card> 
             </div>
-        </div> 
+        </div>  -->
 
         <div fxFlex="100" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
             <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
@@ -515,8 +515,8 @@
                                                            <h4>Area Name & Type</h4>
                                                     </mat-panel-title>
                                              </mat-expansion-panel-header>
-                                      <p>
-                                      <p>
+                                      
+                                      
                                       <br>
                                       <input class="w3-input" 
                                                     type="text"
@@ -525,13 +525,23 @@
                                                     name="name"
                                                     [(ngModel)]="newVenueArea.name">
                                       <br> 
+                                      <div *ngIf="producth?.category === 'Sports'">
                                       <select class="w3-input"
                                                     id="category"
                                                     name="category"
                                                     [(ngModel)]="newVenueArea.category">
                                                     <option [ngValue]="undefined" disabled selected>Select Area </option>
                                              <option *ngFor="let category of venueAreaCategories">{{category}} </option>
-                                             </select></p>
+                                             </select> </div>
+                                             
+                                      <div *ngIf="producth?.category !== 'Sports'">
+                                      <select class="w3-input"
+                                                    id="category"
+                                                    name="category"
+                                                    [(ngModel)]="newVenueArea.category">
+                                                    <option [ngValue]="undefined" disabled selected>Select Area </option>
+                                             <option *ngFor="let category of venueAreaCasualCategories">{{category}} </option>
+                                             </select> </div>
                                      </mat-expansion-panel>
                                      <br>
                                      <mat-expansion-panel>
@@ -540,35 +550,35 @@
                                                            <h4>Add Images</h4>
                                                     </mat-panel-title>
                                              </mat-expansion-panel-header> 
-                                     <label>Upload Image 1</label>
+                                     
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage1Change($event)"
                                                           (imageError)="handleImage1Error()"
                                             ></laeventa-image-upload>
                                      <p>
                                      <br>
-                                     <label>Upload Image 2</label>
+                                     
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage2Change($event)"
                                                           (imageError)="handleImage2Error()"
                                             ></laeventa-image-upload>
                                      <p>
                                      <br>
-                                     <label>Upload Image 3</label>
+                                     
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage3Change($event)"
                                                           (imageError)="handleImage3Error()"
                                             ></laeventa-image-upload>
                                      <p>
                                      <br>
-                                     <label>Upload Image 4</label>
+                                     
                                             <laeventa-image-upload
                                             (imageUploaded)="handleImage4Change($event)"
                                                           (imageError)="handleImage4Error()"
                                             ></laeventa-image-upload>
                                       <p>
                                       <br>
-                                      <label>Upload Image 5</label>
+                                      
                                              <laeventa-image-upload
                                              (imageUploaded)="handleImage5Change($event)"
                                                            (imageError)="handleImage4Error()"
@@ -622,7 +632,7 @@
                              <br>
                              <button (click)="createVenueArea()" 
                                          type="button" 
-                                         class="">Create New Area
+                                         class="btn success">Create New Area
                              </button>                                                                
                                      
                              </form>

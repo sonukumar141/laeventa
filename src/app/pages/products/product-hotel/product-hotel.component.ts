@@ -35,6 +35,7 @@ export class ProductHotelComponent implements OnInit {
   newVenueArea: VenueArea;
   //producthCategories = Producth.CATEGORIES;
   venueAreaCategories = VenueArea.CATEGORIES;
+  venueAreaCasualCategories = VenueArea.CASUAL_CATEGORIES;
   public venueareas: Array<VenueArea> = [];
   venueareaDeleteIndex: number;
 

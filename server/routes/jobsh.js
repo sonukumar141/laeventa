@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Jobh = require('../models/jobh');
-const VenueArea = require('../models/venuearea');
-const VenueAreaCtrl = require('../controllers/venueareas');
 const Jobv = require('../models/jobv');
 const Userh = require('../models/userh');
 const { normalizeErrors } = require('../helpers/mongoose');
+const config = require('../config');
+const nodemailer = require("nodemailer");
 
 const UserCtrlh = require('../controllers/userh');
 
@@ -150,13 +150,35 @@ router.delete('/:id', UserCtrlh.authMiddleware, function(req, res){
             if(userh.id !== foundJobh.userh.id){
                 return res.status(422).send({errors: [{title: 'Invalid User', detail: 'You are not allowed to delete'}]});
             }
-
+            Userh.update({_id:userh.id}, {$set: {job_count: 0}}, function(){});
+             console.log("Job count after deletion");
+             console.log(userh.job_count);
             foundJobh.remove(function(err){
-                //job_count = 0;
+                
                 if(err){
                     return res.status(422).send({errors: normalizeErrors(err.errors)});
                 }
+                    // send email to user
+                    const smtpTransport = nodemailer.createTransport({
+                        service: 'Gmail',
+                        auth: {
+                            user: config.LAEVENTA_EMAIL,
+                            pass: config.LAEVENTA_EMAIL_PASS
+                        }
+                    });
 
+                    const mailOptions = {
+                        to: userh.email,
+                        from: config.LAEVENTA_EMAIL,
+                        subject: 'Your listing has been deleted',
+                        text: 'You have deleted listing with Laeventa. Visit www.laeventa.com to create new listing. ' +
+                               'Thank You.'
+                    };
+                    smtpTransport.sendMail(mailOptions, function(err){
+                        console.log('mail sent');
+                        done(err, 'done');
+                    });
+                    // send email finished
                 return res.json({'status': 'deleted'});
             });
         });
@@ -204,7 +226,7 @@ router.get('/search', function(req, res){
 router.post('', UserCtrlh.authMiddleware, function(req, res) {
     const {name, images, tags, image1, image2, image3, image4, image5,
         plot_flat, city, region, category, phone, email, pincode, landmark, 
-        open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
+        open_timing, close_timing, usp1, usp2, usp3, usp4, usp5, 
         facilities, summary, lodging_policy, lodging_room_average_price, 
         food_policy, alcohol_policy, decor_policy, payment_policy_percentage,
         cancellation_policy_percentage, parking_policy, parking_space_cars,
@@ -217,7 +239,7 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
 
     const jobh = new Jobh({name, images, tags, image1, image2, image3, image4, image5,
         plot_flat, city, region, category, phone, email, pincode, landmark, 
-        open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
+        open_timing, close_timing, usp1, usp2, usp3, usp4, usp5, 
         facilities, summary, lodging_policy, lodging_room_average_price, 
         food_policy, alcohol_policy, decor_policy, payment_policy_percentage,
         cancellation_policy_percentage, parking_policy, parking_space_cars,
@@ -225,24 +247,47 @@ router.post('', UserCtrlh.authMiddleware, function(req, res) {
         canteen_available_policy, washroom_available_policy, scoreboard_available_policy,
         commentator_available_policy, policy_terms, job_count,
         power_backup_available_policy});
-	jobh.userh = userh;
+    jobh.userh = userh;
     
-    // if(Jobh.find(job_count == 0))
-    // {
+    if(userh.job_count == 0)
+    {
         Jobh.create(jobh, function(err, newJobh) {
-            job_count = 1;
+
             if(err) {
                 return res.status(422).send({errors: normalizeErrors(err.errors)});
             }
 
             Userh.update({_id: userh.id}, {$push: {jobsh: newJobh}}, function(){});
+            Userh.update({_id:userh.id}, {$set: {job_count: 1}}, function(){});
+            // send email to user
+            const smtpTransport = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: config.LAEVENTA_EMAIL,
+                    pass: config.LAEVENTA_EMAIL_PASS
+                }
+            });
+
+            const mailOptions = {
+                to: userh.email,
+                from: config.LAEVENTA_EMAIL,
+                subject: 'New Listing Created',
+                text: 'You have created new listing with Laeventa. For more information visit www.laeventa.com ' +
+                      ' Thank You.'
+            };
+            smtpTransport.sendMail(mailOptions, function(err){
+				console.log('mail sent');
+                done(err, 'done');
+            });
+            
+            // send email finish
 
             return res.json(newJobh);
         });
-    // }
-    // else{
-    //     return res.status(422).send({errors: normalizeErrors(err.errors)});
-    // }
+    }
+    else{
+        return res.status(422).send({errors: [{title: 'Invalid command', detail: 'Cannot create more than one listing. Delete exiting listing to create new.'}]});
+    }
 });
 
 function isValid(proposedCreateJob, jobh){

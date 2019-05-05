@@ -34,6 +34,7 @@ const userhSchema = new Schema({
 		},
 		resetPasswordToken: String,
 		resetPasswordExpires: Date,
+		job_count: {type: Number, default: 0},
 		jobsh: [{type: Schema.Types.ObjectId, ref: 'Jobh'}],
 		venueareas: [{type: Schema.Types.ObjectId, ref: 'VenueAreas'}]
 });

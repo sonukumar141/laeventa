@@ -20,6 +20,7 @@ export class CreateHotelComponent implements OnInit {
   producthCities = Producth.CITIES;
   producthRegion = Producth.REGION;
   productFacilities = Producth.FACILITIES;
+  productCasualFacilities = Producth.CASUAL_FACILITIES;
   producthLodgingPolicy = Producth.LODGING_POLICIES;
   producthFoodPolicy = Producth.FOOD_POLICIES;
   producthAlcoholPolicy = Producth.ALCOHOL_POLICIES;

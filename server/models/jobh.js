@@ -20,8 +20,6 @@ const jobhSchema = new Schema({
         landmark: { type: String, required: true},
         open_timing: { type: String, required: true},
         close_timing: { type: String, required: true},
-        min_rate: { type: Number, required: true},
-        max_rate: { type: Number, required: true},
         usp1: { type: String, required: true},
         usp2: String,
         usp3: String,

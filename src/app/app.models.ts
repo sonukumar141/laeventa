@@ -123,6 +123,7 @@ export class Producth {
                                 ' Paintball ', ' Sky diving ', ' Rock climbing ', ' Scuba diving ', ' Foosball ',
                                 ' Karate ', ' Kick boxing ', ' Boxing ', ' Judo ', ' Pilates ', ' Spinning ',
                                 ' Taekwondo ', ' Weightlifting ', ' Wrestling '];
+  static readonly CASUAL_FACILITIES = ['Party', 'Wedding', 'Concert', 'Meetings', 'Birthday'];
   static readonly LODGING_POLICIES = ['Available', 'Not Available'];
   static readonly FOOD_POLICIES = ['Outside food allowed', 'Outside food not allowed'];
   static readonly ALCOHOL_POLICIES = ['Alcohol allowed', 'Alcohol Not Allowed'];
@@ -200,7 +201,14 @@ export class Userh {
 }
 
 export class VenueArea {
-  static readonly CATEGORIES = ['Football', 'Basketball','Conference Room', 'Party Hall', 'Meeting Room'];
+  static readonly CATEGORIES = ['Cricket', 'Football', 'Badminton', 'Basketball', 'Cycling', 'Hockey',
+  'Golf', 'Chess', 'Table tennis', 'Volleyball', 'Snooker/Pool', 'Skating',
+  'Horse riding', 'Swimming', 'Archery', 'Go karting', 'Laser tag',
+  'Lawn tennis', 'PC gaming', 'Squash', 'Shooting', 'Bowling', 'Boating',
+  'Paintball', 'Sky diving', 'Rock climbing', 'Scuba diving', 'Foosball',
+  'Karate', 'Kick boxing', 'Boxing', 'Judo', 'Pilates', 'Spinning',
+  'Taekwondo', 'Weightlifting', 'Wrestling'];
+  static readonly CASUAL_CATEGORIES = ['Banquet', 'Party Hall', 'Restaurant'];
   _id: string;
   image1: string;
   image2: string;

@@ -5,7 +5,7 @@ const { normalizeErrors } = require('../helpers/mongoose');
 exports.createJobh = function(req, res) {
     const {name, images, tags, image1, image2, image3, image4, image5,
         plot_flat, city, region, category, phone, email, pincode, landmark, 
-        open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
+        open_timing, close_timing, usp1, usp2, usp3, usp4, usp5, 
         facilities, summary, lodging_policy, lodging_room_average_price, 
         food_policy, alcohol_policy, decor_policy, payment_policy_percentage,
         cancellation_policy_percentage, parking_policy, parking_space_cars,
@@ -18,7 +18,7 @@ exports.createJobh = function(req, res) {
 
     const jobh = new Jobh({name, images, tags, image1, image2, image3, image4, image5,
         plot_flat, city, region, category, phone, email, pincode, landmark, 
-        open_timing, close_timing, min_rate, max_rate, usp1, usp2, usp3, usp4, usp5, 
+        open_timing, close_timing, usp1, usp2, usp3, usp4, usp5, 
         facilities, summary, lodging_policy, lodging_room_average_price, 
         food_policy, alcohol_policy, decor_policy, payment_policy_percentage,
         cancellation_policy_percentage, parking_policy, parking_space_cars,

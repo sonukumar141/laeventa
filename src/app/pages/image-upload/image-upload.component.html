@@ -2,23 +2,23 @@
        type='file'
        accept="image/*"
        (change)='processFile()'> -->
-       <label *ngIf="!imageChangedEvent" class='image-ipload-container btn btn-bwm'>
-        <span>Select Image</span>
-        <input 	type="file"
-               accept="image/*"
-               (change)='processFile($event)'>
+    <label *ngIf="!imageChangedEvent" class='image-ipload-container btn btn-bwm'>
+    <span class="btn warning">Select Image</span>
+    <input 	type="file"
+            accept="image/*"
+            (change)='processFile($event)'>
     
     </label>
     
     <button *ngIf="imageChangedEvent" 
             (click)='uploadImage()' 
-            class="btn btn-success" 
+            class="btn success" 
             type="button">Upload Image 
     </button>
     
     <button *ngIf="imageChangedEvent" 
             (click)='cancelCropping()' 
-            class="btn btn-danger" 
+            class="btn danger" 
             type="button">Cancel 
     </button>
     
