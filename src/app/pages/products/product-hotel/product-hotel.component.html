@@ -112,7 +112,7 @@
             <mat-tab-group [@.disabled]="true" [selectedIndex]="0">       
                 <mat-tab label="Overview">
                     <div class="full-desc lh">
-                            <div fxFlex="49" fxFlex.md="25"fxFlex.sm="50" class="mt-16">
+                            <div fxFlex="49" fxFlex.md="25" fxFlex.sm="50" class="mt-16">
                                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                                     <strong>Opening Time:</strong> 
                                     <div class="content">
@@ -199,37 +199,46 @@
                                     <img *ngIf="venuearea.image4" [src]="venuearea.image4" style="width:113%; height: 50%;">
                                     <img *ngIf="venuearea.image5" [src]="venuearea.image5" style="width:113%; height: 50%;">
                                 </ng-template>
-
+                                    <p style="font-family: monospace; font-size:24px; text-align: center">
+                                            <b>{{venuearea?.name | ucwords}}</b>
+                                    </p>
                                 <br>
-                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                <mat-card style="text-align: center; margin-left: 175px; margin-right: 175px;">
                                         <div class="content">
-                                            <p style="font-size:14px; margin-left: 10px;">
+                                            <!-- <p style="font-size:14px; margin-left: 10px;">
                                                 <b>Name: </b>{{venuearea?.name | ucwords}}
-                                            </p>
-                                            <p style="font-size:14px; margin-left: 10px;">
-                                                <b>Type: </b>{{venuearea?.category | ucwords}}
+                                            </p> -->
+                                            <p style="font-size:20px;">
+                                                 {{venuearea?.category | ucwords}}
                                             </p>
                                             <p *ngIf="producth?.category !== 'sports'" style="font-size:14px; margin-left: 10px;">
-                                                <b>Price per plate: Rs. </b>{{venuearea?.price_per_plate | ucwords}}
+                                                <img src="assets/images/icons/rupee_small.png" alt="rupee img">
+                                                <span style="color:#ff8c00; font-size: 20px;">{{venuearea?.price_per_plate}}/plate</span>
                                             </p>
                                             <p *ngIf="producth?.category === 'sports'" style="font-size:14px; margin-left: 10px;">
-                                                <b>Price per hour: Rs. </b>{{venuearea?.price_per_hour}}
+                                                <b class="text-muted" style="font-size: 24px;">Pricing:</b>
+                                                <br><img src="assets/images/icons/rupee_small.png" alt="rupee img">
+                                                <span style="color:#ff8c00; font-size: 20px;">{{venuearea?.price_per_hour}}/hour</span>
+                                                <br><img src="assets/images/icons/rupee_small.png" alt="rupee img">
+                                                <span style="color:#ff8c00; font-size: 20px;">{{venuearea?.price_per_day}}/day</span>
                                             </p>
-                                            <p *ngIf="producth?.category === 'sports'" style="font-size:14px; margin-left: 10px;">
-                                                <b>Price per day: Rs. </b>{{venuearea?.price_per_day}}
-                                            </p>
+                                            <br>
+                                             <p style="font-size:16px;">
+                                                <strong>Summary: </strong>
+                                                <b>{{venuearea?.description}}</b>
+                                             </p>
                                             
                                         </div> 
                                 </mat-card>   
                                 <br>                                
-                                <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
-                                    <strong>Description: </strong> 
+                                <!-- <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+                                    <strong>Summary: </strong> 
                                     <div class="content">                                
                                         <p style="font-size:14px; margin-left: 10px;">
                                             <b>{{venuearea?.description}}</b>
                                         </p>
                                     </div> 
-                                </mat-card>  
+                                </mat-card>   -->
                                 <br>                                
                                 
                                 <div id="delete-button" *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
@@ -241,13 +250,13 @@
                                 <div class="divider"></div>
                                
                         <div *ngIf="venueareaDeleteIndex === i">
-                            clicked
+                            
                                 
                             <p class="confirm-message">Do you confirm delete?</p> 
                                 <button (click)="deleteVenueArea(venuearea._id)"
-                                        class="btn btn-success">Yes</button>
+                                        class="btn success">Yes</button>
                                 <button (click)="venueareaDeleteIndex = undefined"
-                                        class="btn btn-danger">No</button>
+                                        class="btn danger">No</button>
                             </div>
                             <div *ngIf="errors.length > 0" class="alert alert-danger">
                                     <p *ngFor="let error of errors">
@@ -525,7 +534,7 @@
                                                     name="name"
                                                     [(ngModel)]="newVenueArea.name">
                                       <br> 
-                                      <div *ngIf="producth?.category === 'Sports'">
+                                      <div *ngIf="producth?.category === 'sports'">
                                       <select class="w3-input"
                                                     id="category"
                                                     name="category"
@@ -533,8 +542,8 @@
                                                     <option [ngValue]="undefined" disabled selected>Select Area </option>
                                              <option *ngFor="let category of venueAreaCategories">{{category}} </option>
                                              </select> </div>
-                                             
-                                      <div *ngIf="producth?.category !== 'Sports'">
+
+                                      <div *ngIf="producth?.category !== 'sports'">
                                       <select class="w3-input"
                                                     id="category"
                                                     name="category"

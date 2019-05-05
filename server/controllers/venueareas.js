@@ -2,6 +2,8 @@ const VenueArea = require('../models/venuearea');
 const Userh = require('../models/userh');
 const Jobh = require('../models/jobh');
 const { normalizeErrors } = require('../helpers/mongoose');
+const config = require('../config');
+const nodemailer = require("nodemailer");
 
 exports.createVenueArea = function(req, res){
     const {name, category, image1, image2, image3, image4, image5, price_per_plate,
@@ -22,7 +24,7 @@ exports.createVenueArea = function(req, res){
             }
 
             if(foundJobh.userh.id !== userh.id){
-                return res.status(422).send({errors: [{title: 'Invalid User!', detail: 'You cannot add venue area'}]});
+                return res.status(422).send({errors: [{title: 'Invalid User!', detail: 'Invalid user! You cannot add Area here. Go to manage section.'}]});
             }
             venuearea.userh = userh;
             venuearea.jobh = foundJobh;
@@ -36,6 +38,29 @@ exports.createVenueArea = function(req, res){
                 foundJobh.save();
 
                 Userh.update({_id: userh.id}, {$push: {venueareas: venuearea}}, function(){});
+
+                    // send email to user
+                    const smtpTransport = nodemailer.createTransport({
+                        service: 'Gmail',
+                        auth: {
+                            user: config.LAEVENTA_EMAIL,
+                            pass: config.LAEVENTA_EMAIL_PASS
+                        }
+                    });
+
+                    const mailOptions = {
+                        to: userh.email,
+                        from: config.LAEVENTA_EMAIL,
+                        subject: 'New Area Created',
+                        text: 'You have created new area in your venue with Laeventa. For more information visit www.laeventa.com ' +
+                            ' Thank You.'
+                    };
+                    smtpTransport.sendMail(mailOptions, function(err){
+                        console.log('mail sent');
+                        done(err, 'done');
+                    });
+                    
+                    // send email finish
 
                 res.json({"created": "true"});
             });
@@ -69,7 +94,28 @@ exports.deleteVenueArea = function(req, res){
                 if(err){
                     return res.status(422).send({errors: normalizeErrors(err.errors)});
                 }
+                    // send email to user
+                    const smtpTransport = nodemailer.createTransport({
+                        service: 'Gmail',
+                        auth: {
+                            user: config.LAEVENTA_EMAIL,
+                            pass: config.LAEVENTA_EMAIL_PASS
+                        }
+                    });
 
+                    const mailOptions = {
+                        to: userh.email,
+                        from: config.LAEVENTA_EMAIL,
+                        subject: 'Area deleted from venue',
+                        text: 'You have deleted an area in your venue with Laeventa. For more information visit www.laeventa.com ' +
+                            ' Thank You.'
+                    };
+                    smtpTransport.sendMail(mailOptions, function(err){
+                        console.log('mail sent');
+                        done(err, 'done');
+                    });
+                    
+                    // send email finish
                 return res.json({'status': 'deleted'});
             });
         });

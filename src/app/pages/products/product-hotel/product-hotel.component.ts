@@ -132,7 +132,8 @@ export class ProductHotelComponent implements OnInit {
         window.location.reload();
       },
       (errorResponse: HttpErrorResponse) => {
-       
+        this.errors = errorResponse.error.errors;
+        this.router.navigate(['/manage']);
       }
     )
   }
