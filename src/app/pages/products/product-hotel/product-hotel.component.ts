@@ -144,11 +144,12 @@ export class ProductHotelComponent implements OnInit {
     () => {
       this.venueareas.splice(this.venueareaDeleteIndex, 1);
       this.venueareaDeleteIndex = undefined;
-      this.snackBar.open('Area deleted successfully!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('Area deleted successfully!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 5000 });
+      this.router.navigate(['']);
+      window.location.reload();
     },
     (errorResponse) => {
       this.errors = errorResponse.error.errors;
-      this.router.navigate(['/manage']);
     })
   }
 

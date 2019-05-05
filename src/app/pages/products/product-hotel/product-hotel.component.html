@@ -227,6 +227,31 @@
                                                 <strong>Summary: </strong>
                                                 <b>{{venuearea?.description}}</b>
                                              </p>
+                                             <br>
+                                             <div id="delete-button" *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
+                                                <button (click)="venueareaDeleteIndex = i"
+                                                *ngIf="venueareaDeleteIndex !== i"
+                                                type="button" 
+                                                class="btn danger">Delete Area</button>
+                                                <br>
+                                                <div class="divider"></div>
+                                               
+                                            <div *ngIf="venueareaDeleteIndex === i">
+                                            
+                                                
+                                            <p class="confirm-message">Do you confirm delete?</p> 
+                                                <button (click)="deleteVenueArea(venuearea._id)"
+                                                        class="btn success">Yes</button>
+                                                <button (click)="venueareaDeleteIndex = undefined"
+                                                        class="btn danger">No</button>
+                                            </div>
+                                            <div *ngIf="errors.length > 0" class="alert alert-danger">
+                                                    <p *ngFor="let error of errors">
+                                                           {{error.detail}}
+                                                    </p>
+                                                    <a style="background-color: Green" mat-button routerLink="/manage/venues">Manage</a>
+                                             </div>
+                                        </div>
                                             
                                         </div> 
                                 </mat-card>   
@@ -241,7 +266,7 @@
                                 </mat-card>   -->
                                 <br>                                
                                 
-                                <div id="delete-button" *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
+                                <!-- <div id="delete-button" *ngIf="auth.isAuthenticated() && auth.getCategoryName()==='Hotel/Venue'">
                                 <button (click)="venueareaDeleteIndex = i"
                                 *ngIf="venueareaDeleteIndex !== i"
                                 type="button" 
@@ -264,7 +289,7 @@
                                     </p>
                                     <a style="background-color: Green" mat-button routerLink="/manage/venues">Manage</a>
                              </div>
-                        </div>
+                        </div> -->
                         <div class="divider"></div>
                         <br>
                         </div>
