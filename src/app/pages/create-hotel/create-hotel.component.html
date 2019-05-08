@@ -2,7 +2,7 @@
 
     <div class="container" >
 
-              <form #producthForm="ngForm" class="w3-container">
+              <form #producthForm="ngForm" class="w3-container" novalidate>
                      <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                    <mat-panel-title>
@@ -10,24 +10,32 @@
                                    </mat-panel-title>
                             </mat-expansion-panel-header>
                      <p>
-                     <label></label>
-                     <input class="w3-input" 
+                     <input class="form-group" 
                             type="text"
-                            placeholder="Venue Name*"
-                            id="name"
-                            name="name"
+                            ngModel
+                            class="form-control"
+                            placeholder="Venue Name*"                            
                             #venueNameControl="ngModel"
-                            maxlength="60"
-                            [(ngModel)]="newProducth.name"></p>
+                            [ngClass]="{'is-invalid': producthForm.submitted && venueName.invalid}"
+                            name="VenueName"
+                            maxlength="60"                            
+                            [(ngModel)]="newProducth.name"
+                            required></p>
+                            <div class="alert alert-danger" *ngIf="venueNameControl.touched && !venueNameControl.valid">Venue name is required</div>
                      <p>
                      <br>
-                     <select class="w3-input"
+                     <select class="form-group"
                                    id="category"
+                                   #categoryControl="ngModel"
+                                   ngModel
+                                   class="form-control"
                                    name="category"
+                                   required
                                    [(ngModel)]="newProducth.category">
                                    <option [ngValue]="undefined" disabled selected>Select Category* </option>
                             <option *ngFor="let category of producthCategories">{{category}} </option>
                             </select></p>
+                            <div class="alert alert-danger" *ngIf="categoryControl.touched && !categoryControl.valid">Category is required</div>
                      </mat-expansion-panel>
                      <br>
                     <mat-expansion-panel>
@@ -36,52 +44,77 @@
                                           <h4>Address</h4>
                                    </mat-panel-title>
                             </mat-expansion-panel-header>
-                    <label></label>
-                    <input class="w3-input" 
-                    type="text"
-                    placeholder="Plot no.*"
-                    id="plot_flat"
-                    name="plot_flat"
-                    maxlength="20"
-                    [(ngModel)]="newProducth.plot_flat">
+                    <p>
+                    <input class="form-group" 
+                            type="text"
+                            ngModel
+                            #plotControl="ngModel"
+                            class="form-control"
+                            placeholder="Plot no."
+                            id="plot_flat"
+                            name="plot_flat"
+                            maxlength="20"
+                            required
+                            [(ngModel)]="newProducth.plot_flat"></p>
+                            <div class="alert alert-danger" *ngIf="plotControl.touched && !plotControl.valid">Plot No. is required</div>
+                     <p>
                     <br>
-                   <select class="w3-input"                            
+                   <select class="form-group"                            
                            id="city"
-                           name="city"                         
+                           ngModel
+                           #cityControl="ngModel"
+                           class="form-control"
+                           name="city"      
+                           required                   
                            [(ngModel)]="newProducth.city">
-                           <option [ngValue]="undefined" disabled selected>Select City* </option>
+                           <option [ngValue]="undefined" disabled selected>Select City </option>
                            <option *ngFor="let city of producthCities">{{city}}</option> 
-                     </select> 
-                    
-                    
-                    <br>
-                    <select class="w3-input" 
-                           id="region"
-                           name="region"
-                           [(ngModel)]="newProducth.region">
-                           <option [ngValue]="undefined" disabled selected>Select Region* </option>
-                           <option *ngFor="let region of producthRegion">{{region}} </option>  
-                     </select> 
-
+                     </select> </p>
+                     <div class="alert alert-danger" *ngIf="cityControl.touched && !cityControl.valid">City is required</div>
                     <p>
                     <br>
-                    <input class="w3-input" 
+                    <select class="form-group" 
+                           id="region"
+                           ngModel
+                           #regionControl="ngModel"
+                           class="form-control"
+                           name="region"
+                           required
+                           [(ngModel)]="newProducth.region">
+                           <option [ngValue]="undefined" disabled selected>Select Region </option>
+                           <option *ngFor="let region of producthRegion">{{region}} </option>  
+                     </select> </p>
+                     <div class="alert alert-danger" *ngIf="regionControl.touched && !regionControl.valid">Region is required</div>
+                    <p>
+                    <br>
+                    <input class="form-group" 
                             type="text"
+                            ngModel
+                            #pinControl="ngModel"
+                            class="form-control"
                             placeholder="Pincode*"
                             id="pincode"
                             name="pincode"
+                            pattern="[0-9]{6}"
+                            required
                             maxlength="6"
+                            minlength="6"
                             [(ngModel)]="newProducth.pincode"></p>
+                            <div class="alert alert-danger" *ngIf="pinControl.touched && !pinControl.valid">Invalid Pincode</div>       
                     <p>
                     <br>
-                    <input class="w3-input" 
+                    <input class="form-group" 
                             type="text"
-                            placeholder="Landmark*"
+                            ngModel
+                            #landmarkControl="ngModel"
+                            class="form-control"
+                            placeholder="Landmark"
                             id="landmark"
+                            required
                             name="landmark"
                             maxlength="40"
                             [(ngModel)]="newProducth.landmark"></p>
-
+                            <div class="alert alert-danger" *ngIf="landmarkControl.touched && !landmarkControl.valid">Landmark is required</div> 
                      <br>    
 
                     </mat-expansion-panel>
@@ -92,13 +125,19 @@
                                    <mat-panel-title>
                                           <h4>Facilities/Best Suited For</h4>
                                    </mat-panel-title>
-                            </mat-expansion-panel-header>    
+                            </mat-expansion-panel-header>   
+                    <p>
                      <mat-select placeholder="Best Suited For"                          
                             [(ngModel)]="newProducth.facilities"
                             name="facilities"
+                            class="form-control"
+                            ngModel
+                            required
+                            #bestSuitedControl1="ngModel"
                             multiple>
                             <mat-option *ngFor="let facility of productFacilities" [value]="facility">{{facility}} </mat-option>  
-                     </mat-select> 
+                     </mat-select> </p>
+                     <div class="alert alert-danger" *ngIf="bestSuitedControl1.touched && !bestSuitedControl1.valid">Facilities are required</div>
                     </mat-expansion-panel>  
                     </div> 
 
@@ -110,12 +149,18 @@
                                           <h4>Facilities/Best Suited For</h4>
                                    </mat-panel-title>
                             </mat-expansion-panel-header>    
+                            <p>
                      <mat-select placeholder="Best Suited For"                          
                             [(ngModel)]="newProducth.facilities"
                             name="facilities"
+                            class="form-control"
+                            ngModel
+                            required
+                            #bestSuitedControl="ngModel"
                             multiple>
                             <mat-option *ngFor="let facility of productCasualFacilities" [value]="facility">{{facility}} </mat-option>  
-                     </mat-select> 
+                     </mat-select> </p>
+                     <div class="alert alert-danger" *ngIf="bestSuitedControl.touched && !bestSuitedControl.valid">Facilities are required</div>
                     </mat-expansion-panel>  
                     </div> 
 
@@ -125,28 +170,36 @@
                                    <mat-panel-title>
                                           <h4>Contact Info</h4>
                                    </mat-panel-title>
-                            </mat-expansion-panel-header>    
-                    <input class="w3-input" 
+                            </mat-expansion-panel-header>
+                     <p>
+                    <input class="form-group" 
                             type="email"
-                            placeholder="Email*"
-                            id="email"
+                            ngModel
+                            class="form-control"
+                            placeholder="E-mail*"
                             name="email"
-                            #contactemail="ngModel"
-                            ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
-                            [(ngModel)]="newProducth.email">  
+                            pattern="[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+"
+                            #emailControl="ngModel"
+                            required
+                            [(ngModel)]="newProducth.email"></p>
+                            <div class="alert alert-danger" *ngIf="emailControl.touched && !emailControl.valid">Invalid E-mail</div>
                
                     <p>
                     <br>
-                    <input class="w3-input" 
+                    <input class="form-group" 
                            type="text"
-                           placeholder="10 digit Mobile No.*"
+                           ngModel
+                           placeholder="10 digit Mobile No."
+                           #phoneControl="ngModel"
                            id="phone"
                            name="phone"
+                           class="form-control"
                            minlength="10" 
+                           pattern="[1-9]{1}[0-9]{9}"
                            maxlength="10"
-                           ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;"
                            [(ngModel)]="newProducth.phone"
                            required></p>
+                           <div class="alert alert-danger" *ngIf="phoneControl.touched && !phoneControl.valid">Invalid Mobile No</div>
                     </mat-expansion-panel>
                     <br>
                     <mat-expansion-panel>
@@ -159,31 +212,27 @@
                            <laeventa-image-upload
                            (imageUploaded)="handleImage1Change($event)"
                                          (imageError)="handleImage1Error()"
-                           ></laeventa-image-upload><label>*</label>
-                    <p>
-                    <br>
+                           ></laeventa-image-upload>
+                    
                     
                            <laeventa-image-upload
                            (imageUploaded)="handleImage2Change($event)"
                                          (imageError)="handleImage2Error()"
                            ></laeventa-image-upload>
-                    <p>
-                    <br>
+                                        
               
                            <laeventa-image-upload
                            (imageUploaded)="handleImage3Change($event)"
                                          (imageError)="handleImage3Error()"
                            ></laeventa-image-upload>
-                    <p>
-                    <br>
                     
+                                        
                            <laeventa-image-upload
                            (imageUploaded)="handleImage4Change($event)"
                                          (imageError)="handleImage4Error()"
                            ></laeventa-image-upload>
-                    <p>
-                    <br>
                     
+                                        
                            <laeventa-image-upload
                            (imageUploaded)="handleImage5Change($event)"
                                          (imageError)="handleImage5Error()"
@@ -253,17 +302,24 @@
                                                  <h4>Unique Selling Proposition(USP)</h4>
                                           </mat-panel-title>
                                    </mat-expansion-panel-header>
-                     <input class="w3-input" 
+                     <p>
+                     <input class="form-group" 
                             type="text"
+                            ngModel
+                            #usp1Control="ngModel"
+                            class="form-control"
                             placeholder="USP*"
                             id="usp1"
                             name="usp1"
+                            required
                             maxlength="20"
-                            [(ngModel)]="newProducth.usp1">
+                            [(ngModel)]="newProducth.usp1"></p>       
+                            <div class="alert alert-danger" *ngIf="usp1Control.touched && !usp1Control.valid">USP is required</div>
                      <p>
                      <br>
-                     <input class="w3-input" 
-                            type="text"
+                     <input class="form-group" 
+                            type="text"                            
+                            class="form-control"
                             placeholder="USP"
                             id="usp2"
                             name="usp2"
@@ -271,8 +327,9 @@
                             [(ngModel)]="newProducth.usp2"></p>
                      <p>
                      <br>
-                     <input class="w3-input" 
+                     <input class="form-group" 
                                    type="text"
+                                   class="form-control"
                                    placeholder="USP"
                                    id="usp3"
                                    name="usp3"
@@ -280,8 +337,9 @@
                                    [(ngModel)]="newProducth.usp3"></p>
                      <p>
                      <br>
-                     <input class="w3-input" 
+                     <input class="form-group" 
                                    type="text"
+                                   class="form-control"
                                    placeholder="USP"
                                    id="usp4"
                                    name="usp4"
@@ -289,8 +347,9 @@
                                    [(ngModel)]="newProducth.usp4"></p>
                      <p>
                      <br>
-                     <input class="w3-input" 
+                     <input class="form-group" 
                                    type="text"
+                                   class="form-control"
                                    placeholder="USP"
                                    id="usp5"
                                    name="usp5"
@@ -304,86 +363,110 @@
                                            <h4>Policies</h4>
                                     </mat-panel-title>
                              </mat-expansion-panel-header>
-                     <select class="w3-input"                            
+                     <p>
+                     <select class="form-group"                            
                            id="lodging_policy"
+                           class="form-control"
                            name="lodging_policy"                         
                            [(ngModel)]="newProducth.lodging_policy">
                            <option [ngValue]="undefined" disabled selected>Lodging Policy </option>
                            <option *ngFor="let policy of producthLodgingPolicy">{{policy}}</option> 
-                     </select> 
+                     </select> </p>
                       <p>
                       <br>
-                      <input class="w3-input" 
-                      type="number"
-                      placeholder="Average price of lodging"
-                      id="lodging_room_average_price"
-                      name="lodging_room_average_price"
-                      [(ngModel)]="newProducth.lodging_room_average_price"></p>
+                      <input class="form-group" 
+                            type="number"
+                            class="form-control"
+                            placeholder="Average price of lodging"
+                            id="lodging_room_average_price"
+                            name="lodging_room_average_price"
+                            [(ngModel)]="newProducth.lodging_room_average_price"></p>
                       <br>
-                      <select class="w3-input" 
+                      <p>
+                      <select class="form-group" 
                              id="food_policy"
+                             class="form-control"
                              name="food_policy"
                              [(ngModel)]="newProducth.food_policy">
                       <option [ngValue]="undefined" disabled selected>Food Policy </option>
                       <option *ngFor="let policy of producthFoodPolicy">{{policy}} </option>  
-                      </select>
+                      </select></p>
                       <br>
-                      <select class="w3-input" 
+                      <p>
+                      <select class="form-group" 
                              id="alcohol_policy"
+                             class="form-control"
                              name="alcohol_policy"
                              [(ngModel)]="newProducth.alcohol_policy">
                       <option [ngValue]="undefined" disabled selected>Alcohol Policy </option>
                       <option *ngFor="let policy of producthAlcoholPolicy">{{policy}} </option>  
-                      </select>   
+                      </select>  </p>
                       <br>
-                      <select class="w3-input" 
+                      <p>
+                      <select class="form-group" 
                              id="decor_policy"
+                             class="form-control"
                              name="decor_policy"
                              [(ngModel)]="newProducth.decor_policy">
                       <option [ngValue]="undefined" disabled selected>Decoration Policy </option>
                       <option *ngFor="let policy of producthDecorPolicy">{{policy}} </option>  
-                      </select>    
+                      </select> </p>
                       <p>
                       <br>
-                      <input class="w3-input" 
-                      type="number"
-                      placeholder="Advanced payment policy. Write in %"
-                      id="payment_policy_percentage"
-                      name="payment_policy_percentage"
-                      [(ngModel)]="newProducth.payment_policy_percentage"></p> 
+                      <input class="form-group" 
+                            type="number"
+                            ngModel 
+                            #advanceControl="ngModel"
+                            pattern="(^100(\.0{1,2})?$)|(^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$)"
+                            required
+                            class="form-control"
+                            placeholder="Advanced payment policy. Write in %"
+                            id="payment_policy_percentage"
+                            name="payment_policy_percentage"
+                            [(ngModel)]="newProducth.payment_policy_percentage"></p> 
+                            <div class="alert alert-danger" *ngIf="advanceControl.touched && !advanceControl.valid">Invalid range.</div>
                       <p>
                       <br>
-                      <input class="w3-input" 
-                      type="number"
-                      placeholder="Cancellation charge policy. Write in %"
-                      id="cancellation_policy_percentage"
-                      name="cancellation_policy_percentage"
-                      [(ngModel)]="newProducth.cancellation_policy_percentage"></p>                                                              
+                      <input class="form-group" 
+                            type="number"
+                            ngModel 
+                            #cancellationControl="ngModel"
+                            required
+                            pattern="(^100(\.0{1,2})?$)|(^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$)"
+                            class="form-control"
+                            placeholder="Cancellation charge policy. Write in %"
+                            id="cancellation_policy_percentage"
+                            name="cancellation_policy_percentage"
+                            [(ngModel)]="newProducth.cancellation_policy_percentage"></p>     
+                            <div class="alert alert-danger" *ngIf="cancellationControl.touched && !cancellationControl.valid">Invalid range.</div>                                                         
                       <p>
                       <br>
-                      <select class="w3-input" 
+                      <select class="form-group" 
                              id="parking_policy"
+                             class="form-control"
                              name="parking_policy"
                              [(ngModel)]="newProducth.parking_policy">
-                      <option [ngValue]="undefined" disabled selected>Parking Policy* </option>
+                      <option [ngValue]="undefined" disabled selected>Parking Policy</option>
                       <option *ngFor="let policy of producthParkingPolicy">{{policy}} </option>  
-                      </select>  
+                      </select>  </p>
                       <p>
                       <br>
-                      <input class="w3-input" 
-                      type="number"
-                      placeholder="Parking space for cars(max number of cars)*"
-                      id="parking_space_cars"
-                      name="parking_space_cars"
-                      [(ngModel)]="newProducth.parking_space_cars"></p>  
+                      <input class="form-group" 
+                            type="number"
+                            class="form-control"
+                            placeholder="Parking space for cars(max number of cars)"
+                            id="parking_space_cars"
+                            name="parking_space_cars"
+                            [(ngModel)]="newProducth.parking_space_cars"></p>  
                       <p>
                       <br>
-                      <input class="w3-input" 
-                      type="number"
-                      placeholder="Parking space for bikes(max number of bikes)*"
-                      id="parking_space_bikes"
-                      name="parking_space_bikes"
-                      [(ngModel)]="newProducth.parking_space_bikes"></p> 
+                      <input class="form-group" 
+                            type="number"
+                            class="form-control"
+                            placeholder="Parking space for bikes(max number of bikes)"
+                            id="parking_space_bikes"
+                            name="parking_space_bikes"
+                            [(ngModel)]="newProducth.parking_space_bikes"></p> 
                       </mat-expansion-panel>
                      <br> 
                      <mat-expansion-panel *ngIf="newProducth.category === 'Sports'">
@@ -392,44 +475,52 @@
                                           <h4>Policies</h4>
                                    </mat-panel-title>
                             </mat-expansion-panel-header>
-                    <select class="w3-input"                            
+                     <p>
+                    <select class="form-group"                            
                           id="equipments_available_policy"
+                          class="form-control"
                           name="equipments_available_policy"                         
                           [(ngModel)]="newProducth.equipments_available_policy">
                           <option [ngValue]="undefined" disabled selected>Equipment Available </option>
                           <option *ngFor="let policy of producthEquipmentPolicy">{{policy}}</option> 
-                    </select> 
-                     <p>
+                    </select> </p>
+                     
                      <br>
-                    <select class="w3-input"                            
+                     <p>
+                    <select class="form-group"                            
                           id="canteen_available_policy"
+                          class="form-control"
                           name="canteen_available_policy"                         
                           [(ngModel)]="newProducth.canteen_available_policy">
                           <option [ngValue]="undefined" disabled selected>Canteen Available </option>
                           <option *ngFor="let policy of producthCanteenPolicy">{{policy}}</option> 
-                    </select>  
-                    <p>
+                    </select>  </p>
+                    
                     <br>
-                    <select class="w3-input"                            
+                    <p>
+                    <select class="form-group"                            
                           id="washroom_available_policy"
+                          class="form-control"
                           name="washroom_available_policy"                         
                           [(ngModel)]="newProducth.washroom_available_policy">
                           <option [ngValue]="undefined" disabled selected>Washroom Available </option>
                           <option *ngFor="let policy of producthWashroomPolicy">{{policy}}</option> 
-                    </select>  
-                    <p>
+                    </select>  </p>                    
                     <br>
-                    <select class="w3-input"                            
+                    <p>
+                    <select class="form-group"                            
                           id="scoreboard_available_policy"
+                          class="form-control"
                           name="scoreboard_available_policy"                         
                           [(ngModel)]="newProducth.scoreboard_available_policy">
                           <option [ngValue]="undefined" disabled selected>Scoreboard Available </option>
                           <option *ngFor="let policy of producthScoreboardPolicy">{{policy}}</option> 
-                    </select>
+                    </select></p>
                     <p>
                      <br>
-                     <select class="w3-input"                            
+                     <select class="form-group"                            
                            id="commentator_available_policy"
+                           class="form-control"
                            name="commentator_available_policy"                         
                            [(ngModel)]="newProducth.commentator_available_policy">
                            <option [ngValue]="undefined" disabled selected>Commentator Available </option>
@@ -437,8 +528,9 @@
                      </select>                    
                     <p>
                     <br>
-                    <select class="w3-input"                            
+                    <select class="form-group"                            
                           id="power_backup_available_policy"
+                          class="form-control"
                           name="power_backup_available_policy"                         
                           [(ngModel)]="newProducth.power_backup_available_policy">
                           <option [ngValue]="undefined" disabled selected>Power Backup Available </option>
@@ -446,8 +538,9 @@
                     </select>                                                            
                      <p>
                      <br>
-                     <select class="w3-input" 
+                     <select class="form-group" 
                             id="parking_policy"
+                            class="form-control"
                             name="parking_policy"
                             [(ngModel)]="newProducth.parking_policy">
                      <option [ngValue]="undefined" disabled selected>Parking Policy* </option>
@@ -455,37 +548,46 @@
                      </select>  
                      <p>
                      <br>
-                     <input class="w3-input" 
-                     type="number"
-                     placeholder="Parking space for cars(max number of cars)*"
-                     id="parking_space_cars"
-                     name="parking_space_cars"
-                     [(ngModel)]="newProducth.parking_space_cars"></p>  
+                     <input class="form-group" 
+                            type="number"
+                            class="form-control"
+                            placeholder="Parking space for cars(max number of cars)*"
+                            id="parking_space_cars"
+                            name="parking_space_cars"
+                            [(ngModel)]="newProducth.parking_space_cars"></p>  
                      <p>
                      <br>
-                     <input class="w3-input" 
-                     type="number"
-                     placeholder="Parking space for bikes(max number of bikes)*"
-                     id="parking_space_bikes"
-                     name="parking_space_bikes"
-                     [(ngModel)]="newProducth.parking_space_bikes"></p> 
+                     <input class="form-group" 
+                            type="number"
+                            class="form-control"
+                            placeholder="Parking space for bikes(max number of bikes)*"
+                            id="parking_space_bikes"
+                            name="parking_space_bikes"
+                            [(ngModel)]="newProducth.parking_space_bikes"></p> 
                      </mat-expansion-panel>                                         
                      <br>
+                     <p>
                      <textarea rows="5"
                               cols="80"
                         type="text"
-                        class="w3-input"
+                        ngModel 
+                        #summaryControl="ngModel"
+                        required
+                        class="form-group"
+                        class="form-control"
                         id="summary"
                         placeholder="Summary: Describe your venue within 800 characters.*"
                         name="summary"
                         maxlength="800"
                         [(ngModel)]="newProducth.summary"
                         required>
-                     </textarea>
+                     </textarea></p>
+                     <div class="alert alert-danger" *ngIf="summaryControl.touched && !summaryControl.valid">Summary is required.</div>
                      <br>
                      <label for="policy-terms"></label>
-                     <select class="w3-input"                            
+                     <select class="form-group"                            
                           id="policy-terms"
+                          class="form-control"
                           name="policy-terms"                         
                           [(ngModel)]="newProducth.policy_terms">
                           <option [ngValue]="undefined" disabled selected>Select Policy & Terms </option>
@@ -513,4 +615,14 @@
 
 <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2">
        <h3>Instructions:</h3>
+       <ol style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14px;">
+              <li><strong>NOTE:</strong> All the information provided here will be public. Please fill it carefully.</li>
+              <li>Fill all required fields(*) in order to complete the listing process.</li>
+              <li>Create venue in order to list your business with Laeventa.</li>
+              <li><strong>NOTE:</strong> You can have only one instance of listing. However, you can delete it to create a new listing.</li>
+              <li>You can create multiple 'Areas' under your venue. Go to 'Add Area' tab after listing your venue.</li>
+              <li>'Area' should be part of your venue e.g banquet hall or a basket ball court.</li>
+              <li>Please contact us in case of any help needed.</li>
+              
+       </ol>
 </div>

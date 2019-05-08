@@ -97,6 +97,10 @@ export class CreateHotelComponent implements OnInit {
     });
   }
 
+  log(x){
+    console.log(x);
+  }
+
   createProducth(){
     this.appService.createProducth(this.newProducth).subscribe(
       (producth: Producth) => {
